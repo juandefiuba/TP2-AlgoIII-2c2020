@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 
-class VerdaderoFalsoTest {
+public class VerdaderoFalsoTest {
 
 	@Test
 	public void testPreguntaVoFInicializaCorrectamente() {
