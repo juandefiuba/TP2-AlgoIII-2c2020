@@ -17,7 +17,7 @@ public abstract class Respuesta {
 		this.items.addAll(items);
 	}
 	
-	public abstract boolean igualA(Respuesta otraRespuesta);
+	protected abstract boolean igualA(Respuesta otraRespuesta);
 	
 	public abstract int comparar(Respuesta otraRespuesta);
 
