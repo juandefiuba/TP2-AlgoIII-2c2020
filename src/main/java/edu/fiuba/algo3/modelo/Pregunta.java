@@ -21,17 +21,30 @@ public class Pregunta {
 		opciones.add("Falso");
 		return new Pregunta(problema, respuesta, opciones);
 	}
-	
-	public String getProblema(){
+
+
+	public String getProblema() {
 		return this.problema;
 	}
-	
+
+
 	public ArrayList<String> getOpciones() {
 		return this.opciones;
 	}
-	
-	public int calificarRespuesta(Respuesta respuestaElecgida) {
-		return this.respuestaCorrecta.comparar(respuestaElecgida);
+
+
+	public int calificarRespuesta(Respuesta respuestaElegida) {
+		return this.respuestaCorrecta.comparar(respuestaElegida);
 	}
-	
+
+	public void calificarJugador(Respuesta respuesta)
+	{
+		respuesta.calificarJugador(this.calificarRespuesta(respuesta));
+	}
+
+	public void calificarJugadores(ArrayList<Respuesta> respuestas)
+	{
+		for (Respuesta i: respuestas)
+			this.calificarJugador(i);
+	}
 }

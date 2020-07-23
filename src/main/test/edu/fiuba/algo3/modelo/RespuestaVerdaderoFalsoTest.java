@@ -8,7 +8,7 @@ public class RespuestaVerdaderoFalsoTest {
 
 	@Test
 	public void testComparoConUnaRespuestaIgualEntoncesDevuelve1() {
-		RespuestaVerdaderoFalso respuesta = new RespuestaVerdaderoFalso("Verdadero");
+		RespuestaVerdaderoFalso respuesta = new RespuestaVerdaderoFalso("Verdadero", new Jugador("pepe"));
 		assertEquals(1, respuesta.comparar(respuesta));
 	}
 
