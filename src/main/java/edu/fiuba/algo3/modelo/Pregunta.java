@@ -15,14 +15,15 @@ public class Pregunta {
 		this.opciones.addAll(opciones);
 	}
 	
-	public String getProblema(){
-		return this.problema;
+	public static Pregunta crearPreguntaVerdaderoFalso(String problema, RespuestaVerdaderoFalso respuesta) {
+		ArrayList<String> opciones = new ArrayList<String>();
+		opciones.add("Verdadero");
+		opciones.add("Falso");
+		return new Pregunta(problema, respuesta, opciones);
 	}
 	
-	/* Dice si la respuestaElegida es igual a la respuesta correcta
-	 * Equivale a sacarse el mayor puntaje posible */
-	public boolean esCorrecto(Respuesta respuestaElegida) {
-		return this.respuestaCorrecta.igualA(respuestaElegida);
+	public String getProblema(){
+		return this.problema;
 	}
 	
 	public ArrayList<String> getOpciones() {

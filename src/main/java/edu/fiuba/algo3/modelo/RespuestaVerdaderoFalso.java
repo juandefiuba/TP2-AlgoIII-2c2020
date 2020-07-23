@@ -9,18 +9,10 @@ public class RespuestaVerdaderoFalso extends Respuesta {
 		super(item);
 	}
 	
-	public RespuestaVerdaderoFalso(ArrayList<String> items) {
-		super(items);
-	}
-	
-	public boolean igualA(Respuesta otraRespuesta) {
-		boolean iguales = ( this.items.size() == otraRespuesta.items.size() );
+	protected boolean igualA(Respuesta otraRespuesta) {
 		Iterator<String> iteradorPropio = this.items.iterator();
 		Iterator<String> iteradorExt = otraRespuesta.items.iterator();
-		while( (iguales) && (iteradorPropio.hasNext()) ) {
-			iguales = ( iteradorPropio.next() == iteradorExt.next() );
-		}
-		return iguales;
+		return ( iteradorPropio.next() == iteradorExt.next() );
 	}
 	
 	public int comparar(Respuesta otraRespuesta) {
