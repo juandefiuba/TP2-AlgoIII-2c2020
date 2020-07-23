@@ -14,7 +14,7 @@ class VerdaderoFalsoTest {
 		Respuesta respuestaPrueba = new RespuestaVerdaderoFalso("Verdadero");
 		ArrayList<String> opciones = new ArrayList<String>();
 		opciones.add("Verdadero");
-		opciones.add("Falso");
+		opciones.add("Falsoooo");
 		
 		Pregunta preguntaPrueba = new Pregunta(problema, respuestaPrueba, opciones);
 		
