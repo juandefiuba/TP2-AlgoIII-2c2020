@@ -11,6 +11,7 @@ public abstract class Respuesta {
 	public Respuesta(String item, Jugador jugador) {
 		this.items = new ArrayList<String>();
 		this.items.add(item);
+		this.jugador = jugador;
 	}
 	
 	public Respuesta(ArrayList<String> items, Jugador jugador) {
