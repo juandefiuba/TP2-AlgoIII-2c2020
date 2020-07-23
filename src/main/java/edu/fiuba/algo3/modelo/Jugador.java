@@ -18,4 +18,9 @@ public class Jugador
     {
         this.puntaje += puntos;
     }
+
+    public int visualizarPuntaje()
+    {
+        return puntaje;
+    }
 }

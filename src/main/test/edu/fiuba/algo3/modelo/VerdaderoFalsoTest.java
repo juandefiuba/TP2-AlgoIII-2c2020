@@ -57,4 +57,25 @@ public class VerdaderoFalsoTest {
 		assertEquals(0, preguntaPrueba.calificarRespuesta(respuestaErronea));
 	}
 
+	@Test
+	public void testPreguntaRecibeUnaListaDeRespuestasYPuntuaALosJugadores() {
+		Jugador jugador1 = new Jugador("pepe");
+		RespuestaVerdaderoFalso respuesta1 = new RespuestaVerdaderoFalso("Verdadero", jugador1);
+		Jugador jugador2 = new Jugador("pepe");
+		RespuestaVerdaderoFalso respuesta2 = new RespuestaVerdaderoFalso("Verdadero", jugador2);
+		Jugador jugador3 = new Jugador("pepe");
+		RespuestaVerdaderoFalso respuesta3 = new RespuestaVerdaderoFalso("Falso", jugador3);
+		Pregunta pregunta = Pregunta.crearPreguntaVerdaderoFalso("pregunta???", respuesta1);
+		ArrayList<Respuesta> respuestas = new ArrayList<Respuesta>();
+		respuestas.add(respuesta1);
+		respuestas.add(respuesta2);
+		respuestas.add(respuesta3);
+
+		pregunta.calificarJugadores(respuestas);
+		assertEquals(jugador1.visualizarPuntaje(), 1);
+		assertEquals(jugador2.visualizarPuntaje(), 1);
+		assertEquals(jugador3.visualizarPuntaje(), 0);
+
+	}
+
 }
