@@ -12,4 +12,7 @@ buildNumber.properties
 .iml
 .classpath
 .project
+.settings
+.classpath
+.project
 .settings/
