@@ -6,11 +6,12 @@ public abstract class Pregunta {
 	
 	protected ArrayList<Opcion> opciones;
 	
-	protected Pregunta(Natural cantidadOpciones) {
-		// TODO: verificar cantidad minima de opciones
+	protected Pregunta(int cantidadOpciones) {
+		/* Es responsabilidad de las clases hijas verificar que la cantidad de
+		 * opciones sea valida */
 		this.opciones = new ArrayList<Opcion>();
-		for(int i = 1; i <= cantidadOpciones.getNumero(); i++) {
-			opciones.add( new Opcion(false) );
+		for(int i = 1; i <= cantidadOpciones; i++) {
+			opciones.add( new Opcion() );
 		}
 	}
 	
@@ -18,12 +19,21 @@ public abstract class Pregunta {
 		return this.opciones.size();
 	}
 	
-	public void agregarOpcionCorrecta(Natural posicion) {
-		this.opciones.get( posicion.getNumero() ).definirCorrecta();
+	public void agregarOpcionCorrecta(int posicion) {
+		this.verificarPosicionValida(posicion);
+		this.opciones.get(posicion).definirCorrecta();
+	}
+	
+	private void verificarPosicionValida(int posicion) throws PosicionInvalidaException {
+		if( ( posicion < 1 ) || ( posicion > this.getCantidadOpciones() ) ) {
+			throw new PosicionInvalidaException();
+		}
 	}
 	
 	public abstract void calificarRespuesta(Respuesta respuesta);
 	
-	// public Respuesta getModeloDeRespuesta() ?
+	public Respuesta getModeloDeRespuesta(Jugador jugador) {
+		return new Respuesta(jugador, this.opciones.size());
+	}
 
 }

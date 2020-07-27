@@ -5,11 +5,11 @@ import java.util.ArrayList;
 public class PreguntaVerdaderoFalso extends Pregunta {
 	
 	public PreguntaVerdaderoFalso(Boolean verdadera) {
-		super(new Natural(2));
+		super(2);
 		if(verdadera) {
-			this.agregarOpcionCorrecta(new Natural(1));
+			this.agregarOpcionCorrecta(1);
 		} else {
-			this.agregarOpcionCorrecta(new Natural(2));
+			this.agregarOpcionCorrecta(2);
 		}
 	}
 	
@@ -19,7 +19,7 @@ public class PreguntaVerdaderoFalso extends Pregunta {
 
 	@Override
 	public void calificarRespuesta(Respuesta respuesta) {
-		// TODO Auto-generated method stub
+		respuesta.calificarMismaRespuesta(this.opciones);
 		
 	}
 	

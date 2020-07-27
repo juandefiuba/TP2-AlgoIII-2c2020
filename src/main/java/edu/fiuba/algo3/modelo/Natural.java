@@ -4,9 +4,12 @@ public class Natural {
 
 	private int numero;
 	
-	public Natural(int numero) {
-		// TODO: verificar numero > 0
-		this.numero = numero;
+	public Natural(int numero) throws NumeroMenorAUnoException {
+		if(numero < 1) {
+			throw new NumeroMenorAUnoException();
+		} else {
+			this.numero = numero;
+		}
 	}
 	
 	public int getNumero() {
