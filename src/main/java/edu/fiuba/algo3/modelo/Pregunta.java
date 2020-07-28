@@ -9,7 +9,7 @@ public abstract class Pregunta {
 	protected Pregunta(int cantidadOpciones) {
 		/* Es responsabilidad de las clases hijas verificar que la cantidad de
 		 * opciones sea valida */
-		this.opciones = new ArrayList<Opcion>();
+		this.opciones = new ArrayList<>();
 		for(int i = 1; i <= cantidadOpciones; i++) {
 			opciones.add( new Opcion() );
 		}
@@ -25,7 +25,7 @@ public abstract class Pregunta {
 	}
 	
 	private void verificarPosicionValida(int posicion) throws PosicionInvalidaException {
-		if( ( posicion < 1 ) || ( posicion > this.getCantidadOpciones() ) ) {
+		if( ( posicion < 0 ) || ( posicion > this.getCantidadOpciones() ) ) {
 			throw new PosicionInvalidaException();
 		}
 	}

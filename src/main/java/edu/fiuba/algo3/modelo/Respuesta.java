@@ -10,7 +10,7 @@ public class Respuesta {
 	public Respuesta(Jugador jugador, int cantidadOpciones) {
 		// me gustaria buscar una manera de que solo la clase Pregunta pueda llamar este constructor
 		this.jugador = jugador;
-		this.selecciones = new ArrayList<Opcion>();
+		this.selecciones = new ArrayList<>();
 		for(int i = 1; i <= cantidadOpciones; i++) {
 			selecciones.add( new Opcion() );
 		}
@@ -22,7 +22,7 @@ public class Respuesta {
 	}
 	
 	private void verificarOpcionValida(int opcion) throws PosicionInvalidaException {
-		if( ( opcion < 1 ) || ( opcion > this.selecciones.size() ) ) {
+		if( ( opcion < 0 ) || ( opcion > this.selecciones.size() ) ) {
 			throw new PosicionInvalidaException();
 		}
 	}
