@@ -1,5 +1,4 @@
 package edu.fiuba.algo3.modelo;
-
 import java.util.ArrayList;
 
 public abstract class Pregunta {
@@ -35,5 +34,4 @@ public abstract class Pregunta {
 	public Respuesta getModeloDeRespuesta(Jugador jugador) {
 		return new Respuesta(jugador, this.opciones.size());
 	}
-
 }

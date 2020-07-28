@@ -21,5 +21,4 @@ public class Jugador {
 	public void asignarPuntos(Puntaje puntos) {
 		this.puntos.agregarPuntos(puntos);
 	}
-	
 }
