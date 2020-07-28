@@ -1,42 +1,28 @@
 package edu.fiuba.algo3.modelo;
-import java.util.ArrayList;
 
-public class Respuesta {
+import java.util.ArrayList;
+import java.util.Collection;
+
+public abstract class Respuesta {
 	
-	private Jugador jugador;
-	private ArrayList<Opcion> selecciones;
+	protected Collection<String> items;
+	protected Jugador jugador;
 	
-	public Respuesta(Jugador jugador, int cantidadOpciones) {
-		// me gustaria buscar una manera de que solo la clase Pregunta pueda llamar este constructor
+	public Respuesta(String item, Jugador jugador) {
+		this.items = new ArrayList<String>();
+		this.items.add(item);
 		this.jugador = jugador;
-		this.selecciones = new ArrayList<Opcion>();
-		for(int i = 1; i <= cantidadOpciones; i++) {
-			selecciones.add( new Opcion() );
-		}
 	}
 	
-	public void agregarOpcionCorrecta(int opcion) {
-		this.verificarOpcionValida(opcion);
-		this.selecciones.get(opcion).definirCorrecta();
+	public Respuesta(ArrayList<String> items, Jugador jugador) {
+		this.items = new ArrayList<String>();
+		this.items.addAll(items);
 	}
 	
-	private void verificarOpcionValida(int opcion) throws PosicionInvalidaException {
-		if( ( opcion < 1 ) || ( opcion > this.selecciones.size() ) ) {
-			throw new PosicionInvalidaException();
-		}
-	}
+	protected abstract boolean igualA(Respuesta otraRespuesta);
 	
-	public void calificarMismaRespuesta(ArrayList<Opcion> respuestaCorrecta) {
-		/* si las respuesta son iguales suma 1 punto al jugador */
-		Boolean iguales = true;
-		int i = 1;
-		while( (i < selecciones.size() ) && (iguales) ) {
-			iguales = selecciones.get(i).mismoValor(respuestaCorrecta.get(i));
-			i++;
-		}
-		if(iguales) {
-			this.jugador.asignarPuntos( new Puntaje(1) );
-		}
-	}
+	public abstract int comparar(Respuesta otraRespuesta);
+
+	public abstract void calificarJugador(int puntuacion);
 
 }

@@ -1,37 +1,50 @@
 package edu.fiuba.algo3.modelo;
+
 import java.util.ArrayList;
 
-public abstract class Pregunta {
+public class Pregunta {
 	
-	protected ArrayList<Opcion> opciones;
+	private String problema;
+	private Respuesta respuestaCorrecta;
+	private ArrayList<String> opciones;
 	
-	protected Pregunta(int cantidadOpciones) {
-		/* Es responsabilidad de las clases hijas verificar que la cantidad de
-		 * opciones sea valida */
-		this.opciones = new ArrayList<Opcion>();
-		for(int i = 1; i <= cantidadOpciones; i++) {
-			opciones.add( new Opcion() );
-		}
+	public Pregunta(String problema, Respuesta respuesta, ArrayList<String> opciones) {
+		this.problema = problema;
+		this.respuestaCorrecta = respuesta;
+		this.opciones = new ArrayList<String>();
+		this.opciones.addAll(opciones);
 	}
 	
-	public int getCantidadOpciones() {
-		return this.opciones.size();
+	public static Pregunta crearPreguntaVerdaderoFalso(String problema, RespuestaVerdaderoFalso respuesta) {
+		ArrayList<String> opciones = new ArrayList<String>();
+		opciones.add("Verdadero");
+		opciones.add("Falso");
+		return new Pregunta(problema, respuesta, opciones);
 	}
-	
-	public void agregarOpcionCorrecta(int posicion) {
-		this.verificarPosicionValida(posicion);
-		this.opciones.get(posicion).definirCorrecta();
+
+
+	public String getProblema() {
+		return this.problema;
 	}
-	
-	private void verificarPosicionValida(int posicion) throws PosicionInvalidaException {
-		if( ( posicion < 1 ) || ( posicion > this.getCantidadOpciones() ) ) {
-			throw new PosicionInvalidaException();
-		}
+
+
+	public ArrayList<String> getOpciones() {
+		return this.opciones;
 	}
-	
-	public abstract void calificarRespuesta(Respuesta respuesta);
-	
-	public Respuesta getModeloDeRespuesta(Jugador jugador) {
-		return new Respuesta(jugador, this.opciones.size());
+
+
+	public int calificarRespuesta(Respuesta respuestaElegida) {
+		return this.respuestaCorrecta.comparar(respuestaElegida);
+	}
+
+	public void calificarJugador(Respuesta respuesta)
+	{
+		respuesta.calificarJugador(this.calificarRespuesta(respuesta));
+	}
+
+	public void calificarJugadores(ArrayList<Respuesta> respuestas)
+	{
+		for (Respuesta i: respuestas)
+			this.calificarJugador(i);
 	}
 }
