@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class Respuesta {
 	
 	private Jugador jugador;
-	private ArrayList<Opcion> selecciones;
+	private final ArrayList<Opcion> selecciones;
 	public EstadoDeRespuesta estadoDeRespuesta;
 	
 	public Respuesta(Jugador jugador, int cantidadOpciones) {

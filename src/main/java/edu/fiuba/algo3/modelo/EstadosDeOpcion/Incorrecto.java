@@ -6,7 +6,7 @@ import edu.fiuba.algo3.modelo.EstadosDeRespuesta.RespondioMal;
 
 public class Incorrecto extends Estado {
 
-    public EstadoDeRespuesta esCorrecta() {
+    public EstadoDeRespuesta esCorrecta(Incorrecto unEstado) {
         return new RespondioBien();
     }
 
@@ -16,6 +16,6 @@ public class Incorrecto extends Estado {
 
     @Override
     public EstadoDeRespuesta esCorrecta(Estado valor) {
-        return valor.esCorrecta();
+        return valor.esCorrecta(this);
     }
 }

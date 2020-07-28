@@ -32,7 +32,7 @@ public class PreguntaVerdaderoFalsoTest {
 		assertEquals(1, jugadorPrueba.getPuntos());
 	}
 
-	/*@Test
+	@Test
 	public void testRespondoCorrectamenteLaPreguntaGano0Punto() {
 		PreguntaVerdaderoFalso preguntaPrueba = PreguntaVerdaderoFalso.preguntaVerdadera();
 		Jugador jugadorPrueba = new Jugador("NN");
@@ -40,5 +40,5 @@ public class PreguntaVerdaderoFalsoTest {
 		respuestaPrueba.agregarOpcionCorrecta(0);
 		preguntaPrueba.calificarRespuesta(respuestaPrueba);
 		assertEquals(0, jugadorPrueba.getPuntos());
-	}*/
+	}
 }
