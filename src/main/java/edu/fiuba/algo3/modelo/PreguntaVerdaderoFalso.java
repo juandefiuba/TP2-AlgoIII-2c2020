@@ -1,5 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.EstadosDeOpcion.Estado;
+import edu.fiuba.algo3.modelo.EstadosDeRespuesta.EstadoDeRespuesta;
+import edu.fiuba.algo3.modelo.EstadosDeRespuesta.RespondioBien;
+import edu.fiuba.algo3.modelo.EstadosDeRespuesta.RespondioMal;
+
 import java.util.ArrayList;
 
 public class PreguntaVerdaderoFalso extends Pregunta {
@@ -24,14 +29,18 @@ public class PreguntaVerdaderoFalso extends Pregunta {
 		return pregunta;
 	}
 	
-	public Boolean getRespuestaCorrecta() {
+	public Estado getRespuestaCorrecta() {
 		return this.opciones.get(1).esCorrecta();
 	}
 
 	@Override
 	public void calificarRespuesta(Respuesta respuesta) {
 		respuesta.calificarMismaRespuesta(this.opciones);
-		
 	}
-	
+
+	@Override
+	public Puntaje obtenerPuntuacion(EstadoDeRespuesta estado) {
+		return estado.devolverPuntaje();
+	}
+
 }

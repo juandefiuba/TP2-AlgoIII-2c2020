@@ -1,11 +1,15 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.EstadosDeRespuesta.EstadoDeRespuesta;
+import edu.fiuba.algo3.modelo.EstadosDeRespuesta.RespondioBien;
+
 import java.util.ArrayList;
 
 public class Respuesta {
 	
 	private Jugador jugador;
 	private ArrayList<Opcion> selecciones;
+	public EstadoDeRespuesta estadoDeRespuesta;
 	
 	public Respuesta(Jugador jugador, int cantidadOpciones) {
 		// me gustaria buscar una manera de que solo la clase Pregunta pueda llamar este constructor
@@ -29,15 +33,12 @@ public class Respuesta {
 	
 	public void calificarMismaRespuesta(ArrayList<Opcion> respuestaCorrecta) {
 		/* si las respuesta son iguales suma 1 punto al jugador */
-		Boolean iguales = true;
 		int i = 1;
-		while( (i < selecciones.size() ) && (iguales) ) {
-			iguales = selecciones.get(i).mismoValor(respuestaCorrecta.get(i));
+		while( i < selecciones.size() ){
+			estadoDeRespuesta = selecciones.get(i).mismoValor(respuestaCorrecta.get(i));
 			i++;
 		}
-		if(iguales) {
-			this.jugador.asignarPuntos( new Puntaje(1) );
-		}
+		this.jugador.asignarPuntos(estadoDeRespuesta);
 	}
 
 }

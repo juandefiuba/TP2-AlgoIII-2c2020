@@ -3,6 +3,8 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.EstadosDeOpcion.Correcto;
 import edu.fiuba.algo3.modelo.EstadosDeOpcion.Estado;
 import edu.fiuba.algo3.modelo.EstadosDeOpcion.Incorrecto;
+import edu.fiuba.algo3.modelo.EstadosDeRespuesta.EstadoDeRespuesta;
+import edu.fiuba.algo3.modelo.EstadosDeRespuesta.RespondioBien;
 
 public class Opcion {
 	
@@ -21,12 +23,12 @@ public class Opcion {
 		valor = new Incorrecto();
 	}
 	
-	public Boolean mismoValor(Opcion otraOpcion) {
-		return this.valor.esCorrecta() == otraOpcion.valor.esCorrecta();
+	public EstadoDeRespuesta mismoValor(Opcion otraOpcion) {
+		return this.valor.esCorrecta(otraOpcion.valor);
 	}
 	
-	public Boolean esCorrecta() {
-		return (this.valor.esCorrecta());
+	public Estado esCorrecta() {
+		return this.valor;
 	}
 
 }

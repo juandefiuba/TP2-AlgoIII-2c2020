@@ -1,7 +1,10 @@
 package edu.fiuba.algo3.modelo.EstadosDeOpcion;
 
-public interface Estado {
+import edu.fiuba.algo3.modelo.EstadosDeRespuesta.EstadoDeRespuesta;
 
-    boolean esCorrecta();
+public abstract class Estado {
 
+    public abstract EstadoDeRespuesta esCorrecta(Estado valor);
+
+    protected abstract EstadoDeRespuesta esCorrecta();
 }
