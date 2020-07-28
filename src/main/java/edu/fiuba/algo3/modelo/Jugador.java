@@ -1,26 +1,25 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
+public class Jugador {
+	
+	private String nombre;
+	private Puntaje puntos;
 
-public class Jugador
-{
-
-    private String nombre;
-    private int puntaje;
-
-    public Jugador(String nombre)
-    {
-        this.nombre = nombre;
-        this.puntaje = 0;
-    }
-
-    public void asignarPuntos(int puntos)
-    {
-        this.puntaje += puntos;
-    }
-
-    public int visualizarPuntaje()
-    {
-        return puntaje;
-    }
+	public Jugador(String nombre) {
+		this.nombre = nombre;
+		this.puntos = new Puntaje(0);
+	}
+	
+	public String getNombre() {
+		return this.nombre;
+	}
+	
+	public int getPuntos() {
+		return this.puntos.getPuntos();
+	}
+	
+	public void asignarPuntos(Puntaje puntos) {
+		this.puntos.agregarPuntos(puntos);
+	}
+	
 }
