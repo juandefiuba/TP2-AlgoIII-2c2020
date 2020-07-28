@@ -8,6 +8,10 @@ public class Puntaje {
 		this.puntos = puntos;
 	}
 	
+	public int getPuntos() {
+		return this.puntos;
+	}
+	
 	public void agregarPuntos(Puntaje otroPuntaje) {
 		this.puntos += otroPuntaje.puntos;
 	}

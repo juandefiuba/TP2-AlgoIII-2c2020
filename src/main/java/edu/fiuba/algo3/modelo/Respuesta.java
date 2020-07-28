@@ -16,6 +16,17 @@ public class Respuesta {
 		}
 	}
 	
+	public void agregarOpcionCorrecta(int opcion) {
+		this.verificarOpcionValida(opcion);
+		this.selecciones.get(opcion).definirCorrecta();
+	}
+	
+	private void verificarOpcionValida(int opcion) throws PosicionInvalidaException {
+		if( ( opcion < 1 ) || ( opcion > this.selecciones.size() ) ) {
+			throw new PosicionInvalidaException();
+		}
+	}
+	
 	public void calificarMismaRespuesta(ArrayList<Opcion> respuestaCorrecta) {
 		/* si las respuesta son iguales suma 1 punto al jugador */
 		Boolean iguales = true;
