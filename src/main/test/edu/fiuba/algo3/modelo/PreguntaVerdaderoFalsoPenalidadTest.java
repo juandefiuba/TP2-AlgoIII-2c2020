@@ -8,17 +8,17 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PreguntaVerdaderoFalsoPenalidadTest {
 
-    /*@Test
+    @Test
     public void testConstructorVerdaderaFuncionaCorrectamente() {
         PreguntaVerdaderoFalsoPenalidad preguntaPrueba = PreguntaVerdaderoFalsoPenalidad.preguntaVerdadera();
         assertEquals(2, preguntaPrueba.getCantidadOpciones());
-        assertEquals(new Correcto(), preguntaPrueba.getRespuestaCorrecta());
+        assertEquals(Correcto.class, (preguntaPrueba.getRespuestaCorrecta()).getClass());
     }
     @Test
     public void testConstructorFalsaFuncionaCorrectamente2() {
         PreguntaVerdaderoFalsoPenalidad preguntaPrueba = PreguntaVerdaderoFalsoPenalidad.preguntaFalsa();
         assertEquals(2, preguntaPrueba.getCantidadOpciones());
-        assertEquals(new Incorrecto(), preguntaPrueba.getRespuestaCorrecta());
+        assertEquals(Incorrecto.class, (preguntaPrueba.getRespuestaCorrecta()).getClass());
     }
 
     @Test
@@ -32,12 +32,12 @@ public class PreguntaVerdaderoFalsoPenalidadTest {
     }
 
     @Test
-    public void testRespondoCorrectamenteLaPreguntaGano0Punto() {
+    public void testRespondoCorrectamenteLaPreguntaGanoMenos1Punto() {
         PreguntaVerdaderoFalsoPenalidad preguntaPrueba = PreguntaVerdaderoFalsoPenalidad.preguntaVerdadera();
         Jugador jugadorPrueba = new Jugador("NN");
         Respuesta respuestaPrueba = preguntaPrueba.getModeloDeRespuesta(jugadorPrueba);
         respuestaPrueba.agregarOpcionCorrecta(0);
         preguntaPrueba.calificarRespuesta(respuestaPrueba);
-        assertEquals(0, jugadorPrueba.getPuntos());
-    }*/
+        assertEquals(-1, jugadorPrueba.getPuntos());
+    }
 }

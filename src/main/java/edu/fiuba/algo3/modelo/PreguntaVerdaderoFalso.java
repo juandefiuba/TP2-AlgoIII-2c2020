@@ -11,11 +11,6 @@ public class PreguntaVerdaderoFalso extends Pregunta {
 	
 	public PreguntaVerdaderoFalso() {
 		super(2);
-		/*if(verdadera) {
-			this.agregarOpcionCorrecta(1);
-		} else {
-			this.agregarOpcionCorrecta(0);
-		}*/
 	}
 
 	public static PreguntaVerdaderoFalso preguntaVerdadera(){
@@ -40,7 +35,7 @@ public class PreguntaVerdaderoFalso extends Pregunta {
 
 	@Override
 	public Puntaje obtenerPuntuacion(EstadoDeRespuesta estado) {
-		return estado.devolverPuntaje();
+		return estado.devolverPuntaje(this);
 	}
 
 }
