@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo.EstadosDeRespuesta;
 
 import edu.fiuba.algo3.modelo.Pregunta;
-import edu.fiuba.algo3.modelo.PreguntaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.PreguntaVerdaderoFalsoPenalidad;
 import edu.fiuba.algo3.modelo.Puntaje;
 

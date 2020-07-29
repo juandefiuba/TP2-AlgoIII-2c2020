@@ -8,6 +8,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PreguntaVerdaderoFalsoPenalidadTest {
 
+    //SE USAN LAS POSICIONES 1 PARA VERDADERA Y 2 PARA FALSO
+    int posicionVerdadera = 1;
+    int posicionFalsa = 2;
+
     @Test
     public void test01ConstructorVerdaderaFuncionaCorrectamente() {
         PreguntaVerdaderoFalsoPenalidad preguntaPrueba = PreguntaVerdaderoFalsoPenalidad.preguntaVerdadera();
@@ -26,7 +30,7 @@ public class PreguntaVerdaderoFalsoPenalidadTest {
         PreguntaVerdaderoFalsoPenalidad preguntaPrueba = PreguntaVerdaderoFalsoPenalidad.preguntaVerdadera();
         Jugador jugadorPrueba = new Jugador("NN");
         Respuesta respuestaPrueba = preguntaPrueba.getModeloDeRespuesta(jugadorPrueba);
-        respuestaPrueba.agregarOpcionCorrecta(1);
+        respuestaPrueba.agregarOpcionCorrecta(posicionVerdadera);
         preguntaPrueba.calificarRespuesta(respuestaPrueba);
         assertEquals(1, jugadorPrueba.getPuntos());
     }
@@ -36,7 +40,7 @@ public class PreguntaVerdaderoFalsoPenalidadTest {
         PreguntaVerdaderoFalsoPenalidad preguntaPrueba = PreguntaVerdaderoFalsoPenalidad.preguntaVerdadera();
         Jugador jugadorPrueba = new Jugador("NN");
         Respuesta respuestaPrueba = preguntaPrueba.getModeloDeRespuesta(jugadorPrueba);
-        respuestaPrueba.agregarOpcionCorrecta(0);
+        respuestaPrueba.agregarOpcionCorrecta(posicionFalsa);
         preguntaPrueba.calificarRespuesta(respuestaPrueba);
         assertEquals(-1, jugadorPrueba.getPuntos());
     }
@@ -48,7 +52,7 @@ public class PreguntaVerdaderoFalsoPenalidadTest {
         Jugador jugadorPrueba = new Jugador("NN");
 
         Respuesta respuestaPrueba = preguntaPrueba1.getModeloDeRespuesta(jugadorPrueba);
-        respuestaPrueba.agregarOpcionCorrecta(0);
+        respuestaPrueba.agregarOpcionCorrecta(posicionFalsa);
         preguntaPrueba1.calificarRespuesta(respuestaPrueba);
         preguntaPrueba2.calificarRespuesta(respuestaPrueba);
         assertEquals(-2, jugadorPrueba.getPuntos());

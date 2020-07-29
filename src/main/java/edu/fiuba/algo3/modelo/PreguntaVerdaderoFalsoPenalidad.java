@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.EstadosDeRespuesta.EstadoDeRespuesta;
-import edu.fiuba.algo3.modelo.EstadosDeRespuesta.RespondioMal;
 
 public class PreguntaVerdaderoFalsoPenalidad extends PreguntaVerdaderoFalso {
 
@@ -18,7 +17,7 @@ public class PreguntaVerdaderoFalsoPenalidad extends PreguntaVerdaderoFalso {
 
     public static PreguntaVerdaderoFalsoPenalidad preguntaFalsa(){
         PreguntaVerdaderoFalsoPenalidad pregunta = new PreguntaVerdaderoFalsoPenalidad();
-        pregunta.agregarOpcionCorrecta(0);
+        pregunta.agregarOpcionCorrecta(2);
         return pregunta;
     }
 

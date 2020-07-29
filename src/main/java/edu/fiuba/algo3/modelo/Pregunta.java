@@ -1,31 +1,24 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.EstadosDeRespuesta.EstadoDeRespuesta;
-import edu.fiuba.algo3.modelo.EstadosDeRespuesta.RespondioBien;
-import edu.fiuba.algo3.modelo.EstadosDeRespuesta.RespondioMal;
-
-import java.util.ArrayList;
 
 public abstract class Pregunta {
 	
-	protected ArrayList<Opcion> opciones;
+	protected ColeccionDeOpciones opciones;
 	
-	protected Pregunta(int cantidadOpciones) {      //si son 2 cantidadesdeopciones
+	protected Pregunta(int cantidadOpciones) {
 		/* Es responsabilidad de las clases hijas verificar que la cantidad de
 		 * opciones sea valida */
-		this.opciones = new ArrayList<>();
-		for(int i = 1; i <= cantidadOpciones; i++) {
-			opciones.add( new Opcion() );    // index = [ 0 , 1 ]
-		}
+		this.opciones = new ColeccionDeOpciones(cantidadOpciones);
 	}
 	
 	public int getCantidadOpciones() {
 		return this.opciones.size();
-	} // 2 opciones :  [0,1]
+	}
 	
 	public void agregarOpcionCorrecta(int posicion) {
 		this.verificarPosicionValida(posicion);
-		this.opciones.get(posicion).definirCorrecta();
+		opciones.agregarOpcionCorrecta(posicion);
 	}
 	
 	private void verificarPosicionValida(int posicion) throws PosicionInvalidaException {
@@ -40,6 +33,7 @@ public abstract class Pregunta {
 		jugador.setPreguntaActual(this);
 		return new Respuesta(jugador, this.opciones.size());
 	}
+
 
 	public abstract Puntaje obtenerPuntuacion(EstadoDeRespuesta estado);
 }
