@@ -2,8 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import edu.fiuba.algo3.modelo.EstadosDeOpcion.Verdadero;
-import edu.fiuba.algo3.modelo.EstadosDeOpcion.Falso;
+import edu.fiuba.algo3.modelo.EstadosDeOpcion.Correcto;
+import edu.fiuba.algo3.modelo.EstadosDeOpcion.Incorrecto;
 import org.junit.jupiter.api.Test;
 
 public class PreguntaVerdaderoFalsoTest {
@@ -15,7 +15,7 @@ public class PreguntaVerdaderoFalsoTest {
 	public void test01ConstructorVerdaderaFuncionaCorrectamente() {
 		PreguntaVerdaderoFalso preguntaPrueba = PreguntaVerdaderoFalso.preguntaVerdadera();
 		assertEquals(2, preguntaPrueba.getCantidadOpciones());
-		assertEquals(Verdadero.class, (preguntaPrueba.getRespuestaCorrecta()).getClass());
+		assertEquals(Correcto.class, (preguntaPrueba.getRespuestaCorrecta()).getClass());
 	}
 
 
@@ -23,7 +23,7 @@ public class PreguntaVerdaderoFalsoTest {
 	public void test02ConstructorFalsaFuncionaCorrectamente() {
 		PreguntaVerdaderoFalso preguntaPrueba = PreguntaVerdaderoFalso.preguntaFalsa();
 		assertEquals(2, preguntaPrueba.getCantidadOpciones());
-		assertEquals(Falso.class, (preguntaPrueba.getRespuestaCorrecta()).getClass());
+		assertEquals(Incorrecto.class, (preguntaPrueba.getRespuestaCorrecta()).getClass());
 	}
 
 
