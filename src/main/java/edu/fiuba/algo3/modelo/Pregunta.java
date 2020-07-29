@@ -10,18 +10,18 @@ public abstract class Pregunta {
 	
 	protected ArrayList<Opcion> opciones;
 	
-	protected Pregunta(int cantidadOpciones) {
+	protected Pregunta(int cantidadOpciones) {      //si son 2 cantidadesdeopciones
 		/* Es responsabilidad de las clases hijas verificar que la cantidad de
 		 * opciones sea valida */
 		this.opciones = new ArrayList<>();
 		for(int i = 1; i <= cantidadOpciones; i++) {
-			opciones.add( new Opcion() );
+			opciones.add( new Opcion() );    // index = [ 0 , 1 ]
 		}
 	}
 	
 	public int getCantidadOpciones() {
 		return this.opciones.size();
-	}
+	} // 2 opciones :  [0,1]
 	
 	public void agregarOpcionCorrecta(int posicion) {
 		this.verificarPosicionValida(posicion);
