@@ -1,10 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.EstadosDeOpcion.Correcto;
+import edu.fiuba.algo3.modelo.EstadosDeOpcion.Verdadero;
 import edu.fiuba.algo3.modelo.EstadosDeOpcion.Estado;
-import edu.fiuba.algo3.modelo.EstadosDeOpcion.Incorrecto;
+import edu.fiuba.algo3.modelo.EstadosDeOpcion.Falso;
 import edu.fiuba.algo3.modelo.EstadosDeRespuesta.EstadoDeRespuesta;
-import edu.fiuba.algo3.modelo.EstadosDeRespuesta.RespondioBien;
 
 public class Opcion {
 	
@@ -12,15 +11,15 @@ public class Opcion {
 	private Natural posicion; /* para pregunta tipo OrderChoice */
 	
 	public Opcion() {
-		valor = new Incorrecto();
+		valor = new Falso();
 	}
 	
 	public void definirCorrecta() {
-		valor = new Correcto();
+		valor = new Verdadero();
 	}
 	
 	public void definirIncorrecta() {
-		valor = new Incorrecto();
+		valor = new Falso();
 	}
 	
 	public EstadoDeRespuesta mismoValor(Opcion otraOpcion) {
