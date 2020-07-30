@@ -15,7 +15,7 @@ public abstract class Pregunta {
 		return this.opciones.size();
 	}
 	
-	public void agregarOpcionCorrecta(int posicion) {
+	public void agregarOpcionCorrecta(Integer posicion) {
 		this.opciones.tildarOpcion(posicion);
 	}
 	
