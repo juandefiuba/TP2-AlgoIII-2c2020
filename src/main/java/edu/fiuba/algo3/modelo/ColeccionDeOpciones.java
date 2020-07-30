@@ -2,6 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 import java.util.ArrayList;
 
+import edu.fiuba.algo3.modelo.Excepciones.PosicionInvalidaException;
+
 public class ColeccionDeOpciones {
 	
 	private ArrayList<Opcion> opciones;

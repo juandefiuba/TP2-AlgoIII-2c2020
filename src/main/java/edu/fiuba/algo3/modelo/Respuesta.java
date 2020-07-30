@@ -17,7 +17,7 @@ public class Respuesta {
 		this.selecciones.tildarOpcion(opcion);
 	}
 	
-	public void calificarMismaRespuesta(ColeccionDeOpciones respuestaCorrecta) {
+	public void calificarRespuestaClasica(ColeccionDeOpciones respuestaCorrecta) {
 		/* si las respuesta son iguales suma 1 punto al jugador */
 		Boolean iguales = true;
 		int i = 1;
@@ -37,6 +37,7 @@ public class Respuesta {
 			Opcion opcionCorrecta = respuestaCorrecta.get(i);
 			Opcion opcionElegida = this.selecciones.get(i);
 			puntos += opcionCorrecta.puntuarOpcion(opcionElegida);
+			i++;
 		}
 		this.jugador.asignarPuntos( new Puntaje(puntos) );
 	}
@@ -52,6 +53,7 @@ public class Respuesta {
 			puntosASumar = opcionCorrecta.puntuarOpcion(opcionElegida);
 			error = (puntosASumar == -1); /* jugador elegió una opcion incorrecta como correcta */
 			puntos += puntosASumar;
+			i++;
 		}
 		if(!error) {
 			this.jugador.asignarPuntos( new Puntaje(puntos) );

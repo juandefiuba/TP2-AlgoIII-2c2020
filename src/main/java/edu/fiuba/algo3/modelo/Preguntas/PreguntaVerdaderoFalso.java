@@ -1,5 +1,6 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo.Preguntas;
 
+import edu.fiuba.algo3.modelo.Respuesta;
 
 public class PreguntaVerdaderoFalso extends Pregunta {
 	
@@ -25,7 +26,7 @@ public class PreguntaVerdaderoFalso extends Pregunta {
 
 	@Override
 	public void calificarRespuesta(Respuesta respuesta) {
-		respuesta.calificarMismaRespuesta(this.opciones);
+		respuesta.calificarRespuestaClasica(this.opciones);
 		
 	}
 	

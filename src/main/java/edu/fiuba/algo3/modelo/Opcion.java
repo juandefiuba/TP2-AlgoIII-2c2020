@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.EstadosOpcion.*;
+
 public class Opcion {
 	
 	private EstadoOpcion valor;
@@ -18,11 +20,11 @@ public class Opcion {
 	}
 	
 	public Boolean mismoValor(Opcion otraOpcion) {
-		return this.valor.mismoValor(otraOpcion.valor);
+		return ( this.valor.mismoValor(otraOpcion.valor) );
 	}
 	
 	public Integer puntuarOpcion(Opcion otraOpcion) {
-		return this.valor.puntajeObtendido(otraOpcion.valor);
+		return ( this.valor.puntajeObtenido(otraOpcion.valor) );
 	}
 	
 	public Boolean esCorrecta() {
