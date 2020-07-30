@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class PreguntaMultipleChoiceParcialTest {
 
@@ -23,6 +24,23 @@ public class PreguntaMultipleChoiceParcialTest {
         assertEquals(4, preguntaPrueba.getCantidadOpciones());
         //assertEquals(Correcto.class, (preguntaPrueba.getRespuestaCorrecta()).getClass());
     }
+    
+    @Test
+    public void testNoSePuedeCrearConMenosDe2Opciones() {
+    	assertThrows(CantidadDeOpcionesInvalidaException.class, 
+    			()->{
+    				PreguntaMultipleChoiceParcial.crearConCantOpciones(1);
+    			});
+    }
+    
+    @Test
+    public void testNoSePuedeCrearConMasDe5Opciones() {
+    	assertThrows(CantidadDeOpcionesInvalidaException.class, 
+    			()->{
+    				PreguntaMultipleChoiceParcial.crearConCantOpciones(1);
+    			});
+    }
+    
 /*
     @Test
     public void testRespondoCorrectamenteLaPreguntaGano1Punto() {
