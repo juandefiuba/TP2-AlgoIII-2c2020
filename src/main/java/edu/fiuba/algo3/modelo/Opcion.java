@@ -1,34 +1,34 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.EstadosDeOpcion.Correcto;
-import edu.fiuba.algo3.modelo.EstadosDeOpcion.Estado;
-import edu.fiuba.algo3.modelo.EstadosDeOpcion.Incorrecto;
-import edu.fiuba.algo3.modelo.EstadosDeRespuesta.EstadoDeRespuesta;
+import edu.fiuba.algo3.modelo.EstadosOpcion.*;
 
 public class Opcion {
 	
-	private Estado valor;
-	private Natural posicion; /* para pregunta tipo OrderChoice */
+	private EstadoOpcion valor;
+	// private Natural posicion; /* para pregunta tipo OrderChoice */
 	
 	public Opcion() {
-		valor = new Incorrecto();
+		this.valor = new Destildado();
 	}
 	
-	public void definirCorrecta() {
-		valor = new Correcto();
+	public void tildar() {
+		this.valor = new Tildado();
 	}
 	
-	public void definirIncorrecta() {
-		valor = new Incorrecto();
+	public void destildar() {
+		this.valor = new Destildado();
 	}
 	
-	public EstadoDeRespuesta mismoValor(Opcion otraOpcion) {
-		return this.valor.esCorrecta(otraOpcion.valor);
-		         //Estado.esCorrecta(Estado)
+	public Boolean mismoValor(Opcion otraOpcion) {
+		return ( this.valor.mismoValor(otraOpcion.valor) );
 	}
 	
-	public Estado esCorrecta() {
-		return this.valor;
+	public Integer puntuarOpcion(Opcion otraOpcion) {
+		return ( this.valor.puntajeObtenido(otraOpcion.valor) );
+	}
+	
+	public Boolean esCorrecta() {
+		return this.valor.estado();
 	}
 
 }

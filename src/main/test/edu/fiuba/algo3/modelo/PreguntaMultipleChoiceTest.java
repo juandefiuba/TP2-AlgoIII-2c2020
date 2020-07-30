@@ -1,11 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.EstadosDeOpcion.Correcto;
-import edu.fiuba.algo3.modelo.EstadosDeOpcion.Incorrecto;
-import edu.fiuba.algo3.modelo.EstadosDeRespuesta.EstadoDeRespuesta;
-import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
+import edu.fiuba.algo3.modelo.Preguntas.PreguntaMultipleChoiceClasico;
+import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -29,8 +26,8 @@ public class PreguntaMultipleChoiceTest {
         preguntaPrueba.agregarOpcionCorrecta(2);
         Jugador jugadorPrueba = new Jugador("Messi");
         Respuesta respuestaPrueba = preguntaPrueba.getModeloDeRespuesta(jugadorPrueba);
-        respuestaPrueba.agregarOpcionCorrecta(1);
-        respuestaPrueba.agregarOpcionCorrecta(2);
+        respuestaPrueba.agregarOpcionElegida(1);
+        respuestaPrueba.agregarOpcionElegida(2);
         //Act
         preguntaPrueba.calificarRespuesta(respuestaPrueba);
         //Assert
@@ -46,8 +43,8 @@ public class PreguntaMultipleChoiceTest {
         preguntaPrueba.agregarOpcionCorrecta(2);
         Jugador jugadorPrueba = new Jugador("Higuain");
         Respuesta respuestaPrueba = preguntaPrueba.getModeloDeRespuesta(jugadorPrueba);
-        respuestaPrueba.agregarOpcionCorrecta(1);
-        respuestaPrueba.agregarOpcionCorrecta(4);
+        respuestaPrueba.agregarOpcionElegida(1);
+        respuestaPrueba.agregarOpcionElegida(4);
         //Act
         preguntaPrueba.calificarRespuesta(respuestaPrueba);
         //Assert
@@ -67,10 +64,10 @@ public class PreguntaMultipleChoiceTest {
         Respuesta respuestaJugador = preguntaPrueba.getModeloDeRespuesta(jugador);
         Respuesta respuestaOtroJugador = preguntaPrueba.getModeloDeRespuesta(otroJugador);
 
-        respuestaJugador.agregarOpcionCorrecta(1);
-        respuestaJugador.agregarOpcionCorrecta(2);
-        respuestaOtroJugador.agregarOpcionCorrecta(1);
-        respuestaOtroJugador.agregarOpcionCorrecta(4);
+        respuestaJugador.agregarOpcionElegida(1);
+        respuestaJugador.agregarOpcionElegida(2);
+        respuestaOtroJugador.agregarOpcionElegida(1);
+        respuestaOtroJugador.agregarOpcionElegida(4);
 
         //Act
         preguntaPrueba.calificarRespuesta(respuestaJugador);
