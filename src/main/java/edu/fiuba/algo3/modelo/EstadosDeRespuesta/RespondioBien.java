@@ -15,4 +15,9 @@ public class RespondioBien implements EstadoDeRespuesta {
     public Puntaje devolverPuntaje(PreguntaVerdaderoFalsoPenalidad unaPregunta) {
         return new Puntaje(1);
     }
+
+    @Override
+    public boolean todoBien() {
+        return true;
+    }
 }

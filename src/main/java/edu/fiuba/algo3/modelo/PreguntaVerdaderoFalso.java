@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.EstadosDeRespuesta.EstadoDeRespuesta;
 
 public class PreguntaVerdaderoFalso extends Pregunta {
 	
-	public PreguntaVerdaderoFalso() {
+	protected PreguntaVerdaderoFalso() {
 		super(2);
 	}
 
@@ -31,6 +31,7 @@ public class PreguntaVerdaderoFalso extends Pregunta {
 
 	@Override
 	public Puntaje obtenerPuntuacion(EstadoDeRespuesta estado) {
+
 		return estado.devolverPuntaje(this);
 	}
 

@@ -9,4 +9,5 @@ public interface EstadoDeRespuesta {
     Puntaje devolverPuntaje(Pregunta unaPregunta);
     Puntaje devolverPuntaje(PreguntaVerdaderoFalsoPenalidad unaPregunta);
 
+    boolean todoBien();
 }

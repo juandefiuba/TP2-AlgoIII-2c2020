@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.EstadosDeRespuesta.EstadoDeRespuesta;
+import edu.fiuba.algo3.modelo.EstadosDeRespuesta.RespondioBien;
 
 import java.util.ArrayList;
 
@@ -33,10 +34,12 @@ public class ColeccionDeOpciones {
 
     public EstadoDeRespuesta calificarRespuestaDelJugador(ColeccionDeOpciones respuestaCorrecta) {
         //si esta bien respondido devuelve RespondioBien , si esta mal RespondioMal
-        EstadoDeRespuesta estadoDeRespuesta = null ;
+        EstadoDeRespuesta estadoDeRespuesta = new RespondioBien();
         int i = 1;
-        while( i < this.size() ){
-            estadoDeRespuesta = this.obtener(i).mismoValor(respuestaCorrecta.obtener(i));
+        while( i < this.size() && estadoDeRespuesta.todoBien() ){
+            estadoDeRespuesta = this.obtener(i).mismoValor(respuestaCorrecta.obtener(i));  // mismoValor(Opcion)
+                                  //opcion.mismoValor(Opcion)
+
             i++;
         }
         return estadoDeRespuesta;

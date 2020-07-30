@@ -6,7 +6,7 @@ public class Respuesta {
 	
 	private Jugador jugador;
 	private final ColeccionDeOpciones selecciones;
-	public EstadoDeRespuesta estadoDeRespuesta;
+	private EstadoDeRespuesta estadoDeRespuesta;
 	
 	public Respuesta(Jugador jugador, int cantidadOpciones) {
 		this.jugador = jugador;

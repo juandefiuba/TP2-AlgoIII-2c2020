@@ -4,7 +4,7 @@ import edu.fiuba.algo3.modelo.EstadosDeRespuesta.EstadoDeRespuesta;
 import edu.fiuba.algo3.modelo.EstadosDeRespuesta.RespondioBien;
 import edu.fiuba.algo3.modelo.EstadosDeRespuesta.RespondioMal;
 
-public class Incorrecto extends Estado {
+public class Incorrecto implements Estado {
 
     public EstadoDeRespuesta esCorrecta(Incorrecto unEstado) {
         return new RespondioBien();

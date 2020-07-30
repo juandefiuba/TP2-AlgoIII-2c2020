@@ -36,7 +36,7 @@ public class PreguntaVerdaderoFalsoPenalidadTest {
     }
 
     @Test
-    public void test04RespondoCorrectamenteLaPreguntaGanoMenos1Punto() {
+    public void test04RespondoIncoorrectamenteLaPreguntaPierde1Punto() {
         PreguntaVerdaderoFalsoPenalidad preguntaPrueba = PreguntaVerdaderoFalsoPenalidad.preguntaVerdadera();
         Jugador jugadorPrueba = new Jugador("NN");
         Respuesta respuestaPrueba = preguntaPrueba.getModeloDeRespuesta(jugadorPrueba);
@@ -48,13 +48,17 @@ public class PreguntaVerdaderoFalsoPenalidadTest {
     @Test
     public void test05RespondoIncorrectamente2PreguntasPierde2Puntos() {
         PreguntaVerdaderoFalsoPenalidad preguntaPrueba1 = PreguntaVerdaderoFalsoPenalidad.preguntaVerdadera();
-        PreguntaVerdaderoFalsoPenalidad preguntaPrueba2 = PreguntaVerdaderoFalsoPenalidad.preguntaVerdadera();
+        PreguntaVerdaderoFalsoPenalidad preguntaPrueba2 = PreguntaVerdaderoFalsoPenalidad.preguntaFalsa();
         Jugador jugadorPrueba = new Jugador("NN");
 
         Respuesta respuestaPrueba = preguntaPrueba1.getModeloDeRespuesta(jugadorPrueba);
         respuestaPrueba.agregarOpcionCorrecta(posicionFalsa);
         preguntaPrueba1.calificarRespuesta(respuestaPrueba);
+
+        Respuesta respuestaPrueba2 = preguntaPrueba2.getModeloDeRespuesta(jugadorPrueba);
+        respuestaPrueba.agregarOpcionCorrecta(posicionVerdadera);
         preguntaPrueba2.calificarRespuesta(respuestaPrueba);
+
         assertEquals(-2, jugadorPrueba.getPuntos());
     }
 

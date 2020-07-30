@@ -24,6 +24,7 @@ public class Opcion {
 	
 	public EstadoDeRespuesta mismoValor(Opcion otraOpcion) {
 		return this.valor.esCorrecta(otraOpcion.valor);
+		         //Estado.esCorrecta(Estado)
 	}
 	
 	public Estado esCorrecta() {

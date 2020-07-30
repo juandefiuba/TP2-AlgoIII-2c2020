@@ -16,6 +16,7 @@ public class PreguntaVerdaderoFalsoTest {
 		PreguntaVerdaderoFalso preguntaPrueba = PreguntaVerdaderoFalso.preguntaVerdadera();
 		assertEquals(2, preguntaPrueba.getCantidadOpciones());
 		assertEquals(Correcto.class, (preguntaPrueba.getRespuestaCorrecta()).getClass());
+		//assertEquals( new Correcto(), preguntaPrueba.getRespuestaCorrecta()); no funca
 	}
 
 
@@ -29,7 +30,7 @@ public class PreguntaVerdaderoFalsoTest {
 
 	@Test
 	public void test03RespondeCorrectamenteLaPreguntaGana1Punto() {
-		PreguntaVerdaderoFalso preguntaPrueba = PreguntaVerdaderoFalso.preguntaVerdadera();
+		PreguntaVerdaderoFalso preguntaPrueba = PreguntaVerdaderoFalso.preguntaVerdadera(); //reveer constructores y herencias
 		Jugador jugadorPrueba = new Jugador("NN");
 		Respuesta respuestaPrueba = preguntaPrueba.getModeloDeRespuesta(jugadorPrueba);
 		respuestaPrueba.agregarOpcionCorrecta(posicionVerdadera);
