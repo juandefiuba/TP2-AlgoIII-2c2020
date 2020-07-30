@@ -1,18 +1,15 @@
 package edu.fiuba.algo3.modelo;
 
-import java.util.ArrayList;
+import edu.fiuba.algo3.modelo.EstadosDeRespuesta.EstadoDeRespuesta;
 
 public abstract class Pregunta {
 	
-	protected ArrayList<Opcion> opciones;
+	protected ColeccionDeOpciones opciones;
 	
 	protected Pregunta(int cantidadOpciones) {
 		/* Es responsabilidad de las clases hijas verificar que la cantidad de
 		 * opciones sea valida */
-		this.opciones = new ArrayList<Opcion>();
-		for(int i = 1; i <= cantidadOpciones; i++) {
-			opciones.add( new Opcion() );
-		}
+		this.opciones = new ColeccionDeOpciones(cantidadOpciones);
 	}
 	
 	public int getCantidadOpciones() {
@@ -21,11 +18,11 @@ public abstract class Pregunta {
 	
 	public void agregarOpcionCorrecta(int posicion) {
 		this.verificarPosicionValida(posicion);
-		this.opciones.get(posicion).definirCorrecta();
+		opciones.agregarOpcionCorrecta(posicion);
 	}
 	
 	private void verificarPosicionValida(int posicion) throws PosicionInvalidaException {
-		if( ( posicion < 1 ) || ( posicion > this.getCantidadOpciones() ) ) {
+		if( ( posicion < 0 ) || ( posicion > this.getCantidadOpciones() ) ) {
 			throw new PosicionInvalidaException();
 		}
 	}
@@ -33,7 +30,10 @@ public abstract class Pregunta {
 	public abstract void calificarRespuesta(Respuesta respuesta);
 	
 	public Respuesta getModeloDeRespuesta(Jugador jugador) {
+		jugador.setPreguntaActual(this);
 		return new Respuesta(jugador, this.opciones.size());
 	}
 
+
+	public abstract Puntaje obtenerPuntuacion(EstadoDeRespuesta estado);
 }

@@ -4,8 +4,8 @@ public class Puntaje {
 	
 	int puntos;
 	
-	public Puntaje(int puntos) {
-		this.puntos = puntos;
+	public Puntaje(int puntosIniciales) {
+		this.puntos = puntosIniciales;
 	}
 	
 	public int getPuntos() {
@@ -13,7 +13,7 @@ public class Puntaje {
 	}
 	
 	public void agregarPuntos(Puntaje otroPuntaje) {
-		this.puntos += otroPuntaje.puntos;
+		this.puntos += otroPuntaje.getPuntos();
 	}
 
 }
