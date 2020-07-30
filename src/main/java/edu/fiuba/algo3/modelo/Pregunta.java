@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.EstadosDeRespuesta.EstadoDeRespuesta;
 
 public abstract class Pregunta {
 	
@@ -17,23 +16,12 @@ public abstract class Pregunta {
 	}
 	
 	public void agregarOpcionCorrecta(int posicion) {
-		this.verificarPosicionValida(posicion);
-		opciones.agregarOpcionCorrecta(posicion);
-	}
-	
-	private void verificarPosicionValida(int posicion) throws PosicionInvalidaException {
-		if( ( posicion < 0 ) || ( posicion > this.getCantidadOpciones() ) ) {
-			throw new PosicionInvalidaException();
-		}
+		this.opciones.tildarOpcion(posicion);
 	}
 	
 	public abstract void calificarRespuesta(Respuesta respuesta);
 	
 	public Respuesta getModeloDeRespuesta(Jugador jugador) {
-		jugador.setPreguntaActual(this);
 		return new Respuesta(jugador, this.opciones.size());
 	}
-
-
-	public abstract Puntaje obtenerPuntuacion(EstadoDeRespuesta estado);
 }

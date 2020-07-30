@@ -1,12 +1,9 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.EstadosDeRespuesta.EstadoDeRespuesta;
-
 public class Jugador {
 	
 	private String nombre;
 	private Puntaje puntos;
-	private Pregunta preguntaActual;
 
 	public Jugador(String nombre) {
 		this.nombre = nombre;
@@ -23,14 +20,5 @@ public class Jugador {
 	
 	public void asignarPuntos(Puntaje puntos) {
 		this.puntos.agregarPuntos(puntos);
-	}
-
-	public void asignarPuntos(EstadoDeRespuesta estado) {
-		Puntaje puntajeAux = preguntaActual.obtenerPuntuacion(estado);
-		this.puntos.agregarPuntos(puntajeAux);
-	}
-
-	public void setPreguntaActual(Pregunta pregunta) {
-		preguntaActual = pregunta;
 	}
 }

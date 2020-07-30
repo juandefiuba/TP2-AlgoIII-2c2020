@@ -1,29 +1,31 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.EstadosDeRespuesta.EstadoDeRespuesta;
 
-public class PreguntaVerdaderoFalsoPenalidad extends PreguntaVerdaderoFalso {
+public class PreguntaVerdaderoFalsoPenalidad extends Pregunta {
 
-    public PreguntaVerdaderoFalsoPenalidad() {
-        super();
-    }
+	private PreguntaVerdaderoFalsoPenalidad() {
+		super(2);
+	}
+	
+	public static PreguntaVerdaderoFalsoPenalidad newPreguntaVerdadera() {
+		PreguntaVerdaderoFalsoPenalidad nuevaPregunta = new PreguntaVerdaderoFalsoPenalidad();
+		nuevaPregunta.agregarOpcionCorrecta(1);
+		return nuevaPregunta;
+	}
+	
+	public static PreguntaVerdaderoFalsoPenalidad newPreguntaFalsa() {
+		PreguntaVerdaderoFalsoPenalidad nuevaPregunta = new PreguntaVerdaderoFalsoPenalidad();
+		nuevaPregunta.agregarOpcionCorrecta(2);
+		return nuevaPregunta;
+	}
+	
+	public Boolean esPreguntaVerdadera() {
+		return this.opciones.get(1).esCorrecta();
+	}
 
-
-    public static PreguntaVerdaderoFalsoPenalidad preguntaVerdadera(){
-        PreguntaVerdaderoFalsoPenalidad pregunta = new PreguntaVerdaderoFalsoPenalidad();
-        pregunta.agregarOpcionCorrecta(1);
-        return pregunta;
-    }
-
-    public static PreguntaVerdaderoFalsoPenalidad preguntaFalsa(){
-        PreguntaVerdaderoFalsoPenalidad pregunta = new PreguntaVerdaderoFalsoPenalidad();
-        pregunta.agregarOpcionCorrecta(2);
-        return pregunta;
-    }
-
-    @Override
-    public Puntaje obtenerPuntuacion(EstadoDeRespuesta estado) {
-        return estado.devolverPuntaje(this);
-    }
+	@Override
+	public void calificarRespuesta(Respuesta respuesta) {
+		respuesta.calificarRespuestaConPenalidad(this.opciones);
+	}
 
 }
