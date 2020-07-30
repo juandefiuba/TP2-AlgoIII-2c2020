@@ -16,7 +16,6 @@ public class ColeccionDeOpciones {
         }
     }
 
-
     public int size(){
         return opciones.size();
     }

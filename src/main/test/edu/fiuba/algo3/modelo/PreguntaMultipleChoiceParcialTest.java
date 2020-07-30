@@ -13,16 +13,8 @@ public class PreguntaMultipleChoiceParcialTest {
 
     @Test
     public void testConstructorFuncionaCorrectamente() {
-        /*ArrayList<String> opcionesIncorrectas = new ArrayList<String>();
-        ArrayList<String> opcionesCorrectas = new ArrayList<String>();
-        opcionesIncorrectas.add("Rta1");
-        opcionesIncorrectas.add("Rta2");
-        opcionesCorrectas.add("Rta3");
-        opcionesCorrectas.add("Rta4");*/
-
         PreguntaMultipleChoiceParcial preguntaPrueba = PreguntaMultipleChoiceParcial.crearConCantOpciones(4);
         assertEquals(4, preguntaPrueba.getCantidadOpciones());
-        //assertEquals(Correcto.class, (preguntaPrueba.getRespuestaCorrecta()).getClass());
     }
     
     @Test
@@ -37,21 +29,22 @@ public class PreguntaMultipleChoiceParcialTest {
     public void testNoSePuedeCrearConMasDe5Opciones() {
     	assertThrows(CantidadDeOpcionesInvalidaException.class, 
     			()->{
-    				PreguntaMultipleChoiceParcial.crearConCantOpciones(1);
+    				PreguntaMultipleChoiceParcial.crearConCantOpciones(6);
     			});
     }
-    
-/*
+
     @Test
     public void testRespondoCorrectamenteLaPreguntaGano1Punto() {
-        PreguntaMultipleChoiceParcial preguntaPrueba = new PreguntaMultipleChoiceParcial(4);
-        Jugador jugadorPrueba = new Jugador("NN");
+        PreguntaMultipleChoiceParcial preguntaPrueba = PreguntaMultipleChoiceParcial.crearConCantOpciones(4);
+        Jugador jugadorPrueba = new Jugador("Sr. Pepito");
         Respuesta respuestaPrueba = preguntaPrueba.getModeloDeRespuesta(jugadorPrueba);
+        preguntaPrueba.agregarOpcionCorrecta(1);
         respuestaPrueba.agregarOpcionCorrecta(1);
         preguntaPrueba.calificarRespuesta(respuestaPrueba);
         assertEquals(1, jugadorPrueba.getPuntos());
     }
 
+/*
     @Test
     public void testRespondoCorrectamenteLaPreguntaGanoMenos1Punto() {
         PreguntaMultipleChoiceParcial preguntaPrueba = PreguntaMultipleChoiceParcial.preguntaVerdadera();
