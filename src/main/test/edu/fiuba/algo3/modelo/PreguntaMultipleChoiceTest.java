@@ -54,7 +54,7 @@ public class PreguntaMultipleChoiceTest {
         assertEquals(0, jugadorPrueba.getPuntos());
     }
 
-    @Test
+    /*@Test
     public void test04JugadoresRespondenMultipleChoiceYSeVerificanSusPuntajes() {
         //Arrange
         int cantidadOpciones = 5;
@@ -82,6 +82,6 @@ public class PreguntaMultipleChoiceTest {
         //Assert
         assertEquals(1, jugador.getPuntos());
         assertEquals(0, otroJugador.getPuntos());
-    }
+    }*/
 
 }

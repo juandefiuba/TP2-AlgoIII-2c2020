@@ -39,9 +39,9 @@ public abstract class Pregunta {
 
 	public abstract Puntaje obtenerPuntuacion(EstadoDeRespuesta estado);
 	
-	public void calificarRespuestasDeJugadores(Collection<Respuesta> respuestas){
+	/*public void calificarRespuestas(Collection<Respuesta> respuestas){
 		for (Respuesta res: respuestas) {
 			res.calificarMismaRespuesta(this.opciones);
 		}
-	}
+	}*/
 }
