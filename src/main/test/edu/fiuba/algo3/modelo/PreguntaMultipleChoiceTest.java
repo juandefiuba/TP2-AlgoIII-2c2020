@@ -54,6 +54,33 @@ public class PreguntaMultipleChoiceTest {
         assertEquals(0, jugadorPrueba.getPuntos());
     }
 
+    public void test04JugadoresRespondenMultipleChoiceYSeVerificanSusPuntajes() {
+        //Arrange
+        int cantidadOpciones = 5;
+        PreguntaMultipleChoiceClasico preguntaPrueba = new PreguntaMultipleChoiceClasico(cantidadOpciones);
+        preguntaPrueba.agregarOpcionCorrecta(1);
+        preguntaPrueba.agregarOpcionCorrecta(2);
+
+        Jugador jugador = new Jugador("Messi");
+        Jugador otroJugador = new Jugador("Higuain");
+
+        Respuesta respuestaJugador = preguntaPrueba.getModeloDeRespuesta(jugador);
+        Respuesta respuestaOtroJugador = preguntaPrueba.getModeloDeRespuesta(otroJugador);
+
+        respuestaJugador.agregarOpcionCorrecta(1);
+        respuestaJugador.agregarOpcionCorrecta(2);
+        respuestaOtroJugador.agregarOpcionCorrecta(1);
+        respuestaOtroJugador.agregarOpcionCorrecta(4);
+
+        //Act
+        preguntaPrueba.calificarRespuesta(respuestaJugador);
+        preguntaPrueba.calificarRespuesta(respuestaOtroJugador);
+
+        //Assert
+        assertEquals(1, jugador.getPuntos());
+        assertEquals(0, otroJugador.getPuntos());
+    }
+
     /*@Test
     public void test04JugadoresRespondenMultipleChoiceYSeVerificanSusPuntajes() {
         //Arrange
