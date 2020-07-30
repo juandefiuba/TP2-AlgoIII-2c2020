@@ -21,8 +21,8 @@ public class ColeccionDeOpciones {
         return opciones.size();
     }
 
-    public void agregarOpcionCorrecta(int unaPocicion){
-        int elIndex = unaPocicion-1;
+    public void agregarOpcionCorrecta(int unaPosicion){
+        int elIndex = unaPosicion-1;
         opciones.get(elIndex).definirCorrecta();
     }
 
