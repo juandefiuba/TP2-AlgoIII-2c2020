@@ -34,7 +34,7 @@ public class ColeccionDeOpciones {
 	public void tildarOpcion(Integer posicion) {
 		this.verificarPosicionValida(posicion);
 		Integer index = posicion - 1;
-		this.opciones.get(index).definirCorrecta();
+		this.opciones.get(index).tildar();
 	}
 	
 

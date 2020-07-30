@@ -11,11 +11,11 @@ public class Opcion {
 		this.valor = new Destildado();
 	}
 	
-	public void definirCorrecta() {
+	public void tildar() {
 		this.valor = new Tildado();
 	}
 	
-	public void definirIncorrecta() {
+	public void destildar() {
 		this.valor = new Destildado();
 	}
 	
