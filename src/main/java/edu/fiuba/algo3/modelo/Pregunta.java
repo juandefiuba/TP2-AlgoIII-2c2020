@@ -2,6 +2,8 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.EstadosDeRespuesta.EstadoDeRespuesta;
 
+import java.util.Collection;
+
 public abstract class Pregunta {
 	
 	protected ColeccionDeOpciones opciones;
@@ -36,4 +38,10 @@ public abstract class Pregunta {
 
 
 	public abstract Puntaje obtenerPuntuacion(EstadoDeRespuesta estado);
+	
+	public void calificarRespuestasDeJugadores(Collection<Respuesta> respuestas){
+		for (Respuesta res: respuestas) {
+			res.calificarMismaRespuesta(this.opciones);
+		}
+	}
 }
