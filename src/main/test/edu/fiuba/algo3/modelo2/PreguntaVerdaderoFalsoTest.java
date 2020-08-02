@@ -1,14 +1,47 @@
-package edu.fiuba.algo3.modelo;
+package edu.fiuba.algo3.modelo2;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import edu.fiuba.algo3.modelo2.ColeccionDeOpciones;
 import org.junit.jupiter.api.Test;
 
-import edu.fiuba.algo3.modelo.Preguntas.PreguntaVerdaderoFalso;
+import java.util.Iterator;
+
+//import edu.fiuba.algo3.modelo.Preguntas.PreguntaVerdaderoFalso;
 
 public class PreguntaVerdaderoFalsoTest {
 
 	@Test
+	public void test01CrearPreguntaVerdaderoFalso(){
+		Opcion opcionVerdadero = new Opcion(new Incorrecto());
+		Opcion opcionFalso = new Opcion(new Correcto());
+
+		ColeccionDeOpciones opciones = new ColeccionDeOpciones();
+		opciones.agregarOpcion(opcionVerdadero);
+		opciones.agregarOpcion(opcionFalso);
+
+		PreguntaVerdaderoFalso pregunta = new PreguntaVerdaderoFalso(opciones);
+
+		Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
+
+		assertEquals(opcionVerdadero, iteradorDeOpciones.next());
+	}
+
+	public void test02JugadorRespondePreguntaCorrectamente(){
+		Opcion opcionVerdadero = new Opcion(new Incorrecto());
+		Opcion opcionFalso = new Opcion(new Correcto());
+
+		ColeccionDeOpciones opciones = new ColeccionDeOpciones();
+		opciones.agregarOpcion(opcionVerdadero);
+		opciones.agregarOpcion(opcionFalso);
+
+		PreguntaVerdaderoFalso pregunta = new PreguntaVerdaderoFalso(opciones);
+
+		Jugador jugador = new Jugador();
+
+	}
+
+	/*@Test
 	public void testConstructorPreguntaVerdadera() {
 		PreguntaVerdaderoFalso preguntaPrueba = PreguntaVerdaderoFalso.newPreguntaVerdadera();
 		assertEquals(2, preguntaPrueba.getCantidadOpciones());
@@ -60,7 +93,7 @@ public class PreguntaVerdaderoFalsoTest {
 		respuestaPrueba.agregarOpcionElegida(1);
 		preguntaPrueba.calificarRespuesta(respuestaPrueba);
 		assertEquals(0, jugadorPrueba.getPuntos());
-	}
+	}*/
 	
 
 }
