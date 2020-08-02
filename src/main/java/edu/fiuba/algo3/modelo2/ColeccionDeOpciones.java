@@ -13,4 +13,11 @@ public class ColeccionDeOpciones {
     public Iterator obtenerIterador() {
         return opciones.iterator();
     }
+
+    public void puntuar() {
+
+            opciones.forEach( opcion -> opcion.puntuarSegunEstado());
+    }
+
+
 }

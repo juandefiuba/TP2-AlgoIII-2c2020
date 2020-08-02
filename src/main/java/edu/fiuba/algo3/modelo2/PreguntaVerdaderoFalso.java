@@ -14,4 +14,9 @@ public class PreguntaVerdaderoFalso {
     public Iterator obtenerOpciones() {
         return this.opciones.obtenerIterador();
     }
+
+
+    public void puntuar() {
+        opciones.puntuar();
+    }
 }

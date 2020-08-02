@@ -27,7 +27,8 @@ public class PreguntaVerdaderoFalsoTest {
 		assertEquals(opcionVerdadero, iteradorDeOpciones.next());
 	}
 
-	public void test02JugadorRespondePreguntaCorrectamente(){
+	@Test
+	public void test02JugadorRespondePreguntaCorrectamente() {
 		Opcion opcionVerdadero = new Opcion(new Incorrecto());
 		Opcion opcionFalso = new Opcion(new Correcto());
 
@@ -37,10 +38,47 @@ public class PreguntaVerdaderoFalsoTest {
 
 		PreguntaVerdaderoFalso pregunta = new PreguntaVerdaderoFalso(opciones);
 
-		Jugador jugador = new Jugador();
+		Jugador jugador = new Jugador("Carlito");
 
+		Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
+
+
+		opcionVerdadero = (Opcion) iteradorDeOpciones.next();
+		opcionFalso = (Opcion) iteradorDeOpciones.next();
+
+		jugador.elegirOpcion(opcionFalso);
+
+		pregunta.puntuar();
+
+
+		assertEquals(1,jugador.obtenerPuntos());
 	}
 
+	@Test
+	public void test03JugadorRespondeMalNoRecibePunto() {
+		Opcion opcionVerdadero = new Opcion(new Incorrecto());
+		Opcion opcionFalso = new Opcion(new Correcto());
+
+		ColeccionDeOpciones opciones = new ColeccionDeOpciones();
+		opciones.agregarOpcion(opcionVerdadero);
+		opciones.agregarOpcion(opcionFalso);
+
+		PreguntaVerdaderoFalso pregunta = new PreguntaVerdaderoFalso(opciones);
+
+		Jugador jugador = new Jugador("Carlito");
+
+		Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
+
+		opcionVerdadero = (Opcion) iteradorDeOpciones.next();
+		opcionFalso = (Opcion) iteradorDeOpciones.next();
+
+		jugador.elegirOpcion(opcionVerdadero);
+
+		pregunta.puntuar();
+
+		assertEquals(0,jugador.obtenerPuntos());
+
+	}
 	/*@Test
 	public void testConstructorPreguntaVerdadera() {
 		PreguntaVerdaderoFalso preguntaPrueba = PreguntaVerdaderoFalso.newPreguntaVerdadera();
