@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.modelo2;
 
+import edu.fiuba.algo3.modelo2.EstadosDeOpcion.Correcto;
+import edu.fiuba.algo3.modelo2.EstadosDeOpcion.Incorrecto;
+import edu.fiuba.algo3.modelo2.Preguntas.PreguntaMultipleChoiceClasico;
 import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
@@ -51,6 +54,7 @@ public class PreguntaMultipleChoiceClasicoTest {
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
         Jugador jugador = new Jugador("Carlito");
+        pregunta.registrarNuevoJugador(jugador);
 
         opcion1 = (Opcion) iteradorDeOpciones.next();
         opcion2 = (Opcion) iteradorDeOpciones.next();
@@ -62,7 +66,7 @@ public class PreguntaMultipleChoiceClasicoTest {
         opcion2.agregarJugadorQueLaEligio(jugador);
         opcion4.agregarJugadorQueLaEligio(jugador);
         opcion5.agregarJugadorQueLaEligio(jugador);
-        pregunta.puntuar();
+        pregunta.puntuarJugadores();
 
         //Assert
         assertEquals(1,jugador.obtenerPuntos());

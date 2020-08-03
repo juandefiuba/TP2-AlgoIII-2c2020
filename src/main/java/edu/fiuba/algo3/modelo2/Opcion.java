@@ -1,12 +1,13 @@
 package edu.fiuba.algo3.modelo2;
 
+import edu.fiuba.algo3.modelo2.EstadosDeOpcion.EstadoOpcion;
+
 import java.util.LinkedList;
 
 public class Opcion {
 
     private final EstadoOpcion estado;
     private LinkedList<Jugador> jugadoresQueEligieronEstaOpcion;
-
 
     public Opcion(EstadoOpcion estadoOpcion) {
         this.estado = estadoOpcion;
@@ -17,7 +18,8 @@ public class Opcion {
         jugadoresQueEligieronEstaOpcion.add(jugador);
     }
 
-    public void puntuarSegunEstado() {
-        estado.asignarPuntajeAJugadores(jugadoresQueEligieronEstaOpcion);
+    public void actualizarEstadoDeRespuestaAJugadores() {
+        estado.asignarEstadoDeRespuestaAJugadores(jugadoresQueEligieronEstaOpcion);
     }
+
 }

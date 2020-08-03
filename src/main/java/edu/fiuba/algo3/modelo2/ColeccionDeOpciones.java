@@ -6,18 +6,17 @@ import java.util.LinkedList;
 public class ColeccionDeOpciones {
 
     LinkedList<Opcion> opciones = new LinkedList<>();
+
     public void agregarOpcion(Opcion opcion) {
-        opciones.add(opcion);
+        this.opciones.add(opcion);
     }
 
     public Iterator obtenerIterador() {
-        return opciones.iterator();
+        return this.opciones.iterator();
     }
 
-    public void puntuar() {
-
-            opciones.forEach( opcion -> opcion.puntuarSegunEstado());
+    public void asignaEstadosDeRespuestasDeJugadores() {
+        this.opciones.forEach( opcion -> opcion.actualizarEstadoDeRespuestaAJugadores());
     }
-
 
 }

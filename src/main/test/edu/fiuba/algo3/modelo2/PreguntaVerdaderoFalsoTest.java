@@ -2,7 +2,9 @@ package edu.fiuba.algo3.modelo2;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import edu.fiuba.algo3.modelo2.ColeccionDeOpciones;
+import edu.fiuba.algo3.modelo2.EstadosDeOpcion.Correcto;
+import edu.fiuba.algo3.modelo2.EstadosDeOpcion.Incorrecto;
+import edu.fiuba.algo3.modelo2.Preguntas.PreguntaVerdaderoFalso;
 import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
@@ -41,6 +43,8 @@ public class PreguntaVerdaderoFalsoTest {
 
 		Jugador jugador = new Jugador("Carlito");
 
+		pregunta.registrarNuevoJugador(jugador);
+
 		Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
 		opcionVerdadero = (Opcion) iteradorDeOpciones.next();
@@ -48,7 +52,7 @@ public class PreguntaVerdaderoFalsoTest {
 
 		//Act
 		opcionFalso.agregarJugadorQueLaEligio(jugador);
-		pregunta.puntuar();
+		pregunta.puntuarJugadores();
 
 		//Assert
 		assertEquals(1,jugador.obtenerPuntos());
@@ -76,7 +80,7 @@ public class PreguntaVerdaderoFalsoTest {
 		//jugador.activarMultiplicador();
 		opcionVerdadero.agregarJugadorQueLaEligio(jugador);
 
-		pregunta.puntuar();
+		pregunta.puntuarJugadores();
 
 		assertEquals(0,jugador.obtenerPuntos());
 	}
