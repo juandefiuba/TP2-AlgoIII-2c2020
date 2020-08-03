@@ -29,6 +29,7 @@ public class PreguntaVerdaderoFalsoTest {
 
 	@Test
 	public void test02JugadorRespondePreguntaCorrectamente() {
+		//Arrange
 		Opcion opcionVerdadero = new Opcion(new Incorrecto());
 		Opcion opcionFalso = new Opcion(new Correcto());
 
@@ -42,15 +43,14 @@ public class PreguntaVerdaderoFalsoTest {
 
 		Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
-
 		opcionVerdadero = (Opcion) iteradorDeOpciones.next();
 		opcionFalso = (Opcion) iteradorDeOpciones.next();
 
-		jugador.elegirOpcion(opcionFalso);
-
+		//Act
+		opcionFalso.agregarJugadorQueLaEligio(jugador);
 		pregunta.puntuar();
 
-
+		//Assert
 		assertEquals(1,jugador.obtenerPuntos());
 	}
 
@@ -72,12 +72,13 @@ public class PreguntaVerdaderoFalsoTest {
 		opcionVerdadero = (Opcion) iteradorDeOpciones.next();
 		opcionFalso = (Opcion) iteradorDeOpciones.next();
 
-		jugador.elegirOpcion(opcionVerdadero);
+		//jugador.elegirOpcion(opcionVerdadero);
+		//jugador.activarMultiplicador();
+		opcionVerdadero.agregarJugadorQueLaEligio(jugador);
 
 		pregunta.puntuar();
 
 		assertEquals(0,jugador.obtenerPuntos());
-
 	}
 	/*@Test
 	public void testConstructorPreguntaVerdadera() {

@@ -15,9 +15,9 @@ public class Jugador {
         return puntos;
     }
 
-    public void elegirOpcion(Opcion unaOpcion) {
+    /*public void elegirOpcion(Opcion unaOpcion) {
         unaOpcion.agregarJugadorQueLaEligio(this);
-    }
+    }*/
 
     public void sumarPuntos(int unPuntaje) {
         puntos = puntos + unPuntaje;
