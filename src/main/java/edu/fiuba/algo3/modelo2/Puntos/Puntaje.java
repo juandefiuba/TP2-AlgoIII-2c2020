@@ -25,4 +25,8 @@ public class Puntaje {
 
     public void sumarPuntos(PuntoPositivo unTipoDePunto) { this.puntos++; }
 
+    public void sumarPuntos(Puntaje unPuntajeAsumar){
+        this.puntos += unPuntajeAsumar.obtenerPuntos();
+    }
+
 }

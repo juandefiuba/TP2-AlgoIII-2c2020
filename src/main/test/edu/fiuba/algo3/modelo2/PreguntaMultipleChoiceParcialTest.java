@@ -10,21 +10,19 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PreguntaMultipleChoiceParcialTest {
 
-  /*  @Test
-    public void test01JugadorRespondePreguntaCorrectamente() {
+   @Test
+    public void test01JugadorRespondePreguntaCorrectamenteSoloPrimerOpcion() {
         //Arrange
-        Opcion opcion1 = new Opcion(new Incorrecto());
-        Opcion opcion2 = new Opcion(new Correcto());
+        Opcion opcion1 = new Opcion(new Correcto());
+        Opcion opcion2 = new Opcion(new Incorrecto());
         Opcion opcion3 = new Opcion(new Incorrecto());
-        Opcion opcion4 = new Opcion(new Correcto());
-        Opcion opcion5 = new Opcion(new Correcto());
+
 
         ColeccionDeOpciones opciones = new ColeccionDeOpciones();
         opciones.agregarOpcion(opcion1);
         opciones.agregarOpcion(opcion2);
         opciones.agregarOpcion(opcion3);
-        opciones.agregarOpcion(opcion4);
-        opciones.agregarOpcion(opcion5);
+
 
         PreguntaMultipleChoiceParcial pregunta = new PreguntaMultipleChoiceParcial(opciones);
 
@@ -36,17 +34,181 @@ public class PreguntaMultipleChoiceParcialTest {
         opcion1 = (Opcion) iteradorDeOpciones.next();
         opcion2 = (Opcion) iteradorDeOpciones.next();
         opcion3 = (Opcion) iteradorDeOpciones.next();
-        opcion4 = (Opcion) iteradorDeOpciones.next();
-        opcion5 = (Opcion) iteradorDeOpciones.next();
 
         //Act
-        opcion2.agregarJugadorQueLaEligio(jugador);
-        opcion4.agregarJugadorQueLaEligio(jugador);
-        opcion5.agregarJugadorQueLaEligio(jugador);
+        opcion1.agregarJugadorQueLaEligio(jugador);
+
         pregunta.puntuarJugadores();
 
         //Assert
-        assertEquals(3,jugador.obtenerPuntos());
+        assertEquals(1,jugador.obtenerPuntos());
+    }
+
+    @Test
+    public void test02JugadorRespondePreguntaCorrectamenteSoloSgeundaOpcion() {
+        //Arrange
+        Opcion opcion1 = new Opcion(new Incorrecto());
+        Opcion opcion2 = new Opcion(new Correcto());
+        Opcion opcion3 = new Opcion(new Incorrecto());
+
+
+        ColeccionDeOpciones opciones = new ColeccionDeOpciones();
+        opciones.agregarOpcion(opcion1);
+        opciones.agregarOpcion(opcion2);
+        opciones.agregarOpcion(opcion3);
+
+
+        PreguntaMultipleChoiceParcial pregunta = new PreguntaMultipleChoiceParcial(opciones);
+
+        Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
+
+        Jugador jugador = new Jugador("Carlito");
+        pregunta.registrarNuevoJugador(jugador);
+
+        opcion1 = (Opcion) iteradorDeOpciones.next();
+        opcion2 = (Opcion) iteradorDeOpciones.next();
+        opcion3 = (Opcion) iteradorDeOpciones.next();
+
+        //Act
+        opcion2.agregarJugadorQueLaEligio(jugador);
+
+        pregunta.puntuarJugadores();
+
+        //Assert
+        assertEquals(1,jugador.obtenerPuntos());
+    }
+    @Test
+    public void test03JugadorRespondePreguntaCorrectamenteSoloTercerOpcion() {
+        //Arrange
+        Opcion opcion1 = new Opcion(new Incorrecto());
+        Opcion opcion2 = new Opcion(new Incorrecto());
+        Opcion opcion3 = new Opcion(new Correcto());
+
+
+        ColeccionDeOpciones opciones = new ColeccionDeOpciones();
+        opciones.agregarOpcion(opcion1);
+        opciones.agregarOpcion(opcion2);
+        opciones.agregarOpcion(opcion3);
+
+
+        PreguntaMultipleChoiceParcial pregunta = new PreguntaMultipleChoiceParcial(opciones);
+
+        Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
+
+        Jugador jugador = new Jugador("Carlito");
+        pregunta.registrarNuevoJugador(jugador);
+
+        opcion1 = (Opcion) iteradorDeOpciones.next();
+        opcion2 = (Opcion) iteradorDeOpciones.next();
+        opcion3 = (Opcion) iteradorDeOpciones.next();
+
+        //Act
+        opcion3.agregarJugadorQueLaEligio(jugador);
+
+        pregunta.puntuarJugadores();
+
+        //Assert
+        assertEquals(1,jugador.obtenerPuntos());
+    }
+
+    @Test
+    public void test04JugadorRespondePreguntaCorrectamenteSoloPrimerYSegundaOpcion() {
+        //Arrange
+        Opcion opcion1 = new Opcion(new Correcto());
+        Opcion opcion2 = new Opcion(new Correcto());
+        Opcion opcion3 = new Opcion(new Incorrecto());
+
+
+        ColeccionDeOpciones opciones = new ColeccionDeOpciones();
+        opciones.agregarOpcion(opcion1);
+        opciones.agregarOpcion(opcion2);
+        opciones.agregarOpcion(opcion3);
+
+
+        PreguntaMultipleChoiceParcial pregunta = new PreguntaMultipleChoiceParcial(opciones);
+
+        Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
+
+        Jugador jugador = new Jugador("Carlito");
+        pregunta.registrarNuevoJugador(jugador);
+
+        opcion1 = (Opcion) iteradorDeOpciones.next();
+        opcion2 = (Opcion) iteradorDeOpciones.next();
+        opcion3 = (Opcion) iteradorDeOpciones.next();
+
+        //Act
+        opcion1.agregarJugadorQueLaEligio(jugador);
+        opcion2.agregarJugadorQueLaEligio(jugador);
+        pregunta.puntuarJugadores();
+
+        //Assert
+        assertEquals(2,jugador.obtenerPuntos());
+    }
+    @Test
+    public void test05JugadorRespondePreguntaCorrectamenteSoloPrimerYTerceraOpcion() {
+        //Arrange
+        Opcion opcion1 = new Opcion(new Correcto());
+        Opcion opcion2 = new Opcion(new Incorrecto());
+        Opcion opcion3 = new Opcion(new Correcto());
+
+
+        ColeccionDeOpciones opciones = new ColeccionDeOpciones();
+        opciones.agregarOpcion(opcion1);
+        opciones.agregarOpcion(opcion2);
+        opciones.agregarOpcion(opcion3);
+
+
+        PreguntaMultipleChoiceParcial pregunta = new PreguntaMultipleChoiceParcial(opciones);
+
+        Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
+
+        Jugador jugador = new Jugador("Carlito");
+        pregunta.registrarNuevoJugador(jugador);
+
+        opcion1 = (Opcion) iteradorDeOpciones.next();
+        opcion2 = (Opcion) iteradorDeOpciones.next();
+        opcion3 = (Opcion) iteradorDeOpciones.next();
+
+        //Act
+        opcion1.agregarJugadorQueLaEligio(jugador);
+        opcion3.agregarJugadorQueLaEligio(jugador);
+        pregunta.puntuarJugadores();
+
+        //Assert
+        assertEquals(2,jugador.obtenerPuntos());
+    }
+
+  /*  @Test
+    public void test06JugadorRespondePreguntaCorrectamenteSoloAciertaUnaDeDosOpciones() {
+        //Arrange
+        Opcion opcion1 = new Opcion(new Correcto());
+        Opcion opcion2 = new Opcion(new Correcto());
+        Opcion opcion3 = new Opcion(new Incorrecto());
+
+
+        ColeccionDeOpciones opciones = new ColeccionDeOpciones();
+        opciones.agregarOpcion(opcion1);
+        opciones.agregarOpcion(opcion2);
+        opciones.agregarOpcion(opcion3);
+
+
+        PreguntaMultipleChoiceParcial pregunta = new PreguntaMultipleChoiceParcial(opciones);
+
+        Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
+
+        Jugador jugador = new Jugador("Carlito");
+        pregunta.registrarNuevoJugador(jugador);
+
+        opcion1 = (Opcion) iteradorDeOpciones.next();
+        opcion2 = (Opcion) iteradorDeOpciones.next();
+        opcion3 = (Opcion) iteradorDeOpciones.next();
+
+        //Act
+        opcion2.agregarJugadorQueLaEligio(jugador);
+        pregunta.puntuarJugadores();
+
+        //Assert
+        assertEquals(1,jugador.obtenerPuntos());
     }
 */
 }

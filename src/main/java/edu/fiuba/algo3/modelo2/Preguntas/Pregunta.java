@@ -4,7 +4,9 @@ import edu.fiuba.algo3.modelo2.ColeccionDeOpciones;
 import edu.fiuba.algo3.modelo2.EstadosDeRespuesta.RespondeBien;
 import edu.fiuba.algo3.modelo2.EstadosDeRespuesta.RespondeMal;
 import edu.fiuba.algo3.modelo2.Jugador;
-import edu.fiuba.algo3.modelo2.Puntos.Punto;
+import edu.fiuba.algo3.modelo2.Puntos.Puntaje;
+import edu.fiuba.algo3.modelo2.Puntos.PuntoNeutro;
+import edu.fiuba.algo3.modelo2.Puntos.PuntoPositivo;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -33,6 +35,18 @@ public abstract class Pregunta {
         opciones.inscribirJugador(jugador);
     }
 
-    public abstract Punto calificarRespuesta(RespondeBien unEstadoRespuesta);
-    public abstract Punto calificarRespuesta(RespondeMal unEstadoRespuesta);
+    //por default una pregunta devuelve 1 punto siempre que se responda la pregunta bien, salvo exepciones
+    public Puntaje calificarRespuesta(RespondeBien unEstadoRespuesta) {
+        Puntaje puntajeADevolver = new Puntaje();
+        puntajeADevolver.sumarPuntos(new PuntoPositivo());
+        return puntajeADevolver;
+    }
+
+    // devuelvo puntaje neutro por default, toda pregunta clasica devuelve este puntaje
+    public Puntaje calificarRespuesta(RespondeMal unEstadoRespuesta) {
+        Puntaje puntajeADevolver = new Puntaje();
+        puntajeADevolver.sumarPuntos(new PuntoNeutro());
+        return puntajeADevolver;
+    }
+
 }
