@@ -29,6 +29,7 @@ public abstract class Pregunta {
 
     public void registrarNuevoJugador(Jugador jugador) {
         jugadores.add(jugador);
+        opciones.inscribirJugador(jugador);
     }
 
     public abstract int calificarRespuesta(RespondeBien unEstadoRespuesta);

@@ -16,5 +16,4 @@ public class RespondeBien implements EstadoDeRespuesta {
     public int obtenerPuntajeSegunRespuesta(Pregunta pregunta) {
         return pregunta.calificarRespuesta(this);
     }
-
 }

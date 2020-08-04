@@ -6,4 +6,5 @@ import java.util.LinkedList;
 
 public interface EstadoOpcion {
      void asignarEstadoDeRespuestaAJugadores(LinkedList<Jugador> jugadores);
+     void asignarEstadoDeRespuestaAJugadoresQueNoMeEligieron(LinkedList<Jugador> jugadores);
 }

@@ -19,4 +19,9 @@ public class ColeccionDeOpciones {
         this.opciones.forEach( opcion -> opcion.actualizarEstadoDeRespuestaAJugadores());
     }
 
+    public void inscribirJugador(Jugador jugador) {
+        this.opciones.forEach(opcion -> opcion.inscribirJugador(jugador));
+        //esto se puede hacer aca, y si no gusta se puede hacer en pregunta.obtenerIterador, que mande una copia
+        //de los jugadores registrado, ver que onda, que gusta mas?
+    }
 }

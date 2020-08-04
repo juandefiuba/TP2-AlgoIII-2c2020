@@ -10,4 +10,9 @@ public class Incorrecto implements EstadoOpcion {
     public void asignarEstadoDeRespuestaAJugadores(LinkedList<Jugador> jugadores) {
         jugadores.forEach(jugador -> jugador.estadoRespondioIncorrecto());
     }
+
+    @Override
+    public void asignarEstadoDeRespuestaAJugadoresQueNoMeEligieron(LinkedList<Jugador> jugadores) {
+        jugadores.forEach(jugador -> jugador.estadoRespondioCorrecto());
+    }
 }
