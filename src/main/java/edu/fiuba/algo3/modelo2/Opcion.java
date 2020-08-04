@@ -11,22 +11,22 @@ public class Opcion {
     private LinkedList<Jugador> jugadoresQueNoEligieronEstaOpcion;
 
     public Opcion(EstadoOpcion estadoOpcion) {
-        this.estado = estadoOpcion;  // Correcto || Incorrecto
+        this.estado = estadoOpcion;
         this.jugadoresQueEligieronEstaOpcion = new LinkedList<>();
         this.jugadoresQueNoEligieronEstaOpcion = new LinkedList<>();
     }
 
     public void agregarJugadorQueLaEligio(Jugador jugador) {
-        this.jugadoresQueEligieronEstaOpcion.add(jugador);
-        this.jugadoresQueNoEligieronEstaOpcion.remove(jugador);
+        jugadoresQueEligieronEstaOpcion.add(jugador);
+        jugadoresQueNoEligieronEstaOpcion.remove(jugador);
     }
 
     public void actualizarEstadoDeRespuestaAJugadores() {
-        this.estado.asignarEstadoDeRespuestaAJugadores(jugadoresQueEligieronEstaOpcion);
-        this.estado.asignarEstadoDeRespuestaAJugadoresQueNoMeEligieron(jugadoresQueNoEligieronEstaOpcion);
+        estado.asignarEstadoDeRespuestaAJugadores(jugadoresQueEligieronEstaOpcion);
+        estado.asignarEstadoDeRespuestaAJugadoresQueNoMeEligieron(jugadoresQueNoEligieronEstaOpcion);
     }
 
     public void inscribirJugador(Jugador jugador) {
-        this.jugadoresQueNoEligieronEstaOpcion.add(jugador);
+        jugadoresQueNoEligieronEstaOpcion.add(jugador);
     }
 }

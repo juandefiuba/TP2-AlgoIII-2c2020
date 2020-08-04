@@ -4,31 +4,41 @@ import edu.fiuba.algo3.modelo2.EstadosDeRespuesta.EstadoDeRespuesta;
 import edu.fiuba.algo3.modelo2.EstadosDeRespuesta.RespondeBien;
 import edu.fiuba.algo3.modelo2.EstadosDeRespuesta.RespondeMal;
 import edu.fiuba.algo3.modelo2.Preguntas.Pregunta;
+import edu.fiuba.algo3.modelo2.Puntos.Puntaje;
 
 public class Jugador {
 
     String nombreJugador;
-    int puntos;
-    EstadoDeRespuesta estado;
+    private Puntaje puntaje;
+    private EstadoDeRespuesta estado;
 
     public Jugador(String nombre) {
         this.nombreJugador = nombre;
-        this.puntos = 0;
+        this.puntaje = new Puntaje();
         this.estado = new RespondeBien();   // revisar esto, porque jugador que no responde, responde(?)
     }
 
     public int obtenerPuntos() {
-        return puntos;
+        return puntaje.obtenerPuntos();
     }
 
     public void sumarPuntos(Pregunta pregunta){
-        this.puntos = this.puntos + this.estado.obtenerPuntajeSegunRespuesta(pregunta);
+        this.puntaje.sumarPuntos(this.estado.obtenerPuntajeSegunRespuesta(pregunta));
     }
 
-    public void estadoRespondioCorrecto() { this.estado = this.estado.actualizarEstado(new RespondeBien());
+
+    //suma puntos
+    public void estadoRespondioBien() {
+        this.estado = this.estado.actualizarEstado(new RespondeBien());
     }
 
+    //no suma puntos
     public void estadoRespondioIncorrecto() {
         this.estado = this.estado.actualizarEstado(new RespondeMal());
+    }
+
+    //ya está Moriste asi tiro a tiro con la gorra porque no te cabe una
+    public void estadoRespondioMal() {
+        this.estado = new RespondeMal();
     }
 }

@@ -1,12 +1,11 @@
 package edu.fiuba.algo3.modelo2.Preguntas;
 
 import edu.fiuba.algo3.modelo2.ColeccionDeOpciones;
-import edu.fiuba.algo3.modelo2.Jugador;
 import edu.fiuba.algo3.modelo2.EstadosDeRespuesta.RespondeBien;
 import edu.fiuba.algo3.modelo2.EstadosDeRespuesta.RespondeMal;
-
-import java.util.Iterator;
-import java.util.LinkedList;
+import edu.fiuba.algo3.modelo2.Puntos.Punto;
+import edu.fiuba.algo3.modelo2.Puntos.PuntoNeutro;
+import edu.fiuba.algo3.modelo2.Puntos.PuntoPositivo;
 
 public class PreguntaMultipleChoiceClasico extends Pregunta {
 
@@ -15,8 +14,8 @@ public class PreguntaMultipleChoiceClasico extends Pregunta {
    }
 
     @Override
-    public int calificarRespuesta(RespondeBien unEstadoRespuesta){ return 1; }
+    public Punto calificarRespuesta(RespondeBien unEstadoRespuesta){ return new PuntoPositivo(); }
 
     @Override
-    public int calificarRespuesta(RespondeMal unEstadoRespuesta){ return 0; }
+    public Punto calificarRespuesta(RespondeMal unEstadoRespuesta){ return new PuntoNeutro(); }
 }

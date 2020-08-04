@@ -8,7 +8,7 @@ public class Correcto implements EstadoOpcion{
 
     @Override
     public void asignarEstadoDeRespuestaAJugadores(LinkedList<Jugador> jugadores) {
-        jugadores.forEach(jugador -> jugador.estadoRespondioCorrecto());
+        jugadores.forEach(jugador -> jugador.estadoRespondioBien());
     }
 
     @Override

@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo2.ColeccionDeOpciones;
 import edu.fiuba.algo3.modelo2.EstadosDeRespuesta.RespondeBien;
 import edu.fiuba.algo3.modelo2.EstadosDeRespuesta.RespondeMal;
 import edu.fiuba.algo3.modelo2.Jugador;
+import edu.fiuba.algo3.modelo2.Puntos.Punto;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -32,6 +33,6 @@ public abstract class Pregunta {
         opciones.inscribirJugador(jugador);
     }
 
-    public abstract int calificarRespuesta(RespondeBien unEstadoRespuesta);
-    public abstract int calificarRespuesta(RespondeMal unEstadoRespuesta);
+    public abstract Punto calificarRespuesta(RespondeBien unEstadoRespuesta);
+    public abstract Punto calificarRespuesta(RespondeMal unEstadoRespuesta);
 }

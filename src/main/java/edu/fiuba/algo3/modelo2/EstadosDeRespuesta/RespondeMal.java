@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo2.EstadosDeRespuesta;
 
 import edu.fiuba.algo3.modelo2.Preguntas.Pregunta;
+import edu.fiuba.algo3.modelo2.Puntos.Punto;
 
 public class RespondeMal implements EstadoDeRespuesta {
 
@@ -13,6 +14,6 @@ public class RespondeMal implements EstadoDeRespuesta {
     }
 
     @Override
-    public int obtenerPuntajeSegunRespuesta(Pregunta pregunta) { return pregunta.calificarRespuesta(this); }
+    public Punto obtenerPuntajeSegunRespuesta(Pregunta pregunta) { return pregunta.calificarRespuesta(this); }
 
 }

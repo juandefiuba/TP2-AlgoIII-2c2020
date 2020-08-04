@@ -12,8 +12,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PreguntaVerdaderoFalsoConPenalidadTest {
     @Test
     public void test01CrearPreguntaVerdaderoFalso(){
-        Opcion opcionVerdadero = new Opcion(new Incorrecto());
-        Opcion opcionFalso = new Opcion(new Correcto());
+        Opcion opcionVerdadero = new Opcion(new Correcto());
+        Opcion opcionFalso = new Opcion(new Incorrecto());
 
         ColeccionDeOpciones opciones = new ColeccionDeOpciones();
         opciones.agregarOpcion(opcionVerdadero);
@@ -27,7 +27,62 @@ public class PreguntaVerdaderoFalsoConPenalidadTest {
     }
 
     @Test
-    public void test02JugadorRespondePreguntaCorrectamente() {
+    public void test02JugadorRespondeCorrectamenteSumaUnPunto() {
+        //Arrange
+        Opcion opcionVerdadero = new Opcion(new Correcto());
+        Opcion opcionFalso = new Opcion(new Incorrecto());
+
+        ColeccionDeOpciones opciones = new ColeccionDeOpciones();
+        opciones.agregarOpcion(opcionVerdadero);
+        opciones.agregarOpcion(opcionFalso);
+
+        PreguntaVerdaderoFalsoPenalidad pregunta = new PreguntaVerdaderoFalsoPenalidad(opciones);
+
+        Jugador jugador = new Jugador("Carlito");
+
+        pregunta.registrarNuevoJugador(jugador);
+        Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
+
+        opcionVerdadero = (Opcion) iteradorDeOpciones.next();
+        opcionFalso = (Opcion) iteradorDeOpciones.next();
+
+        //Act
+        opcionVerdadero.agregarJugadorQueLaEligio(jugador);
+        pregunta.puntuarJugadores();
+
+        //Assert
+        assertEquals(1,jugador.obtenerPuntos());
+    }
+
+    @Test
+    public void test03JugadorRespondeMalSeLeRestaUnPunto() {
+        //Arrange
+        Opcion opcionVerdadero = new Opcion(new Correcto());
+        Opcion opcionFalso = new Opcion(new Incorrecto());
+
+        ColeccionDeOpciones opciones = new ColeccionDeOpciones();
+        opciones.agregarOpcion(opcionVerdadero);
+        opciones.agregarOpcion(opcionFalso);
+
+        PreguntaVerdaderoFalsoPenalidad pregunta = new PreguntaVerdaderoFalsoPenalidad(opciones);
+
+        Jugador jugador = new Jugador("Carlito");
+        pregunta.registrarNuevoJugador(jugador);
+
+        Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
+
+        opcionVerdadero = (Opcion) iteradorDeOpciones.next();
+        opcionFalso = (Opcion) iteradorDeOpciones.next();
+
+        //Act
+        opcionFalso.agregarJugadorQueLaEligio(jugador);
+        pregunta.puntuarJugadores();
+
+        //Assert
+        assertEquals(-1,jugador.obtenerPuntos());
+    }
+    @Test
+    public void test04JugadorRespondeCorrectamenteSumaUnPunto() {
         //Arrange
         Opcion opcionVerdadero = new Opcion(new Incorrecto());
         Opcion opcionFalso = new Opcion(new Correcto());
@@ -55,7 +110,7 @@ public class PreguntaVerdaderoFalsoConPenalidadTest {
     }
 
     @Test
-    public void test03JugadorRespondeMalSeLeRestaUnPunto() {
+    public void test05JugadorRespondeMalSeLeRestaUnPunto() {
         //Arrange
         Opcion opcionVerdadero = new Opcion(new Incorrecto());
         Opcion opcionFalso = new Opcion(new Correcto());
@@ -81,6 +136,4 @@ public class PreguntaVerdaderoFalsoConPenalidadTest {
         //Assert
         assertEquals(-1,jugador.obtenerPuntos());
     }
-
-
 }
