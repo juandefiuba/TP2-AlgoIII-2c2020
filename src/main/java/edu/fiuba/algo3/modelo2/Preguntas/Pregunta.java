@@ -4,6 +4,7 @@ import edu.fiuba.algo3.modelo2.ColeccionDeOpciones;
 import edu.fiuba.algo3.modelo2.EstadosDeRespuesta.RespondeBien;
 import edu.fiuba.algo3.modelo2.EstadosDeRespuesta.RespondeMal;
 import edu.fiuba.algo3.modelo2.Jugador;
+import edu.fiuba.algo3.modelo2.Opcion;
 import edu.fiuba.algo3.modelo2.Puntos.Puntaje;
 import edu.fiuba.algo3.modelo2.Puntos.PuntoNeutro;
 import edu.fiuba.algo3.modelo2.Puntos.PuntoPositivo;
@@ -14,11 +15,13 @@ import java.util.LinkedList;
 public class Pregunta { //esta clase podría ser abstracta, pero actualmente ningún método suyo lo es
 
     protected ColeccionDeOpciones opciones;
+    protected LinkedList<Opcion> opcionesDeLaPregunta;
     protected LinkedList<Jugador> jugadores;
 
     protected Pregunta(ColeccionDeOpciones opciones) {
         this.opciones = opciones;
         this.jugadores = new LinkedList<>();
+        this.opcionesDeLaPregunta = new LinkedList<>();
     }
 
     public Iterator obtenerOpciones() {

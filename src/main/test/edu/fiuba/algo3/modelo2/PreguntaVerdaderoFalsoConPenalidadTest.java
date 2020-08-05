@@ -1,139 +1,124 @@
 package edu.fiuba.algo3.modelo2;
 
-import edu.fiuba.algo3.modelo2.EstadosDeOpcion.Correcto;
-import edu.fiuba.algo3.modelo2.EstadosDeOpcion.Incorrecto;
 import edu.fiuba.algo3.modelo2.Preguntas.PreguntaVerdaderoFalsoPenalidad;
+import edu.fiuba.algo3.modelo2.Puntos.Puntaje;
 import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PreguntaVerdaderoFalsoConPenalidadTest {
     @Test
-    public void test01CrearPreguntaVerdaderoFalso(){
-        Opcion opcionVerdadero = new Opcion(new Correcto());
-        Opcion opcionFalso = new Opcion(new Incorrecto());
-
-        ColeccionDeOpciones opciones = new ColeccionDeOpciones();
-        opciones.agregarOpcion(opcionVerdadero);
-        opciones.agregarOpcion(opcionFalso);
-
-        PreguntaVerdaderoFalsoPenalidad pregunta = new PreguntaVerdaderoFalsoPenalidad(opciones);
-
-        Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
-
-        assertEquals(opcionVerdadero, iteradorDeOpciones.next());
-    }
-
-    @Test
     public void test02JugadorRespondeCorrectamenteSumaUnPunto() {
         //Arrange
-        Opcion opcionVerdadero = new Opcion(new Correcto());
-        Opcion opcionFalso = new Opcion(new Incorrecto());
+        Opcion opcionVerdadero = new OpcionCorrecta();
+        Opcion opcionFalso = new OpcionIncorrecta();
 
-        ColeccionDeOpciones opciones = new ColeccionDeOpciones();
-        opciones.agregarOpcion(opcionVerdadero);
-        opciones.agregarOpcion(opcionFalso);
+        LinkedList<Opcion> opciones = new LinkedList<>();
+        opciones.add(opcionVerdadero);
+        opciones.add(opcionFalso);
 
         PreguntaVerdaderoFalsoPenalidad pregunta = new PreguntaVerdaderoFalsoPenalidad(opciones);
 
         Jugador jugador = new Jugador("Carlito");
 
-        pregunta.registrarNuevoJugador(jugador);
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
         opcionVerdadero = (Opcion) iteradorDeOpciones.next();
         opcionFalso = (Opcion) iteradorDeOpciones.next();
 
-        //Act
         opcionVerdadero.agregarJugadorQueLaEligio(jugador);
-        pregunta.puntuarJugadores();
+
+        //Act
+        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
 
         //Assert
-        assertEquals(1,jugador.obtenerPuntos());
+        assertEquals(1, puntajeDelJugador.obtenerPuntos());
     }
 
     @Test
-    public void test03JugadorRespondeMalSeLeRestaUnPunto() {
-        //Arrange
-        Opcion opcionVerdadero = new Opcion(new Correcto());
-        Opcion opcionFalso = new Opcion(new Incorrecto());
+    public void test03JugadorRespondeMalRecibePuntoNegativo() {
+        Opcion opcionVerdadero = new OpcionCorrecta();
+        Opcion opcionFalso = new OpcionIncorrecta();
 
-        ColeccionDeOpciones opciones = new ColeccionDeOpciones();
-        opciones.agregarOpcion(opcionVerdadero);
-        opciones.agregarOpcion(opcionFalso);
+        LinkedList<Opcion> opciones = new LinkedList<>();
+        opciones.add(opcionVerdadero);
+        opciones.add(opcionFalso);
 
         PreguntaVerdaderoFalsoPenalidad pregunta = new PreguntaVerdaderoFalsoPenalidad(opciones);
 
         Jugador jugador = new Jugador("Carlito");
-        pregunta.registrarNuevoJugador(jugador);
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
         opcionVerdadero = (Opcion) iteradorDeOpciones.next();
         opcionFalso = (Opcion) iteradorDeOpciones.next();
 
-        //Act
         opcionFalso.agregarJugadorQueLaEligio(jugador);
-        pregunta.puntuarJugadores();
+
+        //Act
+        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
 
         //Assert
-        assertEquals(-1,jugador.obtenerPuntos());
+        assertEquals(-1, puntajeDelJugador.obtenerPuntos());
     }
+
     @Test
     public void test04JugadorRespondeCorrectamenteSumaUnPunto() {
-        //Arrange
-        Opcion opcionVerdadero = new Opcion(new Incorrecto());
-        Opcion opcionFalso = new Opcion(new Correcto());
+        //Arrange se invierten los estados, ahora falso es correcto
+        Opcion opcionVerdadero = new OpcionIncorrecta();
+        Opcion opcionFalso = new OpcionCorrecta();
 
-        ColeccionDeOpciones opciones = new ColeccionDeOpciones();
-        opciones.agregarOpcion(opcionVerdadero);
-        opciones.agregarOpcion(opcionFalso);
+        LinkedList<Opcion> opciones = new LinkedList<>();
+        opciones.add(opcionVerdadero);
+        opciones.add(opcionFalso);
 
         PreguntaVerdaderoFalsoPenalidad pregunta = new PreguntaVerdaderoFalsoPenalidad(opciones);
 
         Jugador jugador = new Jugador("Carlito");
 
-        pregunta.registrarNuevoJugador(jugador);
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
         opcionVerdadero = (Opcion) iteradorDeOpciones.next();
         opcionFalso = (Opcion) iteradorDeOpciones.next();
 
-        //Act
         opcionFalso.agregarJugadorQueLaEligio(jugador);
-        pregunta.puntuarJugadores();
+
+        //Act
+        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
 
         //Assert
-        assertEquals(1,jugador.obtenerPuntos());
+        assertEquals(1, puntajeDelJugador.obtenerPuntos());
     }
 
     @Test
-    public void test05JugadorRespondeMalSeLeRestaUnPunto() {
-        //Arrange
-        Opcion opcionVerdadero = new Opcion(new Incorrecto());
-        Opcion opcionFalso = new Opcion(new Correcto());
+    public void test05JugadorRespondeMalRecibePuntoNegativo() {
+        Opcion opcionVerdadero = new OpcionIncorrecta();
+        Opcion opcionFalso = new OpcionCorrecta();
 
-        ColeccionDeOpciones opciones = new ColeccionDeOpciones();
-        opciones.agregarOpcion(opcionVerdadero);
-        opciones.agregarOpcion(opcionFalso);
+        LinkedList<Opcion> opciones = new LinkedList<>();
+        opciones.add(opcionVerdadero);
+        opciones.add(opcionFalso);
 
         PreguntaVerdaderoFalsoPenalidad pregunta = new PreguntaVerdaderoFalsoPenalidad(opciones);
 
         Jugador jugador = new Jugador("Carlito");
-        pregunta.registrarNuevoJugador(jugador);
+
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
         opcionVerdadero = (Opcion) iteradorDeOpciones.next();
         opcionFalso = (Opcion) iteradorDeOpciones.next();
 
-        //Act
+        //jugador.elegirOpcion(opcionVerdadero);
+        //jugador.activarMultiplicador();
         opcionVerdadero.agregarJugadorQueLaEligio(jugador);
-        pregunta.puntuarJugadores();
 
-        //Assert
-        assertEquals(-1,jugador.obtenerPuntos());
+        //Act
+        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+
+        assertEquals(-1,puntajeDelJugador.obtenerPuntos());
     }
 }

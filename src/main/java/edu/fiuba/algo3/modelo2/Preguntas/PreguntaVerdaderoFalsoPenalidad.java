@@ -2,20 +2,28 @@ package edu.fiuba.algo3.modelo2.Preguntas;
 
 import edu.fiuba.algo3.modelo2.ColeccionDeOpciones;
 import edu.fiuba.algo3.modelo2.EstadosDeRespuesta.RespondeMal;
-import edu.fiuba.algo3.modelo2.Puntos.Puntaje;
-import edu.fiuba.algo3.modelo2.Puntos.PuntoNegativo;
-import edu.fiuba.algo3.modelo2.Puntos.PuntoNeutro;
+import edu.fiuba.algo3.modelo2.Opcion;
+import edu.fiuba.algo3.modelo2.OpcionCorrecta;
+import edu.fiuba.algo3.modelo2.OpcionIncorrecta;
+import edu.fiuba.algo3.modelo2.Puntos.*;
+
+import java.util.LinkedList;
 
 public class PreguntaVerdaderoFalsoPenalidad extends PreguntaVerdaderoFalso {
 
-    public PreguntaVerdaderoFalsoPenalidad(ColeccionDeOpciones opciones) {
+    public PreguntaVerdaderoFalsoPenalidad(LinkedList<Opcion> opciones) {
         super(opciones);
     }
 
-    @Override
-    public Puntaje calificarRespuesta(RespondeMal unEstadoRespuesta){
-        Puntaje puntajeADevolver = new Puntaje();
-        puntajeADevolver.sumarPuntos(new PuntoNegativo());
-        return puntajeADevolver;
+    public Punto calificarOpcion(Opcion opcion){
+        return opcion.validarOpcion(this);
+    }
+
+    public Punto calificarOpcion(OpcionCorrecta opcion){
+        return new PuntoPositivo();
+    }
+
+    public Punto calificarOpcion(OpcionIncorrecta opcion){
+        return new PuntoNegativo();
     }
 }

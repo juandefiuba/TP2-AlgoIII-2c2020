@@ -1,32 +1,25 @@
 package edu.fiuba.algo3.modelo2;
 
-import edu.fiuba.algo3.modelo2.EstadosDeOpcion.EstadoOpcion;
+import edu.fiuba.algo3.modelo2.Preguntas.PreguntaVerdaderoFalso;
+import edu.fiuba.algo3.modelo2.Puntos.Punto;
 
 import java.util.LinkedList;
 
-public class Opcion {
+public interface Opcion {
 
-    private final EstadoOpcion estado;
+    /*private final EstadoOpcion estado;
     private LinkedList<Jugador> jugadoresQueEligieronEstaOpcion;
-    private LinkedList<Jugador> jugadoresQueNoEligieronEstaOpcion;
+    private LinkedList<Jugador> jugadoresQueNoEligieronEstaOpcion;*/
 
-    public Opcion(EstadoOpcion estadoOpcion) {
+    /*public Opcion(EstadoOpcion estadoOpcion) {
         this.estado = estadoOpcion;
         this.jugadoresQueEligieronEstaOpcion = new LinkedList<>();
         this.jugadoresQueNoEligieronEstaOpcion = new LinkedList<>();
-    }
+    }*/
 
-    public void agregarJugadorQueLaEligio(Jugador jugador) {
-        jugadoresQueEligieronEstaOpcion.add(jugador);
-        jugadoresQueNoEligieronEstaOpcion.remove(jugador);
-    }
+    public void agregarJugadorQueLaEligio(Jugador jugador);
 
-    public void actualizarEstadoDeRespuestaAJugadores() {
-        estado.asignarEstadoDeRespuestaAJugadores(jugadoresQueEligieronEstaOpcion);
-        estado.asignarEstadoDeRespuestaAJugadoresQueNoMeEligieron(jugadoresQueNoEligieronEstaOpcion);
-    }
+    void obtenerPuntosDelJugador(Jugador jugador, LinkedList<Opcion> respuestasDelJugador);
 
-    public void inscribirJugador(Jugador jugador) {
-        jugadoresQueNoEligieronEstaOpcion.add(jugador);
-    }
+    Punto validarOpcion(PreguntaVerdaderoFalso preguntaVerdaderoFalso);
 }
