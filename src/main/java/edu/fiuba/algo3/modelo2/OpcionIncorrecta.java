@@ -1,8 +1,7 @@
 package edu.fiuba.algo3.modelo2;
 
 import edu.fiuba.algo3.modelo2.Preguntas.PreguntaVerdaderoFalso;
-import edu.fiuba.algo3.modelo2.Puntos.Punto;
-import edu.fiuba.algo3.modelo2.Puntos.PuntoNeutro;
+import edu.fiuba.algo3.modelo2.Puntos.Puntaje;
 
 import java.util.LinkedList;
 
@@ -25,7 +24,7 @@ public class OpcionIncorrecta implements Opcion{
     }
 
     @Override
-    public Punto validarOpcion(PreguntaVerdaderoFalso pregunta) {
-        return pregunta.calificarOpcion(this);
+    public Puntaje validarOpcion(PreguntaVerdaderoFalso pregunta, Puntaje puntajeDeRespuesta) {
+        return pregunta.calificarOpcion(this, puntajeDeRespuesta);
     }
 }

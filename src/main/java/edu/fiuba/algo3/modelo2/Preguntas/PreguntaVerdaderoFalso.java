@@ -1,9 +1,6 @@
 package edu.fiuba.algo3.modelo2.Preguntas;
 
 import edu.fiuba.algo3.modelo2.*;
-import edu.fiuba.algo3.modelo2.EstadosDeRespuesta.EstadoDeRespuesta;
-import edu.fiuba.algo3.modelo2.EstadosDeRespuesta.RespondeBien;
-import edu.fiuba.algo3.modelo2.EstadosDeRespuesta.RespondeMal;
 import edu.fiuba.algo3.modelo2.Puntos.*;
 
 import java.util.Iterator;
@@ -12,21 +9,23 @@ import java.util.LinkedList;
 public class PreguntaVerdaderoFalso {
 
     protected LinkedList<Opcion> opciones;
+   // protected Dictionary<Jugador, LinkedList<Opcion>> respuestasDeJugadores;
 
     public PreguntaVerdaderoFalso(LinkedList<Opcion> opcionesDeLaPregunta) {
         this.opciones = opcionesDeLaPregunta;
     }
 
+    /*public void preguntaguardarRespuestaDelJugador(Jugador jugador, LinkedList<Opcion> respuesta){
+        respuestasDeJugadores.put(Jugador,respuesta);
+    }*/
+
     public Puntaje puntuarJugador(Jugador jugador) {
-        Iterator iter = opciones.iterator();
         LinkedList<Opcion> respuestaDelJugador = new LinkedList<>();
         Puntaje puntajeDelJugador = new Puntaje();
 
-        Opcion primeraOpcion = (Opcion) iter.next();
-        primeraOpcion.obtenerPuntosDelJugador(jugador, respuestaDelJugador);
-        Opcion segundaOpcion = (Opcion) iter.next();
-        segundaOpcion.obtenerPuntosDelJugador(jugador, respuestaDelJugador);
-        respuestaDelJugador.forEach(opcion -> puntajeDelJugador.sumarPuntos(this.calificarOpcion(opcion)));
+        opciones.forEach(opcion -> opcion.obtenerPuntosDelJugador(jugador, respuestaDelJugador));
+
+        respuestaDelJugador.forEach(opcion -> this.calificarOpcion(opcion, puntajeDelJugador));
         return puntajeDelJugador;
     }
 
@@ -34,16 +33,22 @@ public class PreguntaVerdaderoFalso {
         return opciones.iterator();
     }
 
-    public Punto calificarOpcion(Opcion opcion){
-        return opcion.validarOpcion(this);
+    public Puntaje calificarOpcion(Opcion opcion, Puntaje puntajeDeRespuesta){
+        return opcion.validarOpcion(this , puntajeDeRespuesta);
     }
 
-    public Punto calificarOpcion(OpcionCorrecta opcion){
-        return new PuntoPositivo();
+    public Puntaje calificarOpcion(OpcionCorrecta opcion, Puntaje puntajeDeRespuesta){
+      //  Puntaje unPuntajeDeLaOpcionElegida = new Puntaje();
+        puntajeDeRespuesta.sumarPuntos(new PuntoPositivo());
+        return puntajeDeRespuesta;
     }
 
-    public Punto calificarOpcion(OpcionIncorrecta opcion){
-        return new PuntoNeutro();
+    public Puntaje calificarOpcion(OpcionIncorrecta opcion, Puntaje puntajeDeRespuesta){
+        //Puntaje unPuntajeDeLaOpcionElegida = new Puntaje();
+        //unPuntajeDeLaOpcionElegida.sumarPuntos(new PuntoNeutro());
+        //puntajeDeRespuesta.sumarPuntos(new punto Neutro());
+        puntajeDeRespuesta = new PuntajeNeutro();
+        return puntajeDeRespuesta;
     }
 
 }

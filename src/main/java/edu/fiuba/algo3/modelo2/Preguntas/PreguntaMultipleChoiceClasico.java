@@ -1,16 +1,20 @@
 package edu.fiuba.algo3.modelo2.Preguntas;
 
-import edu.fiuba.algo3.modelo2.ColeccionDeOpciones;
-import edu.fiuba.algo3.modelo2.EstadosDeRespuesta.RespondeBien;
-import edu.fiuba.algo3.modelo2.EstadosDeRespuesta.RespondeMal;
+
+import edu.fiuba.algo3.modelo2.Jugador;
+import edu.fiuba.algo3.modelo2.Opcion;
 import edu.fiuba.algo3.modelo2.Puntos.Puntaje;
-import edu.fiuba.algo3.modelo2.Puntos.PuntoNeutro;
-import edu.fiuba.algo3.modelo2.Puntos.PuntoPositivo;
 
-public class PreguntaMultipleChoiceClasico extends Pregunta {
 
-    public PreguntaMultipleChoiceClasico(ColeccionDeOpciones opciones) {
+import java.util.LinkedList;
+
+public class PreguntaMultipleChoiceClasico extends PreguntaVerdaderoFalso {
+
+    public PreguntaMultipleChoiceClasico(LinkedList<Opcion> opciones) {
         super(opciones);
    }
+
+
+
 
 }

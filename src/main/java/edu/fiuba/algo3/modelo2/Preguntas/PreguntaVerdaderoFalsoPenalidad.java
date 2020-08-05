@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.modelo2.Preguntas;
 
-import edu.fiuba.algo3.modelo2.ColeccionDeOpciones;
-import edu.fiuba.algo3.modelo2.EstadosDeRespuesta.RespondeMal;
 import edu.fiuba.algo3.modelo2.Opcion;
 import edu.fiuba.algo3.modelo2.OpcionCorrecta;
 import edu.fiuba.algo3.modelo2.OpcionIncorrecta;
@@ -15,15 +13,10 @@ public class PreguntaVerdaderoFalsoPenalidad extends PreguntaVerdaderoFalso {
         super(opciones);
     }
 
-    public Punto calificarOpcion(Opcion opcion){
-        return opcion.validarOpcion(this);
-    }
 
-    public Punto calificarOpcion(OpcionCorrecta opcion){
-        return new PuntoPositivo();
-    }
 
-    public Punto calificarOpcion(OpcionIncorrecta opcion){
-        return new PuntoNegativo();
+    public Puntaje calificarOpcion(OpcionIncorrecta opcion, Puntaje puntajeDeRespuesta) {
+        puntajeDeRespuesta.sumarPuntos(new PuntoNegativo());
+        return puntajeDeRespuesta;
     }
 }

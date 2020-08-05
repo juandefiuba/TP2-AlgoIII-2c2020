@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo2;
 
 import edu.fiuba.algo3.modelo2.Preguntas.PreguntaVerdaderoFalso;
-import edu.fiuba.algo3.modelo2.Puntos.Punto;
+import edu.fiuba.algo3.modelo2.Puntos.Puntaje;
 
 import java.util.LinkedList;
 
@@ -21,5 +21,5 @@ public interface Opcion {
 
     void obtenerPuntosDelJugador(Jugador jugador, LinkedList<Opcion> respuestasDelJugador);
 
-    Punto validarOpcion(PreguntaVerdaderoFalso preguntaVerdaderoFalso);
+    Puntaje validarOpcion(PreguntaVerdaderoFalso preguntaVerdaderoFalso, Puntaje puntajeDeRespuesta);
 }
