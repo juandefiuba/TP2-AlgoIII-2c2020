@@ -11,12 +11,12 @@ import edu.fiuba.algo3.modelo2.Puntos.PuntoPositivo;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public abstract class Pregunta {
+public class Pregunta { //esta clase podría ser abstracta, pero actualmente ningún método suyo lo es
 
     protected ColeccionDeOpciones opciones;
     protected LinkedList<Jugador> jugadores;
 
-    public Pregunta(ColeccionDeOpciones opciones) {
+    protected Pregunta(ColeccionDeOpciones opciones) {
         this.opciones = opciones;
         this.jugadores = new LinkedList<>();
     }
