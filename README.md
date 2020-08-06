@@ -1,7 +1,6 @@
 [![Build Status](https://travis-ci.org/juandefiuba/TP2-AlgoIII-2c2020.svg?branch=master)](https://travis-ci.org/juandefiuba/TP2-AlgoIII-2c2020)
 
-[![codecov](https://codecov.io/gh/juandefiuba/TP2AlgoIII-2c2020/branch/master/graph/badge.svg)](https://codecov.io/gh/juandefiuba/TP2-AlgoIII-2c2020)
-
+[![codecov](https://codecov.io/gh/juandefiuba/TP2-AlgoIII-2c2020/branch/master/graph/badge.svg)](https://codecov.io/gh/juandefiuba/TP2-AlgoIII-2c2020/branch/master/graph/badge.svg)
 
 
 # TP2 Algoritmos 3: Kahoot 🔺
