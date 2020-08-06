@@ -5,11 +5,11 @@ import edu.fiuba.algo3.modelo2.Puntos.*;
 
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Map;
 
 public class PreguntaVerdaderoFalso {
 
     protected LinkedList<Opcion> opciones;
-   // protected Dictionary<Jugador, LinkedList<Opcion>> respuestasDeJugadores;
 
     public PreguntaVerdaderoFalso(LinkedList<Opcion> opcionesDeLaPregunta) {
         this.opciones = opcionesDeLaPregunta;
@@ -20,12 +20,23 @@ public class PreguntaVerdaderoFalso {
     }*/
 
     public Puntaje puntuarJugador(Jugador jugador) {
+        Iterator iter = opciones.iterator();
         LinkedList<Opcion> respuestaDelJugador = new LinkedList<>();
         Puntaje puntajeDelJugador = new Puntaje();
 
-        opciones.forEach(opcion -> opcion.obtenerPuntosDelJugador(jugador, respuestaDelJugador));
+        opciones.forEach(opcion -> opcion.obtenerPuntosDelJugador(jugador,respuestaDelJugador));
 
-        respuestaDelJugador.forEach(opcion -> this.calificarOpcion(opcion, puntajeDelJugador));
+        iter = respuestaDelJugador.iterator();
+        Opcion opcionAuxiliar;
+        while (iter.hasNext()){
+            opcionAuxiliar = (Opcion)iter.next();
+            this.calificarOpcion(opcionAuxiliar,puntajeDelJugador);
+        }
+
+        //respuestaDelJugador.forEach(opcion -> puntajeDelJugador.sumarPuntos(this.calificarOpcion(opcion)));
+
+
+
         return puntajeDelJugador;
     }
 
@@ -33,8 +44,8 @@ public class PreguntaVerdaderoFalso {
         return opciones.iterator();
     }
 
-    public Puntaje calificarOpcion(Opcion opcion, Puntaje puntajeDeRespuesta){
-        return opcion.validarOpcion(this , puntajeDeRespuesta);
+    public Puntaje calificarOpcion(Opcion opcion, Puntaje puntajeDelJugador){
+        return opcion.validarOpcion(this, puntajeDelJugador);
     }
 
     public Puntaje calificarOpcion(OpcionCorrecta opcion, Puntaje puntajeDeRespuesta){

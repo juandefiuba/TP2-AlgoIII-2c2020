@@ -18,7 +18,11 @@ public class PuntajeNeutro extends Puntaje {
     public void sumarPuntos(PuntoNegativo unTipoDePunto) { }
 
     @Override
-    public void sumarPuntos(PuntoPositivo unTipoDePunto) {}
+    public void sumarPuntos(PuntoPositivo unTipoDePunto) {
+        int a = 1;
+        int b = 2;
+        a = b + a;
+    }
 
     @Override
     public void sumarPuntos(Puntaje unPuntajeAsumar){ }
