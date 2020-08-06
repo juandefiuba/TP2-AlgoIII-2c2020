@@ -1,55 +1,42 @@
 package edu.fiuba.algo3.modelo2.Preguntas;
 
-import edu.fiuba.algo3.modelo2.ColeccionDeOpciones;
-import edu.fiuba.algo3.modelo2.EstadosDeRespuesta.RespondeBien;
-import edu.fiuba.algo3.modelo2.EstadosDeRespuesta.RespondeMal;
-import edu.fiuba.algo3.modelo2.Jugador;
-import edu.fiuba.algo3.modelo2.Opcion;
+import edu.fiuba.algo3.modelo2.*;
 import edu.fiuba.algo3.modelo2.Puntos.Puntaje;
-import edu.fiuba.algo3.modelo2.Puntos.PuntoNeutro;
-import edu.fiuba.algo3.modelo2.Puntos.PuntoPositivo;
+import edu.fiuba.algo3.modelo2.Puntos.PuntajeNeutro;
 
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class Pregunta { //esta clase podría ser abstracta, pero actualmente ningún método suyo lo es
+public abstract class Pregunta { //esta clase podría ser abstracta, pero actualmente ningún método suyo lo es
 
-    protected ColeccionDeOpciones opciones;
-    protected LinkedList<Opcion> opcionesDeLaPregunta;
-    protected LinkedList<Jugador> jugadores;
+    protected LinkedList<Opcion> opciones;
 
-    protected Pregunta(ColeccionDeOpciones opciones) {
-        this.opciones = opciones;
-        this.jugadores = new LinkedList<>();
-        this.opcionesDeLaPregunta = new LinkedList<>();
+    protected Pregunta(LinkedList<Opcion> opcionesDeLaPregunta) {
+        this.opciones = opcionesDeLaPregunta;
+    }
+
+    public Puntaje puntuarJugador(Jugador jugador) {
+        LinkedList<Opcion> respuestaDelJugador = new LinkedList<>();
+        Puntaje puntajeDelJugador = new Puntaje();
+
+        opciones.forEach(opcion -> opcion.obtenerLRespuestaDelJugador(jugador, respuestaDelJugador));
+        Iterator iter = respuestaDelJugador.iterator();
+
+        while (iter.hasNext()){
+            Opcion opcionAuxiliar = (Opcion)iter.next();
+            puntajeDelJugador = this.calificarOpcion(opcionAuxiliar, puntajeDelJugador);
+        }
+        return puntajeDelJugador;
     }
 
     public Iterator obtenerOpciones() {
-        return this.opciones.obtenerIterador();
+        return opciones.iterator();
     }
 
-    public void puntuarJugadores() {
-        opciones.asignaEstadosDeRespuestasDeJugadores();
-        jugadores.forEach(jugador -> jugador.sumarPuntos(this));
+    public abstract Puntaje calificarOpcion(Opcion opcion, Puntaje puntajeDelJugador);
+    public abstract Puntaje calificarOpcion(OpcionCorrecta opcion, Puntaje puntajeDeRespuesta);
+    public Puntaje calificarOpcion(OpcionIncorrecta opcion, Puntaje puntajeDeRespuesta){
+        puntajeDeRespuesta = new PuntajeNeutro();
+        return puntajeDeRespuesta;
     }
-
-    public void registrarNuevoJugador(Jugador jugador) {
-        jugadores.add(jugador);
-        opciones.inscribirJugador(jugador);
-    }
-
-    //por default una pregunta devuelve 1 punto siempre que se responda la pregunta bien, salvo exepciones
-    public Puntaje calificarRespuesta(RespondeBien unEstadoRespuesta) {
-        Puntaje puntajeADevolver = new Puntaje();
-        puntajeADevolver.sumarPuntos(new PuntoPositivo());
-        return puntajeADevolver;
-    }
-
-    // devuelvo puntaje neutro por default, toda pregunta clasica devuelve este puntaje
-    public Puntaje calificarRespuesta(RespondeMal unEstadoRespuesta) {
-        Puntaje puntajeADevolver = new Puntaje();
-        puntajeADevolver.sumarPuntos(new PuntoNeutro());
-        return puntajeADevolver;
-    }
-
 }

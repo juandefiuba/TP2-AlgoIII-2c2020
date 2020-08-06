@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo2;
 
-import edu.fiuba.algo3.modelo2.Preguntas.PreguntaMultipleChoiceClasico;
-import edu.fiuba.algo3.modelo2.Preguntas.PreguntaVerdaderoFalsoPenalidad;
+import edu.fiuba.algo3.modelo2.Preguntas.PreguntaMultipleChoiceParcial;
 import edu.fiuba.algo3.modelo2.Puntos.Puntaje;
 import org.junit.jupiter.api.Test;
 
@@ -10,7 +9,7 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PreguntaMultipleChoiceClasicoTest {
+public class PreguntaMultipleChoiceParcialTest {
 
     @Test
     public void test01() {
@@ -23,7 +22,7 @@ public class PreguntaMultipleChoiceClasicoTest {
         opciones.add(opcion2);
         opciones.add(opcion3);
 
-        PreguntaMultipleChoiceClasico pregunta = new PreguntaMultipleChoiceClasico(opciones);
+        PreguntaMultipleChoiceParcial pregunta = new PreguntaMultipleChoiceParcial(opciones);
 
         Jugador jugador = new Jugador("Carlito");
 
@@ -53,7 +52,7 @@ public class PreguntaMultipleChoiceClasicoTest {
         opciones.add(opcion2);
         opciones.add(opcion3);
 
-        PreguntaMultipleChoiceClasico pregunta = new PreguntaMultipleChoiceClasico(opciones);
+        PreguntaMultipleChoiceParcial pregunta = new PreguntaMultipleChoiceParcial(opciones);
 
         Jugador jugador = new Jugador("Carlito");
 
@@ -82,7 +81,7 @@ public class PreguntaMultipleChoiceClasicoTest {
         opciones.add(opcion2);
         opciones.add(opcion3);
 
-        PreguntaMultipleChoiceClasico pregunta = new PreguntaMultipleChoiceClasico(opciones);
+        PreguntaMultipleChoiceParcial pregunta = new PreguntaMultipleChoiceParcial(opciones);
 
         Jugador jugador = new Jugador("Carlito");
 
@@ -112,7 +111,7 @@ public class PreguntaMultipleChoiceClasicoTest {
         opciones.add(opcion2);
         opciones.add(opcion3);
 
-        PreguntaMultipleChoiceClasico pregunta = new PreguntaMultipleChoiceClasico(opciones);
+        PreguntaMultipleChoiceParcial pregunta = new PreguntaMultipleChoiceParcial(opciones);
 
         Jugador jugador = new Jugador("Carlito");
 
@@ -129,7 +128,7 @@ public class PreguntaMultipleChoiceClasicoTest {
         Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
 
         //Assert
-        assertEquals(1, puntajeDelJugador.obtenerPuntos());
+        assertEquals(2, puntajeDelJugador.obtenerPuntos());
     }
 
     @Test
@@ -143,7 +142,7 @@ public class PreguntaMultipleChoiceClasicoTest {
         opciones.add(opcion2);
         opciones.add(opcion3);
 
-        PreguntaMultipleChoiceClasico pregunta = new PreguntaMultipleChoiceClasico(opciones);
+        PreguntaMultipleChoiceParcial pregunta = new PreguntaMultipleChoiceParcial(opciones);
 
         Jugador jugador = new Jugador("Carlito");
 
@@ -160,7 +159,7 @@ public class PreguntaMultipleChoiceClasicoTest {
         Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
 
         //Assert
-        assertEquals(0, puntajeDelJugador.obtenerPuntos());
+        assertEquals(1, puntajeDelJugador.obtenerPuntos());
     }
 
     @Test
@@ -174,7 +173,7 @@ public class PreguntaMultipleChoiceClasicoTest {
         opciones.add(opcion2);
         opciones.add(opcion3);
 
-        PreguntaMultipleChoiceClasico pregunta = new PreguntaMultipleChoiceClasico(opciones);
+        PreguntaMultipleChoiceParcial pregunta = new PreguntaMultipleChoiceParcial(opciones);
 
         Jugador jugador = new Jugador("Carlito");
 
@@ -205,7 +204,7 @@ public class PreguntaMultipleChoiceClasicoTest {
         opciones.add(opcion2);
         opciones.add(opcion3);
 
-        PreguntaMultipleChoiceClasico pregunta = new PreguntaMultipleChoiceClasico(opciones);
+        PreguntaMultipleChoiceParcial pregunta = new PreguntaMultipleChoiceParcial(opciones);
 
         Jugador jugador = new Jugador("Carlito");
 
@@ -236,7 +235,7 @@ public class PreguntaMultipleChoiceClasicoTest {
         opciones.add(opcion2);
         opciones.add(opcion3);
 
-        PreguntaMultipleChoiceClasico pregunta = new PreguntaMultipleChoiceClasico(opciones);
+        PreguntaMultipleChoiceParcial pregunta = new PreguntaMultipleChoiceParcial(opciones);
 
         Jugador jugador = new Jugador("Carlito");
 
@@ -253,40 +252,7 @@ public class PreguntaMultipleChoiceClasicoTest {
         Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
 
         //Assert
-        assertEquals(1, puntajeDelJugador.obtenerPuntos());
+        assertEquals(3, puntajeDelJugador.obtenerPuntos());
     }
-
-    @Test
-    public void test09() {
-        //Arrange se invierten los estados, ahora falso es correcto
-        Opcion opcion1 = new OpcionCorrecta();
-        Opcion opcion2 = new OpcionCorrecta();
-        Opcion opcion3 = new OpcionCorrecta();
-        LinkedList<Opcion> opciones = new LinkedList<>();
-        opciones.add(opcion1);
-        opciones.add(opcion2);
-        opciones.add(opcion3);
-
-        PreguntaMultipleChoiceClasico pregunta = new PreguntaMultipleChoiceClasico(opciones);
-
-        Jugador jugador = new Jugador("Carlito");
-
-        Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
-
-        opcion1 = (Opcion) iteradorDeOpciones.next();
-        opcion2 = (Opcion) iteradorDeOpciones.next();
-        opcion3 = (Opcion) iteradorDeOpciones.next();
-
-        opcion1.agregarJugadorQueLaEligio(jugador);
-        //opcion2.agregarJugadorQueLaEligio(jugador);
-        opcion3.agregarJugadorQueLaEligio(jugador);
-        //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
-
-        //Assert
-        assertEquals(0, puntajeDelJugador.obtenerPuntos());
-    }
-
-
-
+    
 }

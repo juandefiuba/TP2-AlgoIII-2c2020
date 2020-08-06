@@ -1,21 +1,27 @@
 package edu.fiuba.algo3.modelo2.Preguntas;
 
-import edu.fiuba.algo3.modelo2.ColeccionDeOpciones;
-import edu.fiuba.algo3.modelo2.EstadosDeRespuesta.RespondeBien;
-import edu.fiuba.algo3.modelo2.EstadosDeRespuesta.RespondeMal;
+import edu.fiuba.algo3.modelo2.Opcion;
+import edu.fiuba.algo3.modelo2.OpcionCorrecta;
 import edu.fiuba.algo3.modelo2.Puntos.Puntaje;
-import edu.fiuba.algo3.modelo2.Puntos.PuntoNeutro;
 import edu.fiuba.algo3.modelo2.Puntos.PuntoPositivo;
 
-public class PreguntaMultipleChoiceParcial extends Pregunta {
+import java.util.LinkedList;
 
-    public PreguntaMultipleChoiceParcial(ColeccionDeOpciones opciones) {
+public class PreguntaMultipleChoiceParcial extends Pregunta{
+
+    public PreguntaMultipleChoiceParcial(LinkedList<Opcion> opciones) {
         super(opciones);
     }
 
     @Override
-    public Puntaje calificarRespuesta(RespondeBien unEstadoRespuesta) {
-        return unEstadoRespuesta.obtenerPuntaje();
+    public Puntaje calificarOpcion(Opcion opcion, Puntaje puntajeDelJugador) {
+        return opcion.validarOpcion(this, puntajeDelJugador);
+    }
+
+    @Override
+    public Puntaje calificarOpcion(OpcionCorrecta opcion, Puntaje puntajeDeRespuesta) {
+        puntajeDeRespuesta.sumarPuntos(new PuntoPositivo());
+        return puntajeDeRespuesta;
     }
 
 }
