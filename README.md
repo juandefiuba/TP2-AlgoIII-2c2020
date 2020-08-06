@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/juandefiuba/TP2-AlgoIII-2c2020.svg?branch=master)](https://travis-ci.org/juandefiuba/TP2-AlgoIII-2c2020)
 
-[![codecov](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2/branch/master/graph/badge.svg)](https://codecov.io/gh/fiuba/algo3_proyecto_base_tp2)
+[![codecov](https://codecov.io/gh/juandefiuba/TP2-AlgoIII-2c2020/branch/develop/graph/badge.svg)](https://codecov.io/gh/juandefiuba/TP2-AlgoIII-2c2020/branch/develop/graph/badge.svg)
 
 
 
