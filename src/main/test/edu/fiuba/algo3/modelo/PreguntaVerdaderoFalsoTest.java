@@ -1,9 +1,9 @@
-package edu.fiuba.algo3.modelo2;
+package edu.fiuba.algo3.modelo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import edu.fiuba.algo3.modelo2.Preguntas.PreguntaVerdaderoFalso;
-import edu.fiuba.algo3.modelo2.Puntos.Puntaje;
+import edu.fiuba.algo3.modelo.Preguntas.PreguntaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.Puntos.Puntaje;
 import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;

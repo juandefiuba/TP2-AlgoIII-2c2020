@@ -1,6 +1,4 @@
-package edu.fiuba.algo3.modelo2.Puntos;
-
-import edu.fiuba.algo3.modelo2.Puntos.*;
+package edu.fiuba.algo3.modelo.Puntos;
 
 public class PuntajeNeutro extends Puntaje {
 
