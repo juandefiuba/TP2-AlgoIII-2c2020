@@ -1,9 +1,9 @@
-package edu.fiuba.algo3.modelo2.Preguntas;
+package edu.fiuba.algo3.modelo.Preguntas;
 
-import edu.fiuba.algo3.modelo2.Opcion;
-import edu.fiuba.algo3.modelo2.OpcionCorrecta;
-import edu.fiuba.algo3.modelo2.Puntos.Puntaje;
-import edu.fiuba.algo3.modelo2.Puntos.PuntoPositivo;
+import edu.fiuba.algo3.modelo.Opcion;
+import edu.fiuba.algo3.modelo.OpcionCorrecta;
+import edu.fiuba.algo3.modelo.Puntos.Puntaje;
+import edu.fiuba.algo3.modelo.Puntos.PuntoPositivo;
 
 import java.util.LinkedList;
 

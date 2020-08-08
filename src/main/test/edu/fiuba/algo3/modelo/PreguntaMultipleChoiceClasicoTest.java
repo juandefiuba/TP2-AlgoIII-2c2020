@@ -1,8 +1,7 @@
-package edu.fiuba.algo3.modelo2;
+package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo2.Preguntas.PreguntaMultipleChoiceClasico;
-import edu.fiuba.algo3.modelo2.Preguntas.PreguntaVerdaderoFalsoPenalidad;
-import edu.fiuba.algo3.modelo2.Puntos.Puntaje;
+import edu.fiuba.algo3.modelo.Preguntas.PreguntaMultipleChoiceClasico;
+import edu.fiuba.algo3.modelo.Puntos.Puntaje;
 import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;

@@ -1,13 +1,12 @@
-package edu.fiuba.algo3.modelo2.Preguntas;
+package edu.fiuba.algo3.modelo.Preguntas;
 
-import edu.fiuba.algo3.modelo2.Jugador;
-import edu.fiuba.algo3.modelo2.Opcion;
-import edu.fiuba.algo3.modelo2.OpcionCorrecta;
-import edu.fiuba.algo3.modelo2.OpcionIncorrecta;
-import edu.fiuba.algo3.modelo2.Puntos.Puntaje;
-import edu.fiuba.algo3.modelo2.Puntos.PuntajeNeutro;
-import edu.fiuba.algo3.modelo2.Puntos.PuntoEstatico;
-import edu.fiuba.algo3.modelo2.Puntos.PuntoPositivo;
+import edu.fiuba.algo3.modelo.Jugador;
+import edu.fiuba.algo3.modelo.Opcion;
+import edu.fiuba.algo3.modelo.OpcionCorrecta;
+import edu.fiuba.algo3.modelo.OpcionIncorrecta;
+import edu.fiuba.algo3.modelo.Puntos.Puntaje;
+import edu.fiuba.algo3.modelo.Puntos.PuntajeNeutro;
+import edu.fiuba.algo3.modelo.Puntos.PuntoEstatico;
 
 
 import java.util.Iterator;

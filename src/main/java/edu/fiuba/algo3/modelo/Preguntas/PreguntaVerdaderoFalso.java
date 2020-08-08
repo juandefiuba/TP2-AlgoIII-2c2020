@@ -1,7 +1,7 @@
-package edu.fiuba.algo3.modelo2.Preguntas;
+package edu.fiuba.algo3.modelo.Preguntas;
 
-import edu.fiuba.algo3.modelo2.*;
-import edu.fiuba.algo3.modelo2.Puntos.*;
+import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.Puntos.*;
 import java.util.LinkedList;
 
 public class PreguntaVerdaderoFalso extends Pregunta{

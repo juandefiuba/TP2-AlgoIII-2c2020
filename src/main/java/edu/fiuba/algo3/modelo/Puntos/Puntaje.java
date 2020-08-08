@@ -1,9 +1,4 @@
-package edu.fiuba.algo3.modelo2.Puntos;
-
-import edu.fiuba.algo3.modelo2.Puntos.Punto;
-import edu.fiuba.algo3.modelo2.Puntos.PuntoNegativo;
-import edu.fiuba.algo3.modelo2.Puntos.PuntoNeutro;
-import edu.fiuba.algo3.modelo2.Puntos.PuntoPositivo;
+package edu.fiuba.algo3.modelo.Puntos;
 
 public class Puntaje {
     int puntos;
