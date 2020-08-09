@@ -6,8 +6,8 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 public class ManejadorDeOpciones implements EventHandler<ActionEvent> {
-    public Jugador jugador;
-    public Opcion opcion;
+    private Jugador jugador;
+    private Opcion opcion;
 
     public ManejadorDeOpciones(Jugador jugador, Opcion opcion) {
         this.jugador = jugador;
