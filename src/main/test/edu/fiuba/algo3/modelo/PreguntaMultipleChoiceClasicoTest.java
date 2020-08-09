@@ -276,9 +276,17 @@ public class PreguntaMultipleChoiceClasicoTest {
         opcion2 = (Opcion) iteradorDeOpciones.next();
         opcion3 = (Opcion) iteradorDeOpciones.next();
 
-        opcion1.agregarJugadorQueLaEligio(jugador);
-        //opcion2.agregarJugadorQueLaEligio(jugador);
-        opcion3.agregarJugadorQueLaEligio(jugador);
+        LinkedList<Opcion> respuestas = new LinkedList<>();
+
+        respuestas.add(opcion1);
+        respuestas.add(opcion3);
+
+        pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+
+        /*opcion1.agregarJugadorQueLaEligio(jugador);
+        opcion2.agregarJugadorQueLaEligio(jugador);
+        opcion3.agregarJugadorQueLaEligio(jugador);*/
+
         //Act
         Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
 
