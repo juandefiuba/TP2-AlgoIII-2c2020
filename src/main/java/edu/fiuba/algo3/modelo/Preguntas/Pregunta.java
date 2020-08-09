@@ -10,33 +10,34 @@ import java.util.LinkedList;
 public abstract class Pregunta { //esta clase podría ser abstracta, pero actualmente ningún método suyo lo es
 
     protected LinkedList<Opcion> opciones;
+    public Puntaje puntajeDelJugador;
 
     protected Pregunta(LinkedList<Opcion> opcionesDeLaPregunta) {
+        this.puntajeDelJugador = new PuntajeNeutro();
         this.opciones = opcionesDeLaPregunta;
     }
 
+
     public Puntaje puntuarJugador(Jugador jugador) {
         LinkedList<Opcion> respuestaDelJugador = new LinkedList<>();
-        Puntaje puntajeDelJugador = new Puntaje();
+        this.puntajeDelJugador = new Puntaje();
 
-        opciones.forEach(opcion -> opcion.obtenerLRespuestaDelJugador(jugador, respuestaDelJugador));
-        Iterator iter = respuestaDelJugador.iterator();
+        this.armarListaDeRespuestaDelJugador(jugador,respuestaDelJugador);
+        respuestaDelJugador.forEach(opcion -> this.calificarOpcion(opcion));
 
-        while (iter.hasNext()){
-            Opcion opcionAuxiliar = (Opcion)iter.next();
-            puntajeDelJugador = this.calificarOpcion(opcionAuxiliar, puntajeDelJugador);
-        }
         return puntajeDelJugador;
+    }
+
+    protected void armarListaDeRespuestaDelJugador(Jugador jugador, LinkedList<Opcion> respuesta){
+        opciones.forEach(opcion -> opcion.obtenerLRespuestaDelJugador(jugador, respuesta) );
     }
 
     public Iterator obtenerOpciones() {
         return opciones.iterator();
     }
-
-    public abstract Puntaje calificarOpcion(Opcion opcion, Puntaje puntajeDelJugador);
-    public abstract Puntaje calificarOpcion(OpcionCorrecta opcion, Puntaje puntajeDeRespuesta);
-    public Puntaje calificarOpcion(OpcionIncorrecta opcion, Puntaje puntajeDeRespuesta){
-        puntajeDeRespuesta = new PuntajeNeutro();
-        return puntajeDeRespuesta;
+    public void calificarOpcion(Opcion opcion){
+        opcion.validarOpcion(this);
     }
+    public abstract void calificarOpcion(OpcionCorrecta opcion);
+    public abstract void calificarOpcion(OpcionIncorrecta opcion);
 }

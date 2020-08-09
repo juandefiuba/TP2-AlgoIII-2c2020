@@ -6,18 +6,19 @@ import java.util.LinkedList;
 
 public class PreguntaVerdaderoFalso extends Pregunta{
 
-    protected LinkedList<Opcion> opciones;
-
     public PreguntaVerdaderoFalso(LinkedList<Opcion> opcionesDeLaPregunta) {
         super(opcionesDeLaPregunta);
     }
 
-    public Puntaje calificarOpcion(Opcion opcion, Puntaje puntajeDelJugador){
-        return opcion.validarOpcion(this, puntajeDelJugador);
+    public void calificarOpcion(Opcion opcion){
+        opcion.validarOpcion(this);
     }
 
-    public Puntaje calificarOpcion(OpcionCorrecta opcion, Puntaje puntajeDeRespuesta){
-        puntajeDeRespuesta.sumarPuntos(new PuntoPositivo());
-        return puntajeDeRespuesta;
+    public void calificarOpcion(OpcionCorrecta opcion){
+        this.puntajeDelJugador.sumarPuntos(new PuntoPositivo());
+    }
+
+    public void calificarOpcion(OpcionIncorrecta opcion){
+        this.puntajeDelJugador = new PuntajeNeutro();
     }
 }
