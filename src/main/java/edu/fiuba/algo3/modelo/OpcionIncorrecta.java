@@ -1,7 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.Puntos.Puntaje;
 
 import java.util.LinkedList;
 
@@ -23,14 +22,15 @@ public class OpcionIncorrecta implements Opcion{
         this.jugadoresQueEligieronEstaOpcion.add(jugador);
     }
 
-    @Override
-    public Puntaje validarOpcion(Pregunta pregunta, Puntaje puntajeDeRespuesta) {
-        return pregunta.calificarOpcion(this, puntajeDeRespuesta);
-    }
 
     @Override
     public void agregarOpcionesCorrectasNoElegidas(Jugador jugador, LinkedList<Opcion> opcionesCorrectasNoElegidasPorElJugador) {
 
+    }
+
+    @Override
+    public void validarOpcion(Pregunta pregunta) {
+        pregunta.calificarOpcion(this);
     }
 
 }

@@ -9,50 +9,40 @@ import edu.fiuba.algo3.modelo.Puntos.PuntajeNeutro;
 import edu.fiuba.algo3.modelo.Puntos.PuntoEstatico;
 
 
-import java.util.Iterator;
 import java.util.LinkedList;
 
 public class PreguntaMultipleChoiceClasico extends Pregunta {
+
 
     public PreguntaMultipleChoiceClasico(LinkedList<Opcion> opciones) {
         super(opciones);
    }
 
+   @Override
     public Puntaje puntuarJugador(Jugador jugador) {
+
+        this.puntajeDelJugador = new Puntaje();
+
         LinkedList<Opcion> respuestaDelJugador = new LinkedList<>();
+        this.armarListaDeRespuestaDelJugador(jugador,respuestaDelJugador);
+        respuestaDelJugador.forEach(opcion -> this.calificarOpcion(opcion));
+
         LinkedList<Opcion> opcionesCorrectasNoElegidasPorElJugador = new LinkedList<>();
-        Puntaje puntajeDelJugador = new Puntaje();
-
-        opciones.forEach(opcion -> opcion.obtenerLRespuestaDelJugador(jugador, respuestaDelJugador));
         opciones.forEach(opcion -> opcion.agregarOpcionesCorrectasNoElegidas(jugador, opcionesCorrectasNoElegidasPorElJugador));
-        Iterator iter = respuestaDelJugador.iterator();
 
-        while (iter.hasNext()){
-            Opcion opcionAuxiliar = (Opcion)iter.next();
-            puntajeDelJugador = this.calificarOpcion(opcionAuxiliar, puntajeDelJugador);
+        if(!opcionesCorrectasNoElegidasPorElJugador.isEmpty()){
+            this.puntajeDelJugador = new PuntajeNeutro();
         }
 
-        Iterator iter2 = opcionesCorrectasNoElegidasPorElJugador.iterator();
-
-        while (iter2.hasNext()){
-            iter2.next();
-            puntajeDelJugador = this.calificarOpcion(new OpcionIncorrecta(), puntajeDelJugador);
-        }
-
-        return puntajeDelJugador;
+        return this.puntajeDelJugador;
     }
-
-    public Puntaje calificarOpcion(Opcion opcion, Puntaje puntajeDelJugador){
-        return opcion.validarOpcion(this, puntajeDelJugador);
+    @Override
+    public void calificarOpcion(OpcionCorrecta opcion){
+        this.puntajeDelJugador.sumarPuntos(new PuntoEstatico());
     }
+    @Override
+    public void calificarOpcion(OpcionIncorrecta opcion){
+        this.puntajeDelJugador = new PuntajeNeutro();
 
-    public Puntaje calificarOpcion(OpcionCorrecta opcion, Puntaje puntajeDeRespuesta){
-        puntajeDeRespuesta.sumarPuntos(new PuntoEstatico());
-        return puntajeDeRespuesta;
-    }
-
-    public Puntaje calificarOpcion(OpcionIncorrecta opcion, Puntaje puntajeDeRespuesta){
-        puntajeDeRespuesta = new PuntajeNeutro();
-        return puntajeDeRespuesta;
     }
 }
