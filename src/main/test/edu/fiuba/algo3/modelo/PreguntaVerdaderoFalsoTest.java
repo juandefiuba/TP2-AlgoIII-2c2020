@@ -2,6 +2,9 @@ package edu.fiuba.algo3.modelo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import edu.fiuba.algo3.modelo.Opcion.Opcion;
+import edu.fiuba.algo3.modelo.Opcion.OpcionCorrecta;
+import edu.fiuba.algo3.modelo.Opcion.OpcionIncorrecta;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.Puntos.Puntaje;
 import org.junit.jupiter.api.Test;

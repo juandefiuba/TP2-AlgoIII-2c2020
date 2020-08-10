@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.Opcion.*;
 import edu.fiuba.algo3.modelo.Puntos.Puntaje;
 import edu.fiuba.algo3.modelo.Puntos.PuntajeNeutro;
 import edu.fiuba.algo3.modelo.Puntos.PuntoPositivo;
@@ -24,23 +25,23 @@ public class PreguntaOrderedChoice extends Pregunta{
         try {
             while (iterOpciones.hasNext()) {
                 if (iterOpciones.next() != iterRespuesta.next()) {
-                    this.calificarOpcion(new OpcionIncorrecta());
+                    this.calificarRespuesta(new RespondeMal());
                 }
             }
         }catch (NoSuchElementException nse){
-            this.calificarOpcion(new OpcionIncorrecta());
+            this.calificarRespuesta(new RespondeMal());
         }
-        this.calificarOpcion(new OpcionCorrecta());
+        this.calificarRespuesta(new RespondeBien());
         return this.puntajeDelJugador;
     }
 
     @Override
-    public void calificarOpcion(OpcionCorrecta opcion) {
+    public void calificarRespuesta(RespondeBien calificador) {
         this.puntajeDelJugador.sumarPuntos(new PuntoPositivo());
     }
 
     @Override
-    public void calificarOpcion(OpcionIncorrecta opcion) {
-        this.puntajeDelJugador = new PuntajeNeutro();
+    public void calificarRespuesta(RespondeMal calificador) {
+    this.puntajeDelJugador = new PuntajeNeutro();
     }
 }

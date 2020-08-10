@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.Opcion.Opcion;
+import edu.fiuba.algo3.modelo.Opcion.RespondeBien;
+import edu.fiuba.algo3.modelo.Opcion.RespondeMal;
 import edu.fiuba.algo3.modelo.Puntos.Puntaje;
 import edu.fiuba.algo3.modelo.Puntos.PuntajeNeutro;
 
@@ -25,18 +28,18 @@ public abstract class Pregunta { //esta clase podría ser abstracta, pero actual
         this.puntajeDelJugador = new Puntaje();
         LinkedList<Opcion> respuestaDelJugador = this.respuestasDeLosJugadores.get(jugador);
 
-        respuestaDelJugador.forEach(opcion -> this.calificarOpcion(opcion));
+        respuestaDelJugador.forEach(opcion -> this.calificarRespuesta(opcion));
         return this.puntajeDelJugador;
     }
 
     public Iterator obtenerOpciones() {
         return opciones.iterator();
     }
-    public void calificarOpcion(Opcion opcion){
+    public void calificarRespuesta(Opcion opcion){
         opcion.validarOpcion(this);
     }
-    public abstract void calificarOpcion(OpcionCorrecta opcion);
-    public abstract void calificarOpcion(OpcionIncorrecta opcion);
+    public abstract void calificarRespuesta(RespondeBien calificador);
+    public abstract void calificarRespuesta(RespondeMal calificador);
 
     public void agregarRespuestaDeJugador(Jugador jugador, LinkedList<Opcion> respuestas){
         this.respuestasDeLosJugadores.put(jugador, respuestas);

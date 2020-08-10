@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
-import edu.fiuba.algo3.modelo.Opcion;
-import edu.fiuba.algo3.modelo.OpcionCorrecta;
-import edu.fiuba.algo3.modelo.OpcionIncorrecta;
+import edu.fiuba.algo3.modelo.Opcion.Opcion;
+import edu.fiuba.algo3.modelo.Opcion.RespondeBien;
+import edu.fiuba.algo3.modelo.Opcion.RespondeMal;
 import edu.fiuba.algo3.modelo.Puntos.PuntoNegativo;
 import edu.fiuba.algo3.modelo.Puntos.PuntoPositivo;
 
@@ -15,13 +15,14 @@ public class PreguntaMultipleChoicePenalidad extends Pregunta {
     }
 
     @Override
-    public void calificarOpcion(OpcionCorrecta opcion) {
+    public void calificarRespuesta(RespondeBien calificador) {
 
         this.puntajeDelJugador.sumarPuntos(new PuntoPositivo());
     }
 
     @Override
-    public void calificarOpcion(OpcionIncorrecta opcion) {
+    public void calificarRespuesta(RespondeMal calificador) {
+
         this.puntajeDelJugador.sumarPuntos(new PuntoNegativo());
     }
 }

@@ -1,5 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
+import edu.fiuba.algo3.modelo.Opcion.Opcion;
+import edu.fiuba.algo3.modelo.Opcion.OpcionCorrecta;
+import edu.fiuba.algo3.modelo.Opcion.OpcionIncorrecta;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaMultipleChoicePenalidad;
 import edu.fiuba.algo3.modelo.Puntos.Puntaje;
 import org.junit.jupiter.api.Test;
