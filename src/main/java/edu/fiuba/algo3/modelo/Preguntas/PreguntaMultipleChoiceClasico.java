@@ -22,13 +22,14 @@ public class PreguntaMultipleChoiceClasico extends Pregunta {
     public Puntaje puntuarJugador(Jugador jugador) {
 
         this.puntajeDelJugador = new Puntaje();
+        LinkedList<Opcion> respuestaDelJugador = this.respuestasDeLosJugadores.get(jugador);
 
-        LinkedList<Opcion> respuestaDelJugador = new LinkedList<>();
-        this.armarListaDeRespuestaDelJugador(jugador,respuestaDelJugador);
         respuestaDelJugador.forEach(opcion -> this.calificarOpcion(opcion));
 
-        LinkedList<Opcion> opcionesCorrectasNoElegidasPorElJugador = new LinkedList<>();
-        opciones.forEach(opcion -> opcion.agregarOpcionesCorrectasNoElegidas(jugador, opcionesCorrectasNoElegidasPorElJugador));
+        LinkedList<Opcion> opcionesCorrectas = new LinkedList<>();
+        opciones.forEach(opcion -> opcion.agregarOpcionesCorrectas(opcionesCorrectas));
+        opcionesCorrectas.removeAll(respuestaDelJugador);
+        LinkedList<Opcion> opcionesCorrectasNoElegidasPorElJugador = opcionesCorrectas;
 
         if(!opcionesCorrectasNoElegidasPorElJugador.isEmpty()){
             this.puntajeDelJugador = new PuntajeNeutro();
@@ -36,6 +37,7 @@ public class PreguntaMultipleChoiceClasico extends Pregunta {
 
         return this.puntajeDelJugador;
     }
+
     @Override
     public void calificarOpcion(OpcionCorrecta opcion){
         this.puntajeDelJugador.sumarPuntos(new PuntoEstatico());
@@ -43,6 +45,5 @@ public class PreguntaMultipleChoiceClasico extends Pregunta {
     @Override
     public void calificarOpcion(OpcionIncorrecta opcion){
         this.puntajeDelJugador = new PuntajeNeutro();
-
     }
 }

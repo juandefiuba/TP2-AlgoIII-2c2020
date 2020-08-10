@@ -33,6 +33,7 @@ public class PreguntaVerdaderoFalsoTest {
 		LinkedList<Opcion> respuestas = new LinkedList<>();
 
 		respuestas.add(opcionVerdadero);
+		pregunta.agregarRespuestaDeJugador(jugador, respuestas);
 
 		//Act
 		Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
@@ -62,7 +63,8 @@ public class PreguntaVerdaderoFalsoTest {
 
 		LinkedList<Opcion> respuestas = new LinkedList<>();
 
-		respuestas.add(opcionFalso);
+		respuestas.add(opcionVerdadero);
+		pregunta.agregarRespuestaDeJugador(jugador, respuestas);
 
 		//Act
 		Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
@@ -93,6 +95,7 @@ public class PreguntaVerdaderoFalsoTest {
 		LinkedList<Opcion> respuestas = new LinkedList<>();
 
 		respuestas.add(opcionFalso);
+		pregunta.agregarRespuestaDeJugador(jugador, respuestas);
 
 		//Act
 		Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
@@ -122,6 +125,7 @@ public class PreguntaVerdaderoFalsoTest {
 		LinkedList<Opcion> respuestas = new LinkedList<>();
 
 		respuestas.add(opcionFalso);
+		pregunta.agregarRespuestaDeJugador(jugador, respuestas);
 
 		//Act
 		Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);

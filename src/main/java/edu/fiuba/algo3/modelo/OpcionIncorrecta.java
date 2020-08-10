@@ -11,10 +11,8 @@ public class OpcionIncorrecta implements Opcion{
         jugadoresQueEligieronEstaOpcion = new LinkedList<>();
     }
 
-    public void obtenerLRespuestaDelJugador(Jugador jugador, LinkedList<Opcion> respuestasDelJugador) {
-        if (jugadoresQueEligieronEstaOpcion.contains(jugador)){
-            respuestasDelJugador.add(this);
-        }
+    @Override
+    public void agregarOpcionesCorrectas(LinkedList<Opcion> opcionesCorrectas) {
     }
 
     @Override
@@ -22,11 +20,6 @@ public class OpcionIncorrecta implements Opcion{
         this.jugadoresQueEligieronEstaOpcion.add(jugador);
     }
 
-
-    @Override
-    public void agregarOpcionesCorrectasNoElegidas(Jugador jugador, LinkedList<Opcion> opcionesCorrectasNoElegidasPorElJugador) {
-
-    }
 
     @Override
     public void validarOpcion(Pregunta pregunta) {
