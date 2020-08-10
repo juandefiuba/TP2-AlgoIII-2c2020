@@ -32,8 +32,13 @@ public class PreguntaPreguntaMultipleChoicePenalidadTest {
         opcion2 = (Opcion) iteradorDeOpciones.next();
         opcion3 = (Opcion) iteradorDeOpciones.next();
 
-        opcion1.agregarJugadorQueLaEligio(jugador);
-        opcion2.agregarJugadorQueLaEligio(jugador);
+        LinkedList<Opcion> respuestas = new LinkedList<>();
+
+        respuestas.add(opcion1);
+        respuestas.add(opcion2);
+
+        pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+
         //Act
         Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
 
@@ -62,9 +67,13 @@ public class PreguntaPreguntaMultipleChoicePenalidadTest {
         opcion2 = (Opcion) iteradorDeOpciones.next();
         opcion3 = (Opcion) iteradorDeOpciones.next();
 
-        opcion1.agregarJugadorQueLaEligio(jugador);
-        opcion2.agregarJugadorQueLaEligio(jugador);
-        opcion3.agregarJugadorQueLaEligio(jugador);
+        LinkedList<Opcion> respuestas = new LinkedList<>();
+
+        respuestas.add(opcion1);
+        respuestas.add(opcion2);
+        respuestas.add(opcion3);
+
+        pregunta.agregarRespuestaDeJugador(jugador, respuestas);
 
         //Act
         Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
@@ -93,7 +102,12 @@ public class PreguntaPreguntaMultipleChoicePenalidadTest {
         opcion2 = (Opcion) iteradorDeOpciones.next();
         opcion3 = (Opcion) iteradorDeOpciones.next();
 
-        opcion1.agregarJugadorQueLaEligio(jugador);
+        LinkedList<Opcion> respuestas = new LinkedList<>();
+
+        respuestas.add(opcion1);
+
+        pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+
 
         //Act
         Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
@@ -123,8 +137,13 @@ public class PreguntaPreguntaMultipleChoicePenalidadTest {
         opcion2 = (Opcion) iteradorDeOpciones.next();
         opcion3 = (Opcion) iteradorDeOpciones.next();
 
-        opcion1.agregarJugadorQueLaEligio(jugador);
-        opcion2.agregarJugadorQueLaEligio(jugador);
+        LinkedList<Opcion> respuestas = new LinkedList<>();
+
+        respuestas.add(opcion1);
+        respuestas.add(opcion2);
+
+        pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+
 
         //Act
         Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
@@ -154,9 +173,12 @@ public class PreguntaPreguntaMultipleChoicePenalidadTest {
         opcion2 = (Opcion) iteradorDeOpciones.next();
         opcion3 = (Opcion) iteradorDeOpciones.next();
 
+        LinkedList<Opcion> respuestas = new LinkedList<>();
 
-        opcion2.agregarJugadorQueLaEligio(jugador);
-        opcion3.agregarJugadorQueLaEligio(jugador);
+        respuestas.add(opcion2);
+        respuestas.add(opcion3);
+
+        pregunta.agregarRespuestaDeJugador(jugador, respuestas);
 
         //Act
         Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);

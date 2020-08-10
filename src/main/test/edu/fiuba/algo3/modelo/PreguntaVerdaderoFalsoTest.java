@@ -11,22 +11,6 @@ import java.util.LinkedList;
 
 public class PreguntaVerdaderoFalsoTest {
 
-	/*@Test
-	public void test01CrearPreguntaVerdaderoFalso(){
-		Opcion opcionVerdadero = new Opcion(new Correcto());
-		Opcion opcionFalso = new Opcion(new Incorrecto());
-
-		ColeccionDeOpciones opciones = new ColeccionDeOpciones();
-		opciones.agregarOpcion(opcionVerdadero);
-		opciones.agregarOpcion(opcionFalso);
-
-		PreguntaVerdaderoFalso pregunta = new PreguntaVerdaderoFalso(opciones);
-
-		Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
-
-		assertEquals(opcionVerdadero, iteradorDeOpciones.next());
-	}*/
-
 	@Test
 	public void test02JugadorRespondeCorrectamenteSumaUnPunto() {
 		//Arrange
@@ -46,7 +30,9 @@ public class PreguntaVerdaderoFalsoTest {
 		opcionVerdadero = (Opcion) iteradorDeOpciones.next();
 		opcionFalso = (Opcion) iteradorDeOpciones.next();
 
-		opcionVerdadero.agregarJugadorQueLaEligio(jugador);
+		LinkedList<Opcion> respuestas = new LinkedList<>();
+
+		respuestas.add(opcionVerdadero);
 
 		//Act
 		Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
@@ -73,7 +59,10 @@ public class PreguntaVerdaderoFalsoTest {
 		opcionVerdadero = (Opcion) iteradorDeOpciones.next();
 		opcionFalso = (Opcion) iteradorDeOpciones.next();
 
-		opcionVerdadero.agregarJugadorQueLaEligio(jugador);
+
+		LinkedList<Opcion> respuestas = new LinkedList<>();
+
+		respuestas.add(opcionFalso);
 
 		//Act
 		Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
@@ -101,7 +90,9 @@ public class PreguntaVerdaderoFalsoTest {
 		opcionVerdadero = (Opcion) iteradorDeOpciones.next();
 		opcionFalso = (Opcion) iteradorDeOpciones.next();
 
-		opcionFalso.agregarJugadorQueLaEligio(jugador);
+		LinkedList<Opcion> respuestas = new LinkedList<>();
+
+		respuestas.add(opcionFalso);
 
 		//Act
 		Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
@@ -123,15 +114,14 @@ public class PreguntaVerdaderoFalsoTest {
 
 		Jugador jugador = new Jugador("Carlito");
 
-
 		Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
 		opcionVerdadero = (Opcion) iteradorDeOpciones.next();
 		opcionFalso = (Opcion) iteradorDeOpciones.next();
 
-		//jugador.elegirOpcion(opcionVerdadero);
-		//jugador.activarMultiplicador();
-		opcionFalso.agregarJugadorQueLaEligio(jugador);
+		LinkedList<Opcion> respuestas = new LinkedList<>();
+
+		respuestas.add(opcionFalso);
 
 		//Act
 		Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);

@@ -29,7 +29,11 @@ public class PreguntaVerdaderoFalsoConPenalidadTest {
         opcionVerdadero = (Opcion) iteradorDeOpciones.next();
         opcionFalso = (Opcion) iteradorDeOpciones.next();
 
-        opcionVerdadero.agregarJugadorQueLaEligio(jugador);
+        LinkedList<Opcion> respuestas = new LinkedList<>();
+
+        respuestas.add(opcionVerdadero);
+
+        pregunta.agregarRespuestaDeJugador(jugador, respuestas);
 
         //Act
         Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
@@ -56,7 +60,9 @@ public class PreguntaVerdaderoFalsoConPenalidadTest {
         opcionVerdadero = (Opcion) iteradorDeOpciones.next();
         opcionFalso = (Opcion) iteradorDeOpciones.next();
 
-        opcionFalso.agregarJugadorQueLaEligio(jugador);
+        LinkedList<Opcion> respuestas = new LinkedList<>();
+
+        respuestas.add(opcionFalso);
 
         //Act
         Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
@@ -84,8 +90,9 @@ public class PreguntaVerdaderoFalsoConPenalidadTest {
         opcionVerdadero = (Opcion) iteradorDeOpciones.next();
         opcionFalso = (Opcion) iteradorDeOpciones.next();
 
-        opcionFalso.agregarJugadorQueLaEligio(jugador);
+        LinkedList<Opcion> respuestas = new LinkedList<>();
 
+        respuestas.add(opcionFalso);
         //Act
         Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
 
@@ -112,9 +119,11 @@ public class PreguntaVerdaderoFalsoConPenalidadTest {
         opcionVerdadero = (Opcion) iteradorDeOpciones.next();
         opcionFalso = (Opcion) iteradorDeOpciones.next();
 
-        //jugador.elegirOpcion(opcionVerdadero);
-        //jugador.activarMultiplicador();
-        opcionVerdadero.agregarJugadorQueLaEligio(jugador);
+        LinkedList<Opcion> respuestas = new LinkedList<>();
+
+        respuestas.add(opcionVerdadero);
+
+        pregunta.agregarRespuestaDeJugador(jugador, respuestas);
 
         //Act
         Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
