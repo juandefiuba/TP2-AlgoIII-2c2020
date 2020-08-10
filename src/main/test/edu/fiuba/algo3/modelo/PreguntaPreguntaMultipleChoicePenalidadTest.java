@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PreguntaPreguntaMultipleChoicePenalidadTest {
 
     @Test
-    public void test01() {
+    public void test01JugadorRespondeOpciones1Correcta1IncorrectaDeMCPenalidadYGana0Puntos() {
         //Arrange se invierten los estados, ahora falso es correcto
         Opcion opcion1 = new OpcionCorrecta();
         Opcion opcion2 = new OpcionIncorrecta();
@@ -47,7 +47,7 @@ public class PreguntaPreguntaMultipleChoicePenalidadTest {
     }
 
     @Test
-    public void test02() {
+    public void test02JugadorRespondeOpciones1Correcta2IncorrectaDeMCPenalidadYPierde1Punto() {
         //Arrange se invierten los estados, ahora falso es correcto
         Opcion opcion1 = new OpcionIncorrecta();
         Opcion opcion2 = new OpcionCorrecta();
@@ -81,8 +81,9 @@ public class PreguntaPreguntaMultipleChoicePenalidadTest {
         //Assert
         assertEquals(-1, puntajeDelJugador.obtenerPuntos());
     }
+
     @Test
-    public void test03() {
+    public void test03JugadorResponde1OpcionIncorrectaDeMCPenalidadYPierde1Punto() {
         //Arrange se invierten los estados, ahora falso es correcto
         Opcion opcion1 = new OpcionIncorrecta();
         Opcion opcion2 = new OpcionIncorrecta();
@@ -117,7 +118,7 @@ public class PreguntaPreguntaMultipleChoicePenalidadTest {
     }
 
     @Test
-    public void test04() {
+    public void test04JugadorResponde2OpcionesIncorrectasDeMCPenalidadYPierde2Puntos() {
         //Arrange se invierten los estados, ahora falso es correcto
         Opcion opcion1 = new OpcionIncorrecta();
         Opcion opcion2 = new OpcionIncorrecta();
@@ -153,7 +154,7 @@ public class PreguntaPreguntaMultipleChoicePenalidadTest {
     }
 
     @Test
-    public void test05() {
+    public void test05JugadorResponde2OpcionesCorrectasDeMCPenalidadYGana2Puntos() {
         //Arrange se invierten los estados, ahora falso es correcto
         Opcion opcion1 = new OpcionIncorrecta();
         Opcion opcion2 = new OpcionCorrecta();

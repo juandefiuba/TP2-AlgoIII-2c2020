@@ -12,7 +12,7 @@ import java.util.LinkedList;
 public class PreguntaVerdaderoFalsoTest {
 
 	@Test
-	public void test02JugadorRespondeCorrectamenteSumaUnPunto() {
+	public void test01JugadorRespondeCorrectamenteSumaUnPunto() {
 		//Arrange
 		Opcion opcionVerdadero = new OpcionCorrecta();
 		Opcion opcionFalso = new OpcionIncorrecta();
@@ -43,7 +43,7 @@ public class PreguntaVerdaderoFalsoTest {
 	}
 
 	@Test
-	public void test03JugadorRespondeMalNoRecibePunto() {
+	public void test02JugadorRespondeMalNoRecibePunto() {
 		Opcion opcionVerdadero = new OpcionIncorrecta();
 		Opcion opcionFalso = new OpcionCorrecta();
 
@@ -74,7 +74,7 @@ public class PreguntaVerdaderoFalsoTest {
 	}
 
 	@Test
-	public void test04JugadorRespondeCorrectamenteSumaUnPunto() {
+	public void test03JugadorRespondeCorrectamenteSumaUnPunto() {
 		//Arrange se invierten los estados, ahora falso es correcto
 		Opcion opcionVerdadero = new OpcionIncorrecta();
 		Opcion opcionFalso = new OpcionCorrecta();
@@ -105,7 +105,7 @@ public class PreguntaVerdaderoFalsoTest {
 	}
 
 	@Test
-	public void test05JugadorRespondeMalNoRecibePunto() {
+	public void test04JugadorRespondeMalNoRecibePunto() {
 		Opcion opcionVerdadero = new OpcionIncorrecta();
 		Opcion opcionFalso = new OpcionCorrecta();
 

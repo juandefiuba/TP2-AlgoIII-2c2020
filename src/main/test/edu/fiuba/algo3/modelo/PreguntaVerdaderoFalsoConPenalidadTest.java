@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class PreguntaVerdaderoFalsoConPenalidadTest {
     @Test
-    public void test02JugadorRespondeCorrectamenteSumaUnPunto() {
+    public void test01JugadorRespondeCorrectamenteSumaUnPunto() {
         //Arrange
         Opcion opcionVerdadero = new OpcionCorrecta();
         Opcion opcionFalso = new OpcionIncorrecta();
@@ -43,7 +43,7 @@ public class PreguntaVerdaderoFalsoConPenalidadTest {
     }
 
     @Test
-    public void test03JugadorRespondeMalRecibePuntoNegativo() {
+    public void test02JugadorRespondeMalRecibePuntoNegativo() {
         Opcion opcionVerdadero = new OpcionCorrecta();
         Opcion opcionFalso = new OpcionIncorrecta();
 
@@ -73,7 +73,7 @@ public class PreguntaVerdaderoFalsoConPenalidadTest {
     }
 
     @Test
-    public void test04JugadorRespondeCorrectamenteSumaUnPunto() {
+    public void test03JugadorRespondeCorrectamenteSumaUnPunto() {
         //Arrange se invierten los estados, ahora falso es correcto
         Opcion opcionVerdadero = new OpcionIncorrecta();
         Opcion opcionFalso = new OpcionCorrecta();
@@ -103,7 +103,7 @@ public class PreguntaVerdaderoFalsoConPenalidadTest {
     }
 
     @Test
-    public void test05JugadorRespondeMalRecibePuntoNegativo() {
+    public void test04JugadorRespondeMalRecibePuntoNegativo() {
         Opcion opcionVerdadero = new OpcionIncorrecta();
         Opcion opcionFalso = new OpcionCorrecta();
 
