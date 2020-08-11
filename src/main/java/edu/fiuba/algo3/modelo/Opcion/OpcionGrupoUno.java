@@ -5,23 +5,17 @@ import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 
 import java.util.LinkedList;
 
-public class OpcionCorrecta implements Opcion{
-
-    LinkedList<Jugador> jugadoresQueEligieronEstaOpcion;
-
-    public OpcionCorrecta() {
-        jugadoresQueEligieronEstaOpcion = new LinkedList<>();
-    }
+public class OpcionGrupoUno implements Opcion {
 
 
     @Override
     public void agregarOpcionesCorrectas(LinkedList<Opcion> opcionesCorrectas) {
-        opcionesCorrectas.add(this);
+
     }
 
     @Override
     public void enlistarGrupoUno(LinkedList<Opcion> opcionesgrupoUno) {
-
+        opcionesgrupoUno.add(this);
     }
 
     @Override
@@ -31,7 +25,6 @@ public class OpcionCorrecta implements Opcion{
 
     @Override
     public void validarOpcion(Pregunta pregunta) {
-        pregunta.calificarRespuesta(new RespondeBien());
-    }
 
+    }
 }

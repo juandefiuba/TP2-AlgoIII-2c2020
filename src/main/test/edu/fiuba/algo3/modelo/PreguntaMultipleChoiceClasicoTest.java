@@ -16,7 +16,7 @@ public class PreguntaMultipleChoiceClasicoTest {
 
     @Test
     public void test01JugadorRespondeMChoiceCorrectamenteYGanaPunto() {
-        //Arrange se invierten los estados, ahora falso es correcto
+
         Opcion opcion1 = new OpcionCorrecta();
         Opcion opcion2 = new OpcionIncorrecta();
         Opcion opcion3 = new OpcionIncorrecta();
@@ -48,7 +48,7 @@ public class PreguntaMultipleChoiceClasicoTest {
 
     @Test
     public void test02JugadorRespondeCorrectamente2OpcionesDeMChoiceCon2OpcionesCorrectasYRecibeUnPunto() {
-        //Arrange se invierten los estados, ahora falso es correcto
+        
         Opcion opcion1 = new OpcionIncorrecta();
         Opcion opcion2 = new OpcionCorrecta();
         Opcion opcion3 = new OpcionCorrecta();

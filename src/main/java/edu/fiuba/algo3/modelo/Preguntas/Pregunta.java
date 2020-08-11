@@ -12,7 +12,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 
-public abstract class Pregunta { //esta clase podría ser abstracta, pero actualmente ningún método suyo lo es
+public abstract class Pregunta {
 
     protected LinkedList<Opcion> opciones;
     protected Map<Jugador, LinkedList<Opcion>> respuestasDeLosJugadores;

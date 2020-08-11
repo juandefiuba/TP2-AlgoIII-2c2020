@@ -7,10 +7,11 @@ import java.util.LinkedList;
 
 public interface Opcion {
 
-    void agregarJugadorQueLaEligio(Jugador jugador);
 
     void agregarOpcionesCorrectas(LinkedList<Opcion> opcionesCorrectas);
 
+    void enlistarGrupoUno(LinkedList<Opcion> opcionesgrupoUno);
+    void enlistarGrupoDos(LinkedList<Opcion> opcionesgrupoDos);
     void validarOpcion(Pregunta pregunta);
 
 }

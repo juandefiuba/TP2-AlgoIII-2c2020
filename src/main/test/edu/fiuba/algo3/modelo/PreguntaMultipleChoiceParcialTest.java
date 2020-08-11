@@ -17,7 +17,7 @@ public class PreguntaMultipleChoiceParcialTest {
     @Test
     public void test01JugadorRespondeMCParcialCorrectamenteCon1RespuestaCorrectaYGanaPunto() {
         //Arrange se invierten los estados, ahora falso es correcto
-        Opcion opcion1 = new OpcionCorrecta();
+        Opcion opcion1 = new OpcionCorrecta();  //
         Opcion opcion2 = new OpcionIncorrecta();
         Opcion opcion3 = new OpcionIncorrecta();
         LinkedList<Opcion> opciones = new LinkedList<>();

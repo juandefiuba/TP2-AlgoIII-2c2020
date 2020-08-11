@@ -17,8 +17,13 @@ public class OpcionIncorrecta implements Opcion{
     }
 
     @Override
-    public void agregarJugadorQueLaEligio(Jugador jugador) {
-        this.jugadoresQueEligieronEstaOpcion.add(jugador);
+    public void enlistarGrupoUno(LinkedList<Opcion> opcionesgrupoUno) {
+
+    }
+
+    @Override
+    public void enlistarGrupoDos(LinkedList<Opcion> opcionesgrupoDos) {
+
     }
 
 
