@@ -135,4 +135,121 @@ public class PreguntaVerdaderoFalsoConPenalidadTest {
 
         assertEquals(-1,puntajeDelJugador.obtenerPuntos());
     }
+
+    @Test
+    public void test05JugadorActivaUnMultiplicadorPorDosYRespondeIncorrectamenteLaPreguntaYRecibeDosPuntosNegativos() {
+        Opcion opcionVerdadero = new OpcionIncorrecta();
+        Opcion opcionFalso = new OpcionCorrecta();
+
+        LinkedList<Opcion> opciones = new LinkedList<>();
+        opciones.add(opcionVerdadero);
+        opciones.add(opcionFalso);
+
+        PreguntaVerdaderoFalsoPenalidad pregunta = new PreguntaVerdaderoFalsoPenalidad(opciones);
+
+        Jugador jugador = new Jugador("Carlito");
+
+
+        Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
+
+        opcionVerdadero = (Opcion) iteradorDeOpciones.next();
+        opcionFalso = (Opcion) iteradorDeOpciones.next();
+
+        LinkedList<Opcion> respuestas = new LinkedList<>();
+
+        respuestas.add(opcionVerdadero);
+
+        jugador.activarMultiplicadorPorDos();
+
+        pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+
+        //Act
+        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+
+        assertEquals(-2,puntajeDelJugador.obtenerPuntos());
+    }
+
+    @Test
+    public void test06JugadorActivaUnMultiplicadorPorTresYRespondeIncorrectamenteLaPreguntaYRecibeTresPuntosNegativos() {
+        Opcion opcionVerdadero = new OpcionIncorrecta();
+        Opcion opcionFalso = new OpcionCorrecta();
+
+        LinkedList<Opcion> opciones = new LinkedList<>();
+        opciones.add(opcionVerdadero);
+        opciones.add(opcionFalso);
+
+        PreguntaVerdaderoFalsoPenalidad pregunta = new PreguntaVerdaderoFalsoPenalidad(opciones);
+
+        Jugador jugador = new Jugador("Carlito");
+
+
+        Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
+
+        opcionVerdadero = (Opcion) iteradorDeOpciones.next();
+        opcionFalso = (Opcion) iteradorDeOpciones.next();
+
+        LinkedList<Opcion> respuestas = new LinkedList<>();
+
+        respuestas.add(opcionVerdadero);
+
+        jugador.activarMultiplicadorPorTres();
+
+        pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+
+        //Act
+        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+
+        assertEquals(-3,puntajeDelJugador.obtenerPuntos());
+    }
+
+    @Test
+    public void test07JugadorActivaDosVecesSuMultiplicadorContestandoDosPreguntasYSeVerificaQueSoloSeAplicoUnMultiplicador() {
+        Opcion opcionVerdadero = new OpcionIncorrecta();
+        Opcion opcionFalso = new OpcionCorrecta();
+
+        LinkedList<Opcion> opciones = new LinkedList<>();
+        opciones.add(opcionVerdadero);
+        opciones.add(opcionFalso);
+
+        PreguntaVerdaderoFalsoPenalidad preguntaUno = new PreguntaVerdaderoFalsoPenalidad(opciones);
+        PreguntaVerdaderoFalsoPenalidad preguntaDos = new PreguntaVerdaderoFalsoPenalidad(opciones);
+
+        Jugador jugador = new Jugador("Carlito");
+
+
+        Iterator iteradorDeOpciones = preguntaUno.obtenerOpciones();
+
+        opcionVerdadero = (Opcion) iteradorDeOpciones.next();
+        opcionFalso = (Opcion) iteradorDeOpciones.next();
+
+        LinkedList<Opcion> respuestas = new LinkedList<>();
+
+        respuestas.add(opcionVerdadero);
+
+        jugador.activarMultiplicadorPorTres();
+
+        preguntaUno.agregarRespuestaDeJugador(jugador, respuestas);
+
+        //Act
+        Puntaje puntajeDelJugador = preguntaUno.puntuarJugador(jugador);
+
+        assertEquals(-3,puntajeDelJugador.obtenerPuntos());
+
+        iteradorDeOpciones = preguntaDos.obtenerOpciones();
+
+        opcionVerdadero = (Opcion) iteradorDeOpciones.next();
+        opcionFalso = (Opcion) iteradorDeOpciones.next();
+
+        respuestas = new LinkedList<>();
+
+        respuestas.add(opcionVerdadero);
+
+        jugador.activarMultiplicadorPorTres();
+
+        preguntaDos.agregarRespuestaDeJugador(jugador, respuestas);
+
+        puntajeDelJugador = preguntaDos.puntuarJugador(jugador);
+
+        assertEquals(-1,puntajeDelJugador.obtenerPuntos());
+    }
 }

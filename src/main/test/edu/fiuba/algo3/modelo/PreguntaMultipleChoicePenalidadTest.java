@@ -12,7 +12,7 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PreguntaPreguntaMultipleChoicePenalidadTest {
+public class PreguntaMultipleChoicePenalidadTest {
 
     @Test
     public void test01JugadorRespondeOpciones1Correcta1IncorrectaDeMCPenalidadYGana0Puntos() {
@@ -189,5 +189,79 @@ public class PreguntaPreguntaMultipleChoicePenalidadTest {
 
         //Assert
         assertEquals(2, puntajeDelJugador.obtenerPuntos());
+    }
+
+    @Test
+    public void test06JugadorActivaUnMultiplicadorPorDosYRespondeIncorrectamenteLaPreguntaYRecibeCuatroPuntosNegativos() {
+        //Arrange se invierten los estados, ahora falso es correcto
+        Opcion opcion1 = new OpcionIncorrecta();
+        Opcion opcion2 = new OpcionIncorrecta();
+        Opcion opcion3 = new OpcionCorrecta();
+        LinkedList<Opcion> opciones = new LinkedList<>();
+        opciones.add(opcion1);
+        opciones.add(opcion2);
+        opciones.add(opcion3);
+
+        PreguntaMultipleChoicePenalidad pregunta = new PreguntaMultipleChoicePenalidad(opciones);
+
+        Jugador jugador = new Jugador("Carlito");
+
+        Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
+
+        opcion1 = (Opcion) iteradorDeOpciones.next();
+        opcion2 = (Opcion) iteradorDeOpciones.next();
+        opcion3 = (Opcion) iteradorDeOpciones.next();
+
+        LinkedList<Opcion> respuestas = new LinkedList<>();
+
+        respuestas.add(opcion1);
+        respuestas.add(opcion2);
+
+        jugador.activarMultiplicadorPorDos();
+
+        pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+
+        //Act
+        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+
+        //Assert
+        assertEquals(-4, puntajeDelJugador.obtenerPuntos());
+    }
+
+    @Test
+    public void test07JugadorActivaUnMultiplicadorPorDosYRespondeIncorrectamenteLaPreguntaYRecibeSeisPuntosNegativos() {
+        //Arrange se invierten los estados, ahora falso es correcto
+        Opcion opcion1 = new OpcionIncorrecta();
+        Opcion opcion2 = new OpcionIncorrecta();
+        Opcion opcion3 = new OpcionCorrecta();
+        LinkedList<Opcion> opciones = new LinkedList<>();
+        opciones.add(opcion1);
+        opciones.add(opcion2);
+        opciones.add(opcion3);
+
+        PreguntaMultipleChoicePenalidad pregunta = new PreguntaMultipleChoicePenalidad(opciones);
+
+        Jugador jugador = new Jugador("Carlito");
+
+        Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
+
+        opcion1 = (Opcion) iteradorDeOpciones.next();
+        opcion2 = (Opcion) iteradorDeOpciones.next();
+        opcion3 = (Opcion) iteradorDeOpciones.next();
+
+        LinkedList<Opcion> respuestas = new LinkedList<>();
+
+        respuestas.add(opcion1);
+        respuestas.add(opcion2);
+
+        jugador.activarMultiplicadorPorTres();
+
+        pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+
+        //Act
+        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+
+        //Assert
+        assertEquals(-6, puntajeDelJugador.obtenerPuntos());
     }
 }

@@ -1,5 +1,10 @@
 package edu.fiuba.algo3.modelo.Puntos;
 
+import edu.fiuba.algo3.modelo.Multiplicador;
+import edu.fiuba.algo3.modelo.MultiplicadorDoble;
+import edu.fiuba.algo3.modelo.MultiplicadorQueNoMultiplica;
+import edu.fiuba.algo3.modelo.MultiplicadorTriple;
+
 public class Puntaje {
     int puntos;
 
@@ -26,4 +31,11 @@ public class Puntaje {
         this.puntos += unPuntajeAsumar.obtenerPuntos();
     }
 
+    public void multiplicar(MultiplicadorDoble multiplicadorDoble) {
+        this.puntos = this.puntos * 2;
+    }
+
+    public void multiplicar(MultiplicadorTriple multiplicadorTriple) {
+        this.puntos = this.puntos * 3;
+    }
 }
