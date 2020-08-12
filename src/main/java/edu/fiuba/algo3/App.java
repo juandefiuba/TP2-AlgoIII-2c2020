@@ -17,7 +17,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        stage.setTitle("Mi primera ventana");
+        stage.setTitle("Kahoot!");
 
 
         ContenedorBienvenida contenedorBienvenida = new ContenedorBienvenida();
@@ -25,7 +25,7 @@ public class App extends Application {
         Scene escenaBienvenidos = new Scene(contenedorBienvenida, 1920, 1080);
 
         stage.setScene(escenaBienvenidos);
-        stage.setFullScreen(false);
+        stage.setFullScreen(true);
 
         stage.show();
     }

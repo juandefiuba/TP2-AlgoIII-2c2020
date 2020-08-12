@@ -23,19 +23,19 @@ public class ContenedorBienvenida extends VBox {
         this.setSpacing(700);
         this.setPadding(new Insets(25));
         Image imagen = new Image("file:src/main/java/edu/fiuba/algo3/vista/imagenes/kahoot-1.jpg");
-        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
 
         Button botonEntrar = new Button();
         botonEntrar.setText("Comenzar juego");
 
-        botonEntrar.setStyle("-fx-border-color: Color.black; -fx-border-width: 5px;-fx-background-color: Color.white;-fx-font-size: 2em;-fx-text-fill: Color.black");
+        botonEntrar.setStyle("-fx-border-color: #000000; -fx-border-width: 5px; -fx-background-color: #FFFFFF; -fx-font-size: 3em ;-fx-text-fill: #000000");
         botonEntrar.setMinSize(200,100);
         botonEntrar.setMaxSize(400 , 200);
 
         Label etiqueta = new Label();
-        etiqueta.setFont(Font.font("Tahoma", FontWeight.BOLD, 40));
-        etiqueta.setText("Bienvenid@s a Kahoot");
+        etiqueta.setFont(Font.font("Tahoma", FontWeight.BOLD, 60));
+        etiqueta.setText("Bienvenid@s a");
         etiqueta.setTextFill(Color.BLACK);
 
         //BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(stage, proximaEscena);
