@@ -1,12 +1,11 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
 import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Opcion;
-import edu.fiuba.algo3.modelo.OpcionCorrecta;
-import edu.fiuba.algo3.modelo.OpcionIncorrecta;
+import edu.fiuba.algo3.modelo.Opcion.*;
 import edu.fiuba.algo3.modelo.Puntos.Puntaje;
 import edu.fiuba.algo3.modelo.Puntos.PuntajeNeutro;
 import edu.fiuba.algo3.modelo.Puntos.PuntoEstatico;
+import edu.fiuba.algo3.modelo.Puntos.PuntoPositivo;
 
 
 import java.util.LinkedList;
@@ -22,27 +21,30 @@ public class PreguntaMultipleChoiceClasico extends Pregunta {
     public Puntaje puntuarJugador(Jugador jugador) {
 
         this.puntajeDelJugador = new Puntaje();
+        LinkedList<Opcion> respuestaDelJugador = this.respuestasDeLosJugadores.get(jugador);
 
-        LinkedList<Opcion> respuestaDelJugador = new LinkedList<>();
-        this.armarListaDeRespuestaDelJugador(jugador,respuestaDelJugador);
-        respuestaDelJugador.forEach(opcion -> this.calificarOpcion(opcion));
+        respuestaDelJugador.forEach(opcion -> this.calificarRespuesta(opcion));
 
-        LinkedList<Opcion> opcionesCorrectasNoElegidasPorElJugador = new LinkedList<>();
-        opciones.forEach(opcion -> opcion.agregarOpcionesCorrectasNoElegidas(jugador, opcionesCorrectasNoElegidasPorElJugador));
+        LinkedList<Opcion> opcionesCorrectas = new LinkedList<>();
+        opciones.forEach(opcion -> opcion.agregarOpcionesCorrectas(opcionesCorrectas));
+        opcionesCorrectas.removeAll(respuestaDelJugador);
+        LinkedList<Opcion> opcionesCorrectasNoElegidasPorElJugador = opcionesCorrectas;
 
         if(!opcionesCorrectasNoElegidasPorElJugador.isEmpty()){
-            this.puntajeDelJugador = new PuntajeNeutro();
+            this.calificarRespuesta(new RespondeMal());
         }
 
         return this.puntajeDelJugador;
     }
+
     @Override
-    public void calificarOpcion(OpcionCorrecta opcion){
+    public void calificarRespuesta(RespondeBien calificador) {
         this.puntajeDelJugador.sumarPuntos(new PuntoEstatico());
     }
-    @Override
-    public void calificarOpcion(OpcionIncorrecta opcion){
-        this.puntajeDelJugador = new PuntajeNeutro();
 
+    @Override
+    public void calificarRespuesta(RespondeMal calificador) {
+        this.puntajeDelJugador = new PuntajeNeutro();
     }
+
 }
