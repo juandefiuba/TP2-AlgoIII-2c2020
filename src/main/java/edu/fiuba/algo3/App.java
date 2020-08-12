@@ -1,9 +1,8 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.vista.ContenedorBienvenida;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 /**
@@ -11,19 +10,23 @@ import javafx.stage.Stage;
  */
 public class App extends Application {
 
-    @Override
-    public void start(Stage stage) {
-        var javaVersion = SystemInfo.javaVersion();
-        var javafxVersion = SystemInfo.javafxVersion();
+    public static void main(String[] args) {
+        launch(args);
+    }
 
-        var label = new Label("Hello, JavaFX " + javafxVersion + ", running on Java " + javaVersion + ".");
-        var scene = new Scene(new StackPane(label), 640, 480);
-        stage.setScene(scene);
+    @Override
+    public void start(Stage stage) throws Exception {
+
+        stage.setTitle("Mi primera ventana");
+
+
+        ContenedorBienvenida contenedorBienvenida = new ContenedorBienvenida();
+
+        Scene escenaBienvenidos = new Scene(contenedorBienvenida, 1920, 1080);
+
+        stage.setScene(escenaBienvenidos);
+        stage.setFullScreen(false);
+
         stage.show();
     }
-
-    public static void main(String[] args) {
-        launch();
-    }
-
 }
