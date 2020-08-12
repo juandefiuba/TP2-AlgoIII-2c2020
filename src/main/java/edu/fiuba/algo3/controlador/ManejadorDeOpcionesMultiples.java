@@ -1,11 +1,12 @@
 package edu.fiuba.algo3.controlador;
 
-import edu.fiuba.algo3.modelo.Opcion;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 
 import java.util.LinkedList;
+
+import edu.fiuba.algo3.modelo.Opcion.Opcion;
 
 public class ManejadorDeOpcionesMultiples implements EventHandler<ActionEvent> {
     private LinkedList<Opcion> respuesta;

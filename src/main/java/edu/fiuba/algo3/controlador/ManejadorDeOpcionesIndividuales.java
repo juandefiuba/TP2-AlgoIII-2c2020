@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Opcion;
+import edu.fiuba.algo3.modelo.Opcion.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -24,7 +24,7 @@ public class ManejadorDeOpcionesIndividuales implements EventHandler<ActionEvent
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        //pregunta.agregarRespuestaDeJugador(this.jugador, this.respuesta);
+        pregunta.agregarRespuestaDeJugador(this.jugador, this.respuesta);
         terminarTurno.fire(); //ManejadorDeRespuesta
     }
 }
