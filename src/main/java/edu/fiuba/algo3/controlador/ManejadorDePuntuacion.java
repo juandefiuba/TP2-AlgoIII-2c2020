@@ -7,12 +7,12 @@ import javafx.event.EventHandler;
 
 import java.util.LinkedList;
 
-public class ManejadorDePreguntas implements EventHandler<ActionEvent> {
+public class ManejadorDePuntuacion implements EventHandler<ActionEvent> {
 
     private LinkedList<Jugador> jugadores;
     private Pregunta pregunta;
 
-    public ManejadorDePreguntas(LinkedList<Jugador> jugadores, Pregunta pregunta) {
+    public ManejadorDePuntuacion(LinkedList<Jugador> jugadores, Pregunta pregunta) {
         this.jugadores = jugadores;
         this.pregunta = pregunta;
     }
