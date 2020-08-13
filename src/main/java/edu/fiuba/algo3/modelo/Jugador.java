@@ -10,6 +10,9 @@ import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorTriple;
 import edu.fiuba.algo3.modelo.Puntos.Puntaje;
 import edu.fiuba.algo3.modelo.Puntos.PuntajeValido;
 
+import java.util.Iterator;
+import java.util.LinkedList;
+
 public class Jugador {
 
     String nombreJugador;
@@ -17,6 +20,8 @@ public class Jugador {
     Multiplicador multiplicadorDoble;
     Multiplicador multiplicadorTriple;
     Multiplicador multiplicadorActual;
+    Iterator iteradorDeExclusividades;
+    LinkedList<Exclusividad> exclusividadesDelJugador;
     Exclusividad exclusividad;
 
     public Jugador(String nombre) {
@@ -25,6 +30,10 @@ public class Jugador {
         this.multiplicadorDoble = new MultiplicadorDoble();
         this.multiplicadorTriple = new MultiplicadorTriple();
         this.multiplicadorActual = new MultiplicadorQueNoMultiplica();
+        this.exclusividadesDelJugador = new LinkedList<>();
+        this.exclusividadesDelJugador.add(new ExclusividadDoble());
+        this.exclusividadesDelJugador.add(new ExclusividadDoble());
+        this.iteradorDeExclusividades = this.exclusividadesDelJugador.iterator();
         this.exclusividad = new ExclusividadSimple();
     }
 
@@ -53,7 +62,9 @@ public class Jugador {
     }
 
     public void activarExclusividad() {
-        this.exclusividad = new ExclusividadDoble();
+        if (this.iteradorDeExclusividades.hasNext()){
+            this.exclusividad = (Exclusividad) this.iteradorDeExclusividades.next();
+        }
     }
 
     public Exclusividad obtenerExclusividad() {
