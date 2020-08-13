@@ -15,13 +15,19 @@ public class BarraDeMenu extends MenuBar {
 
     public BarraDeMenu(Stage stage) {
 
+        //this.prefWidthProperty().bind(stage.widthProperty());
+
         Menu menuArchivo = new Menu("Archivo");
         Menu menuVer = new Menu("Ver");
         Menu menuAyuda = new Menu("Ayuda");
-
         MenuItem opcionSalir = new MenuItem("Salir");
-        MenuItem opcionAbrir = new MenuItem("Abrir");
         MenuItem opcionAcercaDe = new MenuItem("Acerca de...");
+
+        menuArchivo.setStyle("-fx-font-size:25");
+        menuVer.setStyle("-fx-font-size:25");
+        menuAyuda.setStyle("-fx-font-size:25");
+        opcionSalir.setStyle("-fx-font-size:25");
+        opcionAcercaDe.setStyle("-fx-font-size:25");
 
         ManejadorDeSalida opcionSalirHandler = new ManejadorDeSalida();
         opcionSalir.setOnAction(opcionSalirHandler);
@@ -32,9 +38,9 @@ public class BarraDeMenu extends MenuBar {
         OpcionPantallaCompletaEventHandler opcionPantallaCompletaHandler = new OpcionPantallaCompletaEventHandler(stage, opcionPantallaCompleta);
         opcionPantallaCompleta.setOnAction(opcionPantallaCompletaHandler);
 
-        opcionPantallaCompleta.setDisable(true);
+        //opcionPantallaCompleta.setDisable(false);
 
-        menuArchivo.getItems().addAll(opcionAbrir, new SeparatorMenuItem(), opcionSalir);
+        menuArchivo.getItems().addAll(new SeparatorMenuItem(), opcionSalir);
         menuAyuda.getItems().addAll(opcionAcercaDe);
         menuVer.getItems().addAll(opcionPantallaCompleta);
 
