@@ -2,6 +2,8 @@ package edu.fiuba.algo3.modelo.Preguntas;
 
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Opcion.*;
+import edu.fiuba.algo3.modelo.Opcion.EstadoDeCalificacion.RespondeBien;
+import edu.fiuba.algo3.modelo.Opcion.EstadoDeCalificacion.RespondeMal;
 import edu.fiuba.algo3.modelo.Puntos.Puntaje;
 import edu.fiuba.algo3.modelo.Puntos.PuntajeValido;
 import edu.fiuba.algo3.modelo.Puntos.PuntajeNeutro;

@@ -59,7 +59,7 @@ public class PuntajeValido implements Puntaje {
     }
 
     @Override
-    public void aplicarExclusividad(ExclisividadCuadruple exclisividadCuadruple) {
+    public void aplicarExclusividad(ExclusividadCuadruple exclusividadCuadruple) {
         this.puntos = this.puntos * 4;
     }
 

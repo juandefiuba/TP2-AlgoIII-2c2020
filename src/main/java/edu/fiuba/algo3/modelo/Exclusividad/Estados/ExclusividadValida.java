@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.modelo.Exclusividad.Estados;
 
-import edu.fiuba.algo3.modelo.Exclusividad.ExclisividadCuadruple;
+import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadCuadruple;
 import edu.fiuba.algo3.modelo.Exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadDoble;
 import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadSimple;
@@ -17,7 +17,7 @@ public class ExclusividadValida implements EstadoExclusividad {
     }
 
     @Override
-    public Exclusividad validarExclusividad(ExclisividadCuadruple exclusividadSimple) {
-        return new ExclisividadCuadruple();
+    public Exclusividad validarExclusividad(ExclusividadCuadruple exclusividadSimple) {
+        return new ExclusividadCuadruple();
     }
 }

@@ -22,7 +22,7 @@ public interface Puntaje {
 
     void aplicarExclusividad(ExclusividadDoble exclusividadDoble);
 
-    void aplicarExclusividad(ExclisividadCuadruple exclisividadCuadruple);
+    void aplicarExclusividad(ExclusividadCuadruple exclusividadCuadruple);
 
     int obtenerPuntos();
 

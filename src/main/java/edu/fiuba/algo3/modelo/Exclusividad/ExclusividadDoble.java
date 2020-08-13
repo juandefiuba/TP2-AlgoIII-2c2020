@@ -16,7 +16,7 @@ public class ExclusividadDoble implements Exclusividad {
 
     @Override
     public Exclusividad componerExclusividad(ExclusividadDoble unaExclusividad) {
-        return new ExclisividadCuadruple();
+        return new ExclusividadCuadruple();
     }
 
     @Override

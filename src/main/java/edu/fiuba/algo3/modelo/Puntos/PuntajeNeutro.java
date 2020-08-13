@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo.Puntos;
 import edu.fiuba.algo3.modelo.Exclusividad.Estados.EstadoExclusividad;
 import edu.fiuba.algo3.modelo.Exclusividad.Estados.ExclusividadInvalida;
 import edu.fiuba.algo3.modelo.Exclusividad.Estados.ExclusividadValida;
-import edu.fiuba.algo3.modelo.Exclusividad.ExclisividadCuadruple;
+import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadCuadruple;
 import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadDeEmpate;
 import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadDoble;
 import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadSimple;
@@ -66,7 +66,7 @@ public class PuntajeNeutro implements Puntaje {
     }
 
     @Override
-    public void aplicarExclusividad(ExclisividadCuadruple exclisividadCuadruple) {
+    public void aplicarExclusividad(ExclusividadCuadruple exclusividadCuadruple) {
 
     }
 

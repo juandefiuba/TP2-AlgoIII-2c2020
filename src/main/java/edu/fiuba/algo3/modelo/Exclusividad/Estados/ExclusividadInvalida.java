@@ -14,7 +14,7 @@ public class ExclusividadInvalida implements EstadoExclusividad {
     }
 
     @Override
-    public Exclusividad validarExclusividad(ExclisividadCuadruple exclusividadSimple) {
+    public Exclusividad validarExclusividad(ExclusividadCuadruple exclusividadSimple) {
         return new ExclusividadDeEmpate();
     }
 }

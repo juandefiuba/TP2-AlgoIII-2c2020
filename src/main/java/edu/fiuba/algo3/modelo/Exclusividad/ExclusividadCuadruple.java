@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo.Exclusividad;
 import edu.fiuba.algo3.modelo.Exclusividad.Estados.EstadoExclusividad;
 import edu.fiuba.algo3.modelo.Puntos.Puntaje;
 
-public class ExclisividadCuadruple implements Exclusividad {
+public class ExclusividadCuadruple implements Exclusividad {
     @Override
     public Exclusividad componerExclusividad(Exclusividad unaExclusividad) {
         return this;
