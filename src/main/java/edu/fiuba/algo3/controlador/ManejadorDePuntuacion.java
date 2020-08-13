@@ -19,6 +19,6 @@ public class ManejadorDePuntuacion implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        jugadores.forEach(jugador -> jugador.sumarPuntos(pregunta)); //Esto está chequeado?
+        //jugadores.forEach(jugador -> jugador.sumarPuntos(pregunta)); //Esto está chequeado?
     }
 }
