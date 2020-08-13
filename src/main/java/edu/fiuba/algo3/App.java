@@ -15,12 +15,8 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        int altoDeVentana = 1000;
-        int anchoDeVentana = 1500;
-        stage.setMaxWidth(anchoDeVentana);
-        stage.setMinWidth(anchoDeVentana);
-        stage.setMinHeight(altoDeVentana);
-        stage.setMaxHeight(altoDeVentana);
+        int altoDeVentana = 720;
+        int anchoDeVentana = 1280;
         stage.setTitle("Kahoot!");
 
         //////////////////////////// MÚSICA próximamente//////////////////////////////
