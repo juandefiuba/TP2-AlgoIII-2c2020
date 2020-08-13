@@ -1,6 +1,7 @@
 package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.vista.ContenedorBienvenida;
+import edu.fiuba.algo3.vista.ContenedorInicio;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -16,16 +17,18 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
+        int altoDeVentana = 1000;
+        int anchoDeVentana = 1500;
 
         stage.setTitle("Kahoot!");
 
+        ContenedorInicio contenedorInicio = new ContenedorInicio(stage);
+        Scene escenaInicio = new Scene(contenedorInicio, anchoDeVentana, altoDeVentana);
 
-        ContenedorBienvenida contenedorBienvenida = new ContenedorBienvenida();
+        ContenedorBienvenida contenedorBienvenida = new ContenedorBienvenida(escenaInicio, stage);
+        Scene escenaBienvenida = new Scene(contenedorBienvenida, anchoDeVentana, altoDeVentana);
 
-        Scene escenaBienvenidos = new Scene(contenedorBienvenida, 1920, 1080);
-
-        stage.setScene(escenaBienvenidos);
-        stage.setFullScreen(true);
+        stage.setScene(escenaBienvenida);
 
         stage.show();
     }
