@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.Opcion.Opcion;
 import edu.fiuba.algo3.modelo.Opcion.RespondeBien;
 import edu.fiuba.algo3.modelo.Opcion.RespondeMal;
 import edu.fiuba.algo3.modelo.Puntos.Puntaje;
+import edu.fiuba.algo3.modelo.Puntos.PuntajeValido;
 import edu.fiuba.algo3.modelo.Puntos.PuntajeNeutro;
 
 import java.util.HashMap;
@@ -30,7 +31,7 @@ public abstract class Pregunta {
         if (this.puntajesDeLosJugadores.containsKey(jugador)){
             return this.puntajesDeLosJugadores.get(jugador);
         }
-        this.puntajeDelJugador = new Puntaje();
+        this.puntajeDelJugador = new PuntajeValido();
         LinkedList<Opcion> respuestaDelJugador = this.respuestasDeLosJugadores.get(jugador);
 
         respuestaDelJugador.forEach(opcion -> this.calificarRespuesta(opcion));
