@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 
-import edu.fiuba.algo3.vista.handlers.BotonParaIngresarNombre;
+import edu.fiuba.algo3.controlador.BotonParaIngresarNombre;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
