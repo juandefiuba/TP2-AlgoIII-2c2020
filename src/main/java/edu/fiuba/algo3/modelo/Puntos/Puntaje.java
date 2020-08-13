@@ -1,41 +1,34 @@
 package edu.fiuba.algo3.modelo.Puntos;
 
-import edu.fiuba.algo3.modelo.Multiplicador;
-import edu.fiuba.algo3.modelo.MultiplicadorDoble;
-import edu.fiuba.algo3.modelo.MultiplicadorQueNoMultiplica;
-import edu.fiuba.algo3.modelo.MultiplicadorTriple;
+import edu.fiuba.algo3.modelo.Exclusividad.*;
+import edu.fiuba.algo3.modelo.Exclusividad.Estados.EstadoExclusividad;
+import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorDoble;
+import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorTriple;
 
-public class Puntaje {
-    int puntos;
+public interface Puntaje {
 
-    public Puntaje(){
-        this.puntos = 0;
-    }
+    void sumarPuntos(Punto unTipoDePunto);
+    void sumarPuntos(PuntoNeutro unTipoDePunto);
+    void sumarPuntos(PuntoNegativo unTipoDePunto);
+    void sumarPuntos(PuntoPositivo unTipoDePunto);
+    void sumarPuntos(PuntoEstatico unTipoDePunto);
+    void sumarPuntos(PuntajeValido unPuntajeAsumar);
 
-    public int obtenerPuntos() {
-        return this.puntos;
-    }
+    EstadoExclusividad emparejarPuntaje(Puntaje unPuntaje);
+    EstadoExclusividad emparejarPuntaje(PuntajeValido unPuntaje);
+    EstadoExclusividad emparejarPuntaje(PuntajeNeutro unPuntaje);
 
-    public void sumarPuntos(Punto unTipoDePunto) {
-        unTipoDePunto.validarTipoDePunto(this);
-    }
-    public void sumarPuntos(PuntoNeutro unTipoDePunto) { }
+    void aplicarExclusividad(ExclusividadSimple exclusividadSimple);
 
-    public void sumarPuntos(PuntoNegativo unTipoDePunto) { this.puntos--; }
+    void aplicarExclusividad(ExclusividadDoble exclusividadDoble);
 
-    public void sumarPuntos(PuntoPositivo unTipoDePunto) {  this.puntos++; }
+    void aplicarExclusividad(ExclusividadCuadruple exclusividadCuadruple);
 
-    public void sumarPuntos(PuntoEstatico unTipoDePunto){ this.puntos = 1;}
+    int obtenerPuntos();
 
-    public void sumarPuntos(Puntaje unPuntajeAsumar){
-        this.puntos += unPuntajeAsumar.obtenerPuntos();
-    }
+    void multiplicar(MultiplicadorTriple multiplicadorTriple);
 
-    public void multiplicar(MultiplicadorDoble multiplicadorDoble) {
-        this.puntos = this.puntos * 2;
-    }
+    void multiplicar(MultiplicadorDoble multiplicadorDoble);
 
-    public void multiplicar(MultiplicadorTriple multiplicadorTriple) {
-        this.puntos = this.puntos * 3;
-    }
+    void aplicarExclusividad(ExclusividadDeEmpate exclusividadDeEmpate);
 }

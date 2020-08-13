@@ -2,7 +2,10 @@ package edu.fiuba.algo3.modelo.Preguntas;
 
 import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Opcion.*;
+import edu.fiuba.algo3.modelo.Opcion.EstadoDeCalificacion.RespondeBien;
+import edu.fiuba.algo3.modelo.Opcion.EstadoDeCalificacion.RespondeMal;
 import edu.fiuba.algo3.modelo.Puntos.Puntaje;
+import edu.fiuba.algo3.modelo.Puntos.PuntajeValido;
 import edu.fiuba.algo3.modelo.Puntos.PuntajeNeutro;
 import edu.fiuba.algo3.modelo.Puntos.PuntoPositivo;
 
@@ -18,7 +21,7 @@ public class PreguntaOrderedChoice extends Pregunta{
 
     @Override
     public Puntaje puntuarJugador(Jugador jugador) {
-        this.puntajeDelJugador = new Puntaje();
+        this.puntajeDelJugador = new PuntajeValido();
         LinkedList<Opcion> respuestaDelJugador = this.respuestasDeLosJugadores.get(jugador);
         Iterator iterOpciones = this.opciones.iterator();
         Iterator iterRespuesta = respuestaDelJugador.iterator();

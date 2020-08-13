@@ -1,10 +1,10 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
 import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Multiplicador;
+import edu.fiuba.algo3.modelo.Multiplicadores.Multiplicador;
 import edu.fiuba.algo3.modelo.Opcion.Opcion;
-import edu.fiuba.algo3.modelo.Opcion.RespondeBien;
-import edu.fiuba.algo3.modelo.Opcion.RespondeMal;
+import edu.fiuba.algo3.modelo.Opcion.EstadoDeCalificacion.RespondeBien;
+import edu.fiuba.algo3.modelo.Opcion.EstadoDeCalificacion.RespondeMal;
 import edu.fiuba.algo3.modelo.Puntos.*;
 
 import java.util.LinkedList;
