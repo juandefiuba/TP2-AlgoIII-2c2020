@@ -30,9 +30,11 @@ public class Jugador {
         this.multiplicadorDoble = new MultiplicadorDoble();
         this.multiplicadorTriple = new MultiplicadorTriple();
         this.multiplicadorActual = new MultiplicadorQueNoMultiplica();
+
         this.exclusividadesDelJugador = new LinkedList<>();
         this.exclusividadesDelJugador.add(new ExclusividadDoble());
         this.exclusividadesDelJugador.add(new ExclusividadDoble());
+
         this.iteradorDeExclusividades = this.exclusividadesDelJugador.iterator();
         this.exclusividad = new ExclusividadSimple();
     }
