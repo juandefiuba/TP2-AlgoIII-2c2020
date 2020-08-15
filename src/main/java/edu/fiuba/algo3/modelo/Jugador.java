@@ -7,8 +7,8 @@ import edu.fiuba.algo3.modelo.Multiplicadores.Multiplicador;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorDoble;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorQueNoMultiplica;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorTriple;
-import edu.fiuba.algo3.modelo.Puntos.Puntaje;
-import edu.fiuba.algo3.modelo.Puntos.PuntajeValido;
+import edu.fiuba.algo3.modelo.Puntajes.Puntaje;
+import edu.fiuba.algo3.modelo.Puntajes.PuntajeValido;
 
 import java.util.Iterator;
 import java.util.LinkedList;

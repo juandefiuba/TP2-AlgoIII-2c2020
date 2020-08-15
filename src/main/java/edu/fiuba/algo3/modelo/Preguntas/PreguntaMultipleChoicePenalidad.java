@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.Multiplicadores.Multiplicador;
 import edu.fiuba.algo3.modelo.Opcion.Opcion;
 import edu.fiuba.algo3.modelo.Opcion.EstadoDeCalificacion.RespondeBien;
 import edu.fiuba.algo3.modelo.Opcion.EstadoDeCalificacion.RespondeMal;
-import edu.fiuba.algo3.modelo.Puntos.Puntaje;
+import edu.fiuba.algo3.modelo.Puntajes.Puntaje;
 import edu.fiuba.algo3.modelo.Puntos.PuntoNegativo;
 import edu.fiuba.algo3.modelo.Puntos.PuntoPositivo;
 

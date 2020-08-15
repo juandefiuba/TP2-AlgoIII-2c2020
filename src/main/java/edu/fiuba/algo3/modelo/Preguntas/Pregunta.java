@@ -4,9 +4,9 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Opcion.Opcion;
 import edu.fiuba.algo3.modelo.Opcion.EstadoDeCalificacion.RespondeBien;
 import edu.fiuba.algo3.modelo.Opcion.EstadoDeCalificacion.RespondeMal;
-import edu.fiuba.algo3.modelo.Puntos.Puntaje;
-import edu.fiuba.algo3.modelo.Puntos.PuntajeValido;
-import edu.fiuba.algo3.modelo.Puntos.PuntajeNeutro;
+import edu.fiuba.algo3.modelo.Puntajes.Puntaje;
+import edu.fiuba.algo3.modelo.Puntajes.PuntajeValido;
+import edu.fiuba.algo3.modelo.Puntajes.PuntajeNulo;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -21,7 +21,7 @@ public abstract class Pregunta {
     public Puntaje puntajeDelJugador;
 
     protected Pregunta(LinkedList<Opcion> opcionesDeLaPregunta) {
-        this.puntajeDelJugador = new PuntajeNeutro();
+        this.puntajeDelJugador = new PuntajeNulo();
         this.opciones = opcionesDeLaPregunta;
         this.respuestasDeLosJugadores = new HashMap<>();
         this.puntajesDeLosJugadores = new HashMap<>();

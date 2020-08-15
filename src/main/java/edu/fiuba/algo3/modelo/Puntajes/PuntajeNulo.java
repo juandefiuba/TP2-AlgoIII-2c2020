@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.Puntos;
+package edu.fiuba.algo3.modelo.Puntajes;
 
 import edu.fiuba.algo3.modelo.Exclusividad.Estados.EstadoExclusividad;
 import edu.fiuba.algo3.modelo.Exclusividad.Estados.ExclusividadInvalida;
@@ -9,11 +9,13 @@ import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadDoble;
 import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadSimple;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorDoble;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorTriple;
+import edu.fiuba.algo3.modelo.Puntos.*;
 
-public class PuntajeNeutro implements Puntaje {
+public class PuntajeNulo implements Puntaje {
+
     int puntos;
 
-    public PuntajeNeutro() {
+    public PuntajeNulo() {
         this.puntos = 0;
     }
 
@@ -23,22 +25,19 @@ public class PuntajeNeutro implements Puntaje {
     }
 
     @Override
-    public void sumarPuntos(PuntoNeutro unTipoDePunto) {
-    }
+    public void sumarPuntos(PuntoNeutro unTipoDePunto) {}
 
     @Override
-    public void sumarPuntos(PuntoNegativo unTipoDePunto) {
-    }
+    public void sumarPuntos(PuntoNegativo unTipoDePunto) {}
 
     @Override
-    public void sumarPuntos(PuntoPositivo unTipoDePunto) {
-    }
+    public void sumarPuntos(PuntoPositivo unTipoDePunto) {}
 
     @Override
-    public void sumarPuntos(PuntoEstatico unTipoDePunto){ }
+    public void sumarPuntos(PuntoEstatico unTipoDePunto){}
 
     @Override
-    public void sumarPuntos(PuntajeValido unPuntajeAsumar){ }
+    public void sumarPuntos(Puntaje unPuntajeAsumar){}
 
     @Override
     public EstadoExclusividad emparejarPuntaje(Puntaje unPuntaje) {
@@ -51,24 +50,21 @@ public class PuntajeNeutro implements Puntaje {
     }
 
     @Override
-    public EstadoExclusividad emparejarPuntaje(PuntajeNeutro unPuntaje) {
+    public EstadoExclusividad emparejarPuntaje(PuntajeNulo unPuntaje) {
         return new ExclusividadInvalida();
     }
 
     @Override
-    public void aplicarExclusividad(ExclusividadSimple exclusividadSimple) {
-
-    }
+    public void aplicarExclusividad(ExclusividadSimple exclusividadSimple) {}
 
     @Override
-    public void aplicarExclusividad(ExclusividadDoble exclusividadDoble) {
-
-    }
+    public void aplicarExclusividad(ExclusividadDoble exclusividadDoble) {}
 
     @Override
-    public void aplicarExclusividad(ExclusividadCuadruple exclusividadCuadruple) {
+    public void aplicarExclusividad(ExclusividadDeEmpate exclusividadDeEmpate) {}
 
-    }
+    @Override
+    public void aplicarExclusividad(ExclusividadCuadruple exclusividadCuadruple) {}
 
     @Override
     public int obtenerPuntos() {
@@ -76,17 +72,9 @@ public class PuntajeNeutro implements Puntaje {
     }
 
     @Override
-    public void multiplicar(MultiplicadorTriple multiplicadorTriple) {
-
-    }
+    public void multiplicar(MultiplicadorTriple multiplicadorTriple) {}
 
     @Override
-    public void multiplicar(MultiplicadorDoble multiplicadorDoble) {
+    public void multiplicar(MultiplicadorDoble multiplicadorDoble) {}
 
-    }
-
-    @Override
-    public void aplicarExclusividad(ExclusividadDeEmpate exclusividadDeEmpate) {
-
-    }
 }

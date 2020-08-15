@@ -4,9 +4,9 @@ import edu.fiuba.algo3.modelo.*;
 import edu.fiuba.algo3.modelo.Opcion.*;
 import edu.fiuba.algo3.modelo.Opcion.EstadoDeCalificacion.RespondeBien;
 import edu.fiuba.algo3.modelo.Opcion.EstadoDeCalificacion.RespondeMal;
-import edu.fiuba.algo3.modelo.Puntos.Puntaje;
-import edu.fiuba.algo3.modelo.Puntos.PuntajeValido;
-import edu.fiuba.algo3.modelo.Puntos.PuntajeNeutro;
+import edu.fiuba.algo3.modelo.Puntajes.Puntaje;
+import edu.fiuba.algo3.modelo.Puntajes.PuntajeValido;
+import edu.fiuba.algo3.modelo.Puntajes.PuntajeNulo;
 import edu.fiuba.algo3.modelo.Puntos.PuntoPositivo;
 
 import java.util.Iterator;
@@ -45,6 +45,6 @@ public class PreguntaOrderedChoice extends Pregunta{
 
     @Override
     public void calificarRespuesta(RespondeMal calificador) {
-    this.puntajeDelJugador = new PuntajeNeutro();
+    this.puntajeDelJugador = new PuntajeNulo();
     }
 }
