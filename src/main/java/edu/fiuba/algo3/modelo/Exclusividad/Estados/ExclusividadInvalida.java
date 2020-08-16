@@ -1,20 +1,11 @@
 package edu.fiuba.algo3.modelo.Exclusividad.Estados;
 
 import edu.fiuba.algo3.modelo.Exclusividad.*;
+import edu.fiuba.algo3.modelo.Puntajes.Puntaje;
 
 public class ExclusividadInvalida implements EstadoExclusividad {
     @Override
-    public Exclusividad validarExclusividad(ExclusividadSimple exclusividadSimple) {
-        return new ExclusividadSimple();
-    }
-
-    @Override
-    public Exclusividad validarExclusividad(ExclusividadDoble exclusividadSimple) {
-        return new ExclusividadDeEmpate();
-    }
-
-    @Override
-    public Exclusividad validarExclusividad(ExclusividadCuadruple exclusividadSimple) {
-        return new ExclusividadDeEmpate();
+    public void aplicarExclusividadAlPuntaje(ExclusividadCompuesta unaExclusividad, Puntaje puntajeJugador) {
+        puntajeJugador.aplicarExclusividad(this);
     }
 }

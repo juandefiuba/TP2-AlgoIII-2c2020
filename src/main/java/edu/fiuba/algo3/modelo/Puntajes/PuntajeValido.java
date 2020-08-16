@@ -35,21 +35,26 @@ public class PuntajeValido implements Puntaje {
     }
 
     @Override
-    public void aplicarExclusividad(ExclusividadSimple exclusividadSimple) { }
+    public void aplicarExclusividad(ExclusividadCompuestaSimple exclusividadSimple) { }
 
     @Override
-    public void aplicarExclusividad(ExclusividadDoble exclusividadDoble) {
+    public void aplicarExclusividad(ExclusividadCompuestaDoble exclusividadDoble) {
         this.puntos = this.puntos * 2;
     }
 
     @Override
-    public void aplicarExclusividad(ExclusividadCuadruple exclusividadCuadruple) {
+    public void aplicarExclusividad(ExclusividadCompuestaCuadruple exclusividadCuadruple) {
         this.puntos = this.puntos * 4;
     }
 
     @Override
-    public void aplicarExclusividad(ExclusividadDeEmpate exclusividadDeEmpate) {
+    public void aplicarExclusividad(ExclusividadInvalida exclusividad) {
         this.puntos = 0;
+    }
+
+    @Override
+    public void aplicarExclusividad(ExclusividadCompuesta unaExclusividad) {
+        unaExclusividad.aplicarExclusividad(this);
     }
 
 

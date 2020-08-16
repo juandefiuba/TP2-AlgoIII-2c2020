@@ -1,8 +1,6 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Exclusividad.Exclusividad;
-import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadDoble;
-import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadSimple;
+import edu.fiuba.algo3.modelo.Exclusividad.*;
 import edu.fiuba.algo3.modelo.Multiplicadores.Multiplicador;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorDoble;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorQueNoMultiplica;
@@ -21,8 +19,8 @@ public class Jugador {
     Multiplicador multiplicadorTriple;
     Multiplicador multiplicadorActual;
     Iterator iteradorDeExclusividades;
-    LinkedList<Exclusividad> exclusividadesDelJugador;
-    Exclusividad exclusividad;
+    LinkedList<ExclusividadParcial> exclusividadesDelJugador;
+    ExclusividadParcial exclusividad;
 
     public Jugador() {
         this.puntaje = new PuntajeValido();
@@ -31,11 +29,11 @@ public class Jugador {
         this.multiplicadorActual = new MultiplicadorQueNoMultiplica();
 
         this.exclusividadesDelJugador = new LinkedList<>();
-        this.exclusividadesDelJugador.add(new ExclusividadDoble());
-        this.exclusividadesDelJugador.add(new ExclusividadDoble());
+        this.exclusividadesDelJugador.add(new ExclusividadParcialDoble());
+        this.exclusividadesDelJugador.add(new ExclusividadParcialDoble());
 
         this.iteradorDeExclusividades = this.exclusividadesDelJugador.iterator();
-        this.exclusividad = new ExclusividadSimple();
+        this.exclusividad = new ExclusividadParcialSimple();
     }
     public void asignarNombreAlJugador(String unNombre){
         this.nombreJugador = unNombre;
@@ -67,13 +65,13 @@ public class Jugador {
 
     public void activarExclusividad() {
         if (this.iteradorDeExclusividades.hasNext()){
-            this.exclusividad = (Exclusividad) this.iteradorDeExclusividades.next();
+            this.exclusividad = (ExclusividadParcial) this.iteradorDeExclusividades.next();
         }
     }
 
-    public Exclusividad obtenerExclusividad() {
-        Exclusividad exclusividadADevolver = this.exclusividad;
-        this.exclusividad = new ExclusividadSimple();
+    public ExclusividadParcial obtenerExclusividad() {
+        ExclusividadParcial exclusividadADevolver = this.exclusividad;
+        this.exclusividad = new ExclusividadParcialSimple();
         return exclusividadADevolver;
     }
 }

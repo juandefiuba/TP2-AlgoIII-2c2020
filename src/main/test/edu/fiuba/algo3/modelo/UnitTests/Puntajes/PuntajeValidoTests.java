@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.modelo.UnitTests.Puntajes;
 
-import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadCuadruple;
-import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadDeEmpate;
-import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadDoble;
-import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadSimple;
+import edu.fiuba.algo3.modelo.Exclusividad.Estados.ExclusividadInvalida;
+import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadCompuestaCuadruple;
+import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadCompuestaDoble;
+import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadCompuestaSimple;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorDoble;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorTriple;
 import edu.fiuba.algo3.modelo.Puntajes.PuntajeNulo;
@@ -87,7 +87,7 @@ public class PuntajeValidoTests {
     public void test09PuntajeValidoMantieneSusPuntosAlAplicarExclusividadSimple(){
         PuntajeValido unPuntaje = new PuntajeValido();
         unPuntaje.sumarPuntos(new PuntoEstatico());
-        unPuntaje.aplicarExclusividad(new ExclusividadSimple());
+        unPuntaje.aplicarExclusividad(new ExclusividadCompuestaSimple());
         assertEquals( 1 , unPuntaje.obtenerPuntos());
     }
 
@@ -95,7 +95,7 @@ public class PuntajeValidoTests {
     public void test10PuntajeValidoDuplicaSusPuntosAlAplicarExclusividadDoble(){
         PuntajeValido unPuntaje = new PuntajeValido();
         unPuntaje.sumarPuntos(new PuntoEstatico());
-        unPuntaje.aplicarExclusividad(new ExclusividadDoble());
+        unPuntaje.aplicarExclusividad(new ExclusividadCompuestaDoble());
         assertEquals( 2 , unPuntaje.obtenerPuntos());
     }
 
@@ -103,15 +103,15 @@ public class PuntajeValidoTests {
     public void test11PuntajeValidoCuatriplaSusPuntosAlAplicarExclusividadCuadruple(){
         PuntajeValido unPuntaje = new PuntajeValido();
         unPuntaje.sumarPuntos(new PuntoEstatico());
-        unPuntaje.aplicarExclusividad(new ExclusividadCuadruple());
+        unPuntaje.aplicarExclusividad(new ExclusividadCompuestaCuadruple());
         assertEquals( 4 , unPuntaje.obtenerPuntos());
     }
 
     @Test
-    public void test12PuntajeValidoVuelveCeroSusPuntosAlAplicarExclusividadDeEmpate(){
+    public void test12PuntajeValidoVuelveCeroSusPuntosAlAplicarExclusividadInvalida(){
         PuntajeValido unPuntaje = new PuntajeValido();
         unPuntaje.sumarPuntos(new PuntoEstatico());
-        unPuntaje.aplicarExclusividad(new ExclusividadDeEmpate());
+        unPuntaje.aplicarExclusividad(new ExclusividadInvalida());
         assertEquals( 0 , unPuntaje.obtenerPuntos());
     }
 

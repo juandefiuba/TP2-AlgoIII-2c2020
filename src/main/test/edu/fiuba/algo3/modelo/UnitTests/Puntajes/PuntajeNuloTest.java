@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.UnitTests.Puntajes;
 
 import edu.fiuba.algo3.modelo.Exclusividad.*;
+import edu.fiuba.algo3.modelo.Exclusividad.Estados.ExclusividadInvalida;
 import edu.fiuba.algo3.modelo.Multiplicadores.*;
 import edu.fiuba.algo3.modelo.Puntajes.*;
 import edu.fiuba.algo3.modelo.Puntos.*;
@@ -57,28 +58,28 @@ public class PuntajeNuloTest {
     @Test
     public void test07PuntajeNuloNoModificaPuntosAlAplicarExclusividadSimple(){
         PuntajeNulo unPuntaje = new PuntajeNulo();
-        unPuntaje.aplicarExclusividad(new ExclusividadSimple());
+        unPuntaje.aplicarExclusividad(new ExclusividadCompuestaSimple());
         assertEquals( 0 , unPuntaje.obtenerPuntos());
     }
 
     @Test
     public void test08PuntajeNuloNoModificaPuntosAlAplicarExclusividadDoble(){
         PuntajeNulo unPuntaje = new PuntajeNulo();
-        unPuntaje.aplicarExclusividad(new ExclusividadDoble());
+        unPuntaje.aplicarExclusividad(new ExclusividadCompuestaDoble());
         assertEquals( 0 , unPuntaje.obtenerPuntos());
     }
 
     @Test
     public void test09PuntajeNuloNoModificaPuntosAlAplicarExclusividadCuadruple(){
         PuntajeNulo unPuntaje = new PuntajeNulo();
-        unPuntaje.aplicarExclusividad(new ExclusividadCuadruple());
+        unPuntaje.aplicarExclusividad(new ExclusividadCompuestaCuadruple());
         assertEquals( 0 , unPuntaje.obtenerPuntos());
     }
 
     @Test
-    public void test10PuntajeNuloNoModificaPuntosAlAplicarExclusividadDeEmpate(){
+    public void test10PuntajeNuloNoModificaPuntosAlAplicarExclusividadInvalida(){
         PuntajeNulo unPuntaje = new PuntajeNulo();
-        unPuntaje.aplicarExclusividad(new ExclusividadDeEmpate());
+        unPuntaje.aplicarExclusividad(new ExclusividadInvalida());
         assertEquals( 0 , unPuntaje.obtenerPuntos());
     }
 

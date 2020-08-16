@@ -12,7 +12,7 @@ import edu.fiuba.algo3.modelo.Opcion.OpcionCorrecta;
 import edu.fiuba.algo3.modelo.Opcion.OpcionIncorrecta;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaVerdaderoFalso;
 
-public class ExclusividadDePuntajeTest {
+public class ExclusividadCompuestaDePuntajeTest {
 
 	/* PREGUNTA VERDADERO FALSO */
 	

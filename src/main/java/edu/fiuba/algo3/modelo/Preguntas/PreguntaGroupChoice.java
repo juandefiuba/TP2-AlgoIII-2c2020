@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
-import edu.fiuba.algo3.modelo.Exclusividad.Estados.EstadoExclusividad;
-import edu.fiuba.algo3.modelo.Exclusividad.Exclusividad;
+import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadCompuesta;
+import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadParcial;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Opcion.Opcion;
 import edu.fiuba.algo3.modelo.Opcion.EstadoDeCalificacion.RespondeBien;
@@ -63,17 +63,12 @@ public class PreguntaGroupChoice extends PreguntaBase {
         Puntaje puntajeJugador = this.obtenerPuntajeBaseDelJugador(jugador);
         Puntaje puntajeJugador2 = this.obtenerPuntajeBaseDelJugador(jugador2);
 
-        Exclusividad exclusividad = jugador.obtenerExclusividad();
-        Exclusividad exclusividad2 = jugador2.obtenerExclusividad();
+        ExclusividadParcial exclusividad = jugador.obtenerExclusividad();
+        ExclusividadParcial exclusividad2 = jugador2.obtenerExclusividad();
 
-        Exclusividad exclusividadParcial1 = exclusividad2.componerExclusividad(exclusividad);
+        ExclusividadCompuesta exclusividadTotal = exclusividad2.componerExclusividad(exclusividad);
 
-        EstadoExclusividad exclusividadParcial2 = puntajeJugador.emparejarPuntaje(puntajeJugador2);
-
-        Exclusividad exclusividadTotal = exclusividadParcial1.validarExclusividad(exclusividadParcial2);
-
-        exclusividadTotal.aplicarExclusividad(puntajeJugador);
-        exclusividadTotal.aplicarExclusividad(puntajeJugador2);
+        exclusividadTotal.aplicarExclusividadAPuntajes(puntajeJugador, puntajeJugador2);
 
         jugador.sumarPuntos(puntajeJugador);
         jugador2.sumarPuntos(puntajeJugador2);
