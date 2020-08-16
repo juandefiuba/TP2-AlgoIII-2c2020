@@ -25,7 +25,8 @@ public class PreguntaOrderedChoiceTest {
 
         PreguntaOrderedChoice pregunta = new PreguntaOrderedChoice(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -40,12 +41,13 @@ public class PreguntaOrderedChoiceTest {
         respuestas.add(opcion3);
 
         pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+        pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
 
         //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+        pregunta.puntuarJugadores(jugador, jugador2);
 
         //Assert
-        assertEquals(1, puntajeDelJugador.obtenerPuntos());
+        assertEquals(1, jugador.obtenerPuntos());
     }
 
     @Test
@@ -61,7 +63,8 @@ public class PreguntaOrderedChoiceTest {
 
         PreguntaOrderedChoice pregunta = new PreguntaOrderedChoice(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -76,12 +79,13 @@ public class PreguntaOrderedChoiceTest {
         respuestas.add(opcion2);
 
         pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+        pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
 
         //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+        pregunta.puntuarJugadores(jugador, jugador2);
 
         //Assert
-        assertEquals(0, puntajeDelJugador.obtenerPuntos());
+        assertEquals(0, jugador.obtenerPuntos());
     }
 
     @Test
@@ -97,7 +101,8 @@ public class PreguntaOrderedChoiceTest {
 
         PreguntaOrderedChoice pregunta = new PreguntaOrderedChoice(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -111,11 +116,12 @@ public class PreguntaOrderedChoiceTest {
         respuestas.add(opcion2);
 
         pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+        pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
 
         //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+        pregunta.puntuarJugadores(jugador, jugador2);
 
         //Assert
-        assertEquals(0, puntajeDelJugador.obtenerPuntos());
+        assertEquals(0, jugador.obtenerPuntos());
     }
 }

@@ -27,8 +27,8 @@ public class ExclusividadDePuntajeTest {
 
 		PreguntaVerdaderoFalso pregunta = new PreguntaVerdaderoFalso(opciones);
 
-		Jugador jugador = new Jugador("Carlito");
-		Jugador jugador2 = new Jugador("Pedro");
+		Jugador jugador = new Jugador();
+		Jugador jugador2 = new Jugador();
 
 		Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -65,8 +65,8 @@ public class ExclusividadDePuntajeTest {
 
 		PreguntaVerdaderoFalso pregunta = new PreguntaVerdaderoFalso(opciones);
 
-		Jugador jugador = new Jugador("Carlito");
-		Jugador jugador2 = new Jugador("Pedro");
+		Jugador jugador = new Jugador();
+		Jugador jugador2 = new Jugador();
 
 		Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -104,8 +104,8 @@ public class ExclusividadDePuntajeTest {
 
 		PreguntaVerdaderoFalso pregunta = new PreguntaVerdaderoFalso(opciones);
 
-		Jugador jugador = new Jugador("Carlito");
-		Jugador jugador2 = new Jugador("Pedro");
+		Jugador jugador = new Jugador();
+		Jugador jugador2 = new Jugador();
 
 		Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 

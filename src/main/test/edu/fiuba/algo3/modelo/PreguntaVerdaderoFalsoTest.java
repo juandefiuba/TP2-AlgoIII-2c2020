@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import edu.fiuba.algo3.modelo.Opcion.Opcion;
 import edu.fiuba.algo3.modelo.Opcion.OpcionCorrecta;
 import edu.fiuba.algo3.modelo.Opcion.OpcionIncorrecta;
+import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaVerdaderoFalso;
 import edu.fiuba.algo3.modelo.Puntajes.Puntaje;
 import org.junit.jupiter.api.Test;
@@ -24,9 +25,10 @@ public class PreguntaVerdaderoFalsoTest {
 		opciones.add(opcionVerdadero);
 		opciones.add(opcionFalso);
 
-		PreguntaVerdaderoFalso pregunta = new PreguntaVerdaderoFalso(opciones);
+		Pregunta pregunta = new PreguntaVerdaderoFalso(opciones);
 
-		Jugador jugador = new Jugador("Carlito");
+		Jugador jugador = new Jugador();
+		Jugador jugador2 = new Jugador();
 
 		Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -37,12 +39,13 @@ public class PreguntaVerdaderoFalsoTest {
 
 		respuestas.add(opcionVerdadero);
 		pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+		pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
 
 		//Act
-		Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+		pregunta.puntuarJugadores(jugador, jugador2);
 
 		//Assert
-		assertEquals(1, puntajeDelJugador.obtenerPuntos());
+		assertEquals(1, jugador.obtenerPuntos());
 	}
 
 	@Test
@@ -56,7 +59,8 @@ public class PreguntaVerdaderoFalsoTest {
 
 		PreguntaVerdaderoFalso pregunta = new PreguntaVerdaderoFalso(opciones);
 
-		Jugador jugador = new Jugador("Carlito");
+		Jugador jugador = new Jugador();
+		Jugador jugador2 = new Jugador();
 
 		Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -68,12 +72,13 @@ public class PreguntaVerdaderoFalsoTest {
 
 		respuestas.add(opcionVerdadero);
 		pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+		pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
 
 		//Act
-		Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+		pregunta.puntuarJugadores(jugador, jugador2);
 
 		//Assert
-		assertEquals(0, puntajeDelJugador.obtenerPuntos());
+		assertEquals(0, jugador.obtenerPuntos());
 	}
 
 	@Test
@@ -88,7 +93,8 @@ public class PreguntaVerdaderoFalsoTest {
 
 		PreguntaVerdaderoFalso pregunta = new PreguntaVerdaderoFalso(opciones);
 
-		Jugador jugador = new Jugador("Carlito");
+		Jugador jugador = new Jugador();
+		Jugador jugador2 = new Jugador();
 
 		Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -99,12 +105,13 @@ public class PreguntaVerdaderoFalsoTest {
 
 		respuestas.add(opcionFalso);
 		pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+		pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
 
 		//Act
-		Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+		pregunta.puntuarJugadores(jugador, jugador2);
 
 		//Assert
-		assertEquals(1, puntajeDelJugador.obtenerPuntos());
+		assertEquals(1, jugador.obtenerPuntos());
 	}
 
 	@Test
@@ -118,7 +125,8 @@ public class PreguntaVerdaderoFalsoTest {
 
 		PreguntaVerdaderoFalso pregunta = new PreguntaVerdaderoFalso(opciones);
 
-		Jugador jugador = new Jugador("Carlito");
+		Jugador jugador = new Jugador();
+		Jugador jugador2 = new Jugador();
 
 		Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -129,11 +137,12 @@ public class PreguntaVerdaderoFalsoTest {
 
 		respuestas.add(opcionFalso);
 		pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+		pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
 
 		//Act
-		Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+		pregunta.puntuarJugadores(jugador, jugador2);
 
-		assertEquals(1,puntajeDelJugador.obtenerPuntos());
+		assertEquals(1,jugador.obtenerPuntos());
 	}
 	
 

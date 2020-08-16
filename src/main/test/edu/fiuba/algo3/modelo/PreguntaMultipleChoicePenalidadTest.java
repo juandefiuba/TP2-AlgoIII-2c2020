@@ -27,7 +27,8 @@ public class PreguntaMultipleChoicePenalidadTest {
 
         PreguntaMultipleChoicePenalidad pregunta = new PreguntaMultipleChoicePenalidad(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -41,12 +42,13 @@ public class PreguntaMultipleChoicePenalidadTest {
         respuestas.add(opcion2);
 
         pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+        pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
 
         //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+        pregunta.puntuarJugadores(jugador, jugador2);
 
         //Assert
-        assertEquals(0, puntajeDelJugador.obtenerPuntos());
+        assertEquals(0,jugador.obtenerPuntos());
     }
 
     @Test
@@ -62,7 +64,8 @@ public class PreguntaMultipleChoicePenalidadTest {
 
         PreguntaMultipleChoicePenalidad pregunta = new PreguntaMultipleChoicePenalidad(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -77,12 +80,13 @@ public class PreguntaMultipleChoicePenalidadTest {
         respuestas.add(opcion3);
 
         pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+        pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
 
         //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+        pregunta.puntuarJugadores(jugador, jugador2);
 
         //Assert
-        assertEquals(-1, puntajeDelJugador.obtenerPuntos());
+        assertEquals(-1, jugador.obtenerPuntos());
     }
 
     @Test
@@ -98,7 +102,8 @@ public class PreguntaMultipleChoicePenalidadTest {
 
         PreguntaMultipleChoicePenalidad pregunta = new PreguntaMultipleChoicePenalidad(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -111,13 +116,14 @@ public class PreguntaMultipleChoicePenalidadTest {
         respuestas.add(opcion1);
 
         pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+        pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
 
 
         //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+        pregunta.puntuarJugadores(jugador, jugador2);
 
         //Assert
-        assertEquals(-1, puntajeDelJugador.obtenerPuntos());
+        assertEquals(-1,jugador.obtenerPuntos());
     }
 
     @Test
@@ -133,7 +139,8 @@ public class PreguntaMultipleChoicePenalidadTest {
 
         PreguntaMultipleChoicePenalidad pregunta = new PreguntaMultipleChoicePenalidad(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -147,13 +154,14 @@ public class PreguntaMultipleChoicePenalidadTest {
         respuestas.add(opcion2);
 
         pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+        pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
 
 
         //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+        pregunta.puntuarJugadores(jugador, jugador2);
 
         //Assert
-        assertEquals(-2, puntajeDelJugador.obtenerPuntos());
+        assertEquals(-2,jugador.obtenerPuntos());
     }
 
     @Test
@@ -169,7 +177,8 @@ public class PreguntaMultipleChoicePenalidadTest {
 
         PreguntaMultipleChoicePenalidad pregunta = new PreguntaMultipleChoicePenalidad(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -183,12 +192,13 @@ public class PreguntaMultipleChoicePenalidadTest {
         respuestas.add(opcion3);
 
         pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+        pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
 
         //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+        pregunta.puntuarJugadores(jugador, jugador2);
 
         //Assert
-        assertEquals(2, puntajeDelJugador.obtenerPuntos());
+        assertEquals(2,jugador.obtenerPuntos());
     }
 
     

@@ -29,7 +29,8 @@ public class MultiplicadoresTest {
 
         PreguntaVerdaderoFalsoPenalidad pregunta = new PreguntaVerdaderoFalsoPenalidad(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
@@ -44,11 +45,12 @@ public class MultiplicadoresTest {
         jugador.activarMultiplicadorPorDos();
 
         pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+        pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
 
         //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+        pregunta.puntuarJugadores(jugador, jugador2);
 
-        assertEquals(-2,puntajeDelJugador.obtenerPuntos());
+        assertEquals(-2,jugador.obtenerPuntos());
     }
 
     @Test
@@ -62,7 +64,8 @@ public class MultiplicadoresTest {
 
         PreguntaVerdaderoFalsoPenalidad pregunta = new PreguntaVerdaderoFalsoPenalidad(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
@@ -77,11 +80,12 @@ public class MultiplicadoresTest {
         jugador.activarMultiplicadorPorTres();
 
         pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+        pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
 
         //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+        pregunta.puntuarJugadores(jugador, jugador2);
 
-        assertEquals(-3,puntajeDelJugador.obtenerPuntos());
+        assertEquals(-3,jugador.obtenerPuntos());
     }
 
     @Test
@@ -96,7 +100,8 @@ public class MultiplicadoresTest {
         PreguntaVerdaderoFalsoPenalidad preguntaUno = new PreguntaVerdaderoFalsoPenalidad(opciones);
         PreguntaVerdaderoFalsoPenalidad preguntaDos = new PreguntaVerdaderoFalsoPenalidad(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
 
         Iterator iteradorDeOpciones = preguntaUno.obtenerOpciones();
@@ -111,11 +116,12 @@ public class MultiplicadoresTest {
         jugador.activarMultiplicadorPorTres();
 
         preguntaUno.agregarRespuestaDeJugador(jugador, respuestas);
+        preguntaUno.agregarRespuestaDeJugador(jugador2, respuestas);
 
         //Act
-        Puntaje puntajeDelJugador = preguntaUno.puntuarJugador(jugador);
+        preguntaUno.puntuarJugadores(jugador, jugador2);
 
-        assertEquals(-3,puntajeDelJugador.obtenerPuntos());
+        assertEquals(-3,jugador.obtenerPuntos());
 
         iteradorDeOpciones = preguntaDos.obtenerOpciones();
 
@@ -129,10 +135,11 @@ public class MultiplicadoresTest {
         jugador.activarMultiplicadorPorTres();
 
         preguntaDos.agregarRespuestaDeJugador(jugador, respuestas);
+        preguntaDos.agregarRespuestaDeJugador(jugador2, respuestas);
 
-        puntajeDelJugador = preguntaDos.puntuarJugador(jugador);
+        preguntaDos.puntuarJugadores(jugador, jugador2);
 
-        assertEquals(-1,puntajeDelJugador.obtenerPuntos());
+        assertEquals(-4,jugador.obtenerPuntos());
     }
     
     /* PREGUNTA MULTIPLE CHOICE CON PENALIDAD */
@@ -150,7 +157,8 @@ public class MultiplicadoresTest {
 
         PreguntaMultipleChoicePenalidad pregunta = new PreguntaMultipleChoicePenalidad(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -166,12 +174,13 @@ public class MultiplicadoresTest {
         jugador.activarMultiplicadorPorDos();
 
         pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+        pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
 
         //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+        pregunta.puntuarJugadores(jugador, jugador2);
 
         //Assert
-        assertEquals(-4, puntajeDelJugador.obtenerPuntos());
+        assertEquals(-4, jugador.obtenerPuntos());
     }
 
     @Test
@@ -187,7 +196,8 @@ public class MultiplicadoresTest {
 
         PreguntaMultipleChoicePenalidad pregunta = new PreguntaMultipleChoicePenalidad(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -203,12 +213,13 @@ public class MultiplicadoresTest {
         jugador.activarMultiplicadorPorTres();
 
         pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+        pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
 
         //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+        pregunta.puntuarJugadores(jugador, jugador2);
 
         //Assert
-        assertEquals(-6, puntajeDelJugador.obtenerPuntos());
+        assertEquals(-6, jugador.obtenerPuntos());
     }
 }
 

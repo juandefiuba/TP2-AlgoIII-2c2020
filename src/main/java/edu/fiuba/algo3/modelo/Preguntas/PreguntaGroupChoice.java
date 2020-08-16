@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
+import edu.fiuba.algo3.modelo.Exclusividad.Estados.EstadoExclusividad;
+import edu.fiuba.algo3.modelo.Exclusividad.Exclusividad;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Opcion.Opcion;
 import edu.fiuba.algo3.modelo.Opcion.EstadoDeCalificacion.RespondeBien;
@@ -14,10 +16,11 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Map;
 
-public class PreguntaGroupChoice extends Pregunta {
+public class PreguntaGroupChoice extends PreguntaBase {
 
     protected Map<Jugador, LinkedList<Opcion>> respuestasGrupoUnoDeLosJugadores;
     protected Map<Jugador, LinkedList<Opcion>> respuestasGrupoDosDeLosJugadores;
+
 
     public PreguntaGroupChoice(LinkedList<Opcion> opcionesDeLaPregunta) {
         super(opcionesDeLaPregunta);
@@ -25,7 +28,7 @@ public class PreguntaGroupChoice extends Pregunta {
         this.respuestasGrupoDosDeLosJugadores = new HashMap<>();
     }
 
-    public Puntaje puntuarJugador(Jugador jugador) {
+    public Puntaje obtenerPuntajeBaseDelJugador(Jugador jugador) {
         this.puntajeDelJugador = new PuntajeValido();
         LinkedList<Opcion> respuestaDelJugadorGrupoUno = this.respuestasGrupoUnoDeLosJugadores.get(jugador);
         LinkedList<Opcion> respuestaDelJugadorGrupoDos = this.respuestasGrupoDosDeLosJugadores.get(jugador);
@@ -56,6 +59,27 @@ public class PreguntaGroupChoice extends Pregunta {
     }
 
     @Override
+    public void puntuarJugadores(Jugador jugador, Jugador jugador2) {
+        Puntaje puntajeJugador = this.obtenerPuntajeBaseDelJugador(jugador);
+        Puntaje puntajeJugador2 = this.obtenerPuntajeBaseDelJugador(jugador2);
+
+        Exclusividad exclusividad = jugador.obtenerExclusividad();
+        Exclusividad exclusividad2 = jugador2.obtenerExclusividad();
+
+        Exclusividad exclusividadParcial1 = exclusividad2.componerExclusividad(exclusividad);
+
+        EstadoExclusividad exclusividadParcial2 = puntajeJugador.emparejarPuntaje(puntajeJugador2);
+
+        Exclusividad exclusividadTotal = exclusividadParcial1.validarExclusividad(exclusividadParcial2);
+
+        exclusividadTotal.aplicarExclusividad(puntajeJugador);
+        exclusividadTotal.aplicarExclusividad(puntajeJugador2);
+
+        jugador.sumarPuntos(puntajeJugador);
+        jugador2.sumarPuntos(puntajeJugador2);
+    }
+
+    @Override
     public void calificarRespuesta(RespondeBien calificador) {
         this.puntajeDelJugador.sumarPuntos(new PuntoEstatico());
     }
@@ -73,4 +97,5 @@ public class PreguntaGroupChoice extends Pregunta {
     public void agregarRespuestaDeGrupoDosJugador(Jugador jugador, LinkedList<Opcion> respuestasGrupoDos) {
         this.respuestasGrupoDosDeLosJugadores.put(jugador,respuestasGrupoDos);
     }
+
 }

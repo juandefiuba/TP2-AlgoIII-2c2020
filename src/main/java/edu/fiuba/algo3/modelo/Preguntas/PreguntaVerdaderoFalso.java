@@ -9,16 +9,13 @@ import edu.fiuba.algo3.modelo.Opcion.EstadoDeCalificacion.RespondeMal;
 import edu.fiuba.algo3.modelo.Puntajes.Puntaje;
 import edu.fiuba.algo3.modelo.Puntajes.PuntajeNulo;
 import edu.fiuba.algo3.modelo.Puntos.*;
+
 import java.util.LinkedList;
 
-public class PreguntaVerdaderoFalso extends Pregunta{
+public class PreguntaVerdaderoFalso extends PreguntaBase{
 
     public PreguntaVerdaderoFalso(LinkedList<Opcion> opcionesDeLaPregunta) {
         super(opcionesDeLaPregunta);
-    }
-
-    public void calificarRespuesta(Opcion opcion){
-        opcion.validarOpcion(this);
     }
 
     public void calificarRespuesta(RespondeBien calificador){
@@ -31,8 +28,8 @@ public class PreguntaVerdaderoFalso extends Pregunta{
 
     public void puntuarJugadores(Jugador jugador, Jugador jugador2){
 
-        Puntaje puntajeJugador = super.puntuarJugador(jugador);
-        Puntaje puntajeJugador2 = super.puntuarJugador(jugador2);
+        Puntaje puntajeJugador = this.obtenerPuntajeBaseDelJugador(jugador);
+        Puntaje puntajeJugador2 = this.obtenerPuntajeBaseDelJugador(jugador2);
 
         Exclusividad exclusividad = jugador.obtenerExclusividad();
         Exclusividad exclusividad2 = jugador2.obtenerExclusividad();
@@ -49,8 +46,8 @@ public class PreguntaVerdaderoFalso extends Pregunta{
         jugador.sumarPuntos(puntajeJugador);
         jugador2.sumarPuntos(puntajeJugador2);
 
-
     }
+
 
 
 }

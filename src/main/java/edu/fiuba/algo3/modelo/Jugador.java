@@ -24,8 +24,7 @@ public class Jugador {
     LinkedList<Exclusividad> exclusividadesDelJugador;
     Exclusividad exclusividad;
 
-    public Jugador(String nombre) {
-        this.nombreJugador = nombre;
+    public Jugador() {
         this.puntaje = new PuntajeValido();
         this.multiplicadorDoble = new MultiplicadorDoble();
         this.multiplicadorTriple = new MultiplicadorTriple();
@@ -37,6 +36,9 @@ public class Jugador {
 
         this.iteradorDeExclusividades = this.exclusividadesDelJugador.iterator();
         this.exclusividad = new ExclusividadSimple();
+    }
+    public void asignarNombreAlJugador(String unNombre){
+        this.nombreJugador = unNombre;
     }
 
     public int obtenerPuntos() {

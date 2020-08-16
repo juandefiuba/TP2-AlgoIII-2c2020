@@ -7,11 +7,8 @@ import java.util.LinkedList;
 
 public interface Opcion {
 
-
-    void agregarOpcionesCorrectas(LinkedList<Opcion> opcionesCorrectas);
-
+    void enlistarOpcionesCorrectas(LinkedList<Opcion> opcionesCorrectas);
     void enlistarGrupoUno(LinkedList<Opcion> opcionesgrupoUno);
     void enlistarGrupoDos(LinkedList<Opcion> opcionesgrupoDos);
     void validarOpcion(Pregunta pregunta);
-
 }
