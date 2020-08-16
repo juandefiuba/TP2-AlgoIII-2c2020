@@ -1,17 +1,12 @@
 package edu.fiuba.algo3.modelo.Opcion;
 
-import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
-
 import java.util.LinkedList;
 
 public class OpcionGrupoUno implements Opcion {
 
-
     @Override
-    public void agregarOpcionesCorrectas(LinkedList<Opcion> opcionesCorrectas) {
-
-    }
+    public void enlistarOpcionesCorrectas(LinkedList<Opcion> opcionesCorrectas) {}
 
     @Override
     public void enlistarGrupoUno(LinkedList<Opcion> opcionesgrupoUno) {
@@ -19,12 +14,8 @@ public class OpcionGrupoUno implements Opcion {
     }
 
     @Override
-    public void enlistarGrupoDos(LinkedList<Opcion> opcionesgrupoDos) {
-
-    }
+    public void enlistarGrupoDos(LinkedList<Opcion> opcionesgrupoDos) {}
 
     @Override
-    public void validarOpcion(Pregunta pregunta) {
-
-    }
+    public void validarOpcion(Pregunta pregunta) {}
 }

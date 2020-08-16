@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.modelo.Puntos;
+package edu.fiuba.algo3.modelo.Puntajes;
 
 import edu.fiuba.algo3.modelo.Exclusividad.*;
 import edu.fiuba.algo3.modelo.Exclusividad.Estados.EstadoExclusividad;
@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.Exclusividad.Estados.ExclusividadInvalida;
 import edu.fiuba.algo3.modelo.Exclusividad.Estados.ExclusividadValida;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorDoble;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorTriple;
+import edu.fiuba.algo3.modelo.Puntos.*;
 
 public class PuntajeValido implements Puntaje {
     int puntos;
@@ -29,8 +30,40 @@ public class PuntajeValido implements Puntaje {
 
     public void sumarPuntos(PuntoEstatico unTipoDePunto){ this.puntos = 1;}
 
-    public void sumarPuntos(PuntajeValido unPuntajeAsumar){
-        this.puntos += unPuntajeAsumar.obtenerPuntos();
+    public void sumarPuntos(Puntaje unPuntaje) {
+        this.puntos = this.puntos + unPuntaje.obtenerPuntos();
+    }
+
+    @Override
+    public void aplicarExclusividad(ExclusividadCompuestaSimple exclusividadSimple) { }
+
+    @Override
+    public void aplicarExclusividad(ExclusividadCompuestaDoble exclusividadDoble) {
+        this.puntos = this.puntos * 2;
+    }
+
+    @Override
+    public void aplicarExclusividad(ExclusividadCompuestaCuadruple exclusividadCuadruple) {
+        this.puntos = this.puntos * 4;
+    }
+
+    @Override
+    public void aplicarExclusividad(ExclusividadInvalida exclusividad) {
+        this.puntos = 0;
+    }
+
+    @Override
+    public void aplicarExclusividad(ExclusividadCompuesta unaExclusividad) {
+        unaExclusividad.aplicarExclusividad(this);
+    }
+
+
+    public void multiplicar(MultiplicadorDoble multiplicadorDoble) {
+        this.puntos = this.puntos * 2;
+    }
+
+    public void multiplicar(MultiplicadorTriple multiplicadorTriple) {
+        this.puntos = this.puntos * 3;
     }
 
     @Override
@@ -44,40 +77,8 @@ public class PuntajeValido implements Puntaje {
     }
 
     @Override
-    public EstadoExclusividad emparejarPuntaje(PuntajeNeutro unPuntaje) {
+    public EstadoExclusividad emparejarPuntaje(PuntajeNulo unPuntaje) {
         return new ExclusividadValida();
     }
 
-    @Override
-    public void aplicarExclusividad(ExclusividadSimple exclusividadSimple) {
-
-    }
-
-    @Override
-    public void aplicarExclusividad(ExclusividadDoble exclusividadDoble) {
-        this.puntos = this.puntos * 2;
-    }
-
-    @Override
-    public void aplicarExclusividad(ExclusividadCuadruple exclusividadCuadruple) {
-        this.puntos = this.puntos * 4;
-    }
-
-    public void multiplicar(MultiplicadorDoble multiplicadorDoble) {
-        this.puntos = this.puntos * 2;
-    }
-
-    @Override
-    public void aplicarExclusividad(ExclusividadDeEmpate exclusividadDeEmpate) {
-        this.puntos = 0;
-    }
-
-    public void multiplicar(MultiplicadorTriple multiplicadorTriple) {
-        this.puntos = this.puntos * 3;
-    }
-
-
-    public void sumarPuntos(Puntaje unPuntaje) {
-        this.puntos = this.puntos + unPuntaje.obtenerPuntos();
-    }
 }

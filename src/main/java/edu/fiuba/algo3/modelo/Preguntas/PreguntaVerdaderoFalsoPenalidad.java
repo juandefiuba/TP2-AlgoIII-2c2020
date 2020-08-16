@@ -5,27 +5,30 @@ import edu.fiuba.algo3.modelo.Multiplicadores.Multiplicador;
 import edu.fiuba.algo3.modelo.Opcion.Opcion;
 import edu.fiuba.algo3.modelo.Opcion.EstadoDeCalificacion.RespondeBien;
 import edu.fiuba.algo3.modelo.Opcion.EstadoDeCalificacion.RespondeMal;
+import edu.fiuba.algo3.modelo.Puntajes.Puntaje;
 import edu.fiuba.algo3.modelo.Puntos.*;
 
 import java.util.LinkedList;
 
-public class PreguntaVerdaderoFalsoPenalidad extends Pregunta {
+public class PreguntaVerdaderoFalsoPenalidad extends PreguntaBase {
 
     public PreguntaVerdaderoFalsoPenalidad(LinkedList<Opcion> opciones) {
         super(opciones);
     }
 
-    public Puntaje puntuarJugador(Jugador jugador){
-        Puntaje puntajeDelJugador = super.puntuarJugador(jugador);
+    @Override
+    public void puntuarJugadores(Jugador jugador, Jugador jugador2) {
+        Puntaje puntajeDeJugador = this.obtenerPuntajeBaseDelJugador(jugador);
+        Puntaje puntajeDeJugador2 =  this.obtenerPuntajeBaseDelJugador(jugador2);
+
         Multiplicador multiplicador = jugador.obtenerMultiplicador();
-        multiplicador.multiplicar(puntajeDelJugador);
-        this.puntajesDeLosJugadores.put(jugador, puntajeDelJugador);
-        return puntajeDelJugador;
-    }
+        multiplicador.multiplicar(puntajeDeJugador);
 
+        multiplicador = jugador2.obtenerMultiplicador();
+        multiplicador.multiplicar(puntajeDeJugador2);
 
-    public void calificarRespuesta(Opcion opcion){
-        opcion.validarOpcion(this);
+        jugador.sumarPuntos(puntajeDeJugador);
+        jugador2.sumarPuntos(puntajeDeJugador2);
     }
 
     public void calificarRespuesta(RespondeBien calificador){
