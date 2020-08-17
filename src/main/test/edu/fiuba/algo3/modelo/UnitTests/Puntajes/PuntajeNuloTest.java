@@ -1,7 +1,9 @@
 package edu.fiuba.algo3.modelo.UnitTests.Puntajes;
 
-import edu.fiuba.algo3.modelo.Exclusividad.*;
-import edu.fiuba.algo3.modelo.Exclusividad.Estados.ExclusividadInvalida;
+import edu.fiuba.algo3.modelo.Exclusividades.Compuesta.ExclusividadCompuestaCuadruple;
+import edu.fiuba.algo3.modelo.Exclusividades.Compuesta.ExclusividadCompuestaDoble;
+import edu.fiuba.algo3.modelo.Exclusividades.Compuesta.ExclusividadCompuestaSimple;
+import edu.fiuba.algo3.modelo.Exclusividades.Estados.ExclusividadInvalida;
 import edu.fiuba.algo3.modelo.Multiplicadores.*;
 import edu.fiuba.algo3.modelo.Puntajes.*;
 import edu.fiuba.algo3.modelo.Puntos.*;

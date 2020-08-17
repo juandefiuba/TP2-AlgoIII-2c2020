@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
 import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Opcion.Opcion;
+import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Puntajes.Puntaje;
 import edu.fiuba.algo3.modelo.Puntajes.PuntajeNulo;
 import edu.fiuba.algo3.modelo.Puntajes.PuntajeValido;
