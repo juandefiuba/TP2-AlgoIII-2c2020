@@ -14,7 +14,7 @@ public class MultiplicadorQueNoMultiplicaTest {
         PuntajeValido unPuntajeValido = mock(PuntajeValido.class);
 
         unMultiplicadorQueNoMultiplica.multiplicar(unPuntajeValido);
-        
-        verifyNoInteractions(unPuntajeValido);
+
+        verify(unPuntajeValido).multiplicar(unMultiplicadorQueNoMultiplica);
     }
 }
