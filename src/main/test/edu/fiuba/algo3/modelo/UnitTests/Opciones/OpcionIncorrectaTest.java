@@ -49,6 +49,7 @@ public class OpcionIncorrectaTest {
         unaOpcionIncorrecta.validarOpcion(preguntaMock);
 
         verify(preguntaMock).calificarRespuesta(any(RespondeMal.class));
+
     }
 
 }

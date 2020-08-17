@@ -7,6 +7,7 @@ import edu.fiuba.algo3.modelo.Exclusividades.Compuesta.ExclusividadCompuestaSimp
 import edu.fiuba.algo3.modelo.Exclusividades.Estados.EstadoExclusividad;
 import edu.fiuba.algo3.modelo.Exclusividades.Estados.ExclusividadInvalida;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorDoble;
+import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorQueNoMultiplica;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorTriple;
 import edu.fiuba.algo3.modelo.Puntos.*;
 
@@ -38,4 +39,6 @@ public interface Puntaje {
     void aplicarExclusividad(ExclusividadInvalida exclusividadInvalida);
 
     void aplicarExclusividad(ExclusividadCompuesta unaExclusividad);
+
+    void multiplicar(MultiplicadorQueNoMultiplica multiplicadorQueNoMultiplica);
 }
