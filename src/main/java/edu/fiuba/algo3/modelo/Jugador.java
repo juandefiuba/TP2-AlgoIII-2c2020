@@ -15,12 +15,12 @@ public class Jugador {
 
     String nombreJugador;
     private PuntajeValido puntaje;
-    Multiplicador multiplicadorDoble;
-    Multiplicador multiplicadorTriple;
-    Multiplicador multiplicadorActual;
-    Iterator iteradorDeExclusividades;
-    LinkedList<ExclusividadParcial> exclusividadesDelJugador;
-    ExclusividadParcial exclusividad;
+    private Multiplicador multiplicadorDoble;
+    private Multiplicador multiplicadorTriple;
+    private Multiplicador multiplicadorActual;
+    private Iterator iteradorDeExclusividades;
+    private LinkedList<ExclusividadParcial> exclusividadesDelJugador;
+    private ExclusividadParcial exclusividad;
 
     public Jugador() {
         this.puntaje = new PuntajeValido();
