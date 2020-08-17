@@ -1,8 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Opcion.*;
+import edu.fiuba.algo3.modelo.Opciones.*;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaGroupChoice;
-import edu.fiuba.algo3.modelo.Puntajes.Puntaje;
 import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
