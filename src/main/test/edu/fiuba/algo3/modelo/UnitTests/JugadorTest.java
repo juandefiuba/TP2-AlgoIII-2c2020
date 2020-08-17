@@ -1,6 +1,10 @@
 package edu.fiuba.algo3.modelo.UnitTests;
 
-import edu.fiuba.algo3.modelo.Exclusividad.*;
+import edu.fiuba.algo3.modelo.Exclusividades.Compuesta.ExclusividadCompuesta;
+import edu.fiuba.algo3.modelo.Exclusividades.Compuesta.ExclusividadCompuestaDoble;
+import edu.fiuba.algo3.modelo.Exclusividades.Compuesta.ExclusividadCompuestaSimple;
+import edu.fiuba.algo3.modelo.Exclusividades.Parcial.ExclusividadParcial;
+import edu.fiuba.algo3.modelo.Exclusividades.Parcial.ExclusividadParcialSimple;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Multiplicadores.Multiplicador;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorDoble;
