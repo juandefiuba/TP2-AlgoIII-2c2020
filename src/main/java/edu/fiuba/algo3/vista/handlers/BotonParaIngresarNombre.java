@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.controlador;
+package edu.fiuba.algo3.vista.handlers;
 
 import edu.fiuba.algo3.vista.ContenedorPreguntaVoF;
 import edu.fiuba.algo3.vista.TamanioDeVentana;
@@ -23,7 +23,6 @@ public class BotonParaIngresarNombre implements EventHandler<ActionEvent> {
         texto.clear();
         ContenedorPreguntaVoF contenedorPregunta = new ContenedorPreguntaVoF(stage);
         Scene escenaPregunta = new Scene(contenedorPregunta, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
-
         stage.setScene(escenaPregunta);
     }
 

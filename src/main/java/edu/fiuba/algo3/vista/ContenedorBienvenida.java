@@ -1,7 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.ManejadorDeSalida;
-import edu.fiuba.algo3.controlador.BotonEntrarEventHandler;
+import edu.fiuba.algo3.vista.handlers.BotonEntrarEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
