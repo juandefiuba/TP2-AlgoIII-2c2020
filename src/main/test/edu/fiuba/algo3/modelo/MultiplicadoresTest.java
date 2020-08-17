@@ -7,12 +7,11 @@ import java.util.LinkedList;
 
 import org.junit.jupiter.api.Test;
 
-import edu.fiuba.algo3.modelo.Opcion.Opcion;
-import edu.fiuba.algo3.modelo.Opcion.OpcionCorrecta;
-import edu.fiuba.algo3.modelo.Opcion.OpcionIncorrecta;
+import edu.fiuba.algo3.modelo.Opciones.Opcion;
+import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
+import edu.fiuba.algo3.modelo.Opciones.OpcionIncorrecta;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaMultipleChoicePenalidad;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaVerdaderoFalsoPenalidad;
-import edu.fiuba.algo3.modelo.Puntajes.Puntaje;
 
 public class MultiplicadoresTest {
 

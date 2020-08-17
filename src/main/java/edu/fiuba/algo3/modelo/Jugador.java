@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Exclusividad.*;
+import edu.fiuba.algo3.modelo.Exclusividades.Parcial.ExclusividadParcial;
+import edu.fiuba.algo3.modelo.Exclusividades.Parcial.ExclusividadParcialDoble;
+import edu.fiuba.algo3.modelo.Exclusividades.Parcial.ExclusividadParcialSimple;
 import edu.fiuba.algo3.modelo.Multiplicadores.Multiplicador;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorDoble;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorQueNoMultiplica;

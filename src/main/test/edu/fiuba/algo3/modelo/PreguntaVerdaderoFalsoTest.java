@@ -2,12 +2,11 @@ package edu.fiuba.algo3.modelo;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import edu.fiuba.algo3.modelo.Opcion.Opcion;
-import edu.fiuba.algo3.modelo.Opcion.OpcionCorrecta;
-import edu.fiuba.algo3.modelo.Opcion.OpcionIncorrecta;
+import edu.fiuba.algo3.modelo.Opciones.Opcion;
+import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
+import edu.fiuba.algo3.modelo.Opciones.OpcionIncorrecta;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.Puntajes.Puntaje;
 import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;

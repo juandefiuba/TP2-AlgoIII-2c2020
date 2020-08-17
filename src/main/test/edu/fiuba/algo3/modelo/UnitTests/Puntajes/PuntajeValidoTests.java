@@ -1,9 +1,9 @@
 package edu.fiuba.algo3.modelo.UnitTests.Puntajes;
 
-import edu.fiuba.algo3.modelo.Exclusividad.Estados.ExclusividadInvalida;
-import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadCompuestaCuadruple;
-import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadCompuestaDoble;
-import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadCompuestaSimple;
+import edu.fiuba.algo3.modelo.Exclusividades.Estados.ExclusividadInvalida;
+import edu.fiuba.algo3.modelo.Exclusividades.Compuesta.ExclusividadCompuestaCuadruple;
+import edu.fiuba.algo3.modelo.Exclusividades.Compuesta.ExclusividadCompuestaDoble;
+import edu.fiuba.algo3.modelo.Exclusividades.Compuesta.ExclusividadCompuestaSimple;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorDoble;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorTriple;
 import edu.fiuba.algo3.modelo.Puntajes.PuntajeNulo;
@@ -125,49 +125,10 @@ public class PuntajeValidoTests {
     }
 
     @Test
-    public void test14PuntajeValidotriplicaSusPuntosMultiplicarConMultiplicadorTriple(){
+    public void test14PuntajeValidotriplicaSusPuntosMultiplicarConMultiplicadorTriple() {
         PuntajeValido unPuntaje = new PuntajeValido();
         unPuntaje.sumarPuntos(new PuntoEstatico());
         unPuntaje.multiplicar(new MultiplicadorTriple());
-        assertEquals( 3 , unPuntaje.obtenerPuntos());
+        assertEquals(3, unPuntaje.obtenerPuntos());
     }
-
-/*
-        @Test
-        public void elConductorLaBardeo() {
-
-            IVehiculo vehiculoMock = mock(IVehiculo.class);
-
-            when(vehiculoMock.tocarBocina()).thenReturn(true);
-            when(vehiculoMock.frenar()).thenReturn(true);
-
-            Conductor conductor = new Conductor(vehiculoMock);
-
-            boolean ofendido = true;
-
-            Assert.assertTrue(conductor.maniobraFrenadoPacifica(ofendido));
-
-            verify(vehiculoMock,times(1)).tocarBocina();
-            verify(vehiculoMock,times(1)).frenar();
-        }
-
-
-        @Test
-        public void elConductorEstaTranquilo() {
-
-            IVehiculo vehiculoMock = mock(IVehiculo.class);
-
-            when(vehiculoMock.tocarBocina()).thenReturn(true);
-            when(vehiculoMock.frenar()).thenReturn(true);
-
-            Conductor conductor = new Conductor(vehiculoMock);
-
-            boolean ofendido = false;
-
-            Assert.assertTrue(conductor.maniobraFrenadoPacifica(ofendido));
-
-            verify(vehiculoMock,never()).tocarBocina();
-            verify(vehiculoMock,times(1)).frenar();
-        }*/
-
 }

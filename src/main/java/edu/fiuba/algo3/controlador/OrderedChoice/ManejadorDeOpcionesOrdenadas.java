@@ -1,10 +1,9 @@
 package edu.fiuba.algo3.controlador.OrderedChoice;
 
 import java.util.LinkedList;
-import edu.fiuba.algo3.modelo.Opcion.Opcion;
+import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.Scene;
 
 public class ManejadorDeOpcionesOrdenadas implements EventHandler<ActionEvent> {
 

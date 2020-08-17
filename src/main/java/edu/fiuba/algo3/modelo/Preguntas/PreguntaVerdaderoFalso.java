@@ -1,11 +1,11 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
-import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadCompuesta;
-import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadParcial;
+import edu.fiuba.algo3.modelo.Exclusividades.Compuesta.ExclusividadCompuesta;
+import edu.fiuba.algo3.modelo.Exclusividades.Parcial.ExclusividadParcial;
 import edu.fiuba.algo3.modelo.Jugador;
-import edu.fiuba.algo3.modelo.Opcion.Opcion;
-import edu.fiuba.algo3.modelo.Opcion.EstadoDeCalificacion.RespondeBien;
-import edu.fiuba.algo3.modelo.Opcion.EstadoDeCalificacion.RespondeMal;
+import edu.fiuba.algo3.modelo.Opciones.Opcion;
+import edu.fiuba.algo3.modelo.Opciones.EstadoDeCalificacion.RespondeBien;
+import edu.fiuba.algo3.modelo.Opciones.EstadoDeCalificacion.RespondeMal;
 import edu.fiuba.algo3.modelo.Puntajes.Puntaje;
 import edu.fiuba.algo3.modelo.Puntajes.PuntajeNulo;
 import edu.fiuba.algo3.modelo.Puntos.*;
