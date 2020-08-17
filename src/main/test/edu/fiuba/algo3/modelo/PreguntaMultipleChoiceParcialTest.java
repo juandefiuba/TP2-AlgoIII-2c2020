@@ -4,7 +4,7 @@ import edu.fiuba.algo3.modelo.Opcion.Opcion;
 import edu.fiuba.algo3.modelo.Opcion.OpcionCorrecta;
 import edu.fiuba.algo3.modelo.Opcion.OpcionIncorrecta;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaMultipleChoiceParcial;
-import edu.fiuba.algo3.modelo.Puntos.Puntaje;
+import edu.fiuba.algo3.modelo.Puntajes.Puntaje;
 import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
@@ -27,7 +27,8 @@ public class PreguntaMultipleChoiceParcialTest {
 
         PreguntaMultipleChoiceParcial pregunta = new PreguntaMultipleChoiceParcial(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -38,13 +39,14 @@ public class PreguntaMultipleChoiceParcialTest {
         respuestas.add(opcion1);
 
         pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+        pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
 
 
         //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+        pregunta.puntuarJugadores(jugador, jugador2);
 
         //Assert
-        assertEquals(1, puntajeDelJugador.obtenerPuntos());
+        assertEquals(1, jugador.obtenerPuntos());
     }
 
     @Test
@@ -60,7 +62,8 @@ public class PreguntaMultipleChoiceParcialTest {
 
         PreguntaMultipleChoiceParcial pregunta = new PreguntaMultipleChoiceParcial(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -74,12 +77,13 @@ public class PreguntaMultipleChoiceParcialTest {
         respuestas.add(opcion3);
 
         pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+        pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
 
         //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+        pregunta.puntuarJugadores(jugador, jugador2);
 
         //Assert
-        assertEquals(2, puntajeDelJugador.obtenerPuntos());
+        assertEquals(2, jugador.obtenerPuntos());
     }
 
     @Test
@@ -95,7 +99,8 @@ public class PreguntaMultipleChoiceParcialTest {
 
         PreguntaMultipleChoiceParcial pregunta = new PreguntaMultipleChoiceParcial(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -108,12 +113,13 @@ public class PreguntaMultipleChoiceParcialTest {
         respuestas.add(opcion2);
 
         pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+        pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
 
         //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+        pregunta.puntuarJugadores(jugador, jugador2);
 
         //Assert
-        assertEquals(1, puntajeDelJugador.obtenerPuntos());
+        assertEquals(1, jugador.obtenerPuntos());
     }
 
     @Test
@@ -129,7 +135,8 @@ public class PreguntaMultipleChoiceParcialTest {
 
         PreguntaMultipleChoiceParcial pregunta = new PreguntaMultipleChoiceParcial(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -144,12 +151,13 @@ public class PreguntaMultipleChoiceParcialTest {
         respuestas.add(opcion3);
 
         pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+        pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
 
         //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+        pregunta.puntuarJugadores(jugador, jugador2);
 
         //Assert
-        assertEquals(0, puntajeDelJugador.obtenerPuntos());
+        assertEquals(0, jugador.obtenerPuntos());
     }
 
     @Test
@@ -165,7 +173,8 @@ public class PreguntaMultipleChoiceParcialTest {
 
         PreguntaMultipleChoiceParcial pregunta = new PreguntaMultipleChoiceParcial(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -180,12 +189,13 @@ public class PreguntaMultipleChoiceParcialTest {
         respuestas.add(opcion3);
 
         pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+        pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
 
         //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+        pregunta.puntuarJugadores(jugador, jugador2);
 
         //Assert
-        assertEquals(3, puntajeDelJugador.obtenerPuntos());
+        assertEquals(3, jugador.obtenerPuntos());
     }
     
 }

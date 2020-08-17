@@ -2,7 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Opcion.*;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaGroupChoice;
-import edu.fiuba.algo3.modelo.Puntos.Puntaje;
+import edu.fiuba.algo3.modelo.Puntajes.Puntaje;
 import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
@@ -27,7 +27,8 @@ public class PreguntaGroupChoiceTest {
 
         PreguntaGroupChoice pregunta = new PreguntaGroupChoice(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -45,13 +46,15 @@ public class PreguntaGroupChoiceTest {
         respuestasGrupoDos.add(opcion4);
 
         pregunta.agregarRespuestaDeGrupoUnoJugador(jugador, respuestasGrupoUno);
+        pregunta.agregarRespuestaDeGrupoUnoJugador(jugador2, respuestasGrupoUno);
         pregunta.agregarRespuestaDeGrupoDosJugador(jugador, respuestasGrupoDos);
+        pregunta.agregarRespuestaDeGrupoDosJugador(jugador2, respuestasGrupoDos);
 
         //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+        pregunta.puntuarJugadores(jugador, jugador2);
 
         //Assert
-        assertEquals(1, puntajeDelJugador.obtenerPuntos());
+        assertEquals(1, jugador.obtenerPuntos());
     }
     @Test
     public void test02JugadorRespondeGroupMal() {
@@ -69,7 +72,8 @@ public class PreguntaGroupChoiceTest {
 
         PreguntaGroupChoice pregunta = new PreguntaGroupChoice(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -88,13 +92,15 @@ public class PreguntaGroupChoiceTest {
 
 
         pregunta.agregarRespuestaDeGrupoUnoJugador(jugador, respuestasGrupoUno);
+        pregunta.agregarRespuestaDeGrupoUnoJugador(jugador2, respuestasGrupoUno);
         pregunta.agregarRespuestaDeGrupoDosJugador(jugador, respuestasGrupoDos);
+        pregunta.agregarRespuestaDeGrupoDosJugador(jugador2, respuestasGrupoDos);
 
         //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+        pregunta.puntuarJugadores(jugador, jugador2);
 
         //Assert
-        assertEquals(0, puntajeDelJugador.obtenerPuntos());
+        assertEquals(0, jugador.obtenerPuntos());
     }
     @Test
     public void test03JugadorNoAgrupaTodasLasOpcionesYNoRecibePunto() {
@@ -112,7 +118,8 @@ public class PreguntaGroupChoiceTest {
 
         PreguntaGroupChoice pregunta = new PreguntaGroupChoice(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -130,13 +137,15 @@ public class PreguntaGroupChoiceTest {
 
 
         pregunta.agregarRespuestaDeGrupoUnoJugador(jugador, respuestasGrupoUno);
+        pregunta.agregarRespuestaDeGrupoUnoJugador(jugador2, respuestasGrupoUno);
         pregunta.agregarRespuestaDeGrupoDosJugador(jugador, respuestasGrupoDos);
+        pregunta.agregarRespuestaDeGrupoDosJugador(jugador2, respuestasGrupoDos);
 
         //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+        pregunta.puntuarJugadores(jugador, jugador2);
 
         //Assert
-        assertEquals(0, puntajeDelJugador.obtenerPuntos());
+        assertEquals(0, jugador.obtenerPuntos());
     }
 
 

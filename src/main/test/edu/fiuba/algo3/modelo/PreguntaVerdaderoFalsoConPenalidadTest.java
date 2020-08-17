@@ -4,7 +4,7 @@ import edu.fiuba.algo3.modelo.Opcion.Opcion;
 import edu.fiuba.algo3.modelo.Opcion.OpcionCorrecta;
 import edu.fiuba.algo3.modelo.Opcion.OpcionIncorrecta;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaVerdaderoFalsoPenalidad;
-import edu.fiuba.algo3.modelo.Puntos.Puntaje;
+import edu.fiuba.algo3.modelo.Puntajes.Puntaje;
 import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
@@ -25,7 +25,8 @@ public class PreguntaVerdaderoFalsoConPenalidadTest {
 
         PreguntaVerdaderoFalsoPenalidad pregunta = new PreguntaVerdaderoFalsoPenalidad(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -37,12 +38,13 @@ public class PreguntaVerdaderoFalsoConPenalidadTest {
         respuestas.add(opcionVerdadero);
 
         pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+        pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
 
         //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+        pregunta.puntuarJugadores(jugador, jugador2);
 
         //Assert
-        assertEquals(1, puntajeDelJugador.obtenerPuntos());
+        assertEquals(1,  jugador.obtenerPuntos());
     }
 
     @Test
@@ -56,7 +58,8 @@ public class PreguntaVerdaderoFalsoConPenalidadTest {
 
         PreguntaVerdaderoFalsoPenalidad pregunta = new PreguntaVerdaderoFalsoPenalidad(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -67,12 +70,13 @@ public class PreguntaVerdaderoFalsoConPenalidadTest {
 
         respuestas.add(opcionFalso);
         pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+        pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
 
         //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+        pregunta.puntuarJugadores(jugador, jugador2);
 
         //Assert
-        assertEquals(-1, puntajeDelJugador.obtenerPuntos());
+        assertEquals(-1,  jugador.obtenerPuntos());
     }
 
     @Test
@@ -87,7 +91,8 @@ public class PreguntaVerdaderoFalsoConPenalidadTest {
 
         PreguntaVerdaderoFalsoPenalidad pregunta = new PreguntaVerdaderoFalsoPenalidad(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
 
@@ -98,11 +103,12 @@ public class PreguntaVerdaderoFalsoConPenalidadTest {
 
         respuestas.add(opcionFalso);
         pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+        pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
         //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+        pregunta.puntuarJugadores(jugador, jugador2);
 
         //Assert
-        assertEquals(1, puntajeDelJugador.obtenerPuntos());
+        assertEquals(1,  jugador.obtenerPuntos());
     }
 
     @Test
@@ -116,7 +122,8 @@ public class PreguntaVerdaderoFalsoConPenalidadTest {
 
         PreguntaVerdaderoFalsoPenalidad pregunta = new PreguntaVerdaderoFalsoPenalidad(opciones);
 
-        Jugador jugador = new Jugador("Carlito");
+        Jugador jugador = new Jugador();
+        Jugador jugador2 = new Jugador();
 
 
         Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
@@ -129,11 +136,12 @@ public class PreguntaVerdaderoFalsoConPenalidadTest {
         respuestas.add(opcionVerdadero);
 
         pregunta.agregarRespuestaDeJugador(jugador, respuestas);
+        pregunta.agregarRespuestaDeJugador(jugador2, respuestas);
 
         //Act
-        Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
+        pregunta.puntuarJugadores(jugador, jugador2);
 
-        assertEquals(-1,puntajeDelJugador.obtenerPuntos());
+        assertEquals(-1, jugador.obtenerPuntos());
     }
 
     

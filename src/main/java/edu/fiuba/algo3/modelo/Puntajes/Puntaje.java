@@ -1,9 +1,12 @@
-package edu.fiuba.algo3.modelo.Puntos;
+package edu.fiuba.algo3.modelo.Puntajes;
 
 import edu.fiuba.algo3.modelo.Exclusividad.*;
 import edu.fiuba.algo3.modelo.Exclusividad.Estados.EstadoExclusividad;
+import edu.fiuba.algo3.modelo.Exclusividad.Estados.ExclusividadInvalida;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorDoble;
+import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorQueNoMultiplica;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorTriple;
+import edu.fiuba.algo3.modelo.Puntos.*;
 
 public interface Puntaje {
 
@@ -12,17 +15,17 @@ public interface Puntaje {
     void sumarPuntos(PuntoNegativo unTipoDePunto);
     void sumarPuntos(PuntoPositivo unTipoDePunto);
     void sumarPuntos(PuntoEstatico unTipoDePunto);
-    void sumarPuntos(PuntajeValido unPuntajeAsumar);
+    void sumarPuntos(Puntaje unPuntajeAsumar);
 
     EstadoExclusividad emparejarPuntaje(Puntaje unPuntaje);
     EstadoExclusividad emparejarPuntaje(PuntajeValido unPuntaje);
-    EstadoExclusividad emparejarPuntaje(PuntajeNeutro unPuntaje);
+    EstadoExclusividad emparejarPuntaje(PuntajeNulo unPuntaje);
 
-    void aplicarExclusividad(ExclusividadSimple exclusividadSimple);
+    void aplicarExclusividad(ExclusividadCompuestaSimple exclusividadSimple);
 
-    void aplicarExclusividad(ExclusividadDoble exclusividadDoble);
+    void aplicarExclusividad(ExclusividadCompuestaDoble exclusividadDoble);
 
-    void aplicarExclusividad(ExclusividadCuadruple exclusividadCuadruple);
+    void aplicarExclusividad(ExclusividadCompuestaCuadruple exclusividadCuadruple);
 
     int obtenerPuntos();
 
@@ -30,5 +33,9 @@ public interface Puntaje {
 
     void multiplicar(MultiplicadorDoble multiplicadorDoble);
 
-    void aplicarExclusividad(ExclusividadDeEmpate exclusividadDeEmpate);
+    void aplicarExclusividad(ExclusividadInvalida exclusividadInvalida);
+
+    void aplicarExclusividad(ExclusividadCompuesta unaExclusividad);
+
+    void multiplicar(MultiplicadorQueNoMultiplica multiplicadorQueNoMultiplica);
 }

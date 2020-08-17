@@ -1,14 +1,12 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Exclusividad.Exclusividad;
-import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadDoble;
-import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadSimple;
+import edu.fiuba.algo3.modelo.Exclusividad.*;
 import edu.fiuba.algo3.modelo.Multiplicadores.Multiplicador;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorDoble;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorQueNoMultiplica;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorTriple;
-import edu.fiuba.algo3.modelo.Puntos.Puntaje;
-import edu.fiuba.algo3.modelo.Puntos.PuntajeValido;
+import edu.fiuba.algo3.modelo.Puntajes.Puntaje;
+import edu.fiuba.algo3.modelo.Puntajes.PuntajeValido;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -17,24 +15,28 @@ public class Jugador {
 
     String nombreJugador;
     private PuntajeValido puntaje;
-    Multiplicador multiplicadorDoble;
-    Multiplicador multiplicadorTriple;
-    Multiplicador multiplicadorActual;
-    Iterator iteradorDeExclusividades;
-    LinkedList<Exclusividad> exclusividadesDelJugador;
-    Exclusividad exclusividad;
+    private Multiplicador multiplicadorDoble;
+    private Multiplicador multiplicadorTriple;
+    private Multiplicador multiplicadorActual;
+    private Iterator iteradorDeExclusividades;
+    private LinkedList<ExclusividadParcial> exclusividadesDelJugador;
+    private ExclusividadParcial exclusividad;
 
-    public Jugador(String nombre) {
-        this.nombreJugador = nombre;
+    public Jugador() {
         this.puntaje = new PuntajeValido();
         this.multiplicadorDoble = new MultiplicadorDoble();
         this.multiplicadorTriple = new MultiplicadorTriple();
         this.multiplicadorActual = new MultiplicadorQueNoMultiplica();
+
         this.exclusividadesDelJugador = new LinkedList<>();
-        this.exclusividadesDelJugador.add(new ExclusividadDoble());
-        this.exclusividadesDelJugador.add(new ExclusividadDoble());
+        this.exclusividadesDelJugador.add(new ExclusividadParcialDoble());
+        this.exclusividadesDelJugador.add(new ExclusividadParcialDoble());
+
         this.iteradorDeExclusividades = this.exclusividadesDelJugador.iterator();
-        this.exclusividad = new ExclusividadSimple();
+        this.exclusividad = new ExclusividadParcialSimple();
+    }
+    public void asignarNombreAlJugador(String unNombre){
+        this.nombreJugador = unNombre;
     }
 
     public int obtenerPuntos() {
@@ -63,13 +65,13 @@ public class Jugador {
 
     public void activarExclusividad() {
         if (this.iteradorDeExclusividades.hasNext()){
-            this.exclusividad = (Exclusividad) this.iteradorDeExclusividades.next();
+            this.exclusividad = (ExclusividadParcial) this.iteradorDeExclusividades.next();
         }
     }
 
-    public Exclusividad obtenerExclusividad() {
-        Exclusividad exclusividadADevolver = this.exclusividad;
-        this.exclusividad = new ExclusividadSimple();
+    public ExclusividadParcial obtenerExclusividad() {
+        ExclusividadParcial exclusividadADevolver = this.exclusividad;
+        this.exclusividad = new ExclusividadParcialSimple();
         return exclusividadADevolver;
     }
 }

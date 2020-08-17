@@ -1,18 +1,19 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
+import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadCompuesta;
+import edu.fiuba.algo3.modelo.Exclusividad.ExclusividadParcial;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Opcion.*;
 import edu.fiuba.algo3.modelo.Opcion.EstadoDeCalificacion.RespondeBien;
 import edu.fiuba.algo3.modelo.Opcion.EstadoDeCalificacion.RespondeMal;
-import edu.fiuba.algo3.modelo.Puntos.Puntaje;
-import edu.fiuba.algo3.modelo.Puntos.PuntajeValido;
-import edu.fiuba.algo3.modelo.Puntos.PuntajeNeutro;
+import edu.fiuba.algo3.modelo.Puntajes.Puntaje;
+import edu.fiuba.algo3.modelo.Puntajes.PuntajeNulo;
 import edu.fiuba.algo3.modelo.Puntos.PuntoEstatico;
 
 
 import java.util.LinkedList;
 
-public class PreguntaMultipleChoiceClasico extends Pregunta {
+public class PreguntaMultipleChoiceClasico extends PreguntaBase {
 
 
     public PreguntaMultipleChoiceClasico(LinkedList<Opcion> opciones) {
@@ -20,16 +21,14 @@ public class PreguntaMultipleChoiceClasico extends Pregunta {
    }
 
    @Override
-    public Puntaje puntuarJugador(Jugador jugador) {
+    public Puntaje obtenerPuntajeBaseDelJugador(Jugador jugador) {
 
-        this.puntajeDelJugador = new PuntajeValido();
-        LinkedList<Opcion> respuestaDelJugador = this.respuestasDeLosJugadores.get(jugador);
-
-        respuestaDelJugador.forEach(opcion -> this.calificarRespuesta(opcion));
+        Puntaje unPuntaje = super.obtenerPuntajeBaseDelJugador(jugador);
 
         LinkedList<Opcion> opcionesCorrectas = new LinkedList<>();
-        opciones.forEach(opcion -> opcion.agregarOpcionesCorrectas(opcionesCorrectas));
-        opcionesCorrectas.removeAll(respuestaDelJugador);
+        opciones.forEach(opcion -> opcion.enlistarOpcionesCorrectas(opcionesCorrectas));
+        opcionesCorrectas.removeAll(this.respuestasDeLosJugadores.get(jugador));
+
         LinkedList<Opcion> opcionesCorrectasNoElegidasPorElJugador = opcionesCorrectas;
 
         if(!opcionesCorrectasNoElegidasPorElJugador.isEmpty()){
@@ -40,13 +39,29 @@ public class PreguntaMultipleChoiceClasico extends Pregunta {
     }
 
     @Override
+    public void puntuarJugadores(Jugador jugador, Jugador jugador2) {
+
+        Puntaje puntajeJugador = this.obtenerPuntajeBaseDelJugador(jugador);
+        Puntaje puntajeJugador2 = this.obtenerPuntajeBaseDelJugador(jugador2);
+
+        ExclusividadParcial exclusividad = jugador.obtenerExclusividad();
+        ExclusividadParcial exclusividad2 = jugador2.obtenerExclusividad();
+
+        ExclusividadCompuesta exclusividadTotal = exclusividad2.componerExclusividad(exclusividad);
+
+        exclusividadTotal.aplicarExclusividadAPuntajes(puntajeJugador, puntajeJugador2);
+
+        jugador.sumarPuntos(puntajeJugador);
+        jugador2.sumarPuntos(puntajeJugador2);
+    }
+
+    @Override
     public void calificarRespuesta(RespondeBien calificador) {
         this.puntajeDelJugador.sumarPuntos(new PuntoEstatico());
     }
 
     @Override
     public void calificarRespuesta(RespondeMal calificador) {
-        this.puntajeDelJugador = new PuntajeNeutro();
+        this.puntajeDelJugador = new PuntajeNulo();
     }
-
 }
