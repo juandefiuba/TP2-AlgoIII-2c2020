@@ -5,6 +5,7 @@ import edu.fiuba.algo3.modelo.Exclusividad.Estados.EstadoExclusividad;
 import edu.fiuba.algo3.modelo.Exclusividad.Estados.ExclusividadInvalida;
 import edu.fiuba.algo3.modelo.Exclusividad.Estados.ExclusividadValida;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorDoble;
+import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorQueNoMultiplica;
 import edu.fiuba.algo3.modelo.Multiplicadores.MultiplicadorTriple;
 import edu.fiuba.algo3.modelo.Puntos.*;
 
@@ -55,6 +56,11 @@ public class PuntajeValido implements Puntaje {
     @Override
     public void aplicarExclusividad(ExclusividadCompuesta unaExclusividad) {
         unaExclusividad.aplicarExclusividad(this);
+    }
+
+    @Override
+    public void multiplicar(MultiplicadorQueNoMultiplica multiplicadorQueNoMultiplica) {
+
     }
 
 
