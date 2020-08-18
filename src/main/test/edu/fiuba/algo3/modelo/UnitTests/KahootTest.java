@@ -14,7 +14,7 @@ import java.util.LinkedList;
 import static edu.fiuba.algo3.modelo.Kahoot.Kahoot;
 import static org.junit.jupiter.api.Assertions.*;
 
-class KahootTest {
+public class KahootTest {
 	@Test
 	public void test01KahootTerminaElJuegoCuandoNoHayMasPreguntas(){
 		//TODO: Creación de preguntas y opciones como Factory desde un JSON
@@ -46,6 +46,6 @@ class KahootTest {
 			kahoot.terminarTurno();
 		}
 
-		assertFalse(kahoot.sigueElJuego()); //:P
+		assertEquals(false, kahoot.sigueElJuego()); //:P
 	}
 }
