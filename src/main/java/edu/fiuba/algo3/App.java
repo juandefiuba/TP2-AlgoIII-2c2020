@@ -1,11 +1,15 @@
 package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.vista.ContenedorBienvenida;
+import edu.fiuba.algo3.vista.TamanioDeVentana;
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
-
+import java.nio.file.Paths;
 
 public class App extends Application {
 
@@ -15,22 +19,33 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
-        int altoDeVentana = 720;
-        int anchoDeVentana = 1280;
         stage.setTitle("Kahoot!");
+        stage.setMaximized(false); //Comenzar en modo ventana
 
-        //////////////////////////// MÚSICA próximamente//////////////////////////////
+        //PROPIEDADES VENTANA (Ancho x Alto)
+        stage.setMinHeight(TamanioDeVentana.altoPredeterminado());
+        stage.setMinWidth(TamanioDeVentana.anchoPredeterminado());
+        stage.setMaxHeight(TamanioDeVentana.altoPredeterminado());
+        stage.setMaxWidth(TamanioDeVentana.anchoPredeterminado());
 
-
-
-        //AplicacionOnKeyPressEventHandler AplicacionOnKeyPressEventHandler = new AplicacionOnKeyPressEventHandler(stage, contenedorPrincipal.getBarraDeMenu());
-        //escenaJuego.setOnKeyPressed(AplicacionOnKeyPressEventHandler);
-
+        //CREACIÓN ESCENA PRINCIPAL
         ContenedorBienvenida contenedorBienvenida = new ContenedorBienvenida(stage);
-        Scene escenaBienvenida = new Scene(contenedorBienvenida, anchoDeVentana, altoDeVentana);
-
+        Scene escenaBienvenida = new Scene(contenedorBienvenida, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
         stage.setScene(escenaBienvenida);
 
         stage.show();
+        musica();
+    }
+
+    MediaPlayer mediaPlayer;
+    public void musica() {
+        String rutaArchivoMusica = "src/main/java/edu/fiuba/algo3/vista/musica/lobby-music-8bit-edition.wav";
+        Media media = new Media(Paths.get(rutaArchivoMusica).toUri().toString());
+        mediaPlayer = new MediaPlayer(media);
+
+        //LOOP MÚSICA
+        mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.seek(Duration.ZERO));
+
+        mediaPlayer.play();
     }
 }

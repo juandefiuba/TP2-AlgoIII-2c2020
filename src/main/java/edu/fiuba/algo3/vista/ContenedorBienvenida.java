@@ -1,8 +1,7 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.ManejadorDeSalida;
 import edu.fiuba.algo3.controlador.BotonEntrarEventHandler;
-import javafx.geometry.Insets;
+import edu.fiuba.algo3.controlador.ManejadorDeSalida;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,35 +15,43 @@ import javafx.stage.Stage;
 public class ContenedorBienvenida extends VBox {
 
     public ContenedorBienvenida(Stage stage) {
-
         super();
 
-        this.setAlignment(Pos.CENTER);
-        this.setSpacing(600);
-        this.setPadding(new Insets(25));
-        Image imagen = new Image("file:src/main/java/edu/fiuba/algo3/vista/imagenes/kahoot-1.jpg");
+        String rutaArchivoImagenFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/kahoot-1.png";
+        String estiloBoton = "-fx-border-color: #000000; -fx-border-width: 5px; -fx-background-color: #FFFFFF; -fx-font-size: 3em ;-fx-text-fill: #000000";
+
+        //IMAGEN DE FONDO
+        Image imagen = new Image(rutaArchivoImagenFondo);
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
 
+        //BOTONES
         Button botonEntrar = new Button("Iniciar");
-        botonEntrar.setStyle("-fx-border-color: #000000; -fx-border-width: 5px; -fx-background-color: #FFFFFF; -fx-font-size: 3em ;-fx-text-fill: #000000");
+        botonEntrar.setStyle(estiloBoton);
         botonEntrar.setMinSize(200,100);
+
         Button botonSalir = new Button("Salir");
-        botonSalir.setStyle("-fx-border-color: #000000; -fx-border-width: 5px; -fx-background-color: #FFFFFF; -fx-font-size: 3em ;-fx-text-fill: #000000");
+        botonSalir.setStyle(estiloBoton);
         botonSalir.setMinSize(200,100);
 
+        //TEXTO DE BIENVENIDA
         Label etiqueta = new Label();
         etiqueta.setFont(Font.font("Tahoma", FontWeight.BOLD, 60));
         etiqueta.setText("Bienvenid@s a");
         etiqueta.setTextFill(Color.BLACK);
 
-
+        //CONTENEDOR DE BOTONES
         HBox contenedorHorizontal = new HBox();
         contenedorHorizontal.setSpacing(250);
-        contenedorHorizontal.getChildren().addAll(botonEntrar, botonSalir);
         contenedorHorizontal.setAlignment(Pos.CENTER);
+        contenedorHorizontal.getChildren().addAll(botonEntrar, botonSalir);
+
+        //CONTENEDOR PRINCIPAL
+        this.setAlignment(Pos.CENTER);
+        this.setSpacing(300);
         this.getChildren().addAll(etiqueta, contenedorHorizontal);
 
+        //LLAMADA A MANEJADORES
         botonSalir.setOnAction(new ManejadorDeSalida());
         botonEntrar.setOnAction(new BotonEntrarEventHandler(stage));
     }
