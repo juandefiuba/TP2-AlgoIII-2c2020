@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.controlador;
+package edu.fiuba.algo3.vista.handlers;
 
 import edu.fiuba.algo3.vista.ContenedorInicio;
 import edu.fiuba.algo3.vista.TamanioDeVentana;
