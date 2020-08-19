@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.ManejadorDeSalida;
+import edu.fiuba.algo3.controlador.SalirDelJuegoHandler;
 import edu.fiuba.algo3.vista.handlers.BotonEntrarEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -45,7 +45,7 @@ public class ContenedorBienvenida extends VBox {
         contenedorHorizontal.setAlignment(Pos.CENTER);
         this.getChildren().addAll(etiqueta, contenedorHorizontal);
 
-        botonSalir.setOnAction(new ManejadorDeSalida());
+        botonSalir.setOnAction(new SalirDelJuegoHandler());
         botonEntrar.setOnAction(new BotonEntrarEventHandler(stage));
     }
 }

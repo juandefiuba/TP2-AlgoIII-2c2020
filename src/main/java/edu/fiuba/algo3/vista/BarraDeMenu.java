@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.controlador.ManejadorDeSalida;
+import edu.fiuba.algo3.controlador.SalirDelJuegoHandler;
 import edu.fiuba.algo3.vista.handlers.OpcionAcercaDeEventHandler;
 import edu.fiuba.algo3.vista.handlers.OpcionPantallaCompletaEventHandler;
 import javafx.scene.control.Menu;
@@ -29,7 +29,7 @@ public class BarraDeMenu extends MenuBar {
         opcionSalir.setStyle("-fx-font-size:25");
         opcionAcercaDe.setStyle("-fx-font-size:25");
 
-        ManejadorDeSalida opcionSalirHandler = new ManejadorDeSalida();
+        SalirDelJuegoHandler opcionSalirHandler = new SalirDelJuegoHandler();
         opcionSalir.setOnAction(opcionSalirHandler);
 
         OpcionAcercaDeEventHandler opcionAcercaDeHandler = new OpcionAcercaDeEventHandler();
