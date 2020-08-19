@@ -15,31 +15,32 @@ public class BarraDeMenu extends MenuBar {
 
     public BarraDeMenu(Stage stage) {
 
-        //this.prefWidthProperty().bind(stage.widthProperty());
-
+        //OPCIONES DEL MENU
         Menu menuArchivo = new Menu("Archivo");
         Menu menuVer = new Menu("Ver");
         Menu menuAyuda = new Menu("Ayuda");
         MenuItem opcionSalir = new MenuItem("Salir");
         MenuItem opcionAcercaDe = new MenuItem("Acerca de...");
 
-        menuArchivo.setStyle("-fx-font-size:25");
-        menuVer.setStyle("-fx-font-size:25");
-        menuAyuda.setStyle("-fx-font-size:25");
-        opcionSalir.setStyle("-fx-font-size:25");
-        opcionAcercaDe.setStyle("-fx-font-size:25");
+        //TAMAÑO DE LAS OPCIONES DEL MENU
+        menuArchivo.setStyle("-fx-font-size:15");
+        menuVer.setStyle("-fx-font-size:15");
+        menuAyuda.setStyle("-fx-font-size:15");
+        opcionSalir.setStyle("-fx-font-size:15");
+        opcionAcercaDe.setStyle("-fx-font-size:15");
 
+        //MANEJADORES DE LAS OPCIONES
         SalirDelJuegoHandler opcionSalirHandler = new SalirDelJuegoHandler();
         opcionSalir.setOnAction(opcionSalirHandler);
 
         OpcionAcercaDeEventHandler opcionAcercaDeHandler = new OpcionAcercaDeEventHandler();
         opcionAcercaDe.setOnAction(opcionAcercaDeHandler);
 
+        //TODAVÍA NO ANDA LA PANTALLA COMPLETA (PROBLEMAS DE RESOLUCIÓN :( )
         OpcionPantallaCompletaEventHandler opcionPantallaCompletaHandler = new OpcionPantallaCompletaEventHandler(stage, opcionPantallaCompleta);
         opcionPantallaCompleta.setOnAction(opcionPantallaCompletaHandler);
 
-        //opcionPantallaCompleta.setDisable(false);
-
+        //AGREGANDO OPCIONES A LA BARRA DE MENU
         menuArchivo.getItems().addAll(new SeparatorMenuItem(), opcionSalir);
         menuAyuda.getItems().addAll(opcionAcercaDe);
         menuVer.getItems().addAll(opcionPantallaCompleta);

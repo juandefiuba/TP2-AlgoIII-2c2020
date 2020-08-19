@@ -23,6 +23,7 @@ public class BotonParaIngresarNombre implements EventHandler<ActionEvent> {
         texto.clear();
         ContenedorPreguntaVoF contenedorPregunta = new ContenedorPreguntaVoF(stage);
         Scene escenaPregunta = new Scene(contenedorPregunta, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
+        stage.sizeToScene();
         stage.setScene(escenaPregunta);
     }
 
