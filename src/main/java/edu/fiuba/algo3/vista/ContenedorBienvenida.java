@@ -53,12 +53,8 @@ public class ContenedorBienvenida extends VBox {
         this.setSpacing(300);
         this.getChildren().addAll(etiqueta, contenedorHorizontal);
 
-<<<<<<< HEAD
-        botonSalir.setOnAction(new SalirDelJuegoHandler());
-=======
         //LLAMADA A MANEJADORES
-        botonSalir.setOnAction(new ManejadorDeSalida());
->>>>>>> develop
+        botonSalir.setOnAction(new SalirDelJuegoHandler());
         botonEntrar.setOnAction(new BotonEntrarEventHandler(stage));
     }
 }
