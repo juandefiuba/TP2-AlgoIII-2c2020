@@ -15,13 +15,22 @@ public abstract class PreguntaBase implements Pregunta{
 
 	protected LinkedList<Opcion> opciones;
 	protected Map<Jugador, LinkedList<Opcion>> respuestasDeLosJugadores;
-
+	protected String texto;
+	// public?
 	public Puntaje puntajeDelJugador;
 
 	protected PreguntaBase(LinkedList<Opcion> opcionesDeLaPregunta) {
 		this.puntajeDelJugador = new PuntajeNulo();
 		this.opciones = opcionesDeLaPregunta;
 		this.respuestasDeLosJugadores = new HashMap<>();
+	}
+	
+	public void setearTexto(String texto) {
+		this.texto = texto;
+	}
+	
+	public String obtenerTexto() {
+		return this.texto;
 	}
 
 	@Override

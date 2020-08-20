@@ -5,7 +5,7 @@ import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 
 import java.util.LinkedList;
 
-public class OpcionCorrecta implements Opcion{
+public class OpcionCorrecta extends Opcion{
 
     @Override
     public void enlistarOpcionesCorrectas(LinkedList<Opcion> opcionesCorrectas) {

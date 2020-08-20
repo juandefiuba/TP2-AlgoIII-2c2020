@@ -6,6 +6,7 @@ import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
 import edu.fiuba.algo3.modelo.Opciones.OpcionIncorrecta;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.Preguntas.PreguntaBase;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaVerdaderoFalso;
 import org.junit.jupiter.api.Test;
 
@@ -83,5 +84,32 @@ public class KahootTest {
 		kahoot.terminarTurno();
 		assertEquals(1, jugadores.get(0).obtenerPuntos());
 		
+	}
+	
+	@Test
+	public void testObtenerPreguntaActual() {
+		Opcion opcionVerdadero = new OpcionCorrecta();
+		opcionVerdadero.setearTexto("Mas bien");
+		Opcion opcionFalso = new OpcionIncorrecta();
+		opcionFalso.setearTexto("uf");
+		LinkedList<Opcion> opciones = new LinkedList<>();
+		opciones.add(opcionVerdadero);
+		opciones.add(opcionFalso);
+		PreguntaVerdaderoFalso pregunta = new PreguntaVerdaderoFalso(opciones);
+		String texto = "Aprobamos?";
+		pregunta.setearTexto(texto);
+		Kahoot.resetear();
+		Kahoot kahoot = Kahoot.Kahoot();
+		kahoot.agregarPregunta(pregunta);
+		kahoot.agregarJugador("Mica");
+		kahoot.agregarJugador("Juancito");
+		kahoot.iniciarJuego();
+		PreguntaBase preguntaPrueba = kahoot.obtenerPreguntaActual();
+		Iterator iterador = preguntaPrueba.obtenerOpciones();
+		Opcion opcion1 = (Opcion) iterador.next();
+		Opcion opcion2 = (Opcion) iterador.next();
+		assertEquals(texto, preguntaPrueba.obtenerTexto());
+		assertEquals("Mas bien", opcion1.obtenerTexto());
+		assertEquals("uf", opcion2.obtenerTexto());
 	}
 }

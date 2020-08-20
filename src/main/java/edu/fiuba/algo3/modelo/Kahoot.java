@@ -3,6 +3,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.Preguntas.PreguntaBase;
 
 import java.util.LinkedList;
 
@@ -66,5 +67,9 @@ public class Kahoot { //Singleton
 
 	public void agregarOpcionElegida(Opcion opcion) {
 		this.turno.agregarOpcionElegida(opcion);
+	}
+	
+	public PreguntaBase obtenerPreguntaActual() {
+		return this.turno.obtenerPregunta();
 	}
 }

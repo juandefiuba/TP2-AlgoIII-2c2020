@@ -3,7 +3,7 @@ package edu.fiuba.algo3.modelo.Opciones;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import java.util.LinkedList;
 
-public class OpcionGrupoDos implements Opcion {
+public class OpcionGrupoDos extends Opcion {
 
     @Override
     public void enlistarOpcionesCorrectas(LinkedList<Opcion> opcionesCorrectas) {}

@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.Preguntas.PreguntaBase;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -16,6 +17,10 @@ public class Turno {
 		this.jugadores = jugadores;
 		this.preguntas = preguntas;
 		this.preguntaActual = (Pregunta) this.preguntas.next();
+	}
+	
+	public PreguntaBase obtenerPregunta() {
+		return (PreguntaBase) this.preguntaActual;
 	}
 
 	public void avanzarJugador() {

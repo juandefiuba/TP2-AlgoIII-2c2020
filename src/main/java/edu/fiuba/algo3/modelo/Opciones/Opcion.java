@@ -4,10 +4,17 @@ import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 
 import java.util.LinkedList;
 
-public interface Opcion {
+public abstract class Opcion {
 
-    void enlistarOpcionesCorrectas(LinkedList<Opcion> opcionesCorrectas);
-    void enlistarGrupoUno(LinkedList<Opcion> opcionesgrupoUno);
-    void enlistarGrupoDos(LinkedList<Opcion> opcionesgrupoDos);
-    void validarOpcion(Pregunta pregunta);
+	private String texto;
+	public void setearTexto(String texto) {
+		this.texto = texto;
+	}
+	public String obtenerTexto() {
+		return this.texto;
+	}
+    public abstract void enlistarOpcionesCorrectas(LinkedList<Opcion> opcionesCorrectas);
+    public abstract void enlistarGrupoUno(LinkedList<Opcion> opcionesgrupoUno);
+    public abstract void enlistarGrupoDos(LinkedList<Opcion> opcionesgrupoDos);
+    public abstract void validarOpcion(Pregunta pregunta);
 }
