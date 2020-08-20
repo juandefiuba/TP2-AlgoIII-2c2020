@@ -2,8 +2,8 @@ package edu.fiuba.algo3.vista;
 
 
 import edu.fiuba.algo3.controlador.SalirDelJuegoHandler;
+import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.vista.handlers.BotonEntrarEventHandler;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 
 public class ContenedorBienvenida extends VBox {
 
-	public ContenedorBienvenida(Stage stage) {
+	public ContenedorBienvenida(Stage stage, Kahoot kahoot) {
 		super();
 
 		String rutaArchivoImagenFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/kahoot-1.png";
@@ -55,6 +55,6 @@ public class ContenedorBienvenida extends VBox {
 
 		//LLAMADA A MANEJADORES
 		botonSalir.setOnAction(new SalirDelJuegoHandler());
-		botonEntrar.setOnAction(new BotonEntrarEventHandler(stage));
+		botonEntrar.setOnAction(new BotonEntrarEventHandler(stage, kahoot));
 	}
 }

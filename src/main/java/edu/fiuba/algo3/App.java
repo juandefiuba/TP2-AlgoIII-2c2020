@@ -1,5 +1,6 @@
 package edu.fiuba.algo3;
 
+import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.vista.ContenedorBienvenida;
 import edu.fiuba.algo3.vista.TamanioDeVentana;
 import javafx.application.Application;
@@ -21,7 +22,7 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
         stage.setTitle("Kahoot!");
         stage.setMaximized(false); //Comenzar en modo ventana
-
+        Kahoot kahoot = Kahoot.Kahoot();
         //PROPIEDADES VENTANA (Ancho x Alto)
         stage.setMinHeight(TamanioDeVentana.altoPredeterminado());
         stage.setMinWidth(TamanioDeVentana.anchoPredeterminado());
@@ -29,7 +30,7 @@ public class App extends Application {
         stage.setMaxWidth(TamanioDeVentana.anchoPredeterminado());
 
         //CREACIÓN ESCENA PRINCIPAL
-        ContenedorBienvenida contenedorBienvenida = new ContenedorBienvenida(stage);
+        ContenedorBienvenida contenedorBienvenida = new ContenedorBienvenida(stage, kahoot);
         Scene escenaBienvenida = new Scene(contenedorBienvenida, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
         stage.setScene(escenaBienvenida);
 

@@ -93,4 +93,9 @@ public class PreguntaGroupChoice extends PreguntaBase {
         this.respuestasGrupoDosDeLosJugadores.put(jugador,respuestasGrupoDos);
     }
 
+    @Override
+    public PreguntaGroupChoice comoInstancia(){
+        return this;
+    }
+
 }

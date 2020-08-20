@@ -67,4 +67,6 @@ public abstract class PreguntaBase implements Pregunta{
 		respuestaDelJugador.forEach(opcion -> this.calificarRespuesta(opcion));
 		return this.puntajeDelJugador;
 	}
+
+	abstract public PreguntaBase comoInstancia();
 }

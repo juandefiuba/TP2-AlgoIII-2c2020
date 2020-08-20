@@ -64,4 +64,9 @@ public class PreguntaMultipleChoiceClasico extends PreguntaBase {
     public void calificarRespuesta(RespondeMal calificador) {
         this.puntajeDelJugador = new PuntajeNulo();
     }
+
+    @Override
+    public PreguntaMultipleChoiceClasico comoInstancia(){
+        return this;
+    }
 }

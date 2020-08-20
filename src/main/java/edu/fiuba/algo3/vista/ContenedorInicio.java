@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista;
 
 
+import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.vista.handlers.BotonParaIngresarNombre;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -17,13 +18,13 @@ public class ContenedorInicio extends BorderPane {
     private BarraDeMenu menuBar;
 
     //CONTENEDOR PRINCIPAL
-    public ContenedorInicio(Stage stage) {
+    public ContenedorInicio(Stage stage, Kahoot kahoot) {
         this.setMenu(stage);
-        this.contenedorCentral(stage);
+        this.contenedorCentral(stage, kahoot);
         stage.sizeToScene();
     }
 
-    private void contenedorCentral(Stage stage) {
+    private void contenedorCentral(Stage stage, Kahoot kahoot) {
 
         //FONDO
         String rutaArchivoImagen = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png";
@@ -44,14 +45,14 @@ public class ContenedorInicio extends BorderPane {
 
         //BOTÓN
         String estiloBoton = "-fx-border-color: #000000; -fx-border-width: 5px; -fx-background-color: #FFFFFF; -fx-font-size: 3em ;-fx-text-fill: #000000";
-        Button botonEntrar = new Button("Ok");
-        botonEntrar.setStyle(estiloBoton);
-        botonEntrar.setMinSize(200,100);
-        botonEntrar.setOnAction(new BotonParaIngresarNombre(textField, stage));
+        Button botonOk = new Button("Ok");
+        botonOk.setStyle(estiloBoton);
+        botonOk.setMinSize(200,100);
+        botonOk.setOnAction(new BotonParaIngresarNombre(textField, stage, kahoot));
 
         //CONTENEDOR DE TEXTO, ENTRADA Y BOTÓN
         VBox contenedorVertical = new VBox();
-        contenedorVertical.getChildren().addAll(titulo, textField, botonEntrar);
+        contenedorVertical.getChildren().addAll(titulo, textField, botonOk);
         contenedorVertical.setSpacing(20);
         contenedorVertical.setAlignment(Pos.CENTER);
         contenedorVertical.setFocusTraversable(true);

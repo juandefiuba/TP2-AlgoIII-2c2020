@@ -44,4 +44,8 @@ public class PreguntaMultipleChoiceParcial extends PreguntaBase{
         this.puntajeDelJugador = new PuntajeNulo();
     }
 
+    @Override
+    public PreguntaMultipleChoiceParcial comoInstancia(){
+        return this;
+    }
 }

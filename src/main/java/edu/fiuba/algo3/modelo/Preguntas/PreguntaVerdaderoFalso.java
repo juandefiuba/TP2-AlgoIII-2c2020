@@ -43,6 +43,9 @@ public class PreguntaVerdaderoFalso extends PreguntaBase{
 
     }
 
-
+    @Override
+    public PreguntaVerdaderoFalso comoInstancia(){
+        return this;
+    }
 
 }

@@ -38,4 +38,9 @@ public class PreguntaVerdaderoFalsoPenalidad extends PreguntaBase {
     public void calificarRespuesta(RespondeMal calificador) {
         this.puntajeDelJugador.sumarPuntos(new PuntoNegativo());
     }
+
+    @Override
+    public PreguntaVerdaderoFalsoPenalidad comoInstancia(){
+        return this;
+    }
 }
