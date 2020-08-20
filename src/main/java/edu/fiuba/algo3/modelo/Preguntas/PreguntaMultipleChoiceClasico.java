@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
+import edu.fiuba.algo3.modelo.Excepciones.SobranOpcionesDeLaPreguntaException;
 import edu.fiuba.algo3.modelo.Exclusividades.Compuesta.ExclusividadCompuesta;
 import edu.fiuba.algo3.modelo.Exclusividades.Parcial.ExclusividadParcial;
 import edu.fiuba.algo3.modelo.Jugador;
@@ -18,6 +19,9 @@ public class PreguntaMultipleChoiceClasico extends PreguntaBase {
 
     public PreguntaMultipleChoiceClasico(LinkedList<Opcion> opciones) {
         super(opciones);
+        if(opciones.size() > 5){
+            throw new SobranOpcionesDeLaPreguntaException();
+        }
    }
 
    @Override
@@ -64,4 +68,5 @@ public class PreguntaMultipleChoiceClasico extends PreguntaBase {
     public void calificarRespuesta(RespondeMal calificador) {
         this.puntajeDelJugador = new PuntajeNulo();
     }
+
 }

@@ -4,18 +4,15 @@ import edu.fiuba.algo3.modelo.Kahoot;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
-public class NuevoJugadorHandler implements EventHandler<ActionEvent> {
-
+public class ActivarExclusividadHandler implements EventHandler<ActionEvent> {
     private Kahoot kahoot;
-    private String nombreJugador;
 
-    public NuevoJugadorHandler(Kahoot kahoot, String nombreJugador) {
+    public ActivarExclusividadHandler(Kahoot kahoot) {
         this.kahoot = kahoot;
-        this.nombreJugador = nombreJugador;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        kahoot.agregarJugador(nombreJugador);
+        this.kahoot.activarExclusividad();
     }
 }

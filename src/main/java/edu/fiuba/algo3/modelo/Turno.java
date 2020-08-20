@@ -2,6 +2,7 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.Preguntas.PreguntaBase;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -16,6 +17,10 @@ public class Turno {
 		this.jugadores = jugadores;
 		this.preguntas = preguntas;
 		this.preguntaActual = (Pregunta) this.preguntas.next();
+	}
+	
+	public PreguntaBase obtenerPregunta() {
+		return (PreguntaBase) this.preguntaActual;
 	}
 
 	public void avanzarJugador() {
@@ -36,7 +41,11 @@ public class Turno {
 		this.preguntaActual.agregarRespuestaDeJugador(this.jugadorActual(), respuestas);
 	}
 
-	private Jugador jugadorActual() {
+	public void agregarOpcionElegida(Opcion opcion) {
+		this.preguntaActual.agregarRespuestaDeJugador(this.jugadorActual(), opcion);
+	}
+
+	public Jugador jugadorActual() {
 		return jugadores.peek();
 	}
 
@@ -45,5 +54,17 @@ public class Turno {
 		avanzarJugador();
 		this.preguntaActual.puntuarJugadores(jugadorActual(), jugador);
 		this.avanzarPregunta();
+	}
+
+	public void activarMultiplicadorPorDos() {
+		this.jugadorActual().activarMultiplicadorPorDos();
+	}
+
+	public void activarMultiplicadorPorTres() {
+		this.jugadorActual().activarMultiplicadorPorTres();
+	}
+	
+	public void activarExclusividad() {
+		this.jugadorActual().activarExclusividad();
 	}
 }

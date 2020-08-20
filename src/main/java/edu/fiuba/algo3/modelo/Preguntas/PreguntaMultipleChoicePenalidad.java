@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
+import edu.fiuba.algo3.modelo.Excepciones.SobranOpcionesDeLaPreguntaException;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Multiplicadores.Multiplicador;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
@@ -15,6 +16,9 @@ public class PreguntaMultipleChoicePenalidad extends PreguntaBase {
 
     public PreguntaMultipleChoicePenalidad(LinkedList<Opcion> opcionesDeLaPregunta) {
         super(opcionesDeLaPregunta);
+        if(opciones.size() > 5){
+            throw new SobranOpcionesDeLaPreguntaException();
+        }
     }
 
     @Override
@@ -43,6 +47,5 @@ public class PreguntaMultipleChoicePenalidad extends PreguntaBase {
 
         this.puntajeDelJugador.sumarPuntos(new PuntoNegativo());
     }
-
 
 }

@@ -1,12 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Opciones.EstadoDeCalificacion.RespondeMal;
+
+import edu.fiuba.algo3.modelo.Excepciones.NoHayJugadoresException;
+import edu.fiuba.algo3.modelo.Excepciones.NoHayPreguntasException;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
+import edu.fiuba.algo3.modelo.Preguntas.PreguntaBase;
 
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Queue;
 
 public class Kahoot { //Singleton
 	private static Kahoot kahoot = null;
@@ -29,13 +30,29 @@ public class Kahoot { //Singleton
 	}
 
 	public void iniciarJuego() {
+		if (this.preguntas.isEmpty()) {
+			throw new NoHayPreguntasException();
+		}
+
+		if (this.jugadores.isEmpty()) {
+			throw new NoHayJugadoresException();
+		}
+
 		this.turno.iniciarJuegoCon(this.jugadores, this.preguntas.iterator());
+	}
+	
+	public static void resetear() {
+		kahoot = null;
 	}
 
 	public void agregarJugador(String nombreJugador) {
 		Jugador jugador = new Jugador();
 		jugador.nombrar(nombreJugador);
 		this.jugadores.add(jugador);
+	}
+	
+	public LinkedList<Jugador> obtenerJugadores(){
+		return this.jugadores;
 	}
 
 	public void avanzarAProximoJugador() {
@@ -44,6 +61,10 @@ public class Kahoot { //Singleton
 
 	public void agregarRespuestaDeJugadorActual(LinkedList<Opcion> respuestas) {
 		this.turno.agregarRespuestaDeJugadorActual(respuestas);
+	}
+	
+	public void agregarOpcionElegida(Opcion opcion) {
+		this.turno.agregarOpcionElegida(opcion);
 	}
 
 	public void agregarPregunta(Pregunta pregunta) {
@@ -56,5 +77,25 @@ public class Kahoot { //Singleton
 
 	public boolean sigueElJuego() {
 		return this.turno.sigueElJuego();
+	}
+	
+	public PreguntaBase obtenerPreguntaActual() {
+		return this.turno.obtenerPregunta();
+	}
+	
+	public Jugador obtenerJugadorActual() {
+		return this.turno.jugadorActual();
+	}
+
+	public void activarMultiplicadorPorDos() {
+		this.turno.activarMultiplicadorPorDos();
+	}
+
+	public void activarMultiplicadorPorTres() {
+		this.turno.activarMultiplicadorPorTres();
+	}
+	
+	public void activarExclusividad() {
+		this.turno.activarExclusividad();
 	}
 }
