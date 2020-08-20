@@ -18,32 +18,6 @@ import java.util.LinkedList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class KahootTest {
-	@Test
-	public void test01SeLevantaLaExcepcionCorrectaCuandoNoHayPreguntas(){
-		Kahoot.resetear();
-		Kahoot kahoot = Kahoot.Kahoot();
-		kahoot.agregarJugador("Mica");
-		kahoot.agregarJugador("Juancito");
-
-		assertThrows(NoHayPreguntasException.class, kahoot::iniciarJuego);
-	}
-
-	@Test
-	public void test02SeLevantaLaExcepcionCorrectaCuandoNoHayJugadores(){
-		//Arrange
-		Kahoot.resetear();
-		Opcion opcionVerdadero = new OpcionCorrecta();
-		Opcion opcionFalso = new OpcionIncorrecta();
-		LinkedList<Opcion> opciones = new LinkedList<>();
-		opciones.add(opcionVerdadero);
-		opciones.add(opcionFalso);
-		Pregunta pregunta = new PreguntaVerdaderoFalso(opciones);
-
-		Kahoot kahoot = Kahoot.Kahoot();
-		kahoot.agregarPregunta(pregunta);
-
-		assertThrows(NoHayJugadoresException.class, kahoot::iniciarJuego);
-	}
 	
 	@Test
 	public void test03CalificoyObtenerPuntosDevuelveCantidadCorrecta() {
