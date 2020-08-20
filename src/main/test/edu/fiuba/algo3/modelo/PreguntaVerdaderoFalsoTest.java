@@ -144,5 +144,35 @@ public class PreguntaVerdaderoFalsoTest {
 		assertEquals(1,jugador.obtenerPuntos());
 	}
 	
+	@Test
+	public void testAgregarRespuestaOpcionUnica() {
+		//Arrange
+		Opcion opcionVerdadero = new OpcionCorrecta();
+		Opcion opcionFalso = new OpcionIncorrecta();
+
+		LinkedList<Opcion> opciones = new LinkedList<>();
+		opciones.add(opcionVerdadero);
+		opciones.add(opcionFalso);
+
+		Pregunta pregunta = new PreguntaVerdaderoFalso(opciones);
+
+		Jugador jugador = new Jugador();
+		Jugador jugador2 = new Jugador();
+
+		Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
+
+		opcionVerdadero = (Opcion) iteradorDeOpciones.next();
+		opcionFalso = (Opcion) iteradorDeOpciones.next();
+
+		pregunta.agregarRespuestaDeJugador(jugador, opcionVerdadero);
+		pregunta.agregarRespuestaDeJugador(jugador2, opcionFalso);
+
+		//Act
+		pregunta.puntuarJugadores(jugador, jugador2);
+
+		//Assert
+		assertEquals(1, jugador.obtenerPuntos());
+		assertEquals(0, jugador2.obtenerPuntos());
+	}
 
 }

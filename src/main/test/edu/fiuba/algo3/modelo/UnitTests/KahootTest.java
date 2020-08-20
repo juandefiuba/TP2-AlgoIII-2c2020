@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.UnitTests;
 
+import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
@@ -54,5 +55,33 @@ public class KahootTest {
 		}
 
 		assertEquals(false, kahoot.sigueElJuego()); //:P
+	}
+	
+	@Test
+	public void test02AgregarOpcionElegida() {
+		//Arrange
+		Opcion opcionVerdadero = new OpcionCorrecta();
+		Opcion opcionFalso = new OpcionIncorrecta();
+		LinkedList<Opcion> opciones = new LinkedList<>();
+		opciones.add(opcionVerdadero);
+		opciones.add(opcionFalso);
+		Pregunta pregunta = new PreguntaVerdaderoFalso(opciones);
+		Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
+		opcionVerdadero = (Opcion) iteradorDeOpciones.next();
+		opcionFalso = (Opcion) iteradorDeOpciones.next();
+		
+		Kahoot.resetear();
+		Kahoot kahoot = Kahoot.Kahoot();
+		kahoot.agregarPregunta(pregunta);
+		kahoot.agregarJugador("Mica");
+		kahoot.agregarJugador("Juancito");
+		LinkedList<Jugador> jugadores = kahoot.obtenerJugadores();
+		kahoot.iniciarJuego();
+		kahoot.agregarOpcionElegida(opcionVerdadero);
+		kahoot.avanzarAProximoJugador();
+		kahoot.agregarOpcionElegida(opcionFalso);
+		kahoot.terminarTurno();
+		assertEquals(1, jugadores.get(0).obtenerPuntos());
+		
 	}
 }

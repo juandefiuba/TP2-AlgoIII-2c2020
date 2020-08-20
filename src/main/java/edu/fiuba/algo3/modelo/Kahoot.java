@@ -29,11 +29,19 @@ public class Kahoot { //Singleton
 	public void iniciarJuego() {
 		this.turno.iniciarJuegoCon(this.jugadores, this.preguntas.iterator());
 	}
+	
+	public static void resetear() {
+		kahoot = null;
+	}
 
 	public void agregarJugador(String nombreJugador) {
 		Jugador jugador = new Jugador();
 		jugador.nombrar(nombreJugador);
 		this.jugadores.add(jugador);
+	}
+	
+	public LinkedList<Jugador> obtenerJugadores(){
+		return this.jugadores;
 	}
 
 	public void avanzarAProximoJugador() {
