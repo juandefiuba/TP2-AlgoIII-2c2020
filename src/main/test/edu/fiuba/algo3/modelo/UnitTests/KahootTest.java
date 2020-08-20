@@ -20,9 +20,6 @@ import static org.junit.jupiter.api.Assertions.*;
 
 /*
 Por prioridad:
-kahoot.ponerExclusividad();
-handler de exclusividad
-handler de ordered/group
 TESTS UNITARIOS Y DE INTEGRACIÓN
 */
 
