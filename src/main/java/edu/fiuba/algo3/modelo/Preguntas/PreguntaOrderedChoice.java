@@ -66,9 +66,5 @@ public class PreguntaOrderedChoice extends PreguntaBase{
     this.puntajeDelJugador = new PuntajeNulo();
     }
 
-    @Override
-    public PreguntaOrderedChoice comoInstancia(){
-        return this;
-    }
 
 }

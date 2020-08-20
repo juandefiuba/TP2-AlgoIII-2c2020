@@ -80,4 +80,10 @@ public class Jugador {
 	public void nombrar(String nombreJugador) {
         this.nombreJugador = nombreJugador;
 	}
+
+	public String getNombreJugador() {
+        return this.nombreJugador;
+    }
+
+
 }

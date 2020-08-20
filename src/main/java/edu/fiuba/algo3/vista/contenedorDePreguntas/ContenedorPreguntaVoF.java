@@ -4,10 +4,10 @@ import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.vista.BarraDeMenu;
 import edu.fiuba.algo3.vista.Utilidades;
+import edu.fiuba.algo3.vista.handlers.BotonOkVoF;
 import edu.fiuba.algo3.vista.handlers.MarcarOpcionVoF;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.TextAlignment;
@@ -36,14 +36,16 @@ public class ContenedorPreguntaVoF extends ContenedorPregunta {
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
 
-        Label label = new Label();
-
         //CONTENEDOR DE OPCIONES
         Iterator iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         HBox opcionesHorizontal = new HBox();
-        agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones, label);
-        agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones, label);
+        Button botonOpcion1 = agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones);
+        Button botonOpcion2 = agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones);
+        Button botonOk = new Button("OK");
+        botonOk.setOnAction(new BotonOkVoF(kahoot, stage, botonOpcion1, botonOpcion2));
+        botonOk.setStyle(" -fx-font-size: 2em");
 
+        stage.setTitle("Pregunta Verdadero o Falso - Turno de " + "Jugador");
 
         //PREGUNTA (TAMBIÉN BOTÓN)
         Button cajaDePregunta = new Button(kahoot.obtenerPreguntaActual().obtenerTexto());
@@ -54,9 +56,10 @@ public class ContenedorPreguntaVoF extends ContenedorPregunta {
 
         //CONTENEDOR DE PREGUNTA Y OPCIONES
         VBox contenedorVertical = new VBox();
-        contenedorVertical.getChildren().addAll(cajaDePregunta, opcionesHorizontal, label);
+        contenedorVertical.getChildren().addAll(cajaDePregunta, opcionesHorizontal, botonOk);
         contenedorVertical.setAlignment(Pos.CENTER);
-        contenedorVertical.setSpacing(200);
+        contenedorVertical.setSpacing(100);
+
 
         this.setCenter(contenedorVertical);
     }
@@ -70,15 +73,16 @@ public class ContenedorPreguntaVoF extends ContenedorPregunta {
     }
 
 
-    void agregarBotonOpcion(HBox opcionesHorizontal, Kahoot kahoot, Stage stage, Iterator iteradorDeOpciones, Label mensajeOk){
+    Button agregarBotonOpcion(HBox opcionesHorizontal, Kahoot kahoot, Stage stage, Iterator iteradorDeOpciones){
         Opcion opcion = (Opcion) iteradorDeOpciones.next();
         Button botonOpcion = new Button(opcion.obtenerTexto());
-        botonOpcion.setOnAction(new MarcarOpcionVoF(opcion, kahoot, stage, mensajeOk));
+        botonOpcion.setOnAction(new MarcarOpcionVoF(opcion, kahoot, botonOpcion));
         botonOpcion.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #000000");
         botonOpcion.setMinSize(500,100);
         opcionesHorizontal.getChildren().add(botonOpcion);
         opcionesHorizontal.setAlignment(Pos.CENTER);
         opcionesHorizontal.setSpacing(200);
+        return botonOpcion;
     }
 
 }

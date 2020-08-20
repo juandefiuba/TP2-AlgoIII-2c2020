@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.vista.handlers;
 
-import edu.fiuba.algo3.controlador._AgregarRespuestaIndividualHandler;
+import edu.fiuba.algo3.controlador.AgregarOpcionElegidaHandler;
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import javafx.event.ActionEvent;
@@ -21,8 +21,7 @@ public class MarcarOpcionMultipleChoice implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent){
-        new _AgregarRespuestaIndividualHandler(kahoot, opcion).handle(actionEvent);
+        new AgregarOpcionElegidaHandler(kahoot, opcion).handle(actionEvent);
         boton.setStyle("-fx-font-size: 2.9em; -fx-border-width: 7px; -fx-border-color: #4ac228");
-        //boton.setOnAction(); DESMARCAR OPCION ELEGIDA
     }
 }

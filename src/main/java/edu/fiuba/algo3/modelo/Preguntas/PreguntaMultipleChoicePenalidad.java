@@ -44,10 +44,4 @@ public class PreguntaMultipleChoicePenalidad extends PreguntaBase {
         this.puntajeDelJugador.sumarPuntos(new PuntoNegativo());
     }
 
-    @Override
-    public PreguntaMultipleChoicePenalidad comoInstancia(){
-        return this;
-    }
-
-
 }

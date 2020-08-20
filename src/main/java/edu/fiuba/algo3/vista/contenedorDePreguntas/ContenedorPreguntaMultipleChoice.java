@@ -3,8 +3,8 @@ package edu.fiuba.algo3.vista.contenedorDePreguntas;
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.vista.BarraDeMenu;
+import edu.fiuba.algo3.vista.handlers.BotonOkMultipleChoice;
 import edu.fiuba.algo3.vista.handlers.MarcarOpcionMultipleChoice;
-import edu.fiuba.algo3.vista.handlers.MarcarOpcionesElegidasMultipleChoice;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -13,6 +13,7 @@ import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 
 //variable global spacing y tamaño botones
 
@@ -20,6 +21,7 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
 
     BarraDeMenu menuBar;
     Kahoot kahoot;
+    LinkedList<Button> botones;
 
     public ContenedorPreguntaMultipleChoice(Stage stage, Kahoot kahoot) {
         this.setMenu(stage);
@@ -28,7 +30,7 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
     }
 
     private void contenedorCentral(Stage stage, Kahoot kahoot) {
-
+        this.botones = new LinkedList<Button>();
         //FONDO
         String rutaArchivoFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png";
         Image imagen = new Image(rutaArchivoFondo);
@@ -46,6 +48,7 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
             }
             contenedorOpciones.getChildren().add(opcionesHorizontal);
         }
+        stage.setTitle("Pregunta MultipleChoice - Turno de " + "Jugador");
 
         //PREGUNTA (TAMBIÉN BOTÓN)
         Button cajaDePregunta = new Button(kahoot.obtenerPreguntaActual().obtenerTexto());
@@ -54,14 +57,15 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
         cajaDePregunta.setTextAlignment(TextAlignment.CENTER);
         cajaDePregunta.setMinSize(500,100);
 
-        Button botonOk = new Button("Enviar respuesta");
-        botonOk.setOnAction(new MarcarOpcionesElegidasMultipleChoice(kahoot, stage));
+        Button botonOk = new Button("OK");
+        botonOk.setStyle(" -fx-font-size: 2em");
+        botonOk.setOnAction(new BotonOkMultipleChoice(kahoot, stage, botones));
 
         //CONTENEDOR DE PREGUNTA Y OPCIONES
         VBox contenedorVertical = new VBox();
         contenedorVertical.getChildren().addAll(cajaDePregunta, contenedorOpciones, botonOk);
         contenedorVertical.setAlignment(Pos.CENTER);
-        contenedorVertical.setSpacing(200);
+        contenedorVertical.setSpacing(80);
 
         this.setCenter(contenedorVertical);
     }
@@ -77,6 +81,7 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
         botonOpcion.setOnAction(new MarcarOpcionMultipleChoice(kahoot, opcion, botonOpcion));
         botonOpcion.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #000000");
         botonOpcion.setMinSize(500,100);
+        botones.add(botonOpcion);
         opcionesHorizontal.getChildren().add(botonOpcion);
         opcionesHorizontal.setAlignment(Pos.CENTER);
         opcionesHorizontal.setSpacing(200);
