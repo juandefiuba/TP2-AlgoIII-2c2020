@@ -19,9 +19,11 @@ import static edu.fiuba.algo3.modelo.Kahoot.Kahoot;
 import static org.junit.jupiter.api.Assertions.*;
 
 /*
-handler de ordered/group
+Por prioridad:
 kahoot.ponerExclusividad();
 handler de exclusividad
+handler de ordered/group
+TESTS UNITARIOS Y DE INTEGRACIÓN
 */
 
 public class KahootTest {
