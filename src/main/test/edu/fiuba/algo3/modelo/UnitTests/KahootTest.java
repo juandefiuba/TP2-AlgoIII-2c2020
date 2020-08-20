@@ -14,6 +14,13 @@ import java.util.LinkedList;
 import static edu.fiuba.algo3.modelo.Kahoot.Kahoot;
 import static org.junit.jupiter.api.Assertions.*;
 
+//String kahoot.verPreguntaActual(); string de pregunta
+//String[] kahoot.verOpciones(); strings de opciones
+//??? kahoot.verPuntajesDeJugador(); devolver puntajes como int para la vista
+//kahoot.ponerExclusividad(); ???
+//kahoot.ponerMultiplicador(); ???
+//Agregar atributos de textos de preguntas y opciones
+
 public class KahootTest {
 	@Test
 	public void test01KahootTerminaElJuegoCuandoNoHayMasPreguntas(){

@@ -13,38 +13,49 @@ import java.util.Map;
 
 public abstract class PreguntaBase implements Pregunta{
 
-    protected LinkedList<Opcion> opciones;
-    protected Map<Jugador, LinkedList<Opcion>> respuestasDeLosJugadores;
+	protected LinkedList<Opcion> opciones;
+	protected Map<Jugador, LinkedList<Opcion>> respuestasDeLosJugadores;
 
-    public Puntaje puntajeDelJugador;
+	public Puntaje puntajeDelJugador;
 
-    protected PreguntaBase(LinkedList<Opcion> opcionesDeLaPregunta) {
-        this.puntajeDelJugador = new PuntajeNulo();
-        this.opciones = opcionesDeLaPregunta;
-        this.respuestasDeLosJugadores = new HashMap<>();
-    }
+	protected PreguntaBase(LinkedList<Opcion> opcionesDeLaPregunta) {
+		this.puntajeDelJugador = new PuntajeNulo();
+		this.opciones = opcionesDeLaPregunta;
+		this.respuestasDeLosJugadores = new HashMap<>();
+	}
 
-    @Override
-    public void agregarRespuestaDeJugador(Jugador jugador, LinkedList<Opcion> respuestas){
-        this.respuestasDeLosJugadores.put(jugador, respuestas);
-    }
+	@Override
+	public void agregarRespuestaDeJugador(Jugador jugador, LinkedList<Opcion> respuestas){
+		this.respuestasDeLosJugadores.put(jugador, respuestas);
+	}
 
-    @Override
-    public Iterator obtenerOpciones() {
-        return opciones.iterator();
-    }
+	@Override
+	public void agregarRespuestaDeJugador(Jugador jugador, Opcion opcion){
+		if (this.respuestasDeLosJugadores.containsKey(jugador)) {
+			this.respuestasDeLosJugadores.get(jugador).add(opcion);
+		} else {
+			LinkedList<Opcion> respuestas = new LinkedList<Opcion>();
+			respuestas.add(opcion);
+			this.agregarRespuestaDeJugador(jugador, respuestas);
+		}
+	}
 
-    @Override
-    public void calificarRespuesta(Opcion opcion){
-        opcion.validarOpcion(this);
-    }
+	@Override
+	public Iterator obtenerOpciones() {
+		return opciones.iterator();
+	}
 
-    protected Puntaje obtenerPuntajeBaseDelJugador(Jugador unJugador) {
+	@Override
+	public void calificarRespuesta(Opcion opcion){
+		opcion.validarOpcion(this);
+	}
 
-        this.puntajeDelJugador = new PuntajeValido();
-        LinkedList<Opcion> respuestaDelJugador = this.respuestasDeLosJugadores.get(unJugador);
+	protected Puntaje obtenerPuntajeBaseDelJugador(Jugador unJugador) {
 
-        respuestaDelJugador.forEach(opcion -> this.calificarRespuesta(opcion));
-        return this.puntajeDelJugador;
-    }
+		this.puntajeDelJugador = new PuntajeValido();
+		LinkedList<Opcion> respuestaDelJugador = this.respuestasDeLosJugadores.get(unJugador);
+
+		respuestaDelJugador.forEach(opcion -> this.calificarRespuesta(opcion));
+		return this.puntajeDelJugador;
+	}
 }

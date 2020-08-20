@@ -36,6 +36,10 @@ public class Turno {
 		this.preguntaActual.agregarRespuestaDeJugador(this.jugadorActual(), respuestas);
 	}
 
+	public void agregarOpcionElegida(Opcion opcion) {
+		this.preguntaActual.agregarRespuestaDeJugador(this.jugadorActual(), opcion);
+	}
+
 	private Jugador jugadorActual() {
 		return jugadores.peek();
 	}

@@ -17,4 +17,5 @@ public interface Pregunta {
     void calificarRespuesta(RespondeBien calificador);
     void calificarRespuesta(RespondeMal calificador);
     void agregarRespuestaDeJugador(Jugador jugador, LinkedList<Opcion> respuestas);
+    void agregarRespuestaDeJugador(Jugador jugador, Opcion opcion);
 }

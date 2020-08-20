@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.controlador;
 
-import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Kahoot;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;

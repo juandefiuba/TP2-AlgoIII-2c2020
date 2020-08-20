@@ -10,21 +10,21 @@ import javafx.stage.Stage;
 
 public class BotonParaIngresarNombre implements EventHandler<ActionEvent> {
 
-    private TextField texto;
-    Stage stage;
+	private TextField texto;
+	Stage stage;
 
-    public BotonParaIngresarNombre(TextField texto, Stage stage){
-        this.texto = texto;
-        this.stage = stage;
-    }
+	public BotonParaIngresarNombre(TextField texto, Stage stage){
+		this.texto = texto;
+		this.stage = stage;
+	}
 
-    @Override
-    public void handle(ActionEvent actionEvent) {
-        texto.clear();
-        ContenedorPreguntaVoF contenedorPregunta = new ContenedorPreguntaVoF(stage);
-        Scene escenaPregunta = new Scene(contenedorPregunta, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
-        stage.sizeToScene();
-        stage.setScene(escenaPregunta);
-    }
+	@Override
+	public void handle(ActionEvent actionEvent) {
+		texto.clear();
+		ContenedorPreguntaVoF contenedorPregunta = new ContenedorPreguntaVoF(stage);
+		Scene escenaPregunta = new Scene(contenedorPregunta, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
+		stage.sizeToScene();
+		stage.setScene(escenaPregunta);
+	}
 
 }

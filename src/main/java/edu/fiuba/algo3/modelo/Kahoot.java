@@ -1,12 +1,10 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Opciones.EstadoDeCalificacion.RespondeMal;
+
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Queue;
 
 public class Kahoot { //Singleton
 	private static Kahoot kahoot = null;
@@ -56,5 +54,9 @@ public class Kahoot { //Singleton
 
 	public boolean sigueElJuego() {
 		return this.turno.sigueElJuego();
+	}
+
+	public void agregarOpcionElegida(Opcion opcion) {
+		this.turno.agregarOpcionElegida(opcion);
 	}
 }
