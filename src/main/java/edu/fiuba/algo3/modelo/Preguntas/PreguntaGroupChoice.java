@@ -18,10 +18,6 @@ import java.util.Map;
 
 public class PreguntaGroupChoice extends PreguntaBase {
 
-    protected Map<Jugador, LinkedList<Opcion>> respuestasDeLosJugador;
-
-
-
     public PreguntaGroupChoice(LinkedList<Opcion> opcionesDeLaPregunta) {
         super(opcionesDeLaPregunta);
         this.respuestasDeLosJugadores = new HashMap<>();
@@ -30,7 +26,7 @@ public class PreguntaGroupChoice extends PreguntaBase {
 
     public Puntaje obtenerPuntajeBaseDelJugador(Jugador jugador) {
         this.puntajeDelJugador = new PuntajeValido();
-        Puntaje unPuntaje = super.obtenerPuntajeBaseDelJugador(jugador);
+        super.obtenerPuntajeBaseDelJugador(jugador);
 
         LinkedList<Opcion> opcionesCorrectas = new LinkedList<>();
         opciones.forEach(opcion -> opcion.enlistarOpcionesCorrectas(opcionesCorrectas));
