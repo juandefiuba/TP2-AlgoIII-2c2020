@@ -121,5 +121,34 @@ public class KahootTest {
 		assertEquals("uf", opcion2.obtenerTexto());
 	}
 
+	@Test
+	public void test05UsarExclusividad() {
+		//Arrange
+		Kahoot.resetear();
+		Opcion opcionVerdadero = new OpcionCorrecta();
+		Opcion opcionFalso = new OpcionIncorrecta();
+		LinkedList<Opcion> opciones = new LinkedList<>();
+		opciones.add(opcionVerdadero);
+		opciones.add(opcionFalso);
+		Pregunta pregunta = new PreguntaVerdaderoFalso(opciones);
+		Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
+		opcionVerdadero = (Opcion) iteradorDeOpciones.next();
+		opcionFalso = (Opcion) iteradorDeOpciones.next();
 
+		Kahoot kahoot = Kahoot.Kahoot();
+		kahoot.agregarPregunta(pregunta);
+		kahoot.agregarJugador("Mica");
+		kahoot.agregarJugador("Juancito");
+		LinkedList<Jugador> jugadores = kahoot.obtenerJugadores();
+		kahoot.iniciarJuego();
+		kahoot.activarExclusividad();
+		kahoot.agregarOpcionElegida(opcionVerdadero);
+		kahoot.avanzarAProximoJugador();
+		kahoot.agregarOpcionElegida(opcionFalso);
+		kahoot.terminarTurno();
+
+		assertEquals(2, jugadores.get(0).obtenerPuntos());
+		
+	}
+	
 }
