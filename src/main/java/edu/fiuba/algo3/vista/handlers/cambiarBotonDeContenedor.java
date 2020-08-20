@@ -5,13 +5,13 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
-public class MarcarOpcionEnOrden implements EventHandler<ActionEvent> {
+public class cambiarBotonDeContenedor implements EventHandler<ActionEvent> {
 
-    private Button boton;
-    private VBox contenedorAntiguo;
-    private VBox contenedorNuevo;
+    private final Button boton;
+    private final VBox contenedorAntiguo;
+    private final VBox contenedorNuevo;
 
-    public MarcarOpcionEnOrden(Button boton, VBox contenedorAntiguo, VBox contenedorNuevo) {
+    public cambiarBotonDeContenedor(Button boton, VBox contenedorAntiguo, VBox contenedorNuevo) {
         this.contenedorAntiguo = contenedorAntiguo;
         this.contenedorNuevo = contenedorNuevo;
         this.boton = boton;
@@ -20,7 +20,7 @@ public class MarcarOpcionEnOrden implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent) {
         contenedorAntiguo.getChildren().remove(boton);
         contenedorNuevo.getChildren().add(boton);
-        boton.setOnAction(e->{});
+        boton.setOnAction(new cambiarBotonDeContenedor(boton, contenedorNuevo, contenedorAntiguo));
     }
 
 }

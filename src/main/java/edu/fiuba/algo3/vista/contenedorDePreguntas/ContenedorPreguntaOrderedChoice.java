@@ -1,11 +1,9 @@
 package edu.fiuba.algo3.vista.contenedorDePreguntas;
 
-import edu.fiuba.algo3.controlador._AgregarRespuestaIndividualHandler;
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.vista.BarraDeMenu;
-import edu.fiuba.algo3.vista.handlers.MarcarOpcionEnOrden;
-import edu.fiuba.algo3.vista.handlers.MarcarOpcionesElegidasMultipleChoice;
+import edu.fiuba.algo3.vista.handlers.cambiarBotonDeContenedor;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -15,12 +13,12 @@ import javafx.stage.Stage;
 
 import java.util.Iterator;
 
-public class ContenedorOrderedChoice extends ContenedorPregunta {
+public class ContenedorPreguntaOrderedChoice extends ContenedorPregunta {
 
     BarraDeMenu menuBar;
     Kahoot kahoot;
 
-    public ContenedorOrderedChoice(Stage stage, Kahoot kahoot) {
+    public ContenedorPreguntaOrderedChoice(Stage stage, Kahoot kahoot) {
         this.setMenu(stage);
         this.contenedorCentral(stage, kahoot);
         stage.sizeToScene();
@@ -36,14 +34,15 @@ public class ContenedorOrderedChoice extends ContenedorPregunta {
 
         //BOTONES
         Iterator iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
-        VBox opcionesDadas = new VBox();
-        VBox opcionesMarcadas = new VBox();
+        VBox vboxOpcionesDadas = new VBox();
+        VBox vboxOpcionesMarcadas = new VBox();
         while (iteradorDeOpciones.hasNext()) {
-            agregarBotonOpcion(contenedorOpciones, kahoot, stage, iteradorDeOpciones);
+            Opcion opcion = (Opcion) iteradorDeOpciones.next();
+            agregarBotonOpcion(stage, opcion, vboxOpcionesDadas, vboxOpcionesMarcadas);
         }
 
         HBox opciones = new HBox();
-        opciones.getChildren().addAll(opcionesDadas, opcionesMarcadas);
+        opciones.getChildren().addAll(vboxOpcionesDadas, vboxOpcionesMarcadas);
         opciones.setAlignment(Pos.CENTER);
         opciones.setSpacing(300);
 
@@ -69,14 +68,10 @@ public class ContenedorOrderedChoice extends ContenedorPregunta {
         this.setTop(menuBar);
     }
 
-    void agregarBotonOpcion(VBox opcionesVertical, Kahoot kahoot, Stage stage, Iterator iteradorDeOpciones){
-        Opcion opcion = (Opcion) iteradorDeOpciones.next();
+    void agregarBotonOpcion(Stage stage, Opcion opcion, VBox opcionesDadas, VBox opcionesMarcadas){
         Button botonOpcion = new Button(opcion.obtenerTexto());
-        botonOpcion.setOnAction(new MarcarOpcionEnOrden(botonOpcion, opcionesDadas, opcionesMarcadas);
         botonOpcion.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #000000");
         botonOpcion.setMinSize(500,100);
-        opcionesVertical.getChildren().add(botonOpcion);
-        opcionesVertical.setAlignment(Pos.CENTER);
-        opcionesVertical.setSpacing(50);
+        botonOpcion.setOnAction(new cambiarBotonDeContenedor(botonOpcion, opcionesDadas, opcionesMarcadas));
     }
 }

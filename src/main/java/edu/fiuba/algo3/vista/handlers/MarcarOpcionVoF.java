@@ -20,28 +20,27 @@ public class MarcarOpcionVoF implements EventHandler<ActionEvent> {
     private Kahoot kahoot;
     private Stage stage;
     private Label mensajeOk;
-    private int contador = 0;
+    private boolean yaRespondioUnJugador;
 
     public MarcarOpcionVoF(Opcion opcion, Kahoot kahoot, Stage stage, Label mensajeOk){
         this.opcion = opcion;
         this.stage = stage;
         this.kahoot = kahoot;
-        this.contador = 0;
+        this.yaRespondioUnJugador = false;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        contador ++;
         new AgregarOpcionElegidaHandler(kahoot, opcion).handle(actionEvent);
         new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
         //mensajeOk.setText("Respuesta enviada");
-        if(contador == 2  &&  kahoot.sigueElJuego()) {
+        if(yaRespondioUnJugador  &&  kahoot.sigueElJuego()) {
             new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);
-            ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot);
+            ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot.obtenerPreguntaActual().comoInstancia(), kahoot);
             Scene escenaPregunta = new Scene(contenedorPregunta, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
             stage.setScene(escenaPregunta);
         }
-
+        yaRespondioUnJugador = true;
     }
 
 }

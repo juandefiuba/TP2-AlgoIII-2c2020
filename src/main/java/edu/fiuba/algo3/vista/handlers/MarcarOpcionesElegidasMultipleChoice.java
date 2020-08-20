@@ -12,25 +12,25 @@ import javafx.stage.Stage;
 
 public class MarcarOpcionesElegidasMultipleChoice implements EventHandler<ActionEvent> {
 
-    private int contador = 0;
+    private boolean yaRespondioUnJugador;
     private Kahoot kahoot;
     private Stage stage;
 
     public MarcarOpcionesElegidasMultipleChoice(Kahoot kahoot, Stage stage){
-        this.contador = 0;
+        this.yaRespondioUnJugador = false;
         this.kahoot = kahoot;
         this.stage = stage;
     }
 
     @Override
     public void handle(ActionEvent actionEvent){
-        contador++;
         new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
-        if(contador == 2  &&  kahoot.sigueElJuego()) {
+        if(yaRespondioUnJugador  &&  kahoot.sigueElJuego()) {
             new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);
-            ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot);
+            ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot.obtenerPreguntaActual().comoInstancia(), kahoot);
             Scene escenaPregunta = new Scene(contenedorPregunta, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
             stage.setScene(escenaPregunta);
         }
+        yaRespondioUnJugador = true;
     }
 }

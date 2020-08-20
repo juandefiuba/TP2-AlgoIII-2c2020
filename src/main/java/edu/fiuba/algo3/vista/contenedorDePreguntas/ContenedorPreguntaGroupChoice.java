@@ -3,8 +3,7 @@ package edu.fiuba.algo3.vista.contenedorDePreguntas;
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.vista.BarraDeMenu;
-import edu.fiuba.algo3.vista.handlers.MarcarOpcionMultipleChoice;
-import edu.fiuba.algo3.vista.handlers.MarcarOpcionesElegidasMultipleChoice;
+import edu.fiuba.algo3.vista.handlers.SeleccionarOpcionGroupChoice;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -14,14 +13,12 @@ import javafx.stage.Stage;
 
 import java.util.Iterator;
 
-//variable global spacing y tamaño botones
-
-public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
+public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
 
     BarraDeMenu menuBar;
     Kahoot kahoot;
 
-    public ContenedorPreguntaMultipleChoice(Stage stage, Kahoot kahoot) {
+    public ContenedorPreguntaGroupChoice(Stage stage, Kahoot kahoot) {
         this.setMenu(stage);
         this.contenedorCentral(stage, kahoot);
         stage.sizeToScene();
@@ -35,17 +32,25 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
 
-        //BOTONES
         Iterator iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
-        VBox contenedorOpciones = new VBox();
+        HBox menuInteractivo = new HBox();
+        Button botonPasarAGrupo1 = new Button("<-");
+        Button botonPasarAGrupo2 = new Button("->");
+        //botonPasarAGrupo1.setOnAction(new cambiarBotonDeContenedor());
+        VBox vboxOpcionesDadas = new VBox();
+        VBox vboxOpcionesGrupo1 = new VBox();
+        VBox vboxOpcionesGrupo2 = new VBox();
+        menuInteractivo.getChildren().addAll(vboxOpcionesGrupo1, botonPasarAGrupo1, vboxOpcionesDadas, botonPasarAGrupo2, vboxOpcionesGrupo2);
+        menuInteractivo.setAlignment(Pos.CENTER);
+        menuInteractivo.setSpacing(100);
         while (iteradorDeOpciones.hasNext()) {
-            HBox opcionesHorizontal = new HBox();
-            agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones);
-            if (iteradorDeOpciones.hasNext()){
-                agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones);
-            }
-            contenedorOpciones.getChildren().add(opcionesHorizontal);
+            Opcion opcion = (Opcion) iteradorDeOpciones.next();
+            agregarBotonOpcion(stage, opcion, vboxOpcionesDadas, vboxOpcionesGrupo1, vboxOpcionesGrupo2, botonPasarAGrupo1, botonPasarAGrupo2);
         }
+
+        menuInteractivo.getChildren().addAll(vboxOpcionesGrupo1, vboxOpcionesDadas, vboxOpcionesGrupo2);
+        menuInteractivo.setAlignment(Pos.CENTER);
+        menuInteractivo.setSpacing(200);
 
         //PREGUNTA (TAMBIÉN BOTÓN)
         Button cajaDePregunta = new Button(kahoot.obtenerPreguntaActual().obtenerTexto());
@@ -54,14 +59,12 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
         cajaDePregunta.setTextAlignment(TextAlignment.CENTER);
         cajaDePregunta.setMinSize(500,100);
 
-        Button botonOk = new Button("Enviar respuesta");
-        botonOk.setOnAction(new MarcarOpcionesElegidasMultipleChoice(kahoot, stage));
 
         //CONTENEDOR DE PREGUNTA Y OPCIONES
         VBox contenedorVertical = new VBox();
-        contenedorVertical.getChildren().addAll(cajaDePregunta, contenedorOpciones, botonOk);
+        contenedorVertical.getChildren().addAll(cajaDePregunta, menuInteractivo);
         contenedorVertical.setAlignment(Pos.CENTER);
-        contenedorVertical.setSpacing(200);
+        contenedorVertical.setSpacing(100);
 
         this.setCenter(contenedorVertical);
     }
@@ -71,14 +74,11 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
         this.setTop(menuBar);
     }
 
-    void agregarBotonOpcion(HBox opcionesHorizontal, Kahoot kahoot, Stage stage, Iterator iteradorDeOpciones){
-        Opcion opcion = (Opcion) iteradorDeOpciones.next();
+    void agregarBotonOpcion(Stage stage, Opcion opcion, VBox opcionesDadas, VBox grupo1, VBox grupo2, Button pasarAGrupo1, Button pasarAGrupo2){
         Button botonOpcion = new Button(opcion.obtenerTexto());
-        botonOpcion.setOnAction(new MarcarOpcionMultipleChoice(kahoot, opcion, botonOpcion));
         botonOpcion.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #000000");
         botonOpcion.setMinSize(500,100);
-        opcionesHorizontal.getChildren().add(botonOpcion);
-        opcionesHorizontal.setAlignment(Pos.CENTER);
-        opcionesHorizontal.setSpacing(200);
+        botonOpcion.setOnAction(new SeleccionarOpcionGroupChoice(botonOpcion, pasarAGrupo1, pasarAGrupo2, grupo1, grupo2, opcionesDadas));
+        //new cambiarBotonDeContenedor(botonOpcion, opcionesDadas, opcionesMarcadas)
     }
 }

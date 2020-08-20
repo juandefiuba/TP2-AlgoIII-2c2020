@@ -14,13 +14,13 @@ public class BotonParaIngresarNombre implements EventHandler<ActionEvent> {
 	private TextField texto;
 	Stage stage;
 	Kahoot kahoot;
-	int contador;
+	private boolean yaIngresaronUnNombre;
 
 	public BotonParaIngresarNombre(TextField texto, Stage stage, Kahoot kahoot){
 		this.texto = texto;
 		this.stage = stage;
 		this.kahoot = kahoot;
-		this.contador = 0;
+		this.yaIngresaronUnNombre = false;
 	}
 	//Recibir el nombre
 	//Mandar a Kahoot el nombre
@@ -31,16 +31,16 @@ public class BotonParaIngresarNombre implements EventHandler<ActionEvent> {
 
 	@Override
 	public void handle(ActionEvent actionEvent) {
-		contador ++;
 		kahoot.agregarJugador(texto.getText());
 		texto.clear();
-		if (contador == 2) {
+		if (yaIngresaronUnNombre) {
 			kahoot.iniciarJuego();
-			ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot);
+			ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot.obtenerPreguntaActual().comoInstancia(), kahoot);
 			Scene escenaPregunta = new Scene(contenedorPregunta, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
 			stage.sizeToScene();
 			stage.setScene(escenaPregunta);
 		}
+		yaIngresaronUnNombre = true;
 	}
 
 }
