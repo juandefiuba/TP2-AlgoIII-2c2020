@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
+import edu.fiuba.algo3.modelo.Excepciones.SobranOpcionesDeLaPreguntaException;
 import edu.fiuba.algo3.modelo.Exclusividades.Compuesta.ExclusividadCompuesta;
 import edu.fiuba.algo3.modelo.Exclusividades.Parcial.ExclusividadParcial;
 import edu.fiuba.algo3.modelo.Jugador;
@@ -16,6 +17,9 @@ public class PreguntaMultipleChoiceParcial extends PreguntaBase{
 
     public PreguntaMultipleChoiceParcial(LinkedList<Opcion> opciones) {
         super(opciones);
+        if(opciones.size() > 5){
+            throw new SobranOpcionesDeLaPreguntaException();
+        }
     }
 
     @Override

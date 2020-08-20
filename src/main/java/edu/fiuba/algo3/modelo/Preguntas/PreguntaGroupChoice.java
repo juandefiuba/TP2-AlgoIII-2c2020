@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
+import edu.fiuba.algo3.modelo.Excepciones.SobranOpcionesDeLaPreguntaException;
 import edu.fiuba.algo3.modelo.Exclusividades.Compuesta.ExclusividadCompuesta;
 import edu.fiuba.algo3.modelo.Exclusividades.Parcial.ExclusividadParcial;
 import edu.fiuba.algo3.modelo.Jugador;
@@ -20,8 +21,9 @@ public class PreguntaGroupChoice extends PreguntaBase {
 
     public PreguntaGroupChoice(LinkedList<Opcion> opcionesDeLaPregunta) {
         super(opcionesDeLaPregunta);
-        this.respuestasDeLosJugadores = new HashMap<>();
-
+        if(opciones.size() > 6){
+            throw new SobranOpcionesDeLaPreguntaException();
+        }
     }
 
     public Puntaje obtenerPuntajeBaseDelJugador(Jugador jugador) {

@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
 import edu.fiuba.algo3.modelo.*;
+import edu.fiuba.algo3.modelo.Excepciones.SobranOpcionesDeLaPreguntaException;
 import edu.fiuba.algo3.modelo.Exclusividades.Compuesta.ExclusividadCompuesta;
 import edu.fiuba.algo3.modelo.Exclusividades.Parcial.ExclusividadParcial;
 import edu.fiuba.algo3.modelo.Opciones.*;
@@ -19,6 +20,9 @@ public class PreguntaOrderedChoice extends PreguntaBase{
 
     public PreguntaOrderedChoice(LinkedList<Opcion> opcionesDeLaPregunta) {
         super(opcionesDeLaPregunta);
+        if(opciones.size() > 5){
+            throw new SobranOpcionesDeLaPreguntaException();
+        }
     }
 
     @Override

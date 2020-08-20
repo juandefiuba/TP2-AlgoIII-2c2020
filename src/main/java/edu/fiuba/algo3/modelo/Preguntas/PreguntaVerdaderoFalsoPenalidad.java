@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
+import edu.fiuba.algo3.modelo.Excepciones.SobranOpcionesDeLaPreguntaException;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Multiplicadores.Multiplicador;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
@@ -14,6 +15,9 @@ public class PreguntaVerdaderoFalsoPenalidad extends PreguntaBase {
 
     public PreguntaVerdaderoFalsoPenalidad(LinkedList<Opcion> opciones) {
         super(opciones);
+        if(opciones.size() > 2){
+            throw new SobranOpcionesDeLaPreguntaException();
+        }
     }
 
     @Override

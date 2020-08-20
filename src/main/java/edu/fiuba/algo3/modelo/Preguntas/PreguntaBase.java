@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
+import edu.fiuba.algo3.modelo.Excepciones.FaltanOpcionesEnLaPreguntaException;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Puntajes.Puntaje;
@@ -20,6 +21,9 @@ public abstract class PreguntaBase implements Pregunta{
 	public Puntaje puntajeDelJugador;
 
 	protected PreguntaBase(LinkedList<Opcion> opcionesDeLaPregunta) {
+		if(opcionesDeLaPregunta.size() < 2){
+			throw new FaltanOpcionesEnLaPreguntaException();
+		}
 		this.puntajeDelJugador = new PuntajeNulo();
 		this.opciones = opcionesDeLaPregunta;
 		this.respuestasDeLosJugadores = new HashMap<>();
