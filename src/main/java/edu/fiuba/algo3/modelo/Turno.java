@@ -55,4 +55,12 @@ public class Turno {
 		this.preguntaActual.puntuarJugadores(jugadorActual(), jugador);
 		this.avanzarPregunta();
 	}
+
+	public void activarMultiplicadorPorDos() {
+		jugadorActual().activarMultiplicadorPorDos();
+	}
+
+	public void activarMultiplicadorPorTres() {
+		jugadorActual().activarMultiplicadorPorTres();
+	}
 }

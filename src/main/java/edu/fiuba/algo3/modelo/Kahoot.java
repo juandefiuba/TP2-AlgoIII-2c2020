@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.modelo;
 
 
+import edu.fiuba.algo3.modelo.Excepciones.NoHayJugadoresException;
+import edu.fiuba.algo3.modelo.Excepciones.NoHayPreguntasException;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaBase;
@@ -28,6 +30,14 @@ public class Kahoot { //Singleton
 	}
 
 	public void iniciarJuego() {
+		if (this.preguntas.isEmpty()) {
+			throw new NoHayPreguntasException();
+		}
+
+		if (this.jugadores.isEmpty()) {
+			throw new NoHayJugadoresException();
+		}
+
 		this.turno.iniciarJuegoCon(this.jugadores, this.preguntas.iterator());
 	}
 	
@@ -71,5 +81,13 @@ public class Kahoot { //Singleton
 	
 	public PreguntaBase obtenerPreguntaActual() {
 		return this.turno.obtenerPregunta();
+	}
+
+	public void activarMultiplicadorPorDos() {
+		this.turno.activarMultiplicadorPorDos();
+	}
+
+	public void activarMultiplicadorPorTres() {
+		this.turno.activarMultiplicadorPorTres();
 	}
 }
