@@ -3,7 +3,6 @@ package edu.fiuba.algo3.modelo;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaBase;
-import edu.fiuba.algo3.modelo.Preguntas.PreguntaOrderedChoice;
 
 import java.util.Iterator;
 import java.util.LinkedList;
