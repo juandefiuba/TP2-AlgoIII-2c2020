@@ -30,7 +30,7 @@ public class BotonOkVoF implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        stage.setTitle("Pregunta Verdadero o Falso - Turno de " + "Jugador1");
+
         botonOpcion1.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #000000");
         botonOpcion2.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #000000");
         if(yaRespondioUnJugador  &&  kahoot.sigueElJuego()){
@@ -41,5 +41,8 @@ public class BotonOkVoF implements EventHandler<ActionEvent> {
         }
         new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
         yaRespondioUnJugador = true;
+        String nombreJugador = kahoot.obtenerJugadorActual().getNombreJugador();
+        int puntaje= kahoot.obtenerJugadorActual().obtenerPuntos();
+        stage.setTitle("Pregunta MultipleChoice - Turno de " + nombreJugador + ". Puntaje: " + puntaje);
     }
 }

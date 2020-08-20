@@ -25,12 +25,12 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
 
     public ContenedorPreguntaMultipleChoice(Stage stage, Kahoot kahoot) {
         this.setMenu(stage);
+        this.botones = new LinkedList<Button>();
         this.contenedorCentral(stage, kahoot);
         stage.sizeToScene();
     }
 
     private void contenedorCentral(Stage stage, Kahoot kahoot) {
-        this.botones = new LinkedList<Button>();
         //FONDO
         String rutaArchivoFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png";
         Image imagen = new Image(rutaArchivoFondo);
@@ -48,7 +48,9 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
             }
             contenedorOpciones.getChildren().add(opcionesHorizontal);
         }
-        stage.setTitle("Pregunta MultipleChoice - Turno de " + "Jugador");
+        String nombreJugador = kahoot.obtenerJugadorActual().getNombreJugador();
+        int puntaje= kahoot.obtenerJugadorActual().obtenerPuntos();
+        stage.setTitle("Pregunta MultipleChoice - Turno de " + nombreJugador + ". Puntaje: " + puntaje);
 
         //PREGUNTA (TAMBIÉN BOTÓN)
         Button cajaDePregunta = new Button(kahoot.obtenerPreguntaActual().obtenerTexto());

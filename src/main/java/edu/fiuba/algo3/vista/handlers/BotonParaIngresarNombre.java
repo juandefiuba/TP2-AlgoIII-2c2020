@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.vista.handlers;
 
+import edu.fiuba.algo3.controlador.IniciarJuegoHandler;
+import edu.fiuba.algo3.controlador.NuevoJugadorHandler;
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.vista.TamanioDeVentana;
 import edu.fiuba.algo3.vista.contenedorDePreguntas.ContenedorPregunta;
@@ -31,10 +33,10 @@ public class BotonParaIngresarNombre implements EventHandler<ActionEvent> {
 
 	@Override
 	public void handle(ActionEvent actionEvent) {
-		kahoot.agregarJugador(texto.getText());
+		new NuevoJugadorHandler(kahoot, texto.getText()).handle(actionEvent);
 		texto.clear();
 		if (yaIngresaronUnNombre) {
-			kahoot.iniciarJuego();
+			new IniciarJuegoHandler(kahoot).handle(actionEvent);
 			ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot);
 			Scene escenaPregunta = new Scene(contenedorPregunta, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
 			stage.sizeToScene();

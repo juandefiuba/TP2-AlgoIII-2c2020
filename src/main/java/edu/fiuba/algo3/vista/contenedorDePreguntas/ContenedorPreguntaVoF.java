@@ -45,7 +45,9 @@ public class ContenedorPreguntaVoF extends ContenedorPregunta {
         botonOk.setOnAction(new BotonOkVoF(kahoot, stage, botonOpcion1, botonOpcion2));
         botonOk.setStyle(" -fx-font-size: 2em");
 
-        stage.setTitle("Pregunta Verdadero o Falso - Turno de " + "Jugador");
+        String nombreJugador = kahoot.obtenerJugadorActual().getNombreJugador();
+        int puntaje= kahoot.obtenerJugadorActual().obtenerPuntos();
+        stage.setTitle("Pregunta MultipleChoice - Turno de " + nombreJugador + ". Puntaje: " + puntaje);
 
         //PREGUNTA (TAMBIÉN BOTÓN)
         Button cajaDePregunta = new Button(kahoot.obtenerPreguntaActual().obtenerTexto());

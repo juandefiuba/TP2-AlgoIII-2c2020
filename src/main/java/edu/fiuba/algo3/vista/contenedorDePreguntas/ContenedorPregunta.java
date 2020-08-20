@@ -16,9 +16,9 @@ public class ContenedorPregunta extends BorderPane {
         if (pregunta instanceof PreguntaMultipleChoiceClasico || pregunta instanceof PreguntaMultipleChoiceParcial || pregunta instanceof PreguntaMultipleChoicePenalidad)
             return new ContenedorPreguntaMultipleChoice(stage, kahoot);
 
-        if (pregunta instanceof PreguntaOrderedChoice)
-            return new ContenedorPreguntaOrderedChoice(stage, kahoot);
+        if (pregunta instanceof PreguntaGroupChoice)
+            return new ContenedorPreguntaGroupChoice(stage, kahoot);
 
-        return new ContenedorPreguntaGroupChoice(stage, kahoot);
+        return new ContenedorPreguntaOrderedChoice(stage, kahoot);
     }
 }

@@ -8,40 +8,32 @@ import edu.fiuba.algo3.vista.contenedorDePreguntas.ContenedorPregunta;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-import java.util.LinkedList;
+public class BotonOkOrderedChoice implements EventHandler<ActionEvent> {
 
-public class BotonOkMultipleChoice implements EventHandler<ActionEvent> {
-
+    private Kahoot kahoot;
+    private Stage stage;
     private boolean yaRespondioUnJugador;
-    private final Kahoot kahoot;
-    private final Stage stage;
-    private LinkedList<Button> opciones;
 
-    public BotonOkMultipleChoice(Kahoot kahoot, Stage stage, LinkedList<Button> opciones){
-        this.yaRespondioUnJugador = false;
-        this.kahoot = kahoot;
+    public BotonOkOrderedChoice(Stage stage, Kahoot kahoot, VBox opcionesDadas, VBox opcionesDadasReset, VBox opcionesMarcadas, VBox opcionesMarcadasReset){
         this.stage = stage;
-        this.opciones = opciones;
+        this.kahoot = kahoot;
+        this.yaRespondioUnJugador = false;
     }
 
-    @Override
     public void handle(ActionEvent actionEvent){
-        new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
-        String nombreJugador = kahoot.obtenerJugadorActual().getNombreJugador();
-        int puntaje= kahoot.obtenerJugadorActual().obtenerPuntos();
-        stage.setTitle("Pregunta MultipleChoice - Turno de " + nombreJugador + ". Puntaje: " + puntaje);
-        for (Button opcion: opciones) {
-            opcion.setStyle("-fx-font-size: 2.9em; -fx-border-width: 7px; -fx-border-color: #000000");
-        }
-        if(yaRespondioUnJugador  &&  kahoot.sigueElJuego()) {
+        if(yaRespondioUnJugador  &&  kahoot.sigueElJuego()){
             new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);
             ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot);
             Scene escenaPregunta = new Scene(contenedorPregunta, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
             stage.setScene(escenaPregunta);
         }
+        new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
+        String nombreJugador = kahoot.obtenerJugadorActual().getNombreJugador();
+        int puntaje= kahoot.obtenerJugadorActual().obtenerPuntos();
+        stage.setTitle("Pregunta MultipleChoice - Turno de " + nombreJugador + ". Puntaje: " + puntaje);
         yaRespondioUnJugador = true;
     }
 }

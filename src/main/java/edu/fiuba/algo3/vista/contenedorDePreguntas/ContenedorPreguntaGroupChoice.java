@@ -48,9 +48,9 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
             agregarBotonOpcion(stage, opcion, vboxOpcionesDadas, vboxOpcionesGrupo1, vboxOpcionesGrupo2, botonPasarAGrupo1, botonPasarAGrupo2);
         }
 
-        menuInteractivo.getChildren().addAll(vboxOpcionesGrupo1, vboxOpcionesDadas, vboxOpcionesGrupo2);
+        /*menuInteractivo.getChildren().addAll(vboxOpcionesGrupo1, vboxOpcionesDadas, vboxOpcionesGrupo2);
         menuInteractivo.setAlignment(Pos.CENTER);
-        menuInteractivo.setSpacing(200);
+        menuInteractivo.setSpacing(200);*/
 
         //PREGUNTA (TAMBIÉN BOTÓN)
         Button cajaDePregunta = new Button(kahoot.obtenerPreguntaActual().obtenerTexto());
@@ -76,8 +76,9 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
 
     void agregarBotonOpcion(Stage stage, Opcion opcion, VBox opcionesDadas, VBox grupo1, VBox grupo2, Button pasarAGrupo1, Button pasarAGrupo2){
         Button botonOpcion = new Button(opcion.obtenerTexto());
+        opcionesDadas.getChildren().add(botonOpcion);
         botonOpcion.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #000000");
-        botonOpcion.setMinSize(500,100);
+        botonOpcion.setMinSize(100,50);
         botonOpcion.setOnAction(new SeleccionarOpcionGroupChoice(botonOpcion, pasarAGrupo1, pasarAGrupo2, grupo1, grupo2, opcionesDadas));
         //new cambiarBotonDeContenedor(botonOpcion, opcionesDadas, opcionesMarcadas)
     }
