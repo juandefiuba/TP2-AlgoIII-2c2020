@@ -1,5 +1,7 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
+import edu.fiuba.algo3.modelo.Excepciones.FaltanOpcionesEnLaPreguntaException;
+import edu.fiuba.algo3.modelo.Excepciones.SobranOpcionesDeLaPreguntaException;
 import edu.fiuba.algo3.modelo.Exclusividades.Compuesta.ExclusividadCompuesta;
 import edu.fiuba.algo3.modelo.Exclusividades.Parcial.ExclusividadParcial;
 import edu.fiuba.algo3.modelo.Jugador;
@@ -16,6 +18,11 @@ public class PreguntaVerdaderoFalso extends PreguntaBase{
 
     public PreguntaVerdaderoFalso(LinkedList<Opcion> opcionesDeLaPregunta) {
         super(opcionesDeLaPregunta);
+        if(opcionesDeLaPregunta.size() > 2){
+            throw new SobranOpcionesDeLaPreguntaException();
+        }
+
+
     }
 
     public void calificarRespuesta(RespondeBien calificador){
@@ -42,7 +49,5 @@ public class PreguntaVerdaderoFalso extends PreguntaBase{
         jugador2.sumarPuntos(puntajeJugador2);
 
     }
-
-
 
 }

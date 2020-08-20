@@ -76,4 +76,14 @@ public class Jugador {
         this.exclusividad = new ExclusividadParcialSimple();
         return exclusividadADevolver;
     }
+
+	public void nombrar(String nombreJugador) {
+        this.nombreJugador = nombreJugador;
+	}
+
+	public String getNombreJugador() {
+        return this.nombreJugador;
+    }
+
+
 }

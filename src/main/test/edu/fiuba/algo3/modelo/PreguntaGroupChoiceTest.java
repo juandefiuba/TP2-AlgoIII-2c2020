@@ -13,10 +13,10 @@ public class PreguntaGroupChoiceTest {
     @Test
     public void test01JugadorRespondeGroup() {
 
-        Opcion opcion1 = new OpcionGrupoUno();
-        Opcion opcion2 = new OpcionGrupoDos();
-        Opcion opcion3 = new OpcionGrupoUno();
-        Opcion opcion4 = new OpcionGrupoDos();
+        Opcion opcion1 = new OpcionCorrecta();
+        Opcion opcion2 = new OpcionIncorrecta();
+        Opcion opcion3 = new OpcionCorrecta();
+        Opcion opcion4 = new OpcionIncorrecta();
 
         LinkedList<Opcion> opciones = new LinkedList<>();
         opciones.add(opcion1);
@@ -44,10 +44,9 @@ public class PreguntaGroupChoiceTest {
         respuestasGrupoUno.add(opcion3);
         respuestasGrupoDos.add(opcion4);
 
-        pregunta.agregarRespuestaDeGrupoUnoJugador(jugador, respuestasGrupoUno);
-        pregunta.agregarRespuestaDeGrupoUnoJugador(jugador2, respuestasGrupoUno);
-        pregunta.agregarRespuestaDeGrupoDosJugador(jugador, respuestasGrupoDos);
-        pregunta.agregarRespuestaDeGrupoDosJugador(jugador2, respuestasGrupoDos);
+        pregunta.agregarRespuestaDeJugador(jugador, respuestasGrupoUno);
+        pregunta.agregarRespuestaDeJugador(jugador2, respuestasGrupoUno);
+
 
         //Act
         pregunta.puntuarJugadores(jugador, jugador2);
@@ -58,10 +57,10 @@ public class PreguntaGroupChoiceTest {
     @Test
     public void test02JugadorRespondeGroupMal() {
 
-        Opcion opcion1 = new OpcionGrupoUno();
-        Opcion opcion2 = new OpcionGrupoDos();
-        Opcion opcion3 = new OpcionGrupoUno();
-        Opcion opcion4 = new OpcionGrupoDos();
+        Opcion opcion1 = new OpcionCorrecta();
+        Opcion opcion2 = new OpcionIncorrecta();
+        Opcion opcion3 = new OpcionCorrecta();
+        Opcion opcion4 = new OpcionIncorrecta();
 
         LinkedList<Opcion> opciones = new LinkedList<>();
         opciones.add(opcion1);
@@ -90,10 +89,9 @@ public class PreguntaGroupChoiceTest {
         respuestasGrupoDos.add(opcion4);
 
 
-        pregunta.agregarRespuestaDeGrupoUnoJugador(jugador, respuestasGrupoUno);
-        pregunta.agregarRespuestaDeGrupoUnoJugador(jugador2, respuestasGrupoUno);
-        pregunta.agregarRespuestaDeGrupoDosJugador(jugador, respuestasGrupoDos);
-        pregunta.agregarRespuestaDeGrupoDosJugador(jugador2, respuestasGrupoDos);
+        pregunta.agregarRespuestaDeJugador(jugador, respuestasGrupoUno);
+        pregunta.agregarRespuestaDeJugador(jugador2, respuestasGrupoUno);
+
 
         //Act
         pregunta.puntuarJugadores(jugador, jugador2);
@@ -104,10 +102,10 @@ public class PreguntaGroupChoiceTest {
     @Test
     public void test03JugadorNoAgrupaTodasLasOpcionesYNoRecibePunto() {
 
-        Opcion opcion1 = new OpcionGrupoUno();
-        Opcion opcion2 = new OpcionGrupoDos();
-        Opcion opcion3 = new OpcionGrupoUno();
-        Opcion opcion4 = new OpcionGrupoDos();
+        Opcion opcion1 = new OpcionCorrecta();
+        Opcion opcion2 = new OpcionIncorrecta();
+        Opcion opcion3 = new OpcionCorrecta();
+        Opcion opcion4 = new OpcionIncorrecta();
 
         LinkedList<Opcion> opciones = new LinkedList<>();
         opciones.add(opcion1);
@@ -135,10 +133,8 @@ public class PreguntaGroupChoiceTest {
         respuestasGrupoDos.add(opcion4);
 
 
-        pregunta.agregarRespuestaDeGrupoUnoJugador(jugador, respuestasGrupoUno);
-        pregunta.agregarRespuestaDeGrupoUnoJugador(jugador2, respuestasGrupoUno);
-        pregunta.agregarRespuestaDeGrupoDosJugador(jugador, respuestasGrupoDos);
-        pregunta.agregarRespuestaDeGrupoDosJugador(jugador2, respuestasGrupoDos);
+        pregunta.agregarRespuestaDeJugador(jugador, respuestasGrupoUno);
+        pregunta.agregarRespuestaDeJugador(jugador2, respuestasGrupoUno);
 
         //Act
         pregunta.puntuarJugadores(jugador, jugador2);
