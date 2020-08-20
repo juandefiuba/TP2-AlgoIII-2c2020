@@ -23,27 +23,9 @@ public class OpcionOrdenadaTest {
         //Assert
         assertEquals(true, unaListaDeOpcionesVacia.isEmpty());
     }
-    @Test
-    public void test02UnaOpcionOrdenadaAlEnlistarGrupoUnoNoAgregaLaOpcionALaLista(){
-        OpcionOrdenada unaOpcionOrdenada = new OpcionOrdenada();
-        LinkedList<Opcion> unaListaDeOpcionesVacia = new LinkedList<>();
-
-        unaOpcionOrdenada.enlistarGrupoUno(unaListaDeOpcionesVacia);
-
-        assertEquals(true, unaListaDeOpcionesVacia.isEmpty());
-    }
-    @Test
-    public void test03UnaOpcionOrdenadaAlEnlistarGrupoDosNoAgregaLaOpcionALaLista(){
-        OpcionOrdenada unaOpcionOrdenada = new OpcionOrdenada();
-        LinkedList<Opcion> unaListaDeOpcionesVacia = new LinkedList<>();
-
-        unaOpcionOrdenada.enlistarGrupoDos(unaListaDeOpcionesVacia);
-
-        assertEquals(true, unaListaDeOpcionesVacia.isEmpty());
-    }
 
     @Test
-    public void test04UnaOpcionOrdenadaAlValidarOpcionNoInteractuaConLaPregunta(){
+    public void test02UnaOpcionOrdenadaAlValidarOpcionNoInteractuaConLaPregunta(){
         //Arrange
         OpcionOrdenada unaOpcionOrdenada = new OpcionOrdenada();
         PreguntaVerdaderoFalso preguntaMock = mock(PreguntaVerdaderoFalso.class);

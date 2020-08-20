@@ -24,29 +24,9 @@ public class OpcionCorrectaTest {
 
         assertEquals(false, unaListaDeOpcionesVacia.isEmpty());
     }
-    @Test
-    public void test02UnaOpcionCorrectaAlEnlistarGrupoUnoNoAgregaLaOpcionALaLista(){
-        OpcionCorrecta unaOpcionCorrecta = new OpcionCorrecta();
-        LinkedList<Opcion> unaListaDeOpcionesVacia = new LinkedList<>();
-
-        unaOpcionCorrecta.enlistarGrupoUno(unaListaDeOpcionesVacia);
-
-        assertEquals(true, unaListaDeOpcionesVacia.isEmpty());
-    }
 
     @Test
-    public void test03UnaOpcionCorrectaAlEnlistarGrupoDosNoAgregaLaOpcionALaLista(){
-        OpcionCorrecta unaOpcionCorrecta = new OpcionCorrecta();
-        LinkedList<Opcion> unaListaDeOpcionesVacia = new LinkedList<>();
-
-        unaOpcionCorrecta.enlistarGrupoDos(unaListaDeOpcionesVacia);
-
-        assertEquals(true, unaListaDeOpcionesVacia.isEmpty());
-    }
-
-
-    @Test
-    public void test04UnaOpcionCorrectaAlValidarOpcionSeCalificaRespuestaDeLaPreguntaConRespondeBien(){
+    public void test02UnaOpcionCorrectaAlValidarOpcionSeCalificaRespuestaDeLaPreguntaConRespondeBien(){
         //Arrange
         OpcionCorrecta unaOpcionCorrecta = new OpcionCorrecta();
         PreguntaVerdaderoFalso preguntaMock = mock(PreguntaVerdaderoFalso.class);
