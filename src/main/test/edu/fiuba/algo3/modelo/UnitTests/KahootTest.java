@@ -10,6 +10,8 @@ import edu.fiuba.algo3.modelo.Opciones.OpcionIncorrecta;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaBase;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaVerdaderoFalso;
+import edu.fiuba.algo3.modelo.Preguntas.PreguntaVerdaderoFalsoPenalidad;
+
 import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
@@ -146,6 +148,68 @@ public class KahootTest {
 
 		assertEquals(2, jugadores.get(0).obtenerPuntos());
 		
+	}
+	
+	@Test
+	public void test06UsarMultiplicadorPorDos() {
+		//Arrange
+		Kahoot.resetear();
+		Opcion opcionVerdadero = new OpcionCorrecta();
+		Opcion opcionFalso = new OpcionIncorrecta();
+		LinkedList<Opcion> opciones = new LinkedList<>();
+		opciones.add(opcionVerdadero);
+		opciones.add(opcionFalso);
+		Pregunta pregunta = new PreguntaVerdaderoFalsoPenalidad(opciones);
+		Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
+		opcionVerdadero = (Opcion) iteradorDeOpciones.next();
+		opcionFalso = (Opcion) iteradorDeOpciones.next();
+
+		Kahoot kahoot = Kahoot.Kahoot();
+		kahoot.agregarPregunta(pregunta);
+		kahoot.agregarJugador("Mica");
+		kahoot.agregarJugador("Juancito");
+		LinkedList<Jugador> jugadores = kahoot.obtenerJugadores();
+		kahoot.iniciarJuego();
+		kahoot.activarMultiplicadorPorDos();
+		kahoot.agregarOpcionElegida(opcionVerdadero);
+		kahoot.avanzarAProximoJugador();
+		kahoot.activarMultiplicadorPorDos();
+		kahoot.agregarOpcionElegida(opcionFalso);
+		kahoot.terminarTurno();
+
+		assertEquals(2, jugadores.get(0).obtenerPuntos());
+		assertEquals(-2, jugadores.get(1).obtenerPuntos());
+	}
+	
+	@Test
+	public void test07UsarMultiplicadorPorTres() {
+		//Arrange
+		Kahoot.resetear();
+		Opcion opcionVerdadero = new OpcionCorrecta();
+		Opcion opcionFalso = new OpcionIncorrecta();
+		LinkedList<Opcion> opciones = new LinkedList<>();
+		opciones.add(opcionVerdadero);
+		opciones.add(opcionFalso);
+		Pregunta pregunta = new PreguntaVerdaderoFalsoPenalidad(opciones);
+		Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
+		opcionVerdadero = (Opcion) iteradorDeOpciones.next();
+		opcionFalso = (Opcion) iteradorDeOpciones.next();
+
+		Kahoot kahoot = Kahoot.Kahoot();
+		kahoot.agregarPregunta(pregunta);
+		kahoot.agregarJugador("Mica");
+		kahoot.agregarJugador("Juancito");
+		LinkedList<Jugador> jugadores = kahoot.obtenerJugadores();
+		kahoot.iniciarJuego();
+		kahoot.activarMultiplicadorPorTres();
+		kahoot.agregarOpcionElegida(opcionVerdadero);
+		kahoot.avanzarAProximoJugador();
+		kahoot.activarMultiplicadorPorTres();
+		kahoot.agregarOpcionElegida(opcionFalso);
+		kahoot.terminarTurno();
+
+		assertEquals(3, jugadores.get(0).obtenerPuntos());
+		assertEquals(-3, jugadores.get(1).obtenerPuntos());
 	}
 	
 }
