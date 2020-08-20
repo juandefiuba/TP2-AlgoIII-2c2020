@@ -62,6 +62,10 @@ public class Kahoot { //Singleton
 	public void agregarRespuestaDeJugadorActual(LinkedList<Opcion> respuestas) {
 		this.turno.agregarRespuestaDeJugadorActual(respuestas);
 	}
+	
+	public void agregarOpcionElegida(Opcion opcion) {
+		this.turno.agregarOpcionElegida(opcion);
+	}
 
 	public void agregarPregunta(Pregunta pregunta) {
 		this.preguntas.add(pregunta);
@@ -74,13 +78,13 @@ public class Kahoot { //Singleton
 	public boolean sigueElJuego() {
 		return this.turno.sigueElJuego();
 	}
-
-	public void agregarOpcionElegida(Opcion opcion) {
-		this.turno.agregarOpcionElegida(opcion);
-	}
 	
 	public PreguntaBase obtenerPreguntaActual() {
 		return this.turno.obtenerPregunta();
+	}
+	
+	public Jugador obtenerJugadorActual() {
+		return this.turno.jugadorActual();
 	}
 
 	public void activarMultiplicadorPorDos() {
@@ -89,5 +93,9 @@ public class Kahoot { //Singleton
 
 	public void activarMultiplicadorPorTres() {
 		this.turno.activarMultiplicadorPorTres();
+	}
+	
+	public void activarExclusividad() {
+		this.turno.activarExclusividad();
 	}
 }

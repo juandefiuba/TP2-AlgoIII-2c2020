@@ -13,12 +13,6 @@ public class OpcionCorrecta extends Opcion{
     }
 
     @Override
-    public void enlistarGrupoUno(LinkedList<Opcion> opcionesgrupoUno) {}
-
-    @Override
-    public void enlistarGrupoDos(LinkedList<Opcion> opcionesgrupoDos) {}
-
-    @Override
     public void validarOpcion(Pregunta pregunta) {
         pregunta.calificarRespuesta(new RespondeBien());
     }

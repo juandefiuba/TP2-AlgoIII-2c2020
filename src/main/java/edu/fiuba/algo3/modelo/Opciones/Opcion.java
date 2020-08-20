@@ -14,7 +14,5 @@ public abstract class Opcion {
 		return this.texto;
 	}
     public abstract void enlistarOpcionesCorrectas(LinkedList<Opcion> opcionesCorrectas);
-    public abstract void enlistarGrupoUno(LinkedList<Opcion> opcionesgrupoUno);
-    public abstract void enlistarGrupoDos(LinkedList<Opcion> opcionesgrupoDos);
-    public abstract void validarOpcion(Pregunta pregunta);
+	public abstract void validarOpcion(Pregunta pregunta);
 }

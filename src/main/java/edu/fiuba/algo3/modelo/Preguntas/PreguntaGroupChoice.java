@@ -18,43 +18,26 @@ import java.util.Map;
 
 public class PreguntaGroupChoice extends PreguntaBase {
 
-    protected Map<Jugador, LinkedList<Opcion>> respuestasGrupoUnoDeLosJugadores;
-    protected Map<Jugador, LinkedList<Opcion>> respuestasGrupoDosDeLosJugadores;
-
-
     public PreguntaGroupChoice(LinkedList<Opcion> opcionesDeLaPregunta) {
         super(opcionesDeLaPregunta);
-        this.respuestasGrupoUnoDeLosJugadores = new HashMap<>();
-        this.respuestasGrupoDosDeLosJugadores = new HashMap<>();
+        this.respuestasDeLosJugadores = new HashMap<>();
+
     }
 
     public Puntaje obtenerPuntajeBaseDelJugador(Jugador jugador) {
         this.puntajeDelJugador = new PuntajeValido();
-        LinkedList<Opcion> respuestaDelJugadorGrupoUno = this.respuestasGrupoUnoDeLosJugadores.get(jugador);
-        LinkedList<Opcion> respuestaDelJugadorGrupoDos = this.respuestasGrupoDosDeLosJugadores.get(jugador);
+        super.obtenerPuntajeBaseDelJugador(jugador);
 
-        LinkedList<Opcion> opcionesGrupoUno = new LinkedList<>();
-        LinkedList<Opcion> opcionesGrupoDos = new LinkedList<>();
+        LinkedList<Opcion> opcionesCorrectas = new LinkedList<>();
+        opciones.forEach(opcion -> opcion.enlistarOpcionesCorrectas(opcionesCorrectas));
+        opcionesCorrectas.removeAll(this.respuestasDeLosJugadores.get(jugador));
 
-        opciones.forEach(opcion -> opcion.enlistarGrupoUno(opcionesGrupoUno));
-        opciones.forEach(opcion -> opcion.enlistarGrupoDos(opcionesGrupoDos));
+        LinkedList<Opcion> opcionesCorrectasNoElegidasPorElJugador = opcionesCorrectas;
 
-        Iterator iterador = opcionesGrupoUno.iterator();
-
-        while (iterador.hasNext()){
-            if(!respuestaDelJugadorGrupoUno.contains(iterador.next())){
-                this.calificarRespuesta(new RespondeMal());
-            }
+        if(!opcionesCorrectasNoElegidasPorElJugador.isEmpty()){
+            this.calificarRespuesta(new RespondeMal());
         }
 
-        iterador = respuestaDelJugadorGrupoDos.iterator();
-
-        while (iterador.hasNext()){
-            if(!respuestaDelJugadorGrupoDos.contains(iterador.next())){
-                this.calificarRespuesta(new RespondeMal());
-            }
-        }
-        this.calificarRespuesta(new RespondeBien());
         return this.puntajeDelJugador;
     }
 
@@ -82,15 +65,6 @@ public class PreguntaGroupChoice extends PreguntaBase {
     @Override
     public void calificarRespuesta(RespondeMal calificador) {
         this.puntajeDelJugador = new PuntajeNulo();
-    }
-
-
-    public void agregarRespuestaDeGrupoUnoJugador(Jugador jugador, LinkedList<Opcion> respuestasGrupoUno) {
-        this.respuestasGrupoUnoDeLosJugadores.put(jugador,respuestasGrupoUno);
-    }
-
-    public void agregarRespuestaDeGrupoDosJugador(Jugador jugador, LinkedList<Opcion> respuestasGrupoDos) {
-        this.respuestasGrupoDosDeLosJugadores.put(jugador,respuestasGrupoDos);
     }
 
 }
