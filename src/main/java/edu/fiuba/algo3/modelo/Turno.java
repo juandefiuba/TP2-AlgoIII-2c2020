@@ -46,7 +46,7 @@ public class Turno {
 		this.preguntaActual.agregarRespuestaDeJugador(this.jugadorActual(), opcion);
 	}
 
-	private Jugador jugadorActual() {
+	public Jugador jugadorActual() {
 		return jugadores.peek();
 	}
 

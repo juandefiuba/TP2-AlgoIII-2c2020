@@ -82,6 +82,10 @@ public class Kahoot { //Singleton
 	public PreguntaBase obtenerPreguntaActual() {
 		return this.turno.obtenerPregunta();
 	}
+	
+	public Jugador obtenerJugadorActual() {
+		return this.turno.jugadorActual();
+	}
 
 	public void activarMultiplicadorPorDos() {
 		this.turno.activarMultiplicadorPorDos();
