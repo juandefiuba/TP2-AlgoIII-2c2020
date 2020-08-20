@@ -42,4 +42,26 @@ class TurnoTest {
 		verify(preguntaMock).agregarRespuestaDeJugador(any(Jugador.class), any(Opcion.class));
 	}
 
+	@Test
+	public void test02TurnoObtenerPreguntaCorrecta() {
+		LinkedList<Jugador> jugadores = new LinkedList<Jugador>();
+		jugadores.add(new Jugador());
+		jugadores.add(new Jugador());
+
+		Opcion opcion1 = new OpcionCorrecta();
+		Opcion opcion2 = new OpcionIncorrecta();
+		LinkedList<Opcion> opciones = new LinkedList<Opcion>();
+		opciones.add(opcion1);
+		opciones.add(opcion2);
+
+		Pregunta preguntaMock = mock(PreguntaVerdaderoFalso.class);
+		LinkedList<Pregunta> preguntas = new LinkedList<Pregunta>();
+		preguntas.add(preguntaMock);
+		Iterator iter = preguntas.iterator();
+
+		Turno turno = new Turno();
+		turno.iniciarJuegoCon(jugadores, iter);
+		assertEquals(preguntaMock, turno.obtenerPregunta());
+	}
+
 }

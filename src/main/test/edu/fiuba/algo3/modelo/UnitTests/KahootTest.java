@@ -31,44 +31,4 @@ class KahootTest {
 		kahoot.agregarJugador("Mica");
 		assertEquals(1, kahoot.obtenerJugadores().size());
 	}
-
-	@Test
-	public void agregarRespuestaDeJugadorActual() {
-	}
-
-	@Test
-	public void agregarOpcionElegida() {
-	}
-
-	@Test
-	public void agregarPregunta() {
-	}
-
-	@Test
-	public void terminarTurno() {
-	}
-
-	@Test
-	public void sigueElJuego() {
-	}
-
-	@Test
-	public void obtenerPreguntaActual() {
-	}
-
-	@Test
-	public void obtenerJugadorActual() {
-	}
-
-	@Test
-	public void activarMultiplicadorPorDos() {
-	}
-
-	@Test
-	public void activarMultiplicadorPorTres() {
-	}
-
-	@Test
-	public void activarExclusividad() {
-	}
 }
