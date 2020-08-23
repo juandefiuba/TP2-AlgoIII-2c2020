@@ -114,7 +114,7 @@ public class App extends Application {
         PreguntaGroupChoice preguntaGroupChoice = new PreguntaGroupChoice(opciones5);
         preguntaGroupChoice.setearTexto("Separe en grupos");
         kahoot.agregarPregunta(preguntaGroupChoice);
-/*
+
         //Pregunta OrderedChoice
         Opcion opcionO1 = new OpcionOrdenada();
         opcionO1.setearTexto("1");
@@ -132,7 +132,7 @@ public class App extends Application {
         PreguntaOrderedChoice preguntaOrdered = new PreguntaOrderedChoice(opciones4);
         preguntaOrdered.setearTexto("Marcar de mayor a menor");
         kahoot.agregarPregunta(preguntaOrdered);
-*/
+
         //PROPIEDADES VENTANA (Ancho x Alto)
         stage.setMinHeight(TamanioDeVentana.altoPredeterminado());
         stage.setMinWidth(TamanioDeVentana.anchoPredeterminado());
