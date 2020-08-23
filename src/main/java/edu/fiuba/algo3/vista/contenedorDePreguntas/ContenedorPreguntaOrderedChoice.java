@@ -22,6 +22,7 @@ public class ContenedorPreguntaOrderedChoice extends ContenedorPregunta {
 
     public ContenedorPreguntaOrderedChoice(Stage stage, Kahoot kahoot) {
         this.setMenu(stage);
+        this.kahoot = kahoot;
         this.contenedorCentral(stage, kahoot);
         stage.sizeToScene();
     }
