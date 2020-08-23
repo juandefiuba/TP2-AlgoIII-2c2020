@@ -19,23 +19,12 @@ import java.util.LinkedList;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class KahootTest {
-	
+
 	@Test
 	public void test01CalificoyObtenerPuntosDevuelveCantidadCorrecta() throws IOException {
 		//Arrange
 		Kahoot.resetear();
-		/*Opcion opcionVerdadero = new OpcionCorrecta();
-		Opcion opcionFalso = new OpcionIncorrecta();
-		LinkedList<Opcion> opciones = new LinkedList<>();
-		opciones.add(opcionVerdadero);
-		opciones.add(opcionFalso);
-		Pregunta pregunta = new PreguntaVerdaderoFalso(opciones);
-		Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
-		opcionVerdadero = (Opcion) iteradorDeOpciones.next();
-		opcionFalso = (Opcion) iteradorDeOpciones.next();*/
-
 		Kahoot kahoot = Kahoot.Kahoot("./testLector1.json");
-		//kahoot.agregarPregunta(pregunta);
 		kahoot.agregarJugador("Mica");
 		kahoot.agregarJugador("Juancito");
 		LinkedList<Jugador> jugadores = kahoot.obtenerJugadores();
@@ -48,25 +37,12 @@ public class KahootTest {
 		kahoot.terminarTurno();
 
 		assertEquals(1, jugadores.get(0).obtenerPuntos());
-		
 	}
 
 	@Test
 	public void test02ObtenerTextoPreguntaYOpcionesActual() throws IOException {
 		Kahoot.resetear();
-		/*Opcion opcionVerdadero = new OpcionCorrecta();
-		opcionVerdadero.setearTexto("Mas bien");
-		Opcion opcionFalso = new OpcionIncorrecta();
-		opcionFalso.setearTexto("uf");
-		LinkedList<Opcion> opciones = new LinkedList<>();
-		opciones.add(opcionVerdadero);
-		opciones.add(opcionFalso);
-		PreguntaVerdaderoFalso pregunta = new PreguntaVerdaderoFalso(opciones);
-		String texto = "Aprobamos?";
-		pregunta.setearTexto(texto);*/
-
 		Kahoot kahoot = Kahoot.Kahoot("./testLector2.json");
-		//kahoot.agregarPregunta(pregunta);
 		kahoot.agregarJugador("Mica");
 		kahoot.agregarJugador("Juancito");
 		LinkedList<Jugador> jugadores = kahoot.obtenerJugadores();
@@ -85,18 +61,7 @@ public class KahootTest {
 	public void test03UsarExclusividadDevuelvePuntosCorrectos() throws IOException {
 		//Arrange
 		Kahoot.resetear();
-		/*Opcion opcionVerdadero = new OpcionCorrecta();
-		Opcion opcionFalso = new OpcionIncorrecta();
-		LinkedList<Opcion> opciones = new LinkedList<>();
-		opciones.add(opcionVerdadero);
-		opciones.add(opcionFalso);
-		Pregunta pregunta = new PreguntaVerdaderoFalso(opciones);
-		Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
-		opcionVerdadero = (Opcion) iteradorDeOpciones.next();
-		opcionFalso = (Opcion) iteradorDeOpciones.next();*/
-
 		Kahoot kahoot = Kahoot.Kahoot("./testLector2.json");
-		//kahoot.agregarPregunta(pregunta);
 		kahoot.agregarJugador("Mica");
 		kahoot.agregarJugador("Juancito");
 		LinkedList<Jugador> jugadores = kahoot.obtenerJugadores();
@@ -119,18 +84,7 @@ public class KahootTest {
 	public void test04UsarMultiplicadorPorDosDevuelvePuntosCorrectos() throws IOException {
 		//Arrange
 		Kahoot.resetear();
-		/*Opcion opcionVerdadero = new OpcionCorrecta();
-		Opcion opcionFalso = new OpcionIncorrecta();
-		LinkedList<Opcion> opciones = new LinkedList<>();
-		opciones.add(opcionVerdadero);
-		opciones.add(opcionFalso);
-		Pregunta pregunta = new PreguntaVerdaderoFalsoPenalidad(opciones);
-		Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
-		opcionVerdadero = (Opcion) iteradorDeOpciones.next();
-		opcionFalso = (Opcion) iteradorDeOpciones.next();*/
-
 		Kahoot kahoot = Kahoot.Kahoot("./testLector3.json");
-		//kahoot.agregarPregunta(pregunta);
 		kahoot.agregarJugador("Mica");
 		kahoot.agregarJugador("Juancito");
 		LinkedList<Jugador> jugadores = kahoot.obtenerJugadores();
@@ -154,18 +108,7 @@ public class KahootTest {
 	public void test05UsarMultiplicadorPorTresDevuelvePuntosCorrectos() throws IOException {
 		//Arrange
 		Kahoot.resetear();
-		/*Opcion opcionVerdadero = new OpcionCorrecta();
-		Opcion opcionFalso = new OpcionIncorrecta();
-		LinkedList<Opcion> opciones = new LinkedList<>();
-		opciones.add(opcionVerdadero);
-		opciones.add(opcionFalso);
-		Pregunta pregunta = new PreguntaVerdaderoFalsoPenalidad(opciones);
-		Iterator iteradorDeOpciones = pregunta.obtenerOpciones();
-		opcionVerdadero = (Opcion) iteradorDeOpciones.next();
-		opcionFalso = (Opcion) iteradorDeOpciones.next();*/
-
 		Kahoot kahoot = Kahoot.Kahoot("./testLector3.json");
-		//kahoot.agregarPregunta(pregunta);
 		kahoot.agregarJugador("Mica");
 		kahoot.agregarJugador("Juancito");
 		LinkedList<Jugador> jugadores = kahoot.obtenerJugadores();
@@ -183,5 +126,31 @@ public class KahootTest {
 
 		assertEquals(3, jugadores.get(0).obtenerPuntos());
 		assertEquals(-3, jugadores.get(1).obtenerPuntos());
+	}
+
+	@Test
+	public void test06CalificoyObtenerPuntosDevuelveCantidadCorrectaCuandoRemoviOpciones() throws IOException {
+		//Arrange
+		Kahoot.resetear();
+		Kahoot kahoot = Kahoot.Kahoot("./testLector4.json");
+		kahoot.agregarJugador("Mica");
+		kahoot.agregarJugador("Juancito");
+		LinkedList<Jugador> jugadores = kahoot.obtenerJugadores();
+		kahoot.iniciarJuego();
+		Pregunta pregunta = kahoot.obtenerPreguntaActual();
+		Iterator iterOpciones = pregunta.obtenerOpciones();
+		Opcion opcion1 = (Opcion) iterOpciones.next();
+		Opcion opcion2 = (Opcion) iterOpciones.next();
+		Opcion opcion3 = (Opcion) iterOpciones.next();
+		kahoot.agregarOpcionElegida((Opcion) opcion1);
+		kahoot.agregarOpcionElegida((Opcion) opcion2);
+		kahoot.agregarOpcionElegida((Opcion) opcion3);
+		kahoot.removerOpcionElegida((Opcion) opcion3);
+		kahoot.avanzarAProximoJugador();
+		kahoot.agregarOpcionElegida((Opcion) iterOpciones.next());
+		kahoot.terminarTurno();
+
+		assertEquals(1, jugadores.get(0).obtenerPuntos());
+		assertEquals(0, jugadores.get(1).obtenerPuntos());
 	}
 }

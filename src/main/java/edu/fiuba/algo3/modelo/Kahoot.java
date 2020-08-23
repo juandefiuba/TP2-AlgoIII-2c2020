@@ -105,4 +105,6 @@ public class Kahoot { //Singleton
 	public void activarExclusividad() {
 		this.turno.activarExclusividad();
 	}
+
+	public void removerOpcionElegida(Opcion opcion) { this.turno.removerOpcionElegida(opcion); }
 }

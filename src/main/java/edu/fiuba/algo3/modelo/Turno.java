@@ -45,6 +45,10 @@ public class Turno {
 		this.preguntaActual.agregarRespuestaDeJugador(this.jugadorActual(), opcion);
 	}
 
+	public void removerOpcionElegida(Opcion opcion) {
+		this.preguntaActual.removerRespuestaDeJugador(this.jugadorActual(), opcion);
+	}
+
 	public Jugador jugadorActual() {
 		return jugadores.peek();
 	}
