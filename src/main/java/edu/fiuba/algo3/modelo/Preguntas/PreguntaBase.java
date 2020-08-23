@@ -54,6 +54,11 @@ public abstract class PreguntaBase implements Pregunta{
 	}
 
 	@Override
+	public void removerRespuestaDeJugador(Jugador jugador, Opcion opcion) {
+		this.respuestasDeLosJugadores.get(jugador).remove(opcion);
+	}
+
+	@Override
 	public Iterator obtenerOpciones() {
 		return opciones.iterator();
 	}

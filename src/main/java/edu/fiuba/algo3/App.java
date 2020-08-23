@@ -28,7 +28,7 @@ public class App extends Application {
     public void start(Stage stage) throws Exception {
         stage.setTitle("Kahoot!");
         stage.setMaximized(false); //Comenzar en modo ventana
-        Kahoot kahoot = Kahoot.Kahoot();
+        Kahoot kahoot = Kahoot.Kahoot("./preguntas.json");
 
         //Pregunta VoF
         Opcion opcionVof = new OpcionCorrecta();
