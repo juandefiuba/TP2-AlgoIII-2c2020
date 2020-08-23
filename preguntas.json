@@ -1,0 +1,58 @@
+{
+  "preguntas": [
+	{
+	  "tipoPregunta": "VFC",
+	  "textoPregunta": "¿Existe el 31 de febrero?",
+	  "opciones": [
+		{
+		  "tipoOpcion": "I",
+		  "textoOpcion": "Verdadero"
+		},
+		{
+		  "tipoOpcion": "C",
+		  "textoOpcion": "Falso"
+		}
+	  ]
+	},
+	{
+	  "tipoPregunta": "OC",
+	  "textoPregunta": "¿Cuál es el orden correcto?",
+	  "opciones": [
+		{
+		  "tipoOpcion": "O",
+		  "textoOpcion": "Primero"
+		},
+		{
+		  "tipoOpcion": "O",
+		  "textoOpcion": "Segundo"
+		},
+		{
+		  "tipoOpcion": "O",
+		  "textoOpcion": "Tercero"
+		}
+	  ]
+	},
+	{
+	  "tipoPregunta": "GC",
+	  "textoPregunta": "¿Cuáles son lácteos y cuáles no?",
+	  "opciones": [
+		{
+		  "tipoOpcion": "C",
+		  "textoOpcion": "Manteca"
+		},
+		{
+		  "tipoOpcion": "C",
+		  "textoOpcion": "Queso"
+		},
+		{
+		  "tipoOpcion": "I",
+		  "textoOpcion": "Pan"
+		},
+		{
+		  "tipoOpcion": "I",
+		  "textoOpcion": "Galletitas"
+		}
+	  ]
+	}
+  ]
+}

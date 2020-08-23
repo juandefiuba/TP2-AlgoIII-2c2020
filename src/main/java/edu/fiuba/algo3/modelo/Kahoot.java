@@ -1,12 +1,14 @@
 package edu.fiuba.algo3.modelo;
 
 
+import edu.fiuba.algo3.Lector;
 import edu.fiuba.algo3.modelo.Excepciones.NoHayJugadoresException;
 import edu.fiuba.algo3.modelo.Excepciones.NoHayPreguntasException;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaBase;
 
+import java.io.IOException;
 import java.util.LinkedList;
 
 public class Kahoot { //Singleton
@@ -15,18 +17,23 @@ public class Kahoot { //Singleton
 	private LinkedList<Pregunta> preguntas;
 	private Turno turno;
 
-	private Kahoot() {
+	private Kahoot() throws IOException {
 		this.jugadores = new LinkedList<>();
-		this.preguntas = new LinkedList<>();
+		this.preguntas = this.leerPreguntas();
 		this.turno = new Turno();
 	}
 
-	public static Kahoot Kahoot() {
+	public static Kahoot Kahoot() throws IOException {
 		if (kahoot == null) {
 			kahoot = new Kahoot();
 		}
 
 		return kahoot;
+	}
+
+	private LinkedList<Pregunta> leerPreguntas() throws IOException {
+		Lector lector = new Lector("./preguntas.json");
+		return lector.obtenerPreguntas();
 	}
 
 	public void iniciarJuego() {

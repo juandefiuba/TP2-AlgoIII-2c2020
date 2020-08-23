@@ -12,6 +12,7 @@ import edu.fiuba.algo3.modelo.Preguntas.PreguntaVerdaderoFalsoPenalidad;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -20,7 +21,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class KahootTest {
 	
 	@Test
-	public void test03CalificoyObtenerPuntosDevuelveCantidadCorrecta() {
+	public void test03CalificoyObtenerPuntosDevuelveCantidadCorrecta() throws IOException {
 		//Arrange
 		Kahoot.resetear();
 		Opcion opcionVerdadero = new OpcionCorrecta();
@@ -49,7 +50,7 @@ public class KahootTest {
 	}
 	
 	@Test
-	public void test04ObtenerTextoPreguntaYOpcionesActual() {
+	public void test04ObtenerTextoPreguntaYOpcionesActual() throws IOException {
 		Kahoot.resetear();
 		Opcion opcionVerdadero = new OpcionCorrecta();
 		opcionVerdadero.setearTexto("Mas bien");
@@ -78,7 +79,7 @@ public class KahootTest {
 	}
 
 	@Test
-	public void test05UsarExclusividadDevuelvePuntosCorrectos() {
+	public void test05UsarExclusividadDevuelvePuntosCorrectos() throws IOException {
 		//Arrange
 		Kahoot.resetear();
 		Opcion opcionVerdadero = new OpcionCorrecta();
@@ -108,7 +109,7 @@ public class KahootTest {
 	}
 	
 	@Test
-	public void test06UsarMultiplicadorPorDosDevuelvePuntosCorrectos() {
+	public void test06UsarMultiplicadorPorDosDevuelvePuntosCorrectos() throws IOException {
 		//Arrange
 		Kahoot.resetear();
 		Opcion opcionVerdadero = new OpcionCorrecta();
@@ -139,7 +140,7 @@ public class KahootTest {
 	}
 	
 	@Test
-	public void test07UsarMultiplicadorPorTresDevuelvePuntosCorrectos() {
+	public void test07UsarMultiplicadorPorTresDevuelvePuntosCorrectos() throws IOException {
 		//Arrange
 		Kahoot.resetear();
 		Opcion opcionVerdadero = new OpcionCorrecta();
