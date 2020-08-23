@@ -17,22 +17,22 @@ public class Kahoot { //Singleton
 	private LinkedList<Pregunta> preguntas;
 	private Turno turno;
 
-	private Kahoot() throws IOException {
+	private Kahoot(String ruta) throws IOException {
 		this.jugadores = new LinkedList<>();
-		this.preguntas = this.leerPreguntas();
+		this.preguntas = this.leerPreguntas(ruta);
 		this.turno = new Turno();
 	}
 
-	public static Kahoot Kahoot() throws IOException {
+	public static Kahoot Kahoot(String ruta) throws IOException {
 		if (kahoot == null) {
-			kahoot = new Kahoot();
+			kahoot = new Kahoot(ruta);
 		}
 
 		return kahoot;
 	}
 
-	private LinkedList<Pregunta> leerPreguntas() throws IOException {
-		Lector lector = new Lector("./preguntas.json");
+	private LinkedList<Pregunta> leerPreguntas(String ruta) throws IOException {
+		Lector lector = new Lector(ruta);
 		return lector.obtenerPreguntas();
 	}
 
