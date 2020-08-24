@@ -45,7 +45,7 @@ public class ContenedorPuntajesFinales extends ContenedorPregunta {
         puntajes.getChildren().addAll(puntajeJugador1, puntajeJugador2);
         puntajes.setAlignment(Pos.CENTER);
         String nombreGanador;
-        
+
         if(jugador1.obtenerPuntos() > jugador2.obtenerPuntos()) {
             nombreGanador = jugador1.getNombreJugador();
         } else {

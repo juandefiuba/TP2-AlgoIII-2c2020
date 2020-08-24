@@ -23,7 +23,6 @@ public class cambiarBotonDeContenedor implements EventHandler<ActionEvent> {
         contenedorAntiguo.getChildren().remove(boton);
         contenedorNuevo.getChildren().add(boton);
         botonOk.requestFocus();
-        boton.setOnAction(new cambiarBotonDeContenedor(boton, contenedorNuevo, contenedorAntiguo, botonOk));
     }
 
 }

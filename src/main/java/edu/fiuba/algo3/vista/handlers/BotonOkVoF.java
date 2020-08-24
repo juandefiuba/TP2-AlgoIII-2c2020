@@ -41,10 +41,10 @@ public class BotonOkVoF implements EventHandler<ActionEvent> {
                 new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);
                 proximoContenedor = ContenedorPregunta.crearContenedor(stage, kahoot, false);
             } else {
+                new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
                 proximoContenedor = ContenedorPregunta.crearContenedor(stage, kahoot, true);
                 boton.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #5ae334");
                 ///Timer de unos segundos
-                new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
             }
         } else {
             proximoContenedor = new ContenedorPuntajesFinales(stage, kahoot);
