@@ -10,17 +10,20 @@ public class cambiarBotonDeContenedor implements EventHandler<ActionEvent> {
     private final Button boton;
     private final VBox contenedorAntiguo;
     private final VBox contenedorNuevo;
+    private final Button botonOk;
 
-    public cambiarBotonDeContenedor(Button boton, VBox contenedorAntiguo, VBox contenedorNuevo) {
+    public cambiarBotonDeContenedor(Button boton, VBox contenedorAntiguo, VBox contenedorNuevo, Button botonOk) {
         this.contenedorAntiguo = contenedorAntiguo;
         this.contenedorNuevo = contenedorNuevo;
         this.boton = boton;
+        this.botonOk = botonOk;
     }
     @Override
     public void handle(ActionEvent actionEvent) {
         contenedorAntiguo.getChildren().remove(boton);
         contenedorNuevo.getChildren().add(boton);
-        boton.setOnAction(new cambiarBotonDeContenedor(boton, contenedorNuevo, contenedorAntiguo));
+        botonOk.requestFocus();
+        boton.setOnAction(new cambiarBotonDeContenedor(boton, contenedorNuevo, contenedorAntiguo, botonOk));
     }
 
 }

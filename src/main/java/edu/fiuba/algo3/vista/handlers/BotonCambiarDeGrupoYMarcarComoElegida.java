@@ -31,7 +31,7 @@ public class BotonCambiarDeGrupoYMarcarComoElegida implements EventHandler<Actio
     @Override
     public void handle(ActionEvent actionEvent) {
         botonOk.requestFocus();
-        new cambiarBotonDeContenedor(boton, contenedorAntiguo, contenedorNuevo).handle(actionEvent);
+        new cambiarBotonDeContenedor(boton, contenedorAntiguo, contenedorNuevo, botonOk).handle(actionEvent);
         new AgregarOpcionElegidaHandler(kahoot, opcion).handle(actionEvent);
     }
 }

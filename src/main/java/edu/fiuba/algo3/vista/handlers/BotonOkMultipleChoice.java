@@ -28,7 +28,18 @@ public class BotonOkMultipleChoice implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent){
-        if(yaRespondioUnJugador  &&  kahoot.sigueElJuego()) {
+        if(!kahoot.sigueElJuego() && yaRespondioUnJugador) {
+            new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);
+            String nombreJugador1 = kahoot.obtenerJugadorActual().getNombreJugador();
+            int puntaje1 = kahoot.obtenerJugadorActual().obtenerPuntos();
+            new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
+            String nombreJugador2 = kahoot.obtenerJugadorActual().getNombreJugador();
+            int puntaje2 = kahoot.obtenerJugadorActual().obtenerPuntos();
+            stage.setTitle("Puntaje total de" + nombreJugador1 + " : " + puntaje1 + " Puntaje total de" + nombreJugador2 + " :" + puntaje2);
+            //Scene escena = new Scene(TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
+            return;
+        }
+        if(yaRespondioUnJugador) {
             new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);
             yaRespondioUnJugador = false;
         } else {

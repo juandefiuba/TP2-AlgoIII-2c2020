@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vista.contenedorDePreguntas;
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.vista.BarraDeMenu;
+import edu.fiuba.algo3.vista.handlers.BotonOkOrderedChoice;
 import edu.fiuba.algo3.vista.handlers.SeleccionarOpcionGroupChoice;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -31,6 +32,10 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
         String rutaArchivoFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png";
         this.setImagenFondo(kahoot, stage, rutaArchivoFondo);
 
+        Button botonOk = new Button("OK");
+        botonOk.setStyle(" -fx-font-size: 2em");
+        botonOk.setOnAction(new BotonOkOrderedChoice(stage, kahoot, yaRespondioJugador));
+
         Iterator iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         HBox menuInteractivo = new HBox();
         Button botonPasarAGrupo1 = new Button("<-");
@@ -39,12 +44,12 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
         VBox vboxOpcionesDadas = new VBox();
         VBox vboxOpcionesGrupo1 = new VBox();
         VBox vboxOpcionesGrupo2 = new VBox();
-        menuInteractivo.getChildren().addAll(vboxOpcionesGrupo1, botonPasarAGrupo1, vboxOpcionesDadas, botonPasarAGrupo2, vboxOpcionesGrupo2);
+        menuInteractivo.getChildren().addAll(vboxOpcionesGrupo1, botonPasarAGrupo1, vboxOpcionesDadas, botonPasarAGrupo2, vboxOpcionesGrupo2,botonOk);
         menuInteractivo.setAlignment(Pos.CENTER);
         menuInteractivo.setSpacing(100);
         while (iteradorDeOpciones.hasNext()) {
             Opcion opcion = (Opcion) iteradorDeOpciones.next();
-            agregarBotonOpcion(stage, opcion, vboxOpcionesDadas, vboxOpcionesGrupo1, vboxOpcionesGrupo2, botonPasarAGrupo1, botonPasarAGrupo2);
+            agregarBotonOpcion(stage, opcion, vboxOpcionesDadas, vboxOpcionesGrupo1, vboxOpcionesGrupo2, botonPasarAGrupo1, botonPasarAGrupo2, botonOk);
         }
 
         /*menuInteractivo.getChildren().addAll(vboxOpcionesGrupo1, vboxOpcionesDadas, vboxOpcionesGrupo2);
@@ -61,7 +66,7 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
 
         //CONTENEDOR DE PREGUNTA Y OPCIONES
         VBox contenedorVertical = new VBox();
-        contenedorVertical.getChildren().addAll(cajaDePregunta, menuInteractivo);
+        contenedorVertical.getChildren().addAll(cajaDePregunta, menuInteractivo, botonOk);
         contenedorVertical.setAlignment(Pos.CENTER);
         contenedorVertical.setSpacing(100);
 
@@ -73,12 +78,12 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
         this.setTop(menuBar);
     }
 
-    void agregarBotonOpcion(Stage stage, Opcion opcion, VBox opcionesDadas, VBox grupo1, VBox grupo2, Button pasarAGrupo1, Button pasarAGrupo2){
+    void agregarBotonOpcion(Stage stage, Opcion opcion, VBox opcionesDadas, VBox grupo1, VBox grupo2, Button pasarAGrupo1, Button pasarAGrupo2, Button botonOk){
         Button botonOpcion = new Button(opcion.obtenerTexto());
         opcionesDadas.getChildren().add(botonOpcion);
         botonOpcion.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #000000");
         botonOpcion.setMinSize(100,50);
-        botonOpcion.setOnAction(new SeleccionarOpcionGroupChoice(botonOpcion, pasarAGrupo1, pasarAGrupo2, grupo1, grupo2, opcionesDadas));
+        botonOpcion.setOnAction(new SeleccionarOpcionGroupChoice(botonOpcion, pasarAGrupo1, pasarAGrupo2, grupo1, grupo2, opcionesDadas, botonOk));
         //new cambiarBotonDeContenedor(botonOpcion, opcionesDadas, opcionesMarcadas)
     }
 }
