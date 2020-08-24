@@ -23,8 +23,66 @@
 	  ]
 	},
 	{
+	  "tipoPregunta": "MCPA",
+	  "textoPregunta": "¿Cuáles son peces?",
+	  "opciones": [
+		{
+		  "tipoOpcion": "C",
+		  "textoOpcion": "Salmon"
+		},
+		{
+		  "tipoOpcion": "C",
+		  "textoOpcion": "Atun"
+		},
+		{
+		  "tipoOpcion": "I",
+		  "textoOpcion": "Aguila"
+		}
+	  ]
+	},
+	{
+	  "tipoPregunta": "MCPE",
+	  "textoPregunta": "¿Cuáles son perros?",
+	  "opciones": [
+		{
+		  "tipoOpcion": "C",
+		  "textoOpcion": "Labrador"
+		},
+		{
+		  "tipoOpcion": "C",
+		  "textoOpcion": "Pastor Aleman"
+		},
+		{
+		  "tipoOpcion": "I",
+		  "textoOpcion": "Gato"
+		},
+		{
+		  "tipoOpcion": "I",
+		  "textoOpcion": "Conejo"
+		},
+		{
+		  "tipoOpcion": "I",
+		  "textoOpcion": "Rata"
+		}
+	  ]
+	},
+	{
 	  "tipoPregunta": "VFC",
 	  "textoPregunta": "¿Existe el 31 de febrero?",
+	  "opciones": [
+		{
+		  "tipoOpcion": "I",
+		  "textoOpcion": "Verdadero"
+		},
+		{
+		  "tipoOpcion": "C",
+		  "textoOpcion": "Falso"
+		}
+	  ]
+	},
+	{
+	  "tipoPregunta": "VFP",
+	  "textoPregunta": "¿Existe el 32 de enero?",
 	  "opciones": [
 		{
 		  "tipoOpcion": "I",
