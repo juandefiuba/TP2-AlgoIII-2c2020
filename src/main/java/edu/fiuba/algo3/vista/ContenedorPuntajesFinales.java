@@ -29,7 +29,8 @@ public class ContenedorPuntajesFinales extends ContenedorPregunta {
         String rutaArchivoFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png";
         this.setImagenFondo(kahoot, stage, rutaArchivoFondo);
         String estiloPuntajeJugador = "-fx-border-color: #000000; -fx-border-width: 5px; -fx-background-color: #FFFFFF; -fx-font-size: 3em ;-fx-text-fill: #000000";
-
+        stage.setTitle("Kahoot!");
+        
         Button botonSalir = new Button("Cerrar");
         botonSalir.setStyle(" -fx-font-size: 3em; -fx-alignment: center");
         botonSalir.setOnAction(new SalirDelJuegoHandler());

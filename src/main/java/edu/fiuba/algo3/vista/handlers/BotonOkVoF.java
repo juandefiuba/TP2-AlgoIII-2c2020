@@ -35,20 +35,21 @@ public class BotonOkVoF implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         BorderPane proximoContenedor;
-        if(kahoot.sigueElJuego()){
-            new AgregarOpcionElegidaHandler(kahoot, opcion).handle(actionEvent);
-            if(yaRespondioUnJugador){
+
+        new AgregarOpcionElegidaHandler(kahoot, opcion).handle(actionEvent);
+        if(yaRespondioUnJugador) {
+            if(kahoot.sigueElJuego()) {//NO estamos en la ultima pregunta
                 new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);
                 proximoContenedor = ContenedorPregunta.crearContenedor(stage, kahoot, false);
             } else {
-                new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
-                proximoContenedor = ContenedorPregunta.crearContenedor(stage, kahoot, true);
-                boton.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #5ae334");
-                ///Timer de unos segundos
+                new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);
+                proximoContenedor = new ContenedorPuntajesFinales(stage, kahoot);
             }
         } else {
-            proximoContenedor = new ContenedorPuntajesFinales(stage, kahoot);
+            new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
+            proximoContenedor = ContenedorPregunta.crearContenedor(stage, kahoot, true);
         }
+
         Scene escenaPregunta = new Scene(proximoContenedor, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
         stage.setScene(escenaPregunta);
     }

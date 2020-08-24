@@ -31,17 +31,20 @@ public class BotonOkChoice implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent){
         BorderPane proximoContenedor;
-        if(kahoot.sigueElJuego()) {
-            if (yaRespondioUnJugador) {
+
+        if(yaRespondioUnJugador) {
+            if(kahoot.sigueElJuego()) {//NO estamos en la ultima pregunta
                 new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);
                 proximoContenedor = ContenedorPregunta.crearContenedor(stage, kahoot, false);
             } else {
-                new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
-                proximoContenedor = ContenedorPregunta.crearContenedor(stage, kahoot, true);
+                new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);
+                proximoContenedor = new ContenedorPuntajesFinales(stage, kahoot);
             }
         } else {
-            proximoContenedor = new ContenedorPuntajesFinales(stage, kahoot);
+            new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
+            proximoContenedor = ContenedorPregunta.crearContenedor(stage, kahoot, true);
         }
+
         Scene escena = new Scene(proximoContenedor, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
         stage.setScene(escena);
     }

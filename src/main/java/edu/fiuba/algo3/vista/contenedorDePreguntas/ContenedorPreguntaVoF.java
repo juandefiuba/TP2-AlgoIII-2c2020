@@ -3,11 +3,11 @@ package edu.fiuba.algo3.vista.contenedorDePreguntas;
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.vista.BarraDeMenu;
-import edu.fiuba.algo3.vista.Utilidades;
 import edu.fiuba.algo3.vista.handlers.BotonOkVoF;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.layout.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
@@ -21,8 +21,7 @@ public class ContenedorPreguntaVoF extends ContenedorPregunta {
     boolean yaRespondioJugador;
 
     public ContenedorPreguntaVoF(Stage stage, Kahoot kahoot, boolean yaRespondioJugador) {
-        Utilidades utilidades = new Utilidades();
-        this.setMenu(stage, utilidades);
+        this.setMenu(stage);
         this.yaRespondioJugador = yaRespondioJugador;
         this.contenedorCentral(stage, kahoot);
         stage.sizeToScene();
@@ -60,10 +59,9 @@ public class ContenedorPreguntaVoF extends ContenedorPregunta {
         this.setCenter(contenedorVertical);
     }
 
-    private void setMenu(Stage stage, Utilidades utilidades) {
+    private void setMenu(Stage stage) {
         this.menuBar = new BarraDeMenu(stage);
         this.setTop(menuBar);
-        this.setBottom(utilidades);
     }
 
     Button agregarBotonOpcion(HBox opcionesHorizontal, Kahoot kahoot, Stage stage, Iterator iteradorDeOpciones){
