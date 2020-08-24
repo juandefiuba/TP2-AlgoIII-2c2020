@@ -29,6 +29,7 @@ public class BotonOkOrderedChoice implements EventHandler<ActionEvent> {
             ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot, false);
             Scene escenaPregunta = new Scene(contenedorPregunta, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
             stage.setScene(escenaPregunta);
+            return;
         }
         new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
         ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot, true);

@@ -32,18 +32,19 @@ public class BotonOkVoF implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
+        new AgregarOpcionElegidaHandler(kahoot, opcion).handle(actionEvent);
 
         if(yaRespondioUnJugador  &&  kahoot.sigueElJuego()){
             new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);
-            ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot, false);
-            Scene escenaPregunta = new Scene(contenedorPregunta, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
-            stage.setScene(escenaPregunta);
+            yaRespondioUnJugador = false;
+        } else {
+            yaRespondioUnJugador = true;
+            boton.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #5ae334");
+            ///Timer de unos segundos
+            new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
         }
-        boton.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #5ae334");
-        new AgregarOpcionElegidaHandler(kahoot, opcion).handle(actionEvent);
-        yaRespondioUnJugador = true;
-        new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
-        ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot, true);
+
+        ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot, yaRespondioUnJugador);
         Scene escenaPregunta = new Scene(contenedorPregunta, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
         stage.setScene(escenaPregunta);
     }

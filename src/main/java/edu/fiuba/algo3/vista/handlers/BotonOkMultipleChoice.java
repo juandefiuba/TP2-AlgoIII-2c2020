@@ -20,25 +20,22 @@ public class BotonOkMultipleChoice implements EventHandler<ActionEvent> {
     private final Stage stage;
     private LinkedList<Button> opciones;
 
-    public BotonOkMultipleChoice(Kahoot kahoot, Stage stage, LinkedList<Button> opciones, boolean yaRespondioUnJugador){
+    public BotonOkMultipleChoice(Kahoot kahoot, Stage stage, boolean yaRespondioUnJugador){
         this.yaRespondioUnJugador = yaRespondioUnJugador;
         this.kahoot = kahoot;
         this.stage = stage;
-        this.opciones = opciones;
     }
 
     @Override
     public void handle(ActionEvent actionEvent){
-        new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
-        for (Button opcion: opciones) {
-            opcion.setStyle("-fx-font-size: 2.9em; -fx-border-width: 7px; -fx-border-color: #000000");
-        }
         if(yaRespondioUnJugador  &&  kahoot.sigueElJuego()) {
             new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);
             ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot, false);
             Scene escenaPregunta = new Scene(contenedorPregunta, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
             stage.setScene(escenaPregunta);
+            return;
         }
+        new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
         ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot, true);
         Scene escenaPregunta = new Scene(contenedorPregunta, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
         stage.setScene(escenaPregunta);

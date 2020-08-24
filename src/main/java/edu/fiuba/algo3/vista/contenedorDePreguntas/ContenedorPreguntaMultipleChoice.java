@@ -7,13 +7,12 @@ import edu.fiuba.algo3.vista.handlers.BotonOkMultipleChoice;
 import edu.fiuba.algo3.vista.handlers.MarcarOpcionMultipleChoice;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.layout.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.util.Iterator;
-import java.util.LinkedList;
 
 //variable global spacing y tamaño botones
 
@@ -21,12 +20,10 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
 
     BarraDeMenu menuBar;
     Kahoot kahoot;
-    LinkedList<Button> botones;
     boolean yaRespondioJugador;
 
     public ContenedorPreguntaMultipleChoice(Stage stage, Kahoot kahoot, boolean yaRespondioJugador) {
         this.setMenu(stage);
-        this.botones = new LinkedList<Button>();
         this.yaRespondioJugador = yaRespondioJugador;
         this.contenedorCentral(stage, kahoot);
         stage.sizeToScene();
@@ -61,7 +58,7 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
 
         Button botonOk = new Button("OK");
         botonOk.setStyle(" -fx-font-size: 2em");
-        botonOk.setOnAction(new BotonOkMultipleChoice(kahoot, stage, botones, yaRespondioJugador));
+        botonOk.setOnAction(new BotonOkMultipleChoice(kahoot, stage, yaRespondioJugador));
 
         //CONTENEDOR DE PREGUNTA Y OPCIONES
         VBox contenedorVertical = new VBox();
@@ -83,7 +80,6 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
         botonOpcion.setOnAction(new MarcarOpcionMultipleChoice(kahoot, opcion, botonOpcion));
         botonOpcion.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #000000");
         botonOpcion.setMinSize(500,100);
-        botones.add(botonOpcion);
         opcionesHorizontal.getChildren().add(botonOpcion);
         opcionesHorizontal.setAlignment(Pos.CENTER);
         opcionesHorizontal.setSpacing(200);
