@@ -15,10 +15,9 @@ import edu.fiuba.algo3.modelo.Preguntas.PreguntaVerdaderoFalsoPenalidad;
 
 public class MultiplicadoresTest {
 
-	/* PREGUNTA VERDADERO FALSO CON PENALIDAD */
-	
 	@Test
     public void test01JugadorActivaUnMultiplicadorPorDosYRespondeIncorrectamenteLaPreguntaYRecibeDosPuntosNegativos() {
+        //Arrange
         Opcion opcionVerdadero = new OpcionIncorrecta();
         Opcion opcionFalso = new OpcionCorrecta();
 
@@ -54,7 +53,8 @@ public class MultiplicadoresTest {
 
     @Test
     public void test02JugadorActivaUnMultiplicadorPorTresYRespondeIncorrectamenteLaPreguntaYRecibeTresPuntosNegativos() {
-        Opcion opcionVerdadero = new OpcionIncorrecta();
+        //Arrange
+	    Opcion opcionVerdadero = new OpcionIncorrecta();
         Opcion opcionFalso = new OpcionCorrecta();
 
         LinkedList<Opcion> opciones = new LinkedList<>();
@@ -89,7 +89,8 @@ public class MultiplicadoresTest {
 
     @Test
     public void test03JugadorActivaDosVecesSuMultiplicadorContestandoDosPreguntasYSeVerificaQueSoloSeAplicoUnMultiplicador() {
-        Opcion opcionVerdadero = new OpcionIncorrecta();
+        //Arrange
+	    Opcion opcionVerdadero = new OpcionIncorrecta();
         Opcion opcionFalso = new OpcionCorrecta();
 
         LinkedList<Opcion> opciones = new LinkedList<>();
@@ -137,15 +138,13 @@ public class MultiplicadoresTest {
         preguntaDos.agregarRespuestaDeJugador(jugador2, respuestas);
 
         preguntaDos.puntuarJugadores(jugador, jugador2);
-
+        
         assertEquals(-4,jugador.obtenerPuntos());
     }
-    
-    /* PREGUNTA MULTIPLE CHOICE CON PENALIDAD */
-    
+
     @Test
     public void test04JugadorActivaUnMultiplicadorPorDosYRespondeIncorrectamenteLaPreguntaYRecibeCuatroPuntosNegativos() {
-        //Arrange se invierten los estados, ahora falso es correcto
+        //Arrange
         Opcion opcion1 = new OpcionIncorrecta();
         Opcion opcion2 = new OpcionIncorrecta();
         Opcion opcion3 = new OpcionCorrecta();
@@ -184,7 +183,7 @@ public class MultiplicadoresTest {
 
     @Test
     public void test05JugadorActivaUnMultiplicadorPorDosYRespondeIncorrectamenteLaPreguntaYRecibeSeisPuntosNegativos() {
-        //Arrange se invierten los estados, ahora falso es correcto
+        //Arrange
         Opcion opcion1 = new OpcionIncorrecta();
         Opcion opcion2 = new OpcionIncorrecta();
         Opcion opcion3 = new OpcionCorrecta();

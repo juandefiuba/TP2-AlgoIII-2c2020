@@ -13,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class PreguntaOrderedChoiceTest {
     @Test
     public void test01JugadorRespondePreguntaEnOrdenCorrectoRecibePunto() {
-        //Arrange se invierten los estados, ahora falso es correcto
+        //Arrange
         Opcion opcion1 = new OpcionOrdenada();
         Opcion opcion2 = new OpcionOrdenada();
         Opcion opcion3 = new OpcionOrdenada();
@@ -51,7 +51,7 @@ public class PreguntaOrderedChoiceTest {
 
     @Test
     public void test02JugadorRespondeEnOrdenIncorrectoYNoLeSumaPunto() {
-        //Arrange se invierten los estados, ahora falso es correcto
+        //Arrange
         Opcion opcion1 = new OpcionOrdenada();
         Opcion opcion2 = new OpcionOrdenada();
         Opcion opcion3 = new OpcionOrdenada();
@@ -89,7 +89,7 @@ public class PreguntaOrderedChoiceTest {
 
     @Test
     public void test03JugadorNoRespondeTodasLasOpcionesYNoLeSumaPunto() {
-        //Arrange se invierten los estados, ahora falso es correcto
+        //Arrange
         Opcion opcion1 = new OpcionOrdenada();
         Opcion opcion2 = new OpcionOrdenada();
         Opcion opcion3 = new OpcionOrdenada();

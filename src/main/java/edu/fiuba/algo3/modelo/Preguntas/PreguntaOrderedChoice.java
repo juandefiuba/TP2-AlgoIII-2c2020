@@ -16,7 +16,7 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
 
-public class PreguntaOrderedChoice extends PreguntaBase{
+public class PreguntaOrderedChoice extends Pregunta {
 
     public PreguntaOrderedChoice(LinkedList<Opcion> opcionesDeLaPregunta) {
         super(opcionesDeLaPregunta);

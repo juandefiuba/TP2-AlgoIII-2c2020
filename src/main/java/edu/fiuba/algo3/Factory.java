@@ -27,9 +27,9 @@ public class Factory {
 	}
 
 	//Patrón factory
-	public PreguntaBase crearPregunta(String tipoPregunta, String textoPregunta, LinkedList<Opcion> opciones){
+	public Pregunta crearPregunta(String tipoPregunta, String textoPregunta, LinkedList<Opcion> opciones){
 		if (tipoPregunta == null) return null;
-		PreguntaBase pregunta = null;
+		Pregunta pregunta = null;
 
 		if (tipoPregunta.equalsIgnoreCase("VFC")){
 			pregunta = new PreguntaVerdaderoFalso(opciones);

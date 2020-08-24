@@ -12,13 +12,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class ExclusividadParcialDobleTest {
     @Test
     public void test01UnaExcParcialDobleCompuestaConUnaExcParcialSimpleAlAplicarAUnPuntajeConUnPuntoDuplicaLosPuntos(){
+        //Arrange
         ExclusividadParcialDoble unaExclusividadParcialDoble = new ExclusividadParcialDoble();
 
         ExclusividadCompuesta exclusividadCompuesta = unaExclusividadParcialDoble.componerExclusividad(new ExclusividadParcialSimple());
 
         PuntajeValido unPuntajeValido = new PuntajeValido();
         unPuntajeValido.sumarPuntos(new PuntoPositivo());
-
+        //Act
         unPuntajeValido.aplicarExclusividad(exclusividadCompuesta);
 
         assertEquals(2, unPuntajeValido.obtenerPuntos());
@@ -26,13 +27,14 @@ public class ExclusividadParcialDobleTest {
 
     @Test
     public void test02UnaExcParcialDobleCompuestaConUnaExcParcialDobleAlAplicarAUnPuntajeConUnPuntoCuadriplicaLosPuntos(){
+        //Arrange
         ExclusividadParcialDoble unaExclusividadParcialDoble = new ExclusividadParcialDoble();
 
         ExclusividadCompuesta exclusividadCompuesta = unaExclusividadParcialDoble.componerExclusividad(new ExclusividadParcialDoble());
 
         PuntajeValido unPuntajeValido = new PuntajeValido();
         unPuntajeValido.sumarPuntos(new PuntoPositivo());
-
+        //Act
         unPuntajeValido.aplicarExclusividad(exclusividadCompuesta);
 
         assertEquals(4, unPuntajeValido.obtenerPuntos());

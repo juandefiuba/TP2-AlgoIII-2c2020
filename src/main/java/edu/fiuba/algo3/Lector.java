@@ -1,20 +1,13 @@
 package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
-import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
-import edu.fiuba.algo3.modelo.Opciones.OpcionIncorrecta;
-import edu.fiuba.algo3.modelo.Opciones.OpcionOrdenada;
 import edu.fiuba.algo3.modelo.Preguntas.*;
 
 import com.google.gson.*;
-import com.google.gson.stream.JsonReader;
 
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.LinkedList;
 
 public class Lector {
@@ -45,7 +38,7 @@ public class Lector {
 		return preguntas;
 	}
 
-	private PreguntaBase crearPregunta(JsonObject jsonPregunta) {
+	private Pregunta crearPregunta(JsonObject jsonPregunta) {
 		String tipoPregunta = jsonPregunta.get("tipoPregunta").getAsString();
 		String textoPregunta = jsonPregunta.get("textoPregunta").getAsString();
 		JsonArray arrayOpciones = jsonPregunta.getAsJsonArray("opciones");

@@ -1,14 +1,7 @@
 package edu.fiuba.algo3.modelo;
 
-import edu.fiuba.algo3.modelo.Excepciones.NoHayJugadoresException;
-import edu.fiuba.algo3.modelo.Excepciones.NoHayPreguntasException;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
-import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
-import edu.fiuba.algo3.modelo.Opciones.OpcionIncorrecta;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.Preguntas.PreguntaBase;
-import edu.fiuba.algo3.modelo.Preguntas.PreguntaVerdaderoFalso;
-import edu.fiuba.algo3.modelo.Preguntas.PreguntaVerdaderoFalsoPenalidad;
 
 import org.junit.jupiter.api.Test;
 
@@ -47,7 +40,7 @@ public class KahootTest {
 		kahoot.agregarJugador("Juancito");
 		LinkedList<Jugador> jugadores = kahoot.obtenerJugadores();
 		kahoot.iniciarJuego();
-		PreguntaBase preguntaPrueba = kahoot.obtenerPreguntaActual();
+		Pregunta preguntaPrueba = kahoot.obtenerPreguntaActual();
 		Iterator iterador = preguntaPrueba.obtenerOpciones();
 		Opcion opcion1 = (Opcion) iterador.next();
 		Opcion opcion2 = (Opcion) iterador.next();
@@ -67,7 +60,7 @@ public class KahootTest {
 		LinkedList<Jugador> jugadores = kahoot.obtenerJugadores();
 		kahoot.iniciarJuego();
 		kahoot.activarExclusividad();
-		PreguntaBase preguntaPrueba = kahoot.obtenerPreguntaActual();
+		Pregunta preguntaPrueba = kahoot.obtenerPreguntaActual();
 		Iterator iterador = preguntaPrueba.obtenerOpciones();
 		Opcion opcion1 = (Opcion) iterador.next();
 		Opcion opcion2 = (Opcion) iterador.next();
@@ -89,7 +82,7 @@ public class KahootTest {
 		kahoot.agregarJugador("Juancito");
 		LinkedList<Jugador> jugadores = kahoot.obtenerJugadores();
 		kahoot.iniciarJuego();
-		PreguntaBase preguntaPrueba = kahoot.obtenerPreguntaActual();
+		Pregunta preguntaPrueba = kahoot.obtenerPreguntaActual();
 		Iterator iterador = preguntaPrueba.obtenerOpciones();
 		Opcion opcion1 = (Opcion) iterador.next();
 		Opcion opcion2 = (Opcion) iterador.next();
@@ -113,7 +106,7 @@ public class KahootTest {
 		kahoot.agregarJugador("Juancito");
 		LinkedList<Jugador> jugadores = kahoot.obtenerJugadores();
 		kahoot.iniciarJuego();
-		PreguntaBase preguntaPrueba = kahoot.obtenerPreguntaActual();
+		Pregunta preguntaPrueba = kahoot.obtenerPreguntaActual();
 		Iterator iterador = preguntaPrueba.obtenerOpciones();
 		Opcion opcion1 = (Opcion) iterador.next();
 		Opcion opcion2 = (Opcion) iterador.next();

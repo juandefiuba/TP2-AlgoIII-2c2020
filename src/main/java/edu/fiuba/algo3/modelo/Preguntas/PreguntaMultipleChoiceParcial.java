@@ -13,7 +13,7 @@ import edu.fiuba.algo3.modelo.Puntos.PuntoPositivo;
 
 import java.util.LinkedList;
 
-public class PreguntaMultipleChoiceParcial extends PreguntaBase{
+public class PreguntaMultipleChoiceParcial extends Pregunta {
 
     public PreguntaMultipleChoiceParcial(LinkedList<Opcion> opciones) {
         super(opciones);

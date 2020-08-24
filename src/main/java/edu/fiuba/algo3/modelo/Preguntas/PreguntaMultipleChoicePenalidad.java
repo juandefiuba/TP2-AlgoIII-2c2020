@@ -12,7 +12,7 @@ import edu.fiuba.algo3.modelo.Puntos.PuntoPositivo;
 
 import java.util.LinkedList;
 
-public class PreguntaMultipleChoicePenalidad extends PreguntaBase {
+public class PreguntaMultipleChoicePenalidad extends Pregunta {
 
     public PreguntaMultipleChoicePenalidad(LinkedList<Opcion> opcionesDeLaPregunta) {
         super(opcionesDeLaPregunta);

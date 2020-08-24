@@ -143,5 +143,4 @@ public class PreguntaVerdaderoFalsoConPenalidadTest {
         assertEquals(-1, jugador.obtenerPuntos());
     }
 
-    
 }
