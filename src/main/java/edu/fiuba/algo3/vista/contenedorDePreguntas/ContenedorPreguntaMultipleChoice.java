@@ -35,13 +35,17 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
         this.setImagenFondo(kahoot, stage, rutaArchivoFondo);
 
         //BOTONES
+        Button botonOk = new Button("OK");
+        botonOk.setStyle(" -fx-font-size: 2em");
+        botonOk.setOnAction(new BotonOkMultipleChoice(kahoot, stage, yaRespondioJugador));
+
         Iterator iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         VBox contenedorOpciones = new VBox();
         while (iteradorDeOpciones.hasNext()) {
             HBox opcionesHorizontal = new HBox();
-            agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones);
+            agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones, botonOk);
             if (iteradorDeOpciones.hasNext()){
-                agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones);
+                agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones, botonOk);
             }
             contenedorOpciones.getChildren().add(opcionesHorizontal);
         }
@@ -55,10 +59,6 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
         cajaDePregunta.setWrapText(true);
         cajaDePregunta.setTextAlignment(TextAlignment.CENTER);
         cajaDePregunta.setMinSize(500,100);
-
-        Button botonOk = new Button("OK");
-        botonOk.setStyle(" -fx-font-size: 2em");
-        botonOk.setOnAction(new BotonOkMultipleChoice(kahoot, stage, yaRespondioJugador));
 
         //CONTENEDOR DE PREGUNTA Y OPCIONES
         VBox contenedorVertical = new VBox();
@@ -74,10 +74,10 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
         this.setTop(menuBar);
     }
 
-    void agregarBotonOpcion(HBox opcionesHorizontal, Kahoot kahoot, Stage stage, Iterator iteradorDeOpciones){
+    void agregarBotonOpcion(HBox opcionesHorizontal, Kahoot kahoot, Stage stage, Iterator iteradorDeOpciones, Button botonOk){
         Opcion opcion = (Opcion) iteradorDeOpciones.next();
         Button botonOpcion = new Button(opcion.obtenerTexto());
-        botonOpcion.setOnAction(new MarcarOpcionMultipleChoice(kahoot, opcion, botonOpcion));
+        botonOpcion.setOnAction(new MarcarOpcionMultipleChoice(kahoot, opcion, botonOpcion, botonOk));
         botonOpcion.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #000000");
         botonOpcion.setMinSize(500,100);
         opcionesHorizontal.getChildren().add(botonOpcion);

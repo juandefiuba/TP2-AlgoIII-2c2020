@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.vista.handlers.BotonParaIngresarNombre;
+import edu.fiuba.algo3.vista.handlers.TextoEventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -50,12 +51,13 @@ public class ContenedorInicio extends BorderPane {
         botonOk.setMinSize(200,100);
         botonOk.setOnAction(new BotonParaIngresarNombre(textField, stage, kahoot));
 
+        textField.setOnKeyPressed(new TextoEventHandler(botonOk));
+
         //CONTENEDOR DE TEXTO, ENTRADA Y BOTÓN
         VBox contenedorVertical = new VBox();
         contenedorVertical.getChildren().addAll(titulo, textField, botonOk);
         contenedorVertical.setSpacing(20);
         contenedorVertical.setAlignment(Pos.CENTER);
-        contenedorVertical.setFocusTraversable(true);
 
         this.setCenter(contenedorVertical);
     }

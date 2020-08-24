@@ -35,17 +35,18 @@ public class ContenedorPreguntaOrderedChoice extends ContenedorPregunta {
         this.setImagenFondo(kahoot, stage, rutaArchivoFondo);
 
         //BOTONES
+        Button botonOk = new Button("OK");
+        botonOk.setStyle(" -fx-font-size: 2em");
+        botonOk.setOnAction(new BotonOkOrderedChoice(stage, kahoot, yaRespondioJugador));
+
         Iterator iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         VBox vboxOpcionesDadas = new VBox();
         VBox vboxOpcionesMarcadas = new VBox();
           while (iteradorDeOpciones.hasNext()) {
             Opcion opcion = (Opcion) iteradorDeOpciones.next();
-            agregarBotonOpcion(stage, opcion, vboxOpcionesDadas, vboxOpcionesMarcadas);
+            agregarBotonOpcion(stage, opcion, vboxOpcionesDadas, vboxOpcionesMarcadas, botonOk);
         }
 
-        Button botonOk = new Button("OK");
-        botonOk.setStyle(" -fx-font-size: 2em");
-        botonOk.setOnAction(new BotonOkOrderedChoice(stage, kahoot, yaRespondioJugador));
         //PREGUNTA (TAMBIÉN BOTÓN)
         Button cajaDePregunta = new Button(kahoot.obtenerPreguntaActual().obtenerTexto());
         cajaDePregunta.setStyle("-fx-border-color: #000000; -fx-border-width: 5px; -fx-background-color: #ffffff; -fx-font-size: 4.5em ;-fx-text-fill: #000000");
@@ -79,11 +80,11 @@ public class ContenedorPreguntaOrderedChoice extends ContenedorPregunta {
         this.setTop(menuBar);
     }
 
-    void agregarBotonOpcion(Stage stage, Opcion opcion, VBox opcionesDadas, VBox opcionesMarcadas){
+    void agregarBotonOpcion(Stage stage, Opcion opcion, VBox opcionesDadas, VBox opcionesMarcadas, Button botonOk){
         Button botonOpcion = new Button(opcion.obtenerTexto());
         opcionesDadas.getChildren().add(botonOpcion);
         botonOpcion.setStyle("-fx-font-size: 2em; -fx-border-width: 5px; -fx-border-color: #000000");
         botonOpcion.setMinSize(250,50);
-        botonOpcion.setOnAction(new BotonCambiarDeGrupoYMarcarComoElegida(kahoot, botonOpcion, opcion ,opcionesDadas, opcionesMarcadas));
+        botonOpcion.setOnAction(new BotonCambiarDeGrupoYMarcarComoElegida(kahoot, botonOpcion, opcion ,opcionesDadas, opcionesMarcadas, botonOk));
     }
 }

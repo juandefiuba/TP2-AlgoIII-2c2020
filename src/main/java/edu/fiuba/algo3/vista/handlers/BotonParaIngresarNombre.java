@@ -35,6 +35,7 @@ public class BotonParaIngresarNombre implements EventHandler<ActionEvent> {
 	public void handle(ActionEvent actionEvent) {
 		new NuevoJugadorHandler(kahoot, texto.getText()).handle(actionEvent);
 		texto.clear();
+		texto.requestFocus();
 		if (yaIngresaronUnNombre) {
 			new IniciarJuegoHandler(kahoot).handle(actionEvent);
 			ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot, false);
