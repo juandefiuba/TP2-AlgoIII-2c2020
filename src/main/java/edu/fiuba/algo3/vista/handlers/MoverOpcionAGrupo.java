@@ -8,31 +8,30 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
+public class MoverOpcionAGrupo implements EventHandler<ActionEvent> {
 
-public class BotonCambiarDeGrupoYMarcarComoElegida implements EventHandler<ActionEvent> {
-
-    private final Kahoot kahoot;
     private final Button boton;
-    private final Opcion opcion;
     private final VBox contenedorAntiguo;
     private final VBox contenedorNuevo;
     private final Button botonOk;
+    private final Opcion opcion;
+    private final Kahoot kahoot;
 
-
-    public BotonCambiarDeGrupoYMarcarComoElegida(Kahoot kahoot, Button boton, Opcion opcion, VBox contenedorAntiguo, VBox contenedorNuevo, Button botonOk){
-        this.kahoot = kahoot;
-        this.opcion = opcion;
-        this.boton = boton;
+    public MoverOpcionAGrupo(Button boton, VBox contenedorAntiguo, VBox contenedorNuevo, Button botonOk, Opcion opcion, Kahoot kahoot) {
         this.contenedorAntiguo = contenedorAntiguo;
         this.contenedorNuevo = contenedorNuevo;
+        this.boton = boton;
         this.botonOk = botonOk;
-    }
+        this.opcion = opcion;
+        this.kahoot = kahoot;
 
+    }
     @Override
     public void handle(ActionEvent actionEvent) {
-        botonOk.requestFocus();
         new CambiarBotonDeContenedor(boton, contenedorAntiguo, contenedorNuevo, botonOk).handle(actionEvent);
         new AgregarOpcionElegidaHandler(kahoot, opcion).handle(actionEvent);
-        boton.setOnAction(new BotonCambiarDeGrupoYDesmarcarComoElegida(kahoot, boton, opcion, contenedorAntiguo, contenedorNuevo, botonOk));
+        boton.setOnAction(e->{});
+        botonOk.requestFocus();
     }
+
 }

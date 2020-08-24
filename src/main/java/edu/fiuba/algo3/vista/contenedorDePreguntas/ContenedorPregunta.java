@@ -11,22 +11,27 @@ public class ContenedorPregunta extends BorderPane {
     static public ContenedorPregunta crearContenedor(Stage stage, Kahoot kahoot, boolean yaRespondioJugador) {
         Pregunta pregunta = kahoot.obtenerPreguntaActual();
 
-        if (pregunta instanceof PreguntaVerdaderoFalso || pregunta instanceof PreguntaVerdaderoFalsoPenalidad)
-            return new ContenedorPreguntaVoF(stage, kahoot, yaRespondioJugador);
+        if(pregunta instanceof PreguntaVerdaderoFalso)
+            return new ContenedorPreguntaVoF(stage, kahoot, yaRespondioJugador, "clásico");
 
-        if (pregunta instanceof PreguntaMultipleChoiceClasico || pregunta instanceof PreguntaMultipleChoiceParcial || pregunta instanceof PreguntaMultipleChoicePenalidad)
-            return new ContenedorPreguntaMultipleChoice(stage, kahoot, yaRespondioJugador);
+        if(pregunta instanceof PreguntaVerdaderoFalsoPenalidad)
+            return new ContenedorPreguntaVoF(stage, kahoot, yaRespondioJugador, "con penalidad");
 
-        /*if (pregunta instanceof PreguntaGroupChoice)
+        if (pregunta instanceof PreguntaMultipleChoiceClasico)
+            return new ContenedorPreguntaMultipleChoice(stage, kahoot, yaRespondioJugador, "clásico");
+
+        if (pregunta instanceof PreguntaMultipleChoiceParcial)
+            return new ContenedorPreguntaMultipleChoice(stage, kahoot, yaRespondioJugador, "parcial");
+
+        if (pregunta instanceof PreguntaMultipleChoicePenalidad)
+            return new ContenedorPreguntaMultipleChoice(stage, kahoot, yaRespondioJugador, "con penalidad");
+
+        if (pregunta instanceof PreguntaGroupChoice)
             return new ContenedorPreguntaGroupChoice(stage, kahoot, yaRespondioJugador);
-*/
+
         return new ContenedorPreguntaOrderedChoice(stage, kahoot, yaRespondioJugador);
     }
-    public void imprimirNombreYPuntaje(Kahoot kahoot, Stage stage){
-        String nombreJugador = kahoot.obtenerJugadorActual().getNombreJugador();
-        int puntaje= kahoot.obtenerJugadorActual().obtenerPuntos();
-        stage.setTitle("Pregunta MultipleChoice - Turno de " + nombreJugador + ". Puntaje: " + puntaje);
-    }
+
     public void setImagenFondo(Kahoot kahoot, Stage stage, String rutaArchivoImagen){
         Image imagen = new Image(rutaArchivoImagen);
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
