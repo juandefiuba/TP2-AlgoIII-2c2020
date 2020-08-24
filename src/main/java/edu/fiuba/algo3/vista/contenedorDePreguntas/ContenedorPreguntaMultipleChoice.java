@@ -22,20 +22,20 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
     BarraDeMenu menuBar;
     Kahoot kahoot;
     LinkedList<Button> botones;
+    boolean yaRespondioJugador;
 
-    public ContenedorPreguntaMultipleChoice(Stage stage, Kahoot kahoot) {
+    public ContenedorPreguntaMultipleChoice(Stage stage, Kahoot kahoot, boolean yaRespondioJugador) {
         this.setMenu(stage);
         this.botones = new LinkedList<Button>();
+        this.yaRespondioJugador = yaRespondioJugador;
         this.contenedorCentral(stage, kahoot);
         stage.sizeToScene();
     }
 
     private void contenedorCentral(Stage stage, Kahoot kahoot) {
-        //FONDO
+        this.imprimirNombreYPuntaje(kahoot, stage);
         String rutaArchivoFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png";
-        Image imagen = new Image(rutaArchivoFondo);
-        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        this.setBackground(new Background(imagenDeFondo));
+        this.setImagenFondo(kahoot, stage, rutaArchivoFondo);
 
         //BOTONES
         Iterator iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
@@ -61,7 +61,7 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
 
         Button botonOk = new Button("OK");
         botonOk.setStyle(" -fx-font-size: 2em");
-        botonOk.setOnAction(new BotonOkMultipleChoice(kahoot, stage, botones));
+        botonOk.setOnAction(new BotonOkMultipleChoice(kahoot, stage, botones, yaRespondioJugador));
 
         //CONTENEDOR DE PREGUNTA Y OPCIONES
         VBox contenedorVertical = new VBox();

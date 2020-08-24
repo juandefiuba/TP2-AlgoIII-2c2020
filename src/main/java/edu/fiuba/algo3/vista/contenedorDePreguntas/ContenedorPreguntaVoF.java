@@ -5,10 +5,8 @@ import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.vista.BarraDeMenu;
 import edu.fiuba.algo3.vista.Utilidades;
 import edu.fiuba.algo3.vista.handlers.BotonOkVoF;
-import edu.fiuba.algo3.vista.handlers.MarcarOpcionVoF;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
@@ -20,30 +18,26 @@ import java.util.Iterator;
 public class ContenedorPreguntaVoF extends ContenedorPregunta {
 
     BarraDeMenu menuBar;
+    boolean yaRespondioJugador;
 
-    public ContenedorPreguntaVoF(Stage stage, Kahoot kahoot) {
+    public ContenedorPreguntaVoF(Stage stage, Kahoot kahoot, boolean yaRespondioJugador) {
         Utilidades utilidades = new Utilidades();
         this.setMenu(stage, utilidades);
+        this.yaRespondioJugador = yaRespondioJugador;
         this.contenedorCentral(stage, kahoot);
         stage.sizeToScene();
     }
 
     private void contenedorCentral(Stage stage, Kahoot kahoot) {
-
-        //FONDO
+        this.imprimirNombreYPuntaje(kahoot, stage);
         String rutaArchivoFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png";
-        Image imagen = new Image(rutaArchivoFondo);
-        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        this.setBackground(new Background(imagenDeFondo));
+        this.setImagenFondo(kahoot, stage, rutaArchivoFondo);
 
         //CONTENEDOR DE OPCIONES
         Iterator iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         HBox opcionesHorizontal = new HBox();
         Button botonOpcion1 = agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones);
         Button botonOpcion2 = agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones);
-        Button botonOk = new Button("OK");
-        botonOk.setOnAction(new BotonOkVoF(kahoot, stage, botonOpcion1, botonOpcion2));
-        botonOk.setStyle(" -fx-font-size: 2em");
 
         String nombreJugador = kahoot.obtenerJugadorActual().getNombreJugador();
         int puntaje= kahoot.obtenerJugadorActual().obtenerPuntos();
@@ -58,7 +52,7 @@ public class ContenedorPreguntaVoF extends ContenedorPregunta {
 
         //CONTENEDOR DE PREGUNTA Y OPCIONES
         VBox contenedorVertical = new VBox();
-        contenedorVertical.getChildren().addAll(cajaDePregunta, opcionesHorizontal, botonOk);
+        contenedorVertical.getChildren().addAll(cajaDePregunta, opcionesHorizontal);
         contenedorVertical.setAlignment(Pos.CENTER);
         contenedorVertical.setSpacing(100);
 
@@ -66,19 +60,16 @@ public class ContenedorPreguntaVoF extends ContenedorPregunta {
         this.setCenter(contenedorVertical);
     }
 
-
-
     private void setMenu(Stage stage, Utilidades utilidades) {
         this.menuBar = new BarraDeMenu(stage);
         this.setTop(menuBar);
         this.setBottom(utilidades);
     }
 
-
     Button agregarBotonOpcion(HBox opcionesHorizontal, Kahoot kahoot, Stage stage, Iterator iteradorDeOpciones){
         Opcion opcion = (Opcion) iteradorDeOpciones.next();
         Button botonOpcion = new Button(opcion.obtenerTexto());
-        botonOpcion.setOnAction(new MarcarOpcionVoF(opcion, kahoot, botonOpcion));
+        botonOpcion.setOnAction(new BotonOkVoF(kahoot, stage, opcion, botonOpcion, yaRespondioJugador));
         botonOpcion.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #000000");
         botonOpcion.setMinSize(500,100);
         opcionesHorizontal.getChildren().add(botonOpcion);

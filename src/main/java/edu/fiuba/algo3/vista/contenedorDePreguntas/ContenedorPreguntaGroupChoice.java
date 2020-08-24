@@ -17,20 +17,19 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
 
     BarraDeMenu menuBar;
     Kahoot kahoot;
+    boolean yaRespondioJugador;
 
-    public ContenedorPreguntaGroupChoice(Stage stage, Kahoot kahoot) {
+    public ContenedorPreguntaGroupChoice(Stage stage, Kahoot kahoot, boolean yaRespondioJugador) {
         this.setMenu(stage);
+        this.yaRespondioJugador = yaRespondioJugador;
         this.contenedorCentral(stage, kahoot);
         stage.sizeToScene();
     }
 
     private void contenedorCentral(Stage stage, Kahoot kahoot) {
-
-        //FONDO
+        this.imprimirNombreYPuntaje(kahoot, stage);
         String rutaArchivoFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png";
-        Image imagen = new Image(rutaArchivoFondo);
-        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        this.setBackground(new Background(imagenDeFondo));
+        this.setImagenFondo(kahoot, stage, rutaArchivoFondo);
 
         Iterator iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         HBox menuInteractivo = new HBox();

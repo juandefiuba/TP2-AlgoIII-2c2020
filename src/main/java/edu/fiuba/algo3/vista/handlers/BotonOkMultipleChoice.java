@@ -20,8 +20,8 @@ public class BotonOkMultipleChoice implements EventHandler<ActionEvent> {
     private final Stage stage;
     private LinkedList<Button> opciones;
 
-    public BotonOkMultipleChoice(Kahoot kahoot, Stage stage, LinkedList<Button> opciones){
-        this.yaRespondioUnJugador = false;
+    public BotonOkMultipleChoice(Kahoot kahoot, Stage stage, LinkedList<Button> opciones, boolean yaRespondioUnJugador){
+        this.yaRespondioUnJugador = yaRespondioUnJugador;
         this.kahoot = kahoot;
         this.stage = stage;
         this.opciones = opciones;
@@ -30,18 +30,17 @@ public class BotonOkMultipleChoice implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent){
         new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
-        String nombreJugador = kahoot.obtenerJugadorActual().getNombreJugador();
-        int puntaje= kahoot.obtenerJugadorActual().obtenerPuntos();
-        stage.setTitle("Pregunta MultipleChoice - Turno de " + nombreJugador + ". Puntaje: " + puntaje);
         for (Button opcion: opciones) {
             opcion.setStyle("-fx-font-size: 2.9em; -fx-border-width: 7px; -fx-border-color: #000000");
         }
         if(yaRespondioUnJugador  &&  kahoot.sigueElJuego()) {
             new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);
-            ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot);
+            ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot, false);
             Scene escenaPregunta = new Scene(contenedorPregunta, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
             stage.setScene(escenaPregunta);
         }
-        yaRespondioUnJugador = true;
+        ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot, true);
+        Scene escenaPregunta = new Scene(contenedorPregunta, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
+        stage.setScene(escenaPregunta);
     }
 }

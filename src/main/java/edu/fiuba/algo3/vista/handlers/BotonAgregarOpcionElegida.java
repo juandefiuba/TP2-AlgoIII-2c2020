@@ -35,7 +35,7 @@ public class BotonAgregarOpcionElegida implements EventHandler<ActionEvent> {
         botonOpcion2.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #000000");
         if(yaRespondioUnJugador  &&  kahoot.sigueElJuego()){
             new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);
-            ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot);
+            ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot, false);
             Scene escenaPregunta = new Scene(contenedorPregunta, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
             stage.setScene(escenaPregunta);
         }

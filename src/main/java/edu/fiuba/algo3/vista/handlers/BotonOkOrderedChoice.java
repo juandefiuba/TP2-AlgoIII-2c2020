@@ -17,23 +17,22 @@ public class BotonOkOrderedChoice implements EventHandler<ActionEvent> {
     private Stage stage;
     private boolean yaRespondioUnJugador;
 
-    public BotonOkOrderedChoice(Stage stage, Kahoot kahoot, VBox opcionesDadas, VBox opcionesDadasReset, VBox opcionesMarcadas, VBox opcionesMarcadasReset){
+    public BotonOkOrderedChoice(Stage stage, Kahoot kahoot, VBox opcionesDadas, VBox opcionesMarcadas, boolean yaRespondioUnJugador){
         this.stage = stage;
         this.kahoot = kahoot;
-        this.yaRespondioUnJugador = false;
+        this.yaRespondioUnJugador = yaRespondioUnJugador;
     }
 
     public void handle(ActionEvent actionEvent){
         if(yaRespondioUnJugador  &&  kahoot.sigueElJuego()){
             new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);
-            ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot);
+            ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot, false);
             Scene escenaPregunta = new Scene(contenedorPregunta, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
             stage.setScene(escenaPregunta);
         }
         new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
-        String nombreJugador = kahoot.obtenerJugadorActual().getNombreJugador();
-        int puntaje= kahoot.obtenerJugadorActual().obtenerPuntos();
-        stage.setTitle("Pregunta MultipleChoice - Turno de " + nombreJugador + ". Puntaje: " + puntaje);
-        yaRespondioUnJugador = true;
+        ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot, true);
+        Scene escenaPregunta = new Scene(contenedorPregunta, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
+        stage.setScene(escenaPregunta);
     }
 }

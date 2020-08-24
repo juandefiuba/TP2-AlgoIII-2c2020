@@ -19,39 +19,33 @@ public class ContenedorPreguntaOrderedChoice extends ContenedorPregunta {
 
     BarraDeMenu menuBar;
     Kahoot kahoot;
+    boolean yaRespondioJugador;
 
-    public ContenedorPreguntaOrderedChoice(Stage stage, Kahoot kahoot) {
+    public ContenedorPreguntaOrderedChoice(Stage stage, Kahoot kahoot, boolean yaRespondioJugador) {
         this.setMenu(stage);
+        this.kahoot = kahoot;
+        this.yaRespondioJugador = yaRespondioJugador;
         this.contenedorCentral(stage, kahoot);
         stage.sizeToScene();
     }
 
     private void contenedorCentral(Stage stage, Kahoot kahoot) {
-        //FONDO
-        String nombreJugador = kahoot.obtenerJugadorActual().getNombreJugador();
-        int puntaje= kahoot.obtenerJugadorActual().obtenerPuntos();
-        stage.setTitle("Pregunta MultipleChoice - Turno de " + nombreJugador + ". Puntaje: " + puntaje);
-
+        this.imprimirNombreYPuntaje(kahoot, stage);
         String rutaArchivoFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png";
-        Image imagen = new Image(rutaArchivoFondo);
-        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
-        this.setBackground(new Background(imagenDeFondo));
+        this.setImagenFondo(kahoot, stage, rutaArchivoFondo);
 
         //BOTONES
         Iterator iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         VBox vboxOpcionesDadas = new VBox();
         VBox vboxOpcionesMarcadas = new VBox();
-        VBox vboxOpcionesDadasReset = new VBox();
-        VBox vboxOpcionesMarcadasReset = new VBox();
-        while (iteradorDeOpciones.hasNext()) {
+          while (iteradorDeOpciones.hasNext()) {
             Opcion opcion = (Opcion) iteradorDeOpciones.next();
-            agregarBotonOpcion(stage, opcion, vboxOpcionesDadas, vboxOpcionesMarcadas, false);
-            agregarBotonOpcion(stage, opcion, vboxOpcionesDadasReset, vboxOpcionesMarcadasReset, true);
+            agregarBotonOpcion(stage, opcion, vboxOpcionesDadas, vboxOpcionesMarcadas);
         }
 
         Button botonOk = new Button("OK");
         botonOk.setStyle(" -fx-font-size: 2em");
-        botonOk.setOnAction(new BotonOkOrderedChoice(stage, kahoot, vboxOpcionesDadas, vboxOpcionesDadasReset, vboxOpcionesMarcadas, vboxOpcionesMarcadasReset));
+        botonOk.setOnAction(new BotonOkOrderedChoice(stage, kahoot, vboxOpcionesDadas, vboxOpcionesMarcadas, yaRespondioJugador));
         //PREGUNTA (TAMBIÉN BOTÓN)
         Button cajaDePregunta = new Button(kahoot.obtenerPreguntaActual().obtenerTexto());
         cajaDePregunta.setStyle("-fx-border-color: #000000; -fx-border-width: 5px; -fx-background-color: #ffffff; -fx-font-size: 4.5em ;-fx-text-fill: #000000");
@@ -85,10 +79,9 @@ public class ContenedorPreguntaOrderedChoice extends ContenedorPregunta {
         this.setTop(menuBar);
     }
 
-    void agregarBotonOpcion(Stage stage, Opcion opcion, VBox opcionesDadas, VBox opcionesMarcadas, Boolean backup){
+    void agregarBotonOpcion(Stage stage, Opcion opcion, VBox opcionesDadas, VBox opcionesMarcadas){
         Button botonOpcion = new Button(opcion.obtenerTexto());
-        if(!backup)
-            opcionesDadas.getChildren().add(botonOpcion);
+        opcionesDadas.getChildren().add(botonOpcion);
         botonOpcion.setStyle("-fx-font-size: 2em; -fx-border-width: 5px; -fx-border-color: #000000");
         botonOpcion.setMinSize(250,50);
         botonOpcion.setOnAction(new BotonCambiarDeGrupoYMarcarComoElegida(kahoot, botonOpcion, opcion ,opcionesDadas, opcionesMarcadas));
