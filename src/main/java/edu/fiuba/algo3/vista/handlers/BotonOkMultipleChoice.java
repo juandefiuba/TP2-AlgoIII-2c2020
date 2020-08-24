@@ -30,12 +30,11 @@ public class BotonOkMultipleChoice implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent){
         if(yaRespondioUnJugador  &&  kahoot.sigueElJuego()) {
             new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);
-            ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot, false);
-            Scene escenaPregunta = new Scene(contenedorPregunta, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
-            stage.setScene(escenaPregunta);
-            return;
+            yaRespondioUnJugador = false;
+        } else {
+            new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
+            yaRespondioUnJugador = true;
         }
-        new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
         ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot, true);
         Scene escenaPregunta = new Scene(contenedorPregunta, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
         stage.setScene(escenaPregunta);

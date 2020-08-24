@@ -7,8 +7,8 @@ import edu.fiuba.algo3.vista.handlers.BotonCambiarDeGrupoYMarcarComoElegida;
 import edu.fiuba.algo3.vista.handlers.BotonOkOrderedChoice;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.image.Image;
-import javafx.scene.layout.*;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
@@ -45,7 +45,7 @@ public class ContenedorPreguntaOrderedChoice extends ContenedorPregunta {
 
         Button botonOk = new Button("OK");
         botonOk.setStyle(" -fx-font-size: 2em");
-        botonOk.setOnAction(new BotonOkOrderedChoice(stage, kahoot, vboxOpcionesDadas, vboxOpcionesMarcadas, yaRespondioJugador));
+        botonOk.setOnAction(new BotonOkOrderedChoice(stage, kahoot, yaRespondioJugador));
         //PREGUNTA (TAMBIÉN BOTÓN)
         Button cajaDePregunta = new Button(kahoot.obtenerPreguntaActual().obtenerTexto());
         cajaDePregunta.setStyle("-fx-border-color: #000000; -fx-border-width: 5px; -fx-background-color: #ffffff; -fx-font-size: 4.5em ;-fx-text-fill: #000000");
