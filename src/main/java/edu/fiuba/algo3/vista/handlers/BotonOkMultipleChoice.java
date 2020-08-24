@@ -35,7 +35,7 @@ public class BotonOkMultipleChoice implements EventHandler<ActionEvent> {
             new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
             yaRespondioUnJugador = true;
         }
-        ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot, true);
+        ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot, yaRespondioUnJugador);
         Scene escenaPregunta = new Scene(contenedorPregunta, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
         stage.setScene(escenaPregunta);
     }
