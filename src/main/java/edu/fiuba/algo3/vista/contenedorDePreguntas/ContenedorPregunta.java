@@ -17,9 +17,9 @@ public class ContenedorPregunta extends BorderPane {
         if (pregunta instanceof PreguntaMultipleChoiceClasico || pregunta instanceof PreguntaMultipleChoiceParcial || pregunta instanceof PreguntaMultipleChoicePenalidad)
             return new ContenedorPreguntaMultipleChoice(stage, kahoot, yaRespondioJugador);
 
-        if (pregunta instanceof PreguntaGroupChoice)
+        /*if (pregunta instanceof PreguntaGroupChoice)
             return new ContenedorPreguntaGroupChoice(stage, kahoot, yaRespondioJugador);
-
+*/
         return new ContenedorPreguntaOrderedChoice(stage, kahoot, yaRespondioJugador);
     }
     public void imprimirNombreYPuntaje(Kahoot kahoot, Stage stage){

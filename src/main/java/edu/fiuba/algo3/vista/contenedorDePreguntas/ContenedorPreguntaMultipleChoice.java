@@ -3,7 +3,7 @@ package edu.fiuba.algo3.vista.contenedorDePreguntas;
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.vista.BarraDeMenu;
-import edu.fiuba.algo3.vista.handlers.BotonOkMultipleChoice;
+import edu.fiuba.algo3.vista.handlers.BotonOkChoice;
 import edu.fiuba.algo3.vista.handlers.MarcarOpcionMultipleChoice;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -37,7 +37,7 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
         //BOTONES
         Button botonOk = new Button("OK");
         botonOk.setStyle(" -fx-font-size: 2em");
-        botonOk.setOnAction(new BotonOkMultipleChoice(kahoot, stage, yaRespondioJugador));
+        botonOk.setOnAction(new BotonOkChoice(kahoot, stage, yaRespondioJugador));
 
         Iterator iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         VBox contenedorOpciones = new VBox();
