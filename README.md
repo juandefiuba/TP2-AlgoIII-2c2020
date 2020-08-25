@@ -22,6 +22,10 @@ Corrector: **Pablo Suarez**
 
 https://drive.google.com/drive/folders/1_F6dZ_-SARgaP2JQVsJzjRYWc_WYS8xm?usp=sharing
 
+## Informe
+
+https://drive.google.com/file/d/1AN754rYKSluG8XwzBuOEYjohxLKwqyQ8/view?usp=sharing
+
 ### Pre-requisitos
 
 Listado de software/herramientas necesarias para el proyecto
