@@ -23,11 +23,15 @@ public class Turno {
 	}
 
 	public void avanzarJugador() {
+		if(! this.preguntaActual.respondio(this.jugadorActual()) ) {
+			LinkedList<Opcion> respuestaVacia = new LinkedList<Opcion>();
+			this.preguntaActual.agregarRespuestaDeJugador(this.jugadorActual(), respuestaVacia);
+		}
 		jugadores.add(jugadores.remove());
 	}
 
 	private void avanzarPregunta() {
-		if(sigueElJuego()) {
+		if(this.sigueElJuego()) {
 			this.preguntaActual = (Pregunta) preguntas.next();
 		}
 	}
@@ -53,8 +57,8 @@ public class Turno {
 	}
 
 	public void terminarTurno() {
-		Jugador jugador = jugadorActual();
-		avanzarJugador();
+		Jugador jugador = jugadorActual();  // jugador 2
+		this.avanzarJugador(); // jugador 1
 		this.preguntaActual.puntuarJugadores(jugadorActual(), jugador);
 		this.avanzarPregunta();
 	}

@@ -61,10 +61,6 @@ public abstract class Pregunta{
 		this.respuestasDeLosJugadores.get(jugador).remove(opcion);
 	}
 
-	public Iterator obtenerOpciones() {
-		return opciones.iterator();
-	}
-
 	public void calificarRespuesta(Opcion opcion){
 		opcion.validarOpcion(this);
 	}
@@ -78,5 +74,11 @@ public abstract class Pregunta{
 		return this.puntajeDelJugador;
 	}
 
+	public boolean respondio(Jugador jugador) {
+		return this.respuestasDeLosJugadores.containsKey(jugador);
+	}
 
+	public Iterator<Opcion> obtenerOpciones() {
+		return opciones.iterator();
+	}
 }
