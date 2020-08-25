@@ -2,7 +2,6 @@ package edu.fiuba.algo3.modelo;
 
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.Preguntas.PreguntaBase;
 
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -19,16 +18,20 @@ public class Turno {
 		this.preguntaActual = (Pregunta) this.preguntas.next();
 	}
 	
-	public PreguntaBase obtenerPregunta() {
-		return (PreguntaBase) this.preguntaActual;
+	public Pregunta obtenerPregunta() {
+		return (Pregunta) this.preguntaActual;
 	}
 
 	public void avanzarJugador() {
+		if(! this.preguntaActual.respondio(this.jugadorActual()) ) {
+			LinkedList<Opcion> respuestaVacia = new LinkedList<Opcion>();
+			this.preguntaActual.agregarRespuestaDeJugador(this.jugadorActual(), respuestaVacia);
+		}
 		jugadores.add(jugadores.remove());
 	}
 
 	private void avanzarPregunta() {
-		if(sigueElJuego()) {
+		if(this.sigueElJuego()) {
 			this.preguntaActual = (Pregunta) preguntas.next();
 		}
 	}
@@ -45,13 +48,17 @@ public class Turno {
 		this.preguntaActual.agregarRespuestaDeJugador(this.jugadorActual(), opcion);
 	}
 
+	public void removerOpcionElegida(Opcion opcion) {
+		this.preguntaActual.removerRespuestaDeJugador(this.jugadorActual(), opcion);
+	}
+
 	public Jugador jugadorActual() {
 		return jugadores.peek();
 	}
 
 	public void terminarTurno() {
-		Jugador jugador = jugadorActual();
-		avanzarJugador();
+		Jugador jugador = jugadorActual();  // jugador 2
+		this.avanzarJugador(); // jugador 1
 		this.preguntaActual.puntuarJugadores(jugadorActual(), jugador);
 		this.avanzarPregunta();
 	}

@@ -2,7 +2,6 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.SalirDelJuegoHandler;
 import edu.fiuba.algo3.vista.handlers.OpcionAcercaDeEventHandler;
-import edu.fiuba.algo3.vista.handlers.OpcionPantallaCompletaEventHandler;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -36,9 +35,6 @@ public class BarraDeMenu extends MenuBar {
         OpcionAcercaDeEventHandler opcionAcercaDeHandler = new OpcionAcercaDeEventHandler();
         opcionAcercaDe.setOnAction(opcionAcercaDeHandler);
 
-        //TODAVÍA NO ANDA LA PANTALLA COMPLETA (PROBLEMAS DE RESOLUCIÓN :( )
-        OpcionPantallaCompletaEventHandler opcionPantallaCompletaHandler = new OpcionPantallaCompletaEventHandler(stage, opcionPantallaCompleta);
-        opcionPantallaCompleta.setOnAction(opcionPantallaCompletaHandler);
 
         //AGREGANDO OPCIONES A LA BARRA DE MENU
         menuArchivo.getItems().addAll(new SeparatorMenuItem(), opcionSalir);
@@ -48,8 +44,4 @@ public class BarraDeMenu extends MenuBar {
         this.getMenus().addAll(menuArchivo, menuVer, menuAyuda);
     }
 
-    public void aplicacionMaximizada() {
-        opcionPantallaCompleta.setDisable(false);
-
-    }
 }

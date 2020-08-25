@@ -1,12 +1,13 @@
 package edu.fiuba.algo3.modelo;
 
 
+import edu.fiuba.algo3.Lector;
 import edu.fiuba.algo3.modelo.Excepciones.NoHayJugadoresException;
 import edu.fiuba.algo3.modelo.Excepciones.NoHayPreguntasException;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.Preguntas.PreguntaBase;
 
+import java.io.IOException;
 import java.util.LinkedList;
 
 public class Kahoot { //Singleton
@@ -15,18 +16,23 @@ public class Kahoot { //Singleton
 	private LinkedList<Pregunta> preguntas;
 	private Turno turno;
 
-	private Kahoot() {
+	private Kahoot(String ruta) throws IOException {
 		this.jugadores = new LinkedList<>();
-		this.preguntas = new LinkedList<>();
+		this.preguntas = this.leerPreguntas(ruta);
 		this.turno = new Turno();
 	}
 
-	public static Kahoot Kahoot() {
+	public static Kahoot Kahoot(String ruta) throws IOException {
 		if (kahoot == null) {
-			kahoot = new Kahoot();
+			kahoot = new Kahoot(ruta);
 		}
 
 		return kahoot;
+	}
+
+	private LinkedList<Pregunta> leerPreguntas(String ruta) throws IOException {
+		Lector lector = new Lector(ruta);
+		return lector.obtenerPreguntas();
 	}
 
 	public void iniciarJuego() {
@@ -79,7 +85,7 @@ public class Kahoot { //Singleton
 		return this.turno.sigueElJuego();
 	}
 	
-	public PreguntaBase obtenerPreguntaActual() {
+	public Pregunta obtenerPreguntaActual() {
 		return this.turno.obtenerPregunta();
 	}
 	
@@ -98,4 +104,6 @@ public class Kahoot { //Singleton
 	public void activarExclusividad() {
 		this.turno.activarExclusividad();
 	}
+
+	public void removerOpcionElegida(Opcion opcion) { this.turno.removerOpcionElegida(opcion); }
 }

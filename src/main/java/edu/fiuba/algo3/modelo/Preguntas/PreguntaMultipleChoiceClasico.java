@@ -14,7 +14,7 @@ import edu.fiuba.algo3.modelo.Puntos.PuntoEstatico;
 
 import java.util.LinkedList;
 
-public class PreguntaMultipleChoiceClasico extends PreguntaBase {
+public class PreguntaMultipleChoiceClasico extends Pregunta {
 
 
     public PreguntaMultipleChoiceClasico(LinkedList<Opcion> opciones) {

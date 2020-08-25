@@ -14,10 +14,9 @@ import edu.fiuba.algo3.modelo.Preguntas.PreguntaVerdaderoFalso;
 
 public class ExclusividadCompuestaDePuntajeTest {
 
-	/* PREGUNTA VERDADERO FALSO */
-	
 	@Test
 	public void test01UnJugadorActivaExclusividadDePuntajeYGanaElDobleDePuntosPorqueJugador2RespondeMal() {
+		//Arrange
 		Opcion opcionVerdadero = new OpcionIncorrecta();
 		Opcion opcionFalso = new OpcionCorrecta();
 
@@ -49,13 +48,13 @@ public class ExclusividadCompuestaDePuntajeTest {
 		pregunta.puntuarJugadores(jugador, jugador2);
 
 		//Act
-		//Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
 
 		assertEquals(2,jugador.obtenerPuntos());
 	}
 
 	@Test
 	public void test02DosJugadoresActivanExclusividadDePuntajeYGanaElCuadrupleDePuntosPorqueJugador2RespondeMal() {
+		//Arrange
 		Opcion opcionVerdadero = new OpcionIncorrecta();
 		Opcion opcionFalso = new OpcionCorrecta();
 
@@ -78,7 +77,7 @@ public class ExclusividadCompuestaDePuntajeTest {
 
 		respuestas.add(opcionFalso);
 		respuestas2.add(opcionVerdadero);
-
+		//Act
 		jugador.activarExclusividad();
 		jugador2.activarExclusividad();
 
@@ -87,14 +86,12 @@ public class ExclusividadCompuestaDePuntajeTest {
 
 		pregunta.puntuarJugadores(jugador, jugador2);
 
-		//Act
-		//Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
-
 		assertEquals(4,jugador.obtenerPuntos());
 	}
 
 	@Test
 	public void test03DosJugadoresActivanExclusividadDePuntajeYRespondenAmbosBienEntoncesNoGananPuntos(){
+		//Arrange
 		Opcion opcionVerdadero = new OpcionIncorrecta();
 		Opcion opcionFalso = new OpcionCorrecta();
 
@@ -118,6 +115,7 @@ public class ExclusividadCompuestaDePuntajeTest {
 		respuestas.add(opcionFalso);
 		respuestas2.add(opcionFalso);
 
+		//Act
 		jugador.activarExclusividad();
 		jugador2.activarExclusividad();
 
@@ -125,9 +123,6 @@ public class ExclusividadCompuestaDePuntajeTest {
 		pregunta.agregarRespuestaDeJugador(jugador2, respuestas2);
 
 		pregunta.puntuarJugadores(jugador, jugador2);
-
-		//Act
-		//Puntaje puntajeDelJugador = pregunta.puntuarJugador(jugador);
 
 		assertEquals(0,jugador.obtenerPuntos());
 	}

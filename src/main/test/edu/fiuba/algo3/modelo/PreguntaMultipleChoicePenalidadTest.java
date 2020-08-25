@@ -15,7 +15,7 @@ public class PreguntaMultipleChoicePenalidadTest {
 
     @Test
     public void test01JugadorRespondeOpciones1Correcta1IncorrectaDeMCPenalidadYGana0Puntos() {
-        //Arrange se invierten los estados, ahora falso es correcto
+        //Arrange
         Opcion opcion1 = new OpcionCorrecta();
         Opcion opcion2 = new OpcionIncorrecta();
         Opcion opcion3 = new OpcionIncorrecta();
@@ -52,7 +52,7 @@ public class PreguntaMultipleChoicePenalidadTest {
 
     @Test
     public void test02JugadorRespondeOpciones1Correcta2IncorrectaDeMCPenalidadYPierde1Punto() {
-        //Arrange se invierten los estados, ahora falso es correcto
+        //Arrange
         Opcion opcion1 = new OpcionIncorrecta();
         Opcion opcion2 = new OpcionCorrecta();
         Opcion opcion3 = new OpcionIncorrecta();
@@ -90,7 +90,7 @@ public class PreguntaMultipleChoicePenalidadTest {
 
     @Test
     public void test03JugadorResponde1OpcionIncorrectaDeMCPenalidadYPierde1Punto() {
-        //Arrange se invierten los estados, ahora falso es correcto
+        //Arrange
         Opcion opcion1 = new OpcionIncorrecta();
         Opcion opcion2 = new OpcionIncorrecta();
         Opcion opcion3 = new OpcionCorrecta();
@@ -127,7 +127,7 @@ public class PreguntaMultipleChoicePenalidadTest {
 
     @Test
     public void test04JugadorResponde2OpcionesIncorrectasDeMCPenalidadYPierde2Puntos() {
-        //Arrange se invierten los estados, ahora falso es correcto
+        //Arrange
         Opcion opcion1 = new OpcionIncorrecta();
         Opcion opcion2 = new OpcionIncorrecta();
         Opcion opcion3 = new OpcionCorrecta();
@@ -165,7 +165,7 @@ public class PreguntaMultipleChoicePenalidadTest {
 
     @Test
     public void test05JugadorResponde2OpcionesCorrectasDeMCPenalidadYGana2Puntos() {
-        //Arrange se invierten los estados, ahora falso es correcto
+        //Arrange
         Opcion opcion1 = new OpcionIncorrecta();
         Opcion opcion2 = new OpcionCorrecta();
         Opcion opcion3 = new OpcionCorrecta();
@@ -199,6 +199,4 @@ public class PreguntaMultipleChoicePenalidadTest {
         //Assert
         assertEquals(2,jugador.obtenerPuntos());
     }
-
-    
 }

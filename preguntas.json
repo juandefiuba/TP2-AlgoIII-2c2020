@@ -1,0 +1,146 @@
+{
+  "preguntas": [
+  	{
+	  "tipoPregunta": "MCC",
+	  "textoPregunta": "¿Cuáles son tipos de queso?",
+	  "opciones": [
+		{
+		  "tipoOpcion": "C",
+		  "textoOpcion": "Sardo"
+		},
+		{
+		  "tipoOpcion": "C",
+		  "textoOpcion": "Reggianito"
+		},
+		{
+		  "tipoOpcion": "I",
+		  "textoOpcion": "Papa frita"
+		},
+		{
+		  "tipoOpcion": "I",
+		  "textoOpcion": "Tomate"
+		}
+	  ]
+	},
+	{
+	  "tipoPregunta": "MCPA",
+	  "textoPregunta": "¿Cuáles son peces?",
+	  "opciones": [
+		{
+		  "tipoOpcion": "C",
+		  "textoOpcion": "Salmon"
+		},
+		{
+		  "tipoOpcion": "C",
+		  "textoOpcion": "Atun"
+		},
+		{
+		  "tipoOpcion": "I",
+		  "textoOpcion": "Aguila"
+		}
+	  ]
+	},
+	{
+	  "tipoPregunta": "MCPE",
+	  "textoPregunta": "¿Cuáles son perros?",
+	  "opciones": [
+		{
+		  "tipoOpcion": "C",
+		  "textoOpcion": "Labrador"
+		},
+		{
+		  "tipoOpcion": "C",
+		  "textoOpcion": "Pastor Aleman"
+		},
+		{
+		  "tipoOpcion": "I",
+		  "textoOpcion": "Gato"
+		},
+		{
+		  "tipoOpcion": "I",
+		  "textoOpcion": "Conejo"
+		},
+		{
+		  "tipoOpcion": "I",
+		  "textoOpcion": "Rata"
+		}
+	  ]
+	},
+	{
+	  "tipoPregunta": "VFC",
+	  "textoPregunta": "¿Existe el 31 de febrero?",
+	  "opciones": [
+		{
+		  "tipoOpcion": "I",
+		  "textoOpcion": "Verdadero"
+		},
+		{
+		  "tipoOpcion": "C",
+		  "textoOpcion": "Falso"
+		}
+	  ]
+	},
+	{
+	  "tipoPregunta": "VFP",
+	  "textoPregunta": "¿Existe el 32 de enero?",
+	  "opciones": [
+		{
+		  "tipoOpcion": "I",
+		  "textoOpcion": "Verdadero"
+		},
+		{
+		  "tipoOpcion": "C",
+		  "textoOpcion": "Falso"
+		}
+	  ]
+	},
+	{
+	  "tipoPregunta": "OC",
+	  "textoPregunta": "¿Cuál es el orden correcto?",
+	  "opciones": [
+		{
+		  "tipoOpcion": "O",
+		  "textoOpcion": "Primero"
+		},
+		{
+		  "tipoOpcion": "O",
+		  "textoOpcion": "Segundo"
+		},
+		{
+		  "tipoOpcion": "O",
+		  "textoOpcion": "Tercero"
+		},
+		{
+		  "tipoOpcion": "O",
+		  "textoOpcion": "Cuarto"
+		},
+		{
+			  "tipoOpcion": "O",
+			  "textoOpcion": "Quinto"
+		}
+	  ]
+	},
+  	{
+	  "tipoPregunta": "GC",
+	  "textoPregunta": "¿Cuáles son lácteos y cuáles no?",
+	  "opciones": [
+		{
+		  "tipoOpcion": "C",
+		  "textoOpcion": "Manteca"
+		},
+		{
+		  "tipoOpcion": "C",
+		  "textoOpcion": "Queso"
+		},
+		{
+		  "tipoOpcion": "I",
+		  "textoOpcion": "Pan"
+		},
+		{
+		  "tipoOpcion": "I",
+		  "textoOpcion": "Galletitas"
+		}
+	  ]
+	}
+  ]
+}

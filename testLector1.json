@@ -1,0 +1,18 @@
+{
+  "preguntas": [
+	{
+	  "tipoPregunta": "VFC",
+	  "textoPregunta": "¿Otelo fue escrito por Shakespeare?",
+	  "opciones": [
+		{
+		  "tipoOpcion": "C",
+		  "textoOpcion": "Verdadero"
+		},
+		{
+		  "tipoOpcion": "I",
+		  "textoOpcion": "Falso"
+		}
+	  ]
+	}
+  ]
+}

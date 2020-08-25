@@ -22,6 +22,10 @@ Corrector: **Pablo Suarez**
 
 https://drive.google.com/drive/folders/1_F6dZ_-SARgaP2JQVsJzjRYWc_WYS8xm?usp=sharing
 
+## Informe
+
+https://drive.google.com/file/d/1AN754rYKSluG8XwzBuOEYjohxLKwqyQ8/view?usp=sharing
+
 ### Pre-requisitos
 
 Listado de software/herramientas necesarias para el proyecto
@@ -29,7 +33,8 @@ Listado de software/herramientas necesarias para el proyecto
 ```
 java 11
 maven 3.6.0
-...
+javafx 14.0.2
+gson 2.8.6
 ```
 
 ## Ejecutando las pruebas
@@ -46,7 +51,9 @@ Este comando crea el reporte de cobertura para CI y el reporte HTML que pueden a
 
 ## Ejecutando la aplicación
 
-Explicación de como ejecutar la aplicación
+```bash
+    mvn clean javafx:run
+```
 
 ## Licencia
 

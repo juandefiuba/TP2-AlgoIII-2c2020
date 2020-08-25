@@ -5,7 +5,6 @@ import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
 import edu.fiuba.algo3.modelo.Opciones.OpcionIncorrecta;
 import edu.fiuba.algo3.modelo.Preguntas.PreguntaMultipleChoiceParcial;
 import org.junit.jupiter.api.Test;
-
 import java.util.Iterator;
 import java.util.LinkedList;
 
@@ -15,8 +14,8 @@ public class PreguntaMultipleChoiceParcialTest {
 
     @Test
     public void test01JugadorRespondeMCParcialCorrectamenteCon1RespuestaCorrectaYGanaPunto() {
-        //Arrange se invierten los estados, ahora falso es correcto
-        Opcion opcion1 = new OpcionCorrecta();  //
+        //Arrange
+        Opcion opcion1 = new OpcionCorrecta();
         Opcion opcion2 = new OpcionIncorrecta();
         Opcion opcion3 = new OpcionIncorrecta();
         LinkedList<Opcion> opciones = new LinkedList<>();
@@ -50,7 +49,7 @@ public class PreguntaMultipleChoiceParcialTest {
 
     @Test
     public void test02JugadorRespondeMCParcialCorrectamenteCon2RespuestasCorrectasYGana2Puntos() {
-        //Arrange se invierten los estados, ahora falso es correcto
+        //Arrange
         Opcion opcion1 = new OpcionIncorrecta();
         Opcion opcion2 = new OpcionCorrecta();
         Opcion opcion3 = new OpcionCorrecta();
@@ -87,7 +86,7 @@ public class PreguntaMultipleChoiceParcialTest {
 
     @Test
     public void test03JugadorResponde1OpcionCorrectaDeMCParcialCon2RespuestasCorrectasYGanaPunto() {
-        //Arrange se invierten los estados, ahora falso es correcto
+        //Arrange
         Opcion opcion1 = new OpcionIncorrecta();
         Opcion opcion2 = new OpcionCorrecta();
         Opcion opcion3 = new OpcionCorrecta();
@@ -123,7 +122,7 @@ public class PreguntaMultipleChoiceParcialTest {
 
     @Test
     public void test04JugadorRespondeTodasLasOpcionesDeMCParcialCon1RespuestaCorrectaYNoGanaPunto() {
-        //Arrange se invierten los estados, ahora falso es correcto
+        //Arrange
         Opcion opcion1 = new OpcionCorrecta();
         Opcion opcion2 = new OpcionIncorrecta();
         Opcion opcion3 = new OpcionIncorrecta();
@@ -161,7 +160,7 @@ public class PreguntaMultipleChoiceParcialTest {
 
     @Test
     public void test04JugadorRespondeTodasLasOpcionesDeMCParcialCon3RespuestasCorrectasYGana3Puntos() {
-        //Arrange se invierten los estados, ahora falso es correcto
+        //Arrange
         Opcion opcion1 = new OpcionCorrecta();
         Opcion opcion2 = new OpcionCorrecta();
         Opcion opcion3 = new OpcionCorrecta();
