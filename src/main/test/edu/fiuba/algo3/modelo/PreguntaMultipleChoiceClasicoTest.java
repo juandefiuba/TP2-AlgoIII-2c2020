@@ -15,7 +15,7 @@ public class PreguntaMultipleChoiceClasicoTest {
 
     @Test
     public void test01JugadorRespondeMChoiceCorrectamenteYGanaPunto() {
-
+        //Arrange
         Opcion opcion1 = new OpcionCorrecta();
         Opcion opcion2 = new OpcionIncorrecta();
         Opcion opcion3 = new OpcionIncorrecta();
@@ -49,7 +49,7 @@ public class PreguntaMultipleChoiceClasicoTest {
 
     @Test
     public void test02JugadorRespondeCorrectamente2OpcionesDeMChoiceCon2OpcionesCorrectasYRecibeUnPunto() {
-        
+        //Arrange
         Opcion opcion1 = new OpcionIncorrecta();
         Opcion opcion2 = new OpcionCorrecta();
         Opcion opcion3 = new OpcionCorrecta();
@@ -86,7 +86,7 @@ public class PreguntaMultipleChoiceClasicoTest {
 
     @Test
     public void test03JugadorRespondeCorrectamente1OpcionDeMChoiceCon2OpcionesCorrectasYNoRecibeUnPunto() {
-        //Arrange se invierten los estados, ahora falso es correcto
+        //Arrange
         Opcion opcion1 = new OpcionIncorrecta();
         Opcion opcion2 = new OpcionCorrecta();
         Opcion opcion3 = new OpcionCorrecta();
@@ -122,7 +122,7 @@ public class PreguntaMultipleChoiceClasicoTest {
 
     @Test
     public void test04JugadorRespondeTodasLasOpcionesDeMChoiceCon1OpcionCorrectaYNoRecibeUnPunto() {
-        //Arrange se invierten los estados, ahora falso es correcto
+        //Arrange
         Opcion opcion1 = new OpcionCorrecta();
         Opcion opcion2 = new OpcionIncorrecta();
         Opcion opcion3 = new OpcionIncorrecta();
@@ -159,7 +159,7 @@ public class PreguntaMultipleChoiceClasicoTest {
 
     @Test
     public void test05JugadorRespondeTodasLasOpcionesDeMChoiceConTodasOpcionesCorrectasYRecibeUnPunto() {
-        //Arrange se invierten los estados, ahora falso es correcto
+        //Arrange
         Opcion opcion1 = new OpcionCorrecta();
         Opcion opcion2 = new OpcionCorrecta();
         Opcion opcion3 = new OpcionCorrecta();
@@ -197,7 +197,7 @@ public class PreguntaMultipleChoiceClasicoTest {
 
     @Test
     public void test06JugadorResponde2OpcionesCorrectasDeMChoiceConTodasOpcionesCorrectasYNoRecibeUnPunto() {
-        //Arrange se invierten los estados, ahora falso es correcto
+        //Arrange
         Opcion opcion1 = new OpcionCorrecta();
         Opcion opcion2 = new OpcionCorrecta();
         Opcion opcion3 = new OpcionCorrecta();

@@ -1,6 +1,5 @@
 package edu.fiuba.algo3.modelo.Preguntas;
 
-import edu.fiuba.algo3.modelo.Excepciones.FaltanOpcionesEnLaPreguntaException;
 import edu.fiuba.algo3.modelo.Excepciones.SobranOpcionesDeLaPreguntaException;
 import edu.fiuba.algo3.modelo.Exclusividades.Compuesta.ExclusividadCompuesta;
 import edu.fiuba.algo3.modelo.Exclusividades.Parcial.ExclusividadParcial;
@@ -14,7 +13,7 @@ import edu.fiuba.algo3.modelo.Puntos.*;
 
 import java.util.LinkedList;
 
-public class PreguntaVerdaderoFalso extends PreguntaBase{
+public class PreguntaVerdaderoFalso extends Pregunta {
 
     public PreguntaVerdaderoFalso(LinkedList<Opcion> opcionesDeLaPregunta) {
         super(opcionesDeLaPregunta);

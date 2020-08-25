@@ -14,5 +14,6 @@ public abstract class Opcion {
 		return this.texto;
 	}
     public abstract void enlistarOpcionesCorrectas(LinkedList<Opcion> opcionesCorrectas);
+    public abstract void enlistarOpcionesIncorrectas(LinkedList<Opcion> opcionesCorrectas);
 	public abstract void validarOpcion(Pregunta pregunta);
 }
