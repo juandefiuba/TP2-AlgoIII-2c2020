@@ -1,22 +1,13 @@
 package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.modelo.Kahoot;
-import edu.fiuba.algo3.modelo.Opciones.Opcion;
-import edu.fiuba.algo3.modelo.Opciones.OpcionCorrecta;
-import edu.fiuba.algo3.modelo.Opciones.OpcionIncorrecta;
-import edu.fiuba.algo3.modelo.Opciones.OpcionOrdenada;
-import edu.fiuba.algo3.modelo.Preguntas.*;
 import edu.fiuba.algo3.vista.ContenedorBienvenida;
 import edu.fiuba.algo3.vista.TamanioDeVentana;
 import javafx.application.Application;
 import javafx.scene.Scene;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
-import java.nio.file.Paths;
-import java.util.LinkedList;
+import static edu.fiuba.algo3.vista.Musica.musicaPlay;
 
 public class App extends Application {
 
@@ -43,17 +34,8 @@ public class App extends Application {
 
         stage.show();
         String rutaArchivoMusica = "src/main/java/edu/fiuba/algo3/vista/musica/lobby-music-8bit-edition.wav";
-        musica(rutaArchivoMusica);
+
+        musicaPlay(rutaArchivoMusica);
     }
 
-    MediaPlayer mediaPlayer;
-    public void musica(String rutaArchivoMusica) {
-        Media media = new Media(Paths.get(rutaArchivoMusica).toUri().toString());
-        mediaPlayer = new MediaPlayer(media);
-
-        //LOOP MÚSICA
-        mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.seek(Duration.ZERO));
-
-        mediaPlayer.play();
-    }
 }

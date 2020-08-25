@@ -13,9 +13,9 @@ import javafx.stage.Stage;
 
 public class BotonParaIngresarNombre implements EventHandler<ActionEvent> {
 
-	private TextField texto;
-	Stage stage;
-	Kahoot kahoot;
+	private final TextField texto;
+	private final Stage stage;
+	private final Kahoot kahoot;
 	private boolean yaIngresaronUnNombre;
 
 	public BotonParaIngresarNombre(TextField texto, Stage stage, Kahoot kahoot){

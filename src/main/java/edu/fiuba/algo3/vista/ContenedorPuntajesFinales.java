@@ -1,23 +1,17 @@
 package edu.fiuba.algo3.vista;
 
-import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.controlador.SalirDelJuegoHandler;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
-import edu.fiuba.algo3.vista.contenedorDePreguntas.ContenedorPregunta;
 import edu.fiuba.algo3.vista.handlers.SeleccionarOpcionGroupChoice;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
-import java.nio.file.Paths;
 
 public class ContenedorPuntajesFinales extends BorderPane {
 
@@ -75,8 +69,10 @@ public class ContenedorPuntajesFinales extends BorderPane {
         contenedorVertical.setSpacing(100);
 
         this.setCenter(contenedorVertical);
-        String rutaArchivoMusica = "src/main/java/edu/fiuba/algo3/vista/musica/sound-effect-tada.wav";
-        musica(rutaArchivoMusica);
+
+        Musica.musicaStop();
+        String rutaArchivoMusica = "src/main/java/edu/fiuba/algo3/vista/musica/kool-the-gang-celebration.wav";
+        Musica.musicaPlay(rutaArchivoMusica);
     }
 
     private void setMenu(Stage stage) {
@@ -92,12 +88,4 @@ public class ContenedorPuntajesFinales extends BorderPane {
         botonOpcion.setOnAction(new SeleccionarOpcionGroupChoice(botonOpcion, pasarAGrupo1, pasarAGrupo2, grupo1, grupo2, opcionesDadas, botonOk, opcion, kahoot));
     }
 
-    MediaPlayer mediaPlayer;
-    public void musica(String rutaArchivoMusica) {
-        Media media = new Media(Paths.get(rutaArchivoMusica).toUri().toString());
-        mediaPlayer = new MediaPlayer(media);
-
-        //LOOP MÚSICA
-        mediaPlayer.play();
-    }
 }

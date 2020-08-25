@@ -10,8 +10,8 @@ import javafx.stage.Stage;
 
 public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
 
-    Stage stage;
-    Kahoot kahoot;
+    private final Stage stage;
+    private final Kahoot kahoot;
 
     public BotonEntrarEventHandler(Stage stage, Kahoot kahoot) {
         this.stage = stage;
