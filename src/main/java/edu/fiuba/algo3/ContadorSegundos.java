@@ -1,8 +1,6 @@
 package edu.fiuba.algo3;
 
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
@@ -14,7 +12,7 @@ public class ContadorSegundos {
     static public Timer ContadorSegundos(Button boton, Text timer){
         Timer conteo = new Timer();
         timer.setStyle(" -fx-font-size: 3em");
-        final int[] numero = {31};
+        final int[] numero = {21};
         conteo.scheduleAtFixedRate(new TimerTask(){
             @Override
             public void run() {
