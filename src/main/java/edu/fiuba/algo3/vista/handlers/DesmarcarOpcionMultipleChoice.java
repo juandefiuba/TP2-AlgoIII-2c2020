@@ -25,7 +25,7 @@ public class DesmarcarOpcionMultipleChoice implements EventHandler<ActionEvent> 
     public void handle(ActionEvent actionEvent){
         new RemoverOpcionElegidaHandler(kahoot, opcion).handle(actionEvent);
         botonOk.requestFocus();
-        boton.setStyle("-fx-font-size: 2.9em; -fx-border-width: 7px; -fx-border-color: #000000");
+        boton.setStyle("-fx-font-size: 2em; -fx-border-width: 5px; -fx-border-color: #000000");
         boton.setOnAction(new MarcarOpcionMultipleChoice(kahoot, opcion, boton, botonOk));
     }
 }

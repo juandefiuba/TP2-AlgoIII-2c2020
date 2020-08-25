@@ -16,7 +16,7 @@ import javafx.stage.Stage;
 import java.util.LinkedList;
 import java.util.Timer;
 
-public class BotonOkChoice implements EventHandler<ActionEvent> {
+public class BotonOk implements EventHandler<ActionEvent> {
 
     private final Timer conteo;
     private boolean yaRespondioUnJugador;
@@ -24,7 +24,7 @@ public class BotonOkChoice implements EventHandler<ActionEvent> {
     private final Stage stage;
     private LinkedList<Button> opciones;
 
-    public BotonOkChoice(Kahoot kahoot, Stage stage, boolean yaRespondioUnJugador, Timer conteo){
+    public BotonOk(Kahoot kahoot, Stage stage, boolean yaRespondioUnJugador, Timer conteo){
         this.yaRespondioUnJugador = yaRespondioUnJugador;
         this.kahoot = kahoot;
         this.stage = stage;

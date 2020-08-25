@@ -4,7 +4,7 @@ import edu.fiuba.algo3.ContadorSegundos;
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.vista.handlers.BotonCambiarDeGrupoYMarcarComoElegida;
-import edu.fiuba.algo3.vista.handlers.BotonOkChoice;
+import edu.fiuba.algo3.vista.handlers.BotonOk;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
@@ -32,7 +32,7 @@ public class ContenedorPreguntaOrderedChoice extends ContenedorPregunta {
         //BOTONES
         Button botonOk = new Button("OK");
         botonOk.setStyle(" -fx-font-size: 2em");
-        botonOk.setOnAction(new BotonOkChoice(kahoot, stage, yaRespondioJugador, ContadorSegundos.ContadorSegundos(botonOk, timer)));
+        botonOk.setOnAction(new BotonOk(kahoot, stage, yaRespondioJugador, ContadorSegundos.ContadorSegundos(botonOk, timer)));
 
         Iterator iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         VBox vboxOpcionesDadas = new VBox();

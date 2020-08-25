@@ -3,21 +3,16 @@ package edu.fiuba.algo3.vista.contenedorDePreguntas;
 import edu.fiuba.algo3.ContadorSegundos;
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
-import edu.fiuba.algo3.vista.BarraDeMenu;
-import edu.fiuba.algo3.vista.handlers.BotonOkChoice;
+import edu.fiuba.algo3.vista.handlers.BotonOk;
 import edu.fiuba.algo3.vista.handlers.MarcarOpcionMultipleChoice;
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.util.Iterator;
-import java.util.Timer;
 
 //variable global spacing y tamaño botones
 
@@ -41,7 +36,7 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
         //BOTONES
         Button botonOk = new Button("OK");
         botonOk.setStyle(" -fx-font-size: 2em");
-        botonOk.setOnAction(new BotonOkChoice(kahoot, stage, yaRespondioJugador, ContadorSegundos.ContadorSegundos(botonOk, timer)));
+        botonOk.setOnAction(new BotonOk(kahoot, stage, yaRespondioJugador, ContadorSegundos.ContadorSegundos(botonOk, timer)));
 
         Iterator iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         VBox contenedorOpciones = new VBox();

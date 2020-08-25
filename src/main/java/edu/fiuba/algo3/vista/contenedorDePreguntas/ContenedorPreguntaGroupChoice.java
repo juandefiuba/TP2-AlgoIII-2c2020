@@ -3,13 +3,11 @@ package edu.fiuba.algo3.vista.contenedorDePreguntas;
 import edu.fiuba.algo3.ContadorSegundos;
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
-import edu.fiuba.algo3.vista.BarraDeMenu;
-import edu.fiuba.algo3.vista.handlers.BotonOkChoice;
+import edu.fiuba.algo3.vista.handlers.BotonOk;
 import edu.fiuba.algo3.vista.handlers.BotonOkVisualGroupChoice;
 import edu.fiuba.algo3.vista.handlers.SeleccionarOpcionGroupChoice;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -41,7 +39,7 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
 
         Button botonOkInvisible = new Button();
         Timer conteo = ContadorSegundos.ContadorSegundos(botonOkInvisible, timer);
-        botonOkInvisible.setOnAction(new BotonOkChoice(kahoot, stage, yaRespondioJugador, conteo));
+        botonOkInvisible.setOnAction(new BotonOk(kahoot, stage, yaRespondioJugador, conteo));
 
         Button botonOk = new Button("OK");
         botonOk.setStyle(" -fx-font-size: 2em");
