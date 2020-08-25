@@ -29,8 +29,8 @@ Listado de software/herramientas necesarias para el proyecto
 ```
 java 11
 maven 3.6.0
-javafx
-
+javafx 14.0.2
+gson 2.8.6
 ```
 
 ## Ejecutando las pruebas
