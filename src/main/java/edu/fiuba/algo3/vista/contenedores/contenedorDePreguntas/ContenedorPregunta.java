@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.vista.contenedorDePreguntas;
+package edu.fiuba.algo3.vista.contenedores.contenedorDePreguntas;
 
 import edu.fiuba.algo3.controlador.ActivarExclusividadHandler;
 import edu.fiuba.algo3.controlador.MultiplicadorPorDosHandler;
@@ -11,10 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-
-import java.util.Timer;
 
 public abstract class ContenedorPregunta extends BorderPane {
 

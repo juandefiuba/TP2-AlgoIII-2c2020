@@ -1,14 +1,16 @@
-package edu.fiuba.algo3.vista.handlers;
+package edu.fiuba.algo3.vista.handlers.botonesOk;
 
 import edu.fiuba.algo3.controlador.IniciarJuegoHandler;
 import edu.fiuba.algo3.controlador.NuevoJugadorHandler;
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.vista.TamanioDeVentana;
-import edu.fiuba.algo3.vista.contenedorDePreguntas.ContenedorPregunta;
+import edu.fiuba.algo3.vista.contenedores.ContenedorPaseDePantalla;
+import edu.fiuba.algo3.vista.contenedores.contenedorDePreguntas.ContenedorPregunta;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class BotonParaIngresarNombre implements EventHandler<ActionEvent> {
@@ -33,7 +35,8 @@ public class BotonParaIngresarNombre implements EventHandler<ActionEvent> {
 		if (yaIngresaronUnNombre) {
 			new IniciarJuegoHandler(kahoot).handle(actionEvent);
 			ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot, false);
-			Scene escenaPregunta = new Scene(contenedorPregunta, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
+			BorderPane contenedorTurnoDe = new ContenedorPaseDePantalla(kahoot, stage, contenedorPregunta);
+			Scene escenaPregunta = new Scene(contenedorTurnoDe, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
 			stage.sizeToScene();
 			stage.setScene(escenaPregunta);
 		}

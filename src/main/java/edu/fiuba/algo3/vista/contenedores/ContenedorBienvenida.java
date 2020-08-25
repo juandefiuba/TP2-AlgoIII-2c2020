@@ -1,9 +1,9 @@
-package edu.fiuba.algo3.vista;
+package edu.fiuba.algo3.vista.contenedores;
 
 
 import edu.fiuba.algo3.controlador.SalirDelJuegoHandler;
 import edu.fiuba.algo3.modelo.Kahoot;
-import edu.fiuba.algo3.vista.handlers.BotonEntrarEventHandler;
+import edu.fiuba.algo3.vista.handlers.botonesOk.BotonEntrarEventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;

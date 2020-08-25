@@ -1,11 +1,12 @@
-package edu.fiuba.algo3.vista.handlers;
+package edu.fiuba.algo3.vista.handlers.botonesOk;
 
 import edu.fiuba.algo3.controlador.AvanzarAProximaPreguntaHandler;
 import edu.fiuba.algo3.controlador.AvanzarTurnoDeJugadorHandler;
 import edu.fiuba.algo3.modelo.Kahoot;
-import edu.fiuba.algo3.vista.ContenedorPuntajesFinales;
 import edu.fiuba.algo3.vista.TamanioDeVentana;
-import edu.fiuba.algo3.vista.contenedorDePreguntas.ContenedorPregunta;
+import edu.fiuba.algo3.vista.contenedores.ContenedorPaseDePantalla;
+import edu.fiuba.algo3.vista.contenedores.ContenedorPuntajesFinales;
+import edu.fiuba.algo3.vista.contenedores.contenedorDePreguntas.ContenedorPregunta;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -43,14 +44,14 @@ public class BotonOk implements EventHandler<ActionEvent> {
         if(yaRespondioUnJugador) {
             if(kahoot.sigueElJuego()) {//NO estamos en la ultima pregunta
                 new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);
-                proximoContenedor = ContenedorPregunta.crearContenedor(stage, kahoot, false);
+                proximoContenedor = new ContenedorPaseDePantalla(kahoot, stage, ContenedorPregunta.crearContenedor(stage, kahoot, false));
             } else {
                 new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);
                 proximoContenedor = new ContenedorPuntajesFinales(stage, kahoot);
             }
         } else {
             new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
-            proximoContenedor = ContenedorPregunta.crearContenedor(stage, kahoot, true);
+            proximoContenedor = proximoContenedor = new ContenedorPaseDePantalla(kahoot, stage, ContenedorPregunta.crearContenedor(stage, kahoot, true));
         }
 
         Scene escena = new Scene(proximoContenedor, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());

@@ -1,4 +1,4 @@
-package edu.fiuba.algo3.vista.handlers;
+package edu.fiuba.algo3.vista.handlers.botonesOk;
 
 import edu.fiuba.algo3.modelo.Kahoot;
 import javafx.event.ActionEvent;

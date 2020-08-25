@@ -1,7 +1,7 @@
 package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.modelo.Kahoot;
-import edu.fiuba.algo3.vista.ContenedorBienvenida;
+import edu.fiuba.algo3.vista.contenedores.ContenedorBienvenida;
 import edu.fiuba.algo3.vista.TamanioDeVentana;
 import javafx.application.Application;
 import javafx.scene.Scene;
