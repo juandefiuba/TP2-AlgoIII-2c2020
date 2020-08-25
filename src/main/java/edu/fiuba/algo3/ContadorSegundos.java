@@ -14,7 +14,7 @@ public class ContadorSegundos {
     static public Timer ContadorSegundos(Button boton, Text timer){
         Timer conteo = new Timer();
         timer.setStyle(" -fx-font-size: 3em");
-        final int[] numero = {16};
+        final int[] numero = {31};
         conteo.scheduleAtFixedRate(new TimerTask(){
             @Override
             public void run() {

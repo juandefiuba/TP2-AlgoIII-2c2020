@@ -13,6 +13,9 @@ public class OpcionCorrecta extends Opcion{
     }
 
     @Override
+    public void enlistarOpcionesIncorrectas(LinkedList<Opcion> opcionesCorrectas) {}
+
+    @Override
     public void validarOpcion(Pregunta pregunta) {
         pregunta.calificarRespuesta(new RespondeBien());
     }

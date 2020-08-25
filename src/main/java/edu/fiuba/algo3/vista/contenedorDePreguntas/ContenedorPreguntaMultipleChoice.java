@@ -28,7 +28,7 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
 
     @Override
     protected void contenedorCentral() {
-        stage.setTitle("Pregunta Multiple Choice " + tipoDePregunta + "| Turno de: " + kahoot.obtenerJugadorActual().getNombreJugador());
+        stage.setTitle("Pregunta Multiple Choice " + tipoDePregunta + "| Turno de: " + kahoot.obtenerJugadorActual().getNombreJugador() + " Puntaje: " + kahoot.obtenerJugadorActual().obtenerPuntos());
 
         String rutaArchivoFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png";
         this.setImagenFondo(kahoot, stage, rutaArchivoFondo);

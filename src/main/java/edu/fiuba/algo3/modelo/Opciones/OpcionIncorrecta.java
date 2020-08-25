@@ -10,6 +10,11 @@ public class OpcionIncorrecta extends Opcion{
     @Override
     public void enlistarOpcionesCorrectas(LinkedList<Opcion> opcionesCorrectas) {}
 
+    @Override
+    public void enlistarOpcionesIncorrectas(LinkedList<Opcion> opcionesIncorrectas) {
+        opcionesIncorrectas.add(this);
+    }
+
 
     @Override
     public void validarOpcion(Pregunta pregunta) {

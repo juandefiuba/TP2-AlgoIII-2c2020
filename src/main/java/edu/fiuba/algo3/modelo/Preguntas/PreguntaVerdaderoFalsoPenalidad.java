@@ -11,7 +11,7 @@ import edu.fiuba.algo3.modelo.Puntos.*;
 
 import java.util.LinkedList;
 
-public class PreguntaVerdaderoFalsoPenalidad extends PreguntaBase {
+public class PreguntaVerdaderoFalsoPenalidad extends Pregunta {
 
     public PreguntaVerdaderoFalsoPenalidad(LinkedList<Opcion> opciones) {
         super(opciones);

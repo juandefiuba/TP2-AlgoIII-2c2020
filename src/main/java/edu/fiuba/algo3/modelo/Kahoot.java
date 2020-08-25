@@ -6,7 +6,6 @@ import edu.fiuba.algo3.modelo.Excepciones.NoHayJugadoresException;
 import edu.fiuba.algo3.modelo.Excepciones.NoHayPreguntasException;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
-import edu.fiuba.algo3.modelo.Preguntas.PreguntaBase;
 
 import java.io.IOException;
 import java.util.LinkedList;
@@ -86,7 +85,7 @@ public class Kahoot { //Singleton
 		return this.turno.sigueElJuego();
 	}
 	
-	public PreguntaBase obtenerPreguntaActual() {
+	public Pregunta obtenerPreguntaActual() {
 		return this.turno.obtenerPregunta();
 	}
 	

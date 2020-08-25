@@ -12,12 +12,9 @@ import edu.fiuba.algo3.modelo.Puntajes.PuntajeValido;
 import edu.fiuba.algo3.modelo.Puntajes.PuntajeNulo;
 import edu.fiuba.algo3.modelo.Puntos.PuntoEstatico;
 
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.Map;
 
-public class PreguntaGroupChoice extends PreguntaBase {
+public class PreguntaGroupChoice extends Pregunta {
 
     public PreguntaGroupChoice(LinkedList<Opcion> opcionesDeLaPregunta) {
         super(opcionesDeLaPregunta);
@@ -28,18 +25,22 @@ public class PreguntaGroupChoice extends PreguntaBase {
 
     public Puntaje obtenerPuntajeBaseDelJugador(Jugador jugador) {
         this.puntajeDelJugador = new PuntajeValido();
-        super.obtenerPuntajeBaseDelJugador(jugador);
+
 
         LinkedList<Opcion> opcionesCorrectas = new LinkedList<>();
+        LinkedList<Opcion> opcionesIncorrectas = new LinkedList<>();
         opciones.forEach(opcion -> opcion.enlistarOpcionesCorrectas(opcionesCorrectas));
+        opciones.forEach(opcion -> opcion.enlistarOpcionesIncorrectas(opcionesIncorrectas));
         opcionesCorrectas.removeAll(this.respuestasDeLosJugadores.get(jugador));
-
+        opcionesIncorrectas.removeAll(this.respuestasDeLosJugadores.get(jugador));
         LinkedList<Opcion> opcionesCorrectasNoElegidasPorElJugador = opcionesCorrectas;
+        LinkedList<Opcion> opcionesIncorrectasNoElegidasPorElJugador = opcionesIncorrectas;
 
-        if(!opcionesCorrectasNoElegidasPorElJugador.isEmpty()){
+        if(!opcionesCorrectasNoElegidasPorElJugador.isEmpty() && !opcionesIncorrectasNoElegidasPorElJugador.isEmpty()){
             this.calificarRespuesta(new RespondeMal());
         }
 
+        this.calificarRespuesta(new RespondeBien());
         return this.puntajeDelJugador;
     }
 

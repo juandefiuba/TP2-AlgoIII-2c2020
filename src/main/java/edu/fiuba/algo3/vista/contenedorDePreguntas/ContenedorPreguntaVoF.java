@@ -29,7 +29,7 @@ public class ContenedorPreguntaVoF extends ContenedorPregunta {
 
     @Override
     protected void contenedorCentral() {
-        stage.setTitle("Pregunta Verdadero o Falso " + tipoDePregunta + "| Turno de: " + kahoot.obtenerJugadorActual().getNombreJugador());
+        stage.setTitle("Pregunta Verdadero o Falso " + tipoDePregunta + "| Turno de: " + kahoot.obtenerJugadorActual().getNombreJugador() + " Puntaje: " + kahoot.obtenerJugadorActual().obtenerPuntos());
         //Falta escena en el medio que indique cambio de turno
         String rutaArchivoFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png";
         this.setImagenFondo(kahoot, stage, rutaArchivoFondo);
