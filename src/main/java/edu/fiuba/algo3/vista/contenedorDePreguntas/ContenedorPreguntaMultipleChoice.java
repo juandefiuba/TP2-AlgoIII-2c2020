@@ -18,19 +18,23 @@ import java.util.Iterator;
 
 public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
 
+    private final String tipoDePregunta;
     BarraDeMenu menuBar;
     Kahoot kahoot;
     boolean yaRespondioJugador;
 
-    public ContenedorPreguntaMultipleChoice(Stage stage, Kahoot kahoot, boolean yaRespondioJugador) {
+
+    public ContenedorPreguntaMultipleChoice(Stage stage, Kahoot kahoot, boolean yaRespondioJugador, String tipoDePregunta) {
         this.setMenu(stage);
         this.yaRespondioJugador = yaRespondioJugador;
+        this.tipoDePregunta = tipoDePregunta;
         this.contenedorCentral(stage, kahoot);
         stage.sizeToScene();
     }
 
     private void contenedorCentral(Stage stage, Kahoot kahoot) {
-        this.imprimirNombreYPuntaje(kahoot, stage);
+        stage.setTitle("Pregunta Multiple Choice "+tipoDePregunta+" "+kahoot.obtenerJugadorActual().getNombreJugador());
+
         String rutaArchivoFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png";
         this.setImagenFondo(kahoot, stage, rutaArchivoFondo);
 
@@ -49,9 +53,6 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
             }
             contenedorOpciones.getChildren().add(opcionesHorizontal);
         }
-        String nombreJugador = kahoot.obtenerJugadorActual().getNombreJugador();
-        int puntaje= kahoot.obtenerJugadorActual().obtenerPuntos();
-        stage.setTitle("Pregunta MultipleChoice - Turno de " + nombreJugador + ". Puntaje: " + puntaje);
 
         //PREGUNTA (TAMBIÉN BOTÓN)
         Button cajaDePregunta = new Button(kahoot.obtenerPreguntaActual().obtenerTexto());

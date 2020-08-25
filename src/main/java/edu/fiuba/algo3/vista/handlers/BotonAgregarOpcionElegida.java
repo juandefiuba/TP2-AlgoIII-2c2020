@@ -30,7 +30,6 @@ public class BotonAgregarOpcionElegida implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        stage.setTitle("Pregunta Verdadero o Falso - Turno de " + "Jugador1");
         botonOpcion1.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #000000");
         botonOpcion2.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #000000");
         if(yaRespondioUnJugador  &&  kahoot.sigueElJuego()){

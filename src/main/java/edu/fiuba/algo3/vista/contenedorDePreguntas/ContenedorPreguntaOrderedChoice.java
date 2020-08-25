@@ -30,7 +30,9 @@ public class ContenedorPreguntaOrderedChoice extends ContenedorPregunta {
     }
 
     private void contenedorCentral(Stage stage, Kahoot kahoot) {
-        this.imprimirNombreYPuntaje(kahoot, stage);
+        stage.setTitle("Pregunta Ordered Choice " + kahoot.obtenerJugadorActual().getNombreJugador());
+
+
         String rutaArchivoFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png";
         this.setImagenFondo(kahoot, stage, rutaArchivoFondo);
 

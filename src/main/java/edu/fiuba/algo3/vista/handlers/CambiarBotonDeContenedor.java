@@ -5,14 +5,14 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
-public class cambiarBotonDeContenedor implements EventHandler<ActionEvent> {
+public class CambiarBotonDeContenedor implements EventHandler<ActionEvent> {
 
     private final Button boton;
     private final VBox contenedorAntiguo;
     private final VBox contenedorNuevo;
     private final Button botonOk;
 
-    public cambiarBotonDeContenedor(Button boton, VBox contenedorAntiguo, VBox contenedorNuevo, Button botonOk) {
+    public CambiarBotonDeContenedor(Button boton, VBox contenedorAntiguo, VBox contenedorNuevo, Button botonOk) {
         this.contenedorAntiguo = contenedorAntiguo;
         this.contenedorNuevo = contenedorNuevo;
         this.boton = boton;

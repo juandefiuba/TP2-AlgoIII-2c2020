@@ -25,7 +25,6 @@ public class ContenedorPuntajesFinales extends ContenedorPregunta {
     }
 
     private void contenedorCentral(Stage stage, Kahoot kahoot) {
-        this.imprimirNombreYPuntaje(kahoot, stage);
         String rutaArchivoFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png";
         this.setImagenFondo(kahoot, stage, rutaArchivoFondo);
         String estiloPuntajeJugador = "-fx-border-color: #000000; -fx-border-width: 5px; -fx-background-color: #FFFFFF; -fx-font-size: 3em ;-fx-text-fill: #000000";
@@ -79,7 +78,7 @@ public class ContenedorPuntajesFinales extends ContenedorPregunta {
         opcionesDadas.getChildren().add(botonOpcion);
         botonOpcion.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #000000");
         botonOpcion.setMinSize(100,50);
-        botonOpcion.setOnAction(new SeleccionarOpcionGroupChoice(botonOpcion, pasarAGrupo1, pasarAGrupo2, grupo1, grupo2, opcionesDadas, botonOk));
+        botonOpcion.setOnAction(new SeleccionarOpcionGroupChoice(botonOpcion, pasarAGrupo1, pasarAGrupo2, grupo1, grupo2, opcionesDadas, botonOk, opcion, kahoot));
         //new cambiarBotonDeContenedor(botonOpcion, opcionesDadas, opcionesMarcadas)
     }
 }

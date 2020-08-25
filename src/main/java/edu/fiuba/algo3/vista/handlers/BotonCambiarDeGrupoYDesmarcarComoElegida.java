@@ -31,7 +31,7 @@ public class BotonCambiarDeGrupoYDesmarcarComoElegida implements EventHandler<Ac
     @Override
     public void handle(ActionEvent actionEvent) {
         botonOk.requestFocus();
-        new cambiarBotonDeContenedor(boton, contenedorNuevo, contenedorAntiguo, botonOk).handle(actionEvent);
+        new CambiarBotonDeContenedor(boton, contenedorNuevo, contenedorAntiguo, botonOk).handle(actionEvent);
         new RemoverOpcionElegidaHandler(kahoot, opcion).handle(actionEvent);
         boton.setOnAction(new BotonCambiarDeGrupoYMarcarComoElegida(kahoot, boton, opcion, contenedorAntiguo, contenedorNuevo, botonOk));
     }
