@@ -15,7 +15,7 @@ public class Musica {
         mediaPlayer = new MediaPlayer(media);
 
         //LOOP MÚSICA
-        mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.seek(Duration.INDEFINITE));
+        mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.seek(Duration.ZERO));
 
         mediaPlayer.play();
     }
