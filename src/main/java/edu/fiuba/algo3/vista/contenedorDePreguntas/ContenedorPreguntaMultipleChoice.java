@@ -19,12 +19,14 @@ import java.util.Iterator;
 public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
 
     private final String tipoDePregunta;
+    private final HBox botonesBonus;
     BarraDeMenu menuBar;
     Kahoot kahoot;
     boolean yaRespondioJugador;
+    //Todas las variables en comun entre todos los tipos de preguntas modularizar al padre, y tambien super() para crear.
 
-
-    public ContenedorPreguntaMultipleChoice(Stage stage, Kahoot kahoot, boolean yaRespondioJugador, String tipoDePregunta) {
+    public ContenedorPreguntaMultipleChoice(Stage stage, Kahoot kahoot, boolean yaRespondioJugador, String tipoDePregunta, HBox botonesBonus) {
+        this.botonesBonus = botonesBonus;
         this.setMenu(stage);
         this.yaRespondioJugador = yaRespondioJugador;
         this.tipoDePregunta = tipoDePregunta;
@@ -61,18 +63,23 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
         cajaDePregunta.setTextAlignment(TextAlignment.CENTER);
         cajaDePregunta.setMinSize(500,100);
 
+
+
         //CONTENEDOR DE PREGUNTA Y OPCIONES
         VBox contenedorVertical = new VBox();
         contenedorVertical.getChildren().addAll(cajaDePregunta, contenedorOpciones, botonOk);
         contenedorVertical.setAlignment(Pos.CENTER);
-        contenedorVertical.setSpacing(80);
+        contenedorVertical.setSpacing(50);
 
         this.setCenter(contenedorVertical);
+        //this.setBottom(botonesBonus);
     }
 
     private void setMenu(Stage stage) {
         this.menuBar = new BarraDeMenu(stage);
-        this.setTop(menuBar);
+        VBox tope = new VBox();
+        tope.getChildren().addAll(menuBar, botonesBonus);
+        this.setTop(tope);
     }
 
     void agregarBotonOpcion(HBox opcionesHorizontal, Kahoot kahoot, Stage stage, Iterator iteradorDeOpciones, Button botonOk){

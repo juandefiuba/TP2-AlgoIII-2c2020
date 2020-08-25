@@ -25,10 +25,10 @@ public class ContenedorPuntajesFinales extends ContenedorPregunta {
     }
 
     private void contenedorCentral(Stage stage, Kahoot kahoot) {
-        String rutaArchivoFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png";
+        String rutaArchivoFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/fondoCongrats.jpg";
         this.setImagenFondo(kahoot, stage, rutaArchivoFondo);
         String estiloPuntajeJugador = "-fx-border-color: #000000; -fx-border-width: 5px; -fx-background-color: #FFFFFF; -fx-font-size: 3em ;-fx-text-fill: #000000";
-        stage.setTitle("Kahoot!");
+        stage.setTitle("Puntajes");
         
         Button botonSalir = new Button("Cerrar");
         botonSalir.setStyle(" -fx-font-size: 3em; -fx-alignment: center");
@@ -44,6 +44,7 @@ public class ContenedorPuntajesFinales extends ContenedorPregunta {
         puntajeJugador2.setStyle(estiloPuntajeJugador);
         puntajes.getChildren().addAll(puntajeJugador1, puntajeJugador2);
         puntajes.setAlignment(Pos.CENTER);
+        puntajes.setSpacing(20);
         String nombreGanador;
 
         if(jugador1.obtenerPuntos() > jugador2.obtenerPuntos()) {
@@ -56,8 +57,9 @@ public class ContenedorPuntajesFinales extends ContenedorPregunta {
             }
         }
 
-        Text titulo = new Text("Puntajes:"+"\n\n"+"Ganador: "+ nombreGanador);
+        Text titulo = new Text("Ganador: "+ nombreGanador);
         titulo.setStyle("-fx-font-size: 3em ");
+
 
         //CONTENEDOR DE PREGUNTA Y OPCIONES
         VBox contenedorVertical = new VBox();

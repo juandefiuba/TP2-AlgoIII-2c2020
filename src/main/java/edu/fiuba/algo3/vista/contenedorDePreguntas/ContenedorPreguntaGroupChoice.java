@@ -16,21 +16,22 @@ import java.util.Iterator;
 
 public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
 
+    private final HBox botonesBonus;
     BarraDeMenu menuBar;
     Kahoot kahoot;
     boolean yaRespondioJugador;
 
-    public ContenedorPreguntaGroupChoice(Stage stage, Kahoot kahoot, boolean yaRespondioJugador) {
-        this.setMenu(stage);
+    public ContenedorPreguntaGroupChoice(Stage stage, Kahoot kahoot, boolean yaRespondioJugador, HBox botonesBonus) {
         this.yaRespondioJugador = yaRespondioJugador;
         this.kahoot = kahoot;
+        this.botonesBonus = botonesBonus;
         this.contenedorCentral(stage, kahoot);
+        this.setMenu(stage);
         stage.sizeToScene();
     }
 
     private void contenedorCentral(Stage stage, Kahoot kahoot) {
         stage.setTitle("Pregunta Ordered Choice " + kahoot.obtenerJugadorActual().getNombreJugador());
-
 
         String rutaArchivoFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png";
         this.setImagenFondo(kahoot, stage, rutaArchivoFondo);
@@ -66,7 +67,7 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
 
         //CONTENEDOR DE PREGUNTA Y OPCIONES
         VBox contenedorVertical = new VBox();
-        contenedorVertical.getChildren().addAll(cajaDePregunta, menuInteractivo, botonOk);
+        contenedorVertical.getChildren().addAll(cajaDePregunta, menuInteractivo, botonOk, botonesBonus);
         contenedorVertical.setAlignment(Pos.CENTER);
         contenedorVertical.setSpacing(100);
 
@@ -75,7 +76,9 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
 
     private void setMenu(Stage stage) {
         this.menuBar = new BarraDeMenu(stage);
-        this.setTop(menuBar);
+        VBox tope = new VBox();
+        tope.getChildren().addAll(menuBar, botonesBonus);
+        this.setTop(tope);
     }
 
     void agregarBotonOpcion(Stage stage, Opcion opcion, VBox opcionesDadas, VBox grupo1, VBox grupo2, VBox grupoDado, Button pasarAGrupo1, Button pasarAGrupo2, Button botonOk){

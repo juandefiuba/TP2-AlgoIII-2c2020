@@ -17,15 +17,17 @@ import java.util.Iterator;
 
 public class ContenedorPreguntaOrderedChoice extends ContenedorPregunta {
 
+    private final HBox botonesBonus;
     BarraDeMenu menuBar;
     Kahoot kahoot;
     boolean yaRespondioJugador;
 
-    public ContenedorPreguntaOrderedChoice(Stage stage, Kahoot kahoot, boolean yaRespondioJugador) {
-        this.setMenu(stage);
+    public ContenedorPreguntaOrderedChoice(Stage stage, Kahoot kahoot, boolean yaRespondioJugador, HBox botonesBonus) {
         this.kahoot = kahoot;
         this.yaRespondioJugador = yaRespondioJugador;
+        this.botonesBonus = botonesBonus;
         this.contenedorCentral(stage, kahoot);
+        this.setMenu(stage);
         stage.sizeToScene();
     }
 
@@ -70,16 +72,18 @@ public class ContenedorPreguntaOrderedChoice extends ContenedorPregunta {
 
         //CONTENEDOR DE PREGUNTA Y OPCIONES
         VBox contenedorVertical = new VBox();
-        contenedorVertical.getChildren().addAll(cajaDePregunta, opciones, botonOk);
+        contenedorVertical.getChildren().addAll(cajaDePregunta, opciones, botonOk, botonesBonus);
         contenedorVertical.setAlignment(Pos.CENTER);
-        contenedorVertical.setSpacing(100);
+        contenedorVertical.setSpacing(75);
 
         this.setCenter(contenedorVertical);
     }
 
     private void setMenu(Stage stage) {
         this.menuBar = new BarraDeMenu(stage);
-        this.setTop(menuBar);
+        VBox tope = new VBox();
+        tope.getChildren().addAll(menuBar, botonesBonus);
+        this.setTop(tope);
     }
 
     void agregarBotonOpcion(Stage stage, Opcion opcion, VBox opcionesDadas, VBox opcionesMarcadas, Button botonOk){

@@ -20,12 +20,14 @@ public class ContenedorPreguntaVoF extends ContenedorPregunta {
     private final String tipoDePregunta;
     BarraDeMenu menuBar;
     boolean yaRespondioJugador;
+    HBox botonesBonus;
 
-    public ContenedorPreguntaVoF(Stage stage, Kahoot kahoot, boolean yaRespondioJugador, String tipoDePregunta) {
-        this.setMenu(stage);
+    public ContenedorPreguntaVoF(Stage stage, Kahoot kahoot, boolean yaRespondioJugador, String tipoDePregunta, HBox botonesBonus) {
         this.yaRespondioJugador = yaRespondioJugador;
         this.tipoDePregunta = tipoDePregunta;
+        this.botonesBonus = botonesBonus;
         this.contenedorCentral(stage, kahoot);
+        this.setMenu(stage);
         stage.sizeToScene();
     }
 
@@ -39,8 +41,6 @@ public class ContenedorPreguntaVoF extends ContenedorPregunta {
         //CONTENEDOR DE OPCIONES
         Iterator iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         HBox opcionesHorizontal = new HBox();
-        Button botonBonus = this.getBonusButton(kahoot);
-        botonBonus.setAlignment(Pos.BOTTOM_LEFT);
         Button botonOpcion1 = agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones);
         Button botonOpcion2 = agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones);
 
@@ -54,9 +54,10 @@ public class ContenedorPreguntaVoF extends ContenedorPregunta {
 
         //CONTENEDOR DE PREGUNTA Y OPCIONES
         VBox contenedorVertical = new VBox();
-        contenedorVertical.getChildren().addAll(cajaDePregunta, opcionesHorizontal, botonBonus);
+        contenedorVertical.getChildren().addAll(cajaDePregunta, opcionesHorizontal, botonesBonus);
         contenedorVertical.setAlignment(Pos.CENTER);
         contenedorVertical.setSpacing(100);
+
 
 
         this.setCenter(contenedorVertical);
@@ -64,7 +65,9 @@ public class ContenedorPreguntaVoF extends ContenedorPregunta {
 
     private void setMenu(Stage stage) {
         this.menuBar = new BarraDeMenu(stage);
-        this.setTop(menuBar);
+        VBox tope = new VBox();
+        tope.getChildren().addAll(menuBar, botonesBonus);
+        this.setTop(tope);
     }
 
     Button agregarBotonOpcion(HBox opcionesHorizontal, Kahoot kahoot, Stage stage, Iterator iteradorDeOpciones){
