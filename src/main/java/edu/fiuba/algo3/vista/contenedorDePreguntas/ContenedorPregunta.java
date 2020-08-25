@@ -1,7 +1,10 @@
 package edu.fiuba.algo3.vista.contenedorDePreguntas;
 
+import edu.fiuba.algo3.controlador.ActivarExclusividadHandler;
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Preguntas.*;
+import edu.fiuba.algo3.vista.handlers.BotonOkChoice;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
@@ -36,5 +39,56 @@ public class ContenedorPregunta extends BorderPane {
         Image imagen = new Image(rutaArchivoImagen);
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
+    }
+
+    public Button getBonusButton(Kahoot kahoot){
+        Pregunta pregunta = kahoot.obtenerPreguntaActual();
+
+        if(pregunta instanceof PreguntaVerdaderoFalso) {
+            Button botonBonus = new Button("BonusTest");
+            botonBonus.setStyle(" -fx-font-size: 2em");
+            botonBonus.setOnAction(new ActivarExclusividadHandler(kahoot));
+            return botonBonus;
+        }
+
+        if(pregunta instanceof PreguntaVerdaderoFalsoPenalidad){
+            Button botonBonus = new Button("BonusTest");
+            botonBonus.setStyle(" -fx-font-size: 2em");
+            botonBonus.setOnAction(new ActivarExclusividadHandler(kahoot));
+            return botonBonus;
+        }
+
+        if (pregunta instanceof PreguntaMultipleChoiceClasico){
+            Button botonBonus = new Button("BonusTest");
+            botonBonus.setStyle(" -fx-font-size: 2em");
+            botonBonus.setOnAction(new ActivarExclusividadHandler(kahoot));
+            return botonBonus;
+        }
+
+        if (pregunta instanceof PreguntaMultipleChoiceParcial){
+            Button botonBonus = new Button("BonusTest");
+            botonBonus.setStyle(" -fx-font-size: 2em");
+            botonBonus.setOnAction(new ActivarExclusividadHandler(kahoot));
+            return botonBonus;
+        }
+
+        if (pregunta instanceof PreguntaMultipleChoicePenalidad){
+            Button botonBonus = new Button("BonusTest");
+            botonBonus.setStyle(" -fx-font-size: 2em");
+            botonBonus.setOnAction(new ActivarExclusividadHandler(kahoot));
+            return botonBonus;
+        }
+
+        if (pregunta instanceof PreguntaGroupChoice){
+            Button botonBonus = new Button("BonusTest");
+            botonBonus.setStyle(" -fx-font-size: 2em");
+            botonBonus.setOnAction(new ActivarExclusividadHandler(kahoot));
+            return botonBonus;
+        }
+
+        Button botonBonus = new Button("BonusTest");
+        botonBonus.setStyle(" -fx-font-size: 2em");
+        botonBonus.setOnAction(new ActivarExclusividadHandler(kahoot));
+        return botonBonus;
     }
 }

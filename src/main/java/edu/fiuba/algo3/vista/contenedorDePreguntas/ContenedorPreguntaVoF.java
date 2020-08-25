@@ -39,6 +39,8 @@ public class ContenedorPreguntaVoF extends ContenedorPregunta {
         //CONTENEDOR DE OPCIONES
         Iterator iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         HBox opcionesHorizontal = new HBox();
+        Button botonBonus = this.getBonusButton(kahoot);
+        botonBonus.setAlignment(Pos.BOTTOM_LEFT);
         Button botonOpcion1 = agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones);
         Button botonOpcion2 = agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones);
 
@@ -52,7 +54,7 @@ public class ContenedorPreguntaVoF extends ContenedorPregunta {
 
         //CONTENEDOR DE PREGUNTA Y OPCIONES
         VBox contenedorVertical = new VBox();
-        contenedorVertical.getChildren().addAll(cajaDePregunta, opcionesHorizontal);
+        contenedorVertical.getChildren().addAll(cajaDePregunta, opcionesHorizontal, botonBonus);
         contenedorVertical.setAlignment(Pos.CENTER);
         contenedorVertical.setSpacing(100);
 
