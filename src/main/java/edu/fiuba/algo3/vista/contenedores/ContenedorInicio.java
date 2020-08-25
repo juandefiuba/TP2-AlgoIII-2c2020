@@ -29,7 +29,7 @@ public class ContenedorInicio extends BorderPane {
     private void contenedorCentral(Stage stage, Kahoot kahoot) {
 
         //FONDO
-        String rutaArchivoImagen = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png";
+        String rutaArchivoImagen = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/kahoot-1.png";
         Image imagen = new Image(rutaArchivoImagen);
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));

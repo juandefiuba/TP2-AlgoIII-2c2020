@@ -59,7 +59,7 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
         //CONTENEDOR DE PREGUNTA Y OPCIONES
         VBox contenedorVertical = new VBox();
         contenedorVertical.getChildren().addAll(cajaDePregunta, contenedorOpciones, botonOk);
-        contenedorVertical.setAlignment(Pos.TOP_CENTER);
+        contenedorVertical.setAlignment(Pos.CENTER);
         contenedorVertical.setSpacing(50);
 
         this.setCenter(contenedorVertical);

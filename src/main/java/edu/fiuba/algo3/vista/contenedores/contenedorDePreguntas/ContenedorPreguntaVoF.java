@@ -54,7 +54,7 @@ public class ContenedorPreguntaVoF extends ContenedorPregunta {
         //CONTENEDOR DE PREGUNTA Y OPCIONES
         VBox contenedorVertical = new VBox();
         contenedorVertical.getChildren().addAll(cajaDePregunta, opcionesHorizontal);
-        contenedorVertical.setAlignment(Pos.TOP_CENTER);
+        contenedorVertical.setAlignment(Pos.CENTER);
         contenedorVertical.setSpacing(100);
         this.setCenter(contenedorVertical);
     }
