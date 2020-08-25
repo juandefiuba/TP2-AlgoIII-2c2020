@@ -1,5 +1,6 @@
 package edu.fiuba.algo3.vista;
 
+import edu.fiuba.algo3.App;
 import edu.fiuba.algo3.controlador.SalirDelJuegoHandler;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Kahoot;
@@ -10,8 +11,13 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
+
+import java.nio.file.Paths;
 
 public class ContenedorPuntajesFinales extends BorderPane {
 
@@ -25,7 +31,7 @@ public class ContenedorPuntajesFinales extends BorderPane {
     }
 
     private void contenedorCentral(Stage stage, Kahoot kahoot) {
-        String rutaArchivoFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/fondoCongrats.jpg";
+        String rutaArchivoFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/sale-banner-II.jpg";
         Image imagen = new Image(rutaArchivoFondo);
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
@@ -69,6 +75,8 @@ public class ContenedorPuntajesFinales extends BorderPane {
         contenedorVertical.setSpacing(100);
 
         this.setCenter(contenedorVertical);
+        String rutaArchivoMusica = "src/main/java/edu/fiuba/algo3/vista/musica/sound-effect-tada.wav";
+        musica(rutaArchivoMusica);
     }
 
     private void setMenu(Stage stage) {
@@ -82,6 +90,14 @@ public class ContenedorPuntajesFinales extends BorderPane {
         botonOpcion.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #000000");
         botonOpcion.setMinSize(100,50);
         botonOpcion.setOnAction(new SeleccionarOpcionGroupChoice(botonOpcion, pasarAGrupo1, pasarAGrupo2, grupo1, grupo2, opcionesDadas, botonOk, opcion, kahoot));
-        //new cambiarBotonDeContenedor(botonOpcion, opcionesDadas, opcionesMarcadas)
+    }
+
+    MediaPlayer mediaPlayer;
+    public void musica(String rutaArchivoMusica) {
+        Media media = new Media(Paths.get(rutaArchivoMusica).toUri().toString());
+        mediaPlayer = new MediaPlayer(media);
+
+        //LOOP MÚSICA
+        mediaPlayer.play();
     }
 }

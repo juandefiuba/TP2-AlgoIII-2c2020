@@ -42,12 +42,12 @@ public class App extends Application {
         stage.setScene(escenaBienvenida);
 
         stage.show();
-        musica();
+        String rutaArchivoMusica = "src/main/java/edu/fiuba/algo3/vista/musica/lobby-music-8bit-edition.wav";
+        musica(rutaArchivoMusica);
     }
 
     MediaPlayer mediaPlayer;
-    public void musica() {
-        String rutaArchivoMusica = "src/main/java/edu/fiuba/algo3/vista/musica/lobby-music-8bit-edition.wav";
+    public void musica(String rutaArchivoMusica) {
         Media media = new Media(Paths.get(rutaArchivoMusica).toUri().toString());
         mediaPlayer = new MediaPlayer(media);
 

@@ -38,7 +38,7 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
         botonOk.setStyle(" -fx-font-size: 2em");
         botonOk.setOnAction(new BotonOk(kahoot, stage, yaRespondioJugador, ContadorSegundos.ContadorSegundos(botonOk, timer)));
 
-        Iterator iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
+        Iterator<Opcion> iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         VBox contenedorOpciones = new VBox();
         while (iteradorDeOpciones.hasNext()) {
             HBox opcionesHorizontal = new HBox();
@@ -65,8 +65,8 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
         this.setCenter(contenedorVertical);
     }
 
-    void agregarBotonOpcion(HBox opcionesHorizontal, Kahoot kahoot, Stage stage, Iterator iteradorDeOpciones, Button botonOk){
-        Opcion opcion = (Opcion) iteradorDeOpciones.next();
+    void agregarBotonOpcion(HBox opcionesHorizontal, Kahoot kahoot, Stage stage, Iterator<Opcion> iteradorDeOpciones, Button botonOk){
+        Opcion opcion = iteradorDeOpciones.next();
         Button botonOpcion = new Button(opcion.obtenerTexto());
         botonOpcion.setOnAction(new MarcarOpcionMultipleChoice(kahoot, opcion, botonOpcion, botonOk));
         botonOpcion.setStyle("-fx-font-size: 2em; -fx-border-width: 5px; -fx-border-color: #000000");

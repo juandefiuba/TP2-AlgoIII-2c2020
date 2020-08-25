@@ -35,6 +35,11 @@ public class BotonOk implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent){
         BorderPane proximoContenedor;
         conteo.cancel();
+        avanzarTurno(actionEvent, yaRespondioUnJugador, kahoot, stage);
+    }
+
+    static void avanzarTurno(ActionEvent actionEvent, boolean yaRespondioUnJugador, Kahoot kahoot, Stage stage) {
+        BorderPane proximoContenedor;
         if(yaRespondioUnJugador) {
             if(kahoot.sigueElJuego()) {//NO estamos en la ultima pregunta
                 new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);

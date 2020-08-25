@@ -26,7 +26,7 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
 
     @Override
     protected void contenedorCentral() {
-        stage.setTitle("Pregunta Ordered Choice" + "| Turno de: " + kahoot.obtenerJugadorActual().getNombreJugador());
+        stage.setTitle("Pregunta Group Choice" + "| Turno de: " + kahoot.obtenerJugadorActual().getNombreJugador());
 
         String rutaArchivoFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png";
         this.setImagenFondo(kahoot, stage, rutaArchivoFondo);
@@ -45,7 +45,7 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
         botonOk.setStyle(" -fx-font-size: 2em");
         botonOk.setOnAction(new BotonOkVisualGroupChoice(kahoot, stage, yaRespondioJugador, vboxOpcionesDadas, mensaje, conteo));
 
-        Iterator iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
+        Iterator<Opcion> iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         HBox menuInteractivo = new HBox();
         Button botonPasarAGrupo1 = new Button("<-");
         Button botonPasarAGrupo2 = new Button("->");
@@ -54,7 +54,7 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
         menuInteractivo.setAlignment(Pos.CENTER);
         menuInteractivo.setSpacing(100);
         while (iteradorDeOpciones.hasNext()) {
-            Opcion opcion = (Opcion) iteradorDeOpciones.next();
+            Opcion opcion = iteradorDeOpciones.next();
             agregarBotonOpcion(stage, opcion, vboxOpcionesDadas, vboxOpcionesGrupo1, vboxOpcionesGrupo2, vboxOpcionesDadas, botonPasarAGrupo1, botonPasarAGrupo2, botonOk);
         }
 

@@ -47,7 +47,7 @@ public abstract class PreguntaBase implements Pregunta{
 		if (this.respuestasDeLosJugadores.containsKey(jugador)) {
 			this.respuestasDeLosJugadores.get(jugador).add(opcion);
 		} else {
-			LinkedList<Opcion> respuestas = new LinkedList<Opcion>();
+			LinkedList<Opcion> respuestas = new LinkedList<>();
 			respuestas.add(opcion);
 			this.agregarRespuestaDeJugador(jugador, respuestas);
 		}
@@ -64,7 +64,7 @@ public abstract class PreguntaBase implements Pregunta{
 	}
 
 	@Override
-	public Iterator obtenerOpciones() {
+	public Iterator<Opcion> obtenerOpciones() {
 		return opciones.iterator();
 	}
 
@@ -78,7 +78,7 @@ public abstract class PreguntaBase implements Pregunta{
 		this.puntajeDelJugador = new PuntajeValido();
 		LinkedList<Opcion> respuestaDelJugador = this.respuestasDeLosJugadores.get(unJugador);
 
-		respuestaDelJugador.forEach(opcion -> this.calificarRespuesta(opcion));
+		respuestaDelJugador.forEach(this::calificarRespuesta);
 		return this.puntajeDelJugador;
 	}
 }

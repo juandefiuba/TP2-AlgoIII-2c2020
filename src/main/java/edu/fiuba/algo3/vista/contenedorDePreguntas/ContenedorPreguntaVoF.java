@@ -39,7 +39,7 @@ public class ContenedorPreguntaVoF extends ContenedorPregunta {
         botonOkInvisible.setOnAction(new BotonOk(kahoot, stage, yaRespondioJugador, conteo));
 
         //CONTENEDOR DE OPCIONES
-        Iterator iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
+        Iterator<Opcion> iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         HBox opcionesHorizontal = new HBox();
         Button botonOpcion1 = agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones, conteo);
         Button botonOpcion2 = agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones, conteo);
@@ -59,8 +59,8 @@ public class ContenedorPreguntaVoF extends ContenedorPregunta {
         this.setCenter(contenedorVertical);
     }
 
-    Button agregarBotonOpcion(HBox opcionesHorizontal, Kahoot kahoot, Stage stage, Iterator iteradorDeOpciones, Timer conteo){
-        Opcion opcion = (Opcion) iteradorDeOpciones.next();
+    Button agregarBotonOpcion(HBox opcionesHorizontal, Kahoot kahoot, Stage stage, Iterator<Opcion> iteradorDeOpciones, Timer conteo){
+        Opcion opcion = iteradorDeOpciones.next();
         Button botonOpcion = new Button(opcion.obtenerTexto());
         botonOpcion.setOnAction(new BotonOkVoF(kahoot, stage, opcion, botonOpcion, yaRespondioJugador, conteo));
         botonOpcion.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #000000");

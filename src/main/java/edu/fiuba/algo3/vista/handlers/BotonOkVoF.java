@@ -42,20 +42,6 @@ public class BotonOkVoF implements EventHandler<ActionEvent> {
         conteo.cancel();
 
         new AgregarOpcionElegidaHandler(kahoot, opcion).handle(actionEvent);
-        if(yaRespondioUnJugador) {
-            if(kahoot.sigueElJuego()) {//NO estamos en la ultima pregunta
-                new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);
-                proximoContenedor = ContenedorPregunta.crearContenedor(stage, kahoot, false);
-            } else {
-                new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);
-                proximoContenedor = new ContenedorPuntajesFinales(stage, kahoot);
-            }
-        } else {
-            new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
-            proximoContenedor = ContenedorPregunta.crearContenedor(stage, kahoot, true);
-        }
-
-        Scene escenaPregunta = new Scene(proximoContenedor, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
-        stage.setScene(escenaPregunta);
+        BotonOk.avanzarTurno(actionEvent, yaRespondioUnJugador, kahoot, stage);
     }
 }

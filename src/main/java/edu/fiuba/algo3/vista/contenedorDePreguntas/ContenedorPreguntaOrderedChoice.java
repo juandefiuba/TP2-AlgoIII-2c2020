@@ -34,11 +34,11 @@ public class ContenedorPreguntaOrderedChoice extends ContenedorPregunta {
         botonOk.setStyle(" -fx-font-size: 2em");
         botonOk.setOnAction(new BotonOk(kahoot, stage, yaRespondioJugador, ContadorSegundos.ContadorSegundos(botonOk, timer)));
 
-        Iterator iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
+        Iterator<Opcion> iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         VBox vboxOpcionesDadas = new VBox();
         VBox vboxOpcionesMarcadas = new VBox();
         while (iteradorDeOpciones.hasNext()) {
-            Opcion opcion = (Opcion) iteradorDeOpciones.next();
+            Opcion opcion = iteradorDeOpciones.next();
             agregarBotonOpcion(stage, opcion, vboxOpcionesDadas, vboxOpcionesMarcadas, botonOk);
         }
 
