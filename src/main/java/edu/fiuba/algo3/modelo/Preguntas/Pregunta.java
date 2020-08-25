@@ -18,5 +18,6 @@ public interface Pregunta {
     void calificarRespuesta(RespondeMal calificador);
     void agregarRespuestaDeJugador(Jugador jugador, LinkedList<Opcion> respuestas);
     void agregarRespuestaDeJugador(Jugador jugador, Opcion opcion);
+    boolean respondio(Jugador jugador);
 	void removerRespuestaDeJugador(Jugador jugadorActual, Opcion opcion);
 }

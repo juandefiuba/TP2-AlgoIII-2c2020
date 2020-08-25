@@ -52,6 +52,11 @@ public abstract class PreguntaBase implements Pregunta{
 			this.agregarRespuestaDeJugador(jugador, respuestas);
 		}
 	}
+	
+	@Override
+	public boolean respondio(Jugador jugador) {
+		return this.respuestasDeLosJugadores.containsKey(jugador);
+	}
 
 	@Override
 	public void removerRespuestaDeJugador(Jugador jugador, Opcion opcion) {
