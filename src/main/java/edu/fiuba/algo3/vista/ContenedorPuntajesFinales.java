@@ -8,12 +8,12 @@ import edu.fiuba.algo3.vista.contenedorDePreguntas.ContenedorPregunta;
 import edu.fiuba.algo3.vista.handlers.SeleccionarOpcionGroupChoice;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class ContenedorPuntajesFinales extends ContenedorPregunta {
+public class ContenedorPuntajesFinales extends BorderPane {
 
     BarraDeMenu menuBar;
     Kahoot kahoot;
@@ -26,14 +26,16 @@ public class ContenedorPuntajesFinales extends ContenedorPregunta {
 
     private void contenedorCentral(Stage stage, Kahoot kahoot) {
         String rutaArchivoFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/fondoCongrats.jpg";
-        this.setImagenFondo(kahoot, stage, rutaArchivoFondo);
+        Image imagen = new Image(rutaArchivoFondo);
+        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
+        this.setBackground(new Background(imagenDeFondo));
+
         String estiloPuntajeJugador = "-fx-border-color: #000000; -fx-border-width: 5px; -fx-background-color: #FFFFFF; -fx-font-size: 3em ;-fx-text-fill: #000000";
         stage.setTitle("Puntajes");
         
         Button botonSalir = new Button("Cerrar");
         botonSalir.setStyle(" -fx-font-size: 3em; -fx-alignment: center");
         botonSalir.setOnAction(new SalirDelJuegoHandler());
-
 
         HBox puntajes = new HBox();
         Jugador jugador1 = kahoot.obtenerJugadores().getFirst();
@@ -59,7 +61,6 @@ public class ContenedorPuntajesFinales extends ContenedorPregunta {
 
         Text titulo = new Text("Ganador: "+ nombreGanador);
         titulo.setStyle("-fx-font-size: 3em ");
-
 
         //CONTENEDOR DE PREGUNTA Y OPCIONES
         VBox contenedorVertical = new VBox();

@@ -33,8 +33,8 @@ public class SeleccionarOpcionGroupChoice implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        botonOpcion.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #46c2b8");
-        pasarAGrupo1.setOnAction(new MoverOpcionAGrupo(botonOpcion, grupoDado, grupo1 , botonOk, opcion, kahoot));
-        pasarAGrupo2.setOnAction(new CambiarBotonDeContenedor(botonOpcion, grupoDado, grupo2, botonOk));
+        botonOpcion.setStyle("-fx-font-size: 2em; -fx-border-width: 5px; -fx-border-color: #46c2b8");
+        pasarAGrupo1.setOnAction(new MoverOpcionAGrupo(botonOpcion, grupoDado, grupo1 , botonOk, opcion, kahoot, pasarAGrupo1, pasarAGrupo2, true));
+        pasarAGrupo2.setOnAction(new MoverOpcionAGrupo(botonOpcion, grupoDado, grupo2 , botonOk, opcion, kahoot, pasarAGrupo1, pasarAGrupo2, false));
     }
 }

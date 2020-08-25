@@ -24,12 +24,6 @@ public class BotonParaIngresarNombre implements EventHandler<ActionEvent> {
 		this.kahoot = kahoot;
 		this.yaIngresaronUnNombre = false;
 	}
-	//Recibir el nombre
-	//Mandar a Kahoot el nombre
-	//Limpiar la caja de texto
-	//Recibir el nombre
-	//Mandar a Kahoot el nombre
-	//Ir al contenedor de la pregunta
 
 	@Override
 	public void handle(ActionEvent actionEvent) {

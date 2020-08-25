@@ -16,21 +16,30 @@ public class MoverOpcionAGrupo implements EventHandler<ActionEvent> {
     private final Button botonOk;
     private final Opcion opcion;
     private final Kahoot kahoot;
+    private final Button pasarAGrupo2;
+    private final Button pasarAGrupo1;
+    private final boolean agregarOpcion;
 
-    public MoverOpcionAGrupo(Button boton, VBox contenedorAntiguo, VBox contenedorNuevo, Button botonOk, Opcion opcion, Kahoot kahoot) {
+    public MoverOpcionAGrupo(Button boton, VBox contenedorAntiguo, VBox contenedorNuevo, Button botonOk, Opcion opcion, Kahoot kahoot, Button pasarAGrupo1, Button pasarAGrupo2, boolean agregarOpcion) {
         this.contenedorAntiguo = contenedorAntiguo;
         this.contenedorNuevo = contenedorNuevo;
         this.boton = boton;
         this.botonOk = botonOk;
         this.opcion = opcion;
         this.kahoot = kahoot;
+        this.pasarAGrupo1 = pasarAGrupo1;
+        this.pasarAGrupo2 = pasarAGrupo2;
+        this.agregarOpcion = agregarOpcion;
 
     }
     @Override
     public void handle(ActionEvent actionEvent) {
         new CambiarBotonDeContenedor(boton, contenedorAntiguo, contenedorNuevo, botonOk).handle(actionEvent);
-        new AgregarOpcionElegidaHandler(kahoot, opcion).handle(actionEvent);
+        if (agregarOpcion)
+            new AgregarOpcionElegidaHandler(kahoot, opcion).handle(actionEvent);
         boton.setOnAction(e->{});
+        pasarAGrupo1.setOnAction(e->{});
+        pasarAGrupo2.setOnAction(e->{});
         botonOk.requestFocus();
     }
 

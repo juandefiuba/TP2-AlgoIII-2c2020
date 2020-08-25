@@ -1,49 +1,50 @@
 package edu.fiuba.algo3.vista.contenedorDePreguntas;
 
+import edu.fiuba.algo3.ContadorSegundos;
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.vista.BarraDeMenu;
+import edu.fiuba.algo3.vista.handlers.BotonOkChoice;
 import edu.fiuba.algo3.vista.handlers.BotonOkVoF;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.util.Iterator;
+import java.util.Timer;
 
 //variable global spacing y tamaño botones
 
 public class ContenedorPreguntaVoF extends ContenedorPregunta {
 
     private final String tipoDePregunta;
-    BarraDeMenu menuBar;
-    boolean yaRespondioJugador;
-    HBox botonesBonus;
 
     public ContenedorPreguntaVoF(Stage stage, Kahoot kahoot, boolean yaRespondioJugador, String tipoDePregunta, HBox botonesBonus) {
-        this.yaRespondioJugador = yaRespondioJugador;
+        super(stage, botonesBonus, kahoot, yaRespondioJugador);
         this.tipoDePregunta = tipoDePregunta;
-        this.botonesBonus = botonesBonus;
-        this.contenedorCentral(stage, kahoot);
-        this.setMenu(stage);
-        stage.sizeToScene();
+        this.contenedorCentral();
     }
 
-    private void contenedorCentral(Stage stage, Kahoot kahoot) {
-        stage.setTitle("Pregunta Verdadero o Falso "+tipoDePregunta+" "+kahoot.obtenerJugadorActual().getNombreJugador());
+    @Override
+    protected void contenedorCentral() {
+        stage.setTitle("Pregunta Verdadero o Falso " + tipoDePregunta + "| Turno de: " + kahoot.obtenerJugadorActual().getNombreJugador());
         //Falta escena en el medio que indique cambio de turno
         String rutaArchivoFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png";
         this.setImagenFondo(kahoot, stage, rutaArchivoFondo);
 
+        Button botonOkInvisible = new Button();
+        Timer conteo = ContadorSegundos.ContadorSegundos(botonOkInvisible, timer);
+        botonOkInvisible.setOnAction(new BotonOkChoice(kahoot, stage, yaRespondioJugador, conteo));
 
         //CONTENEDOR DE OPCIONES
         Iterator iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         HBox opcionesHorizontal = new HBox();
-        Button botonOpcion1 = agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones);
-        Button botonOpcion2 = agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones);
-
+        Button botonOpcion1 = agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones, conteo);
+        Button botonOpcion2 = agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones, conteo);
 
         //PREGUNTA (TAMBIÉN BOTÓN)
         Button cajaDePregunta = new Button(kahoot.obtenerPreguntaActual().obtenerTexto());
@@ -54,26 +55,16 @@ public class ContenedorPreguntaVoF extends ContenedorPregunta {
 
         //CONTENEDOR DE PREGUNTA Y OPCIONES
         VBox contenedorVertical = new VBox();
-        contenedorVertical.getChildren().addAll(cajaDePregunta, opcionesHorizontal, botonesBonus);
-        contenedorVertical.setAlignment(Pos.CENTER);
+        contenedorVertical.getChildren().addAll(cajaDePregunta, opcionesHorizontal);
+        contenedorVertical.setAlignment(Pos.TOP_CENTER);
         contenedorVertical.setSpacing(100);
-
-
-
         this.setCenter(contenedorVertical);
     }
 
-    private void setMenu(Stage stage) {
-        this.menuBar = new BarraDeMenu(stage);
-        VBox tope = new VBox();
-        tope.getChildren().addAll(menuBar, botonesBonus);
-        this.setTop(tope);
-    }
-
-    Button agregarBotonOpcion(HBox opcionesHorizontal, Kahoot kahoot, Stage stage, Iterator iteradorDeOpciones){
+    Button agregarBotonOpcion(HBox opcionesHorizontal, Kahoot kahoot, Stage stage, Iterator iteradorDeOpciones, Timer conteo){
         Opcion opcion = (Opcion) iteradorDeOpciones.next();
         Button botonOpcion = new Button(opcion.obtenerTexto());
-        botonOpcion.setOnAction(new BotonOkVoF(kahoot, stage, opcion, botonOpcion, yaRespondioJugador));
+        botonOpcion.setOnAction(new BotonOkVoF(kahoot, stage, opcion, botonOpcion, yaRespondioJugador, conteo));
         botonOpcion.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #000000");
         botonOpcion.setMinSize(500,100);
         opcionesHorizontal.getChildren().add(botonOpcion);

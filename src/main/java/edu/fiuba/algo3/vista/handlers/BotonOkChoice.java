@@ -14,24 +14,27 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.util.LinkedList;
+import java.util.Timer;
 
 public class BotonOkChoice implements EventHandler<ActionEvent> {
 
+    private final Timer conteo;
     private boolean yaRespondioUnJugador;
     private final Kahoot kahoot;
     private final Stage stage;
     private LinkedList<Button> opciones;
 
-    public BotonOkChoice(Kahoot kahoot, Stage stage, boolean yaRespondioUnJugador){
+    public BotonOkChoice(Kahoot kahoot, Stage stage, boolean yaRespondioUnJugador, Timer conteo){
         this.yaRespondioUnJugador = yaRespondioUnJugador;
         this.kahoot = kahoot;
         this.stage = stage;
+        this.conteo = conteo;
     }
 
     @Override
     public void handle(ActionEvent actionEvent){
         BorderPane proximoContenedor;
-
+        conteo.cancel();
         if(yaRespondioUnJugador) {
             if(kahoot.sigueElJuego()) {//NO estamos en la ultima pregunta
                 new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);
