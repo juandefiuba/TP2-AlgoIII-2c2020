@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class ContenedorInicio extends BorderPane {
@@ -38,6 +39,8 @@ public class ContenedorInicio extends BorderPane {
         Label titulo = new Label("Ingrese nombre del jugador:");
         titulo.setFont(Font.font("Tahoma", FontWeight.BOLD, 55));
 
+        Text mensajeInput = new Text();
+
         //ENTRADA DE TEXTO
         TextField textField = new TextField();
         textField.setPromptText("Nombre");
@@ -50,13 +53,13 @@ public class ContenedorInicio extends BorderPane {
         Button botonOk = new Button("Ok");
         botonOk.setStyle(estiloBoton);
         botonOk.setMinSize(200,100);
-        botonOk.setOnAction(new BotonParaIngresarNombre(textField, stage, kahoot));
+        botonOk.setOnAction(new BotonParaIngresarNombre(textField, stage, kahoot, mensajeInput));
 
         textField.setOnKeyPressed(new TextoEventHandler(botonOk));
 
         //CONTENEDOR DE TEXTO, ENTRADA Y BOTÓN
         VBox contenedorVertical = new VBox();
-        contenedorVertical.getChildren().addAll(titulo, textField, botonOk);
+        contenedorVertical.getChildren().addAll(titulo, textField, mensajeInput, botonOk);
         contenedorVertical.setSpacing(20);
         contenedorVertical.setAlignment(Pos.CENTER);
 
