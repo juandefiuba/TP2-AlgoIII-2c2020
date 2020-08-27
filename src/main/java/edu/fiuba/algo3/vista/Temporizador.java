@@ -7,10 +7,12 @@ import javafx.scene.text.Text;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class ContadorSegundos {
+public class Temporizador {
 
-     public Timer comenzar(Button boton, Text timerVisual, int segundos){
-        Timer timer = new Timer();
+    private static Timer timer;
+
+     public static Timer comenzar(Button boton, Text timerVisual, int segundos){
+        timer = new Timer();
         final int[] numero = {segundos};
         numero[0]++;
         timer.scheduleAtFixedRate(new TimerTask(){
@@ -27,4 +29,12 @@ public class ContadorSegundos {
         }, 0, 1000);
         return timer;
     }
+
+    public static void stop() {
+         timer.cancel();
+    }
+
+
+
+
 }

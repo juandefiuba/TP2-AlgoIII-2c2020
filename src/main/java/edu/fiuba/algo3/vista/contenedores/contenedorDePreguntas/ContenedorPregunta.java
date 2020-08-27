@@ -4,10 +4,9 @@ import edu.fiuba.algo3.controlador.ActivarExclusividadHandler;
 import edu.fiuba.algo3.controlador.MultiplicadorPorDosHandler;
 import edu.fiuba.algo3.controlador.MultiplicadorPorTresHandler;
 import edu.fiuba.algo3.modelo.Kahoot;
-import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.*;
 import edu.fiuba.algo3.vista.BarraDeMenu;
-import edu.fiuba.algo3.vista.ContadorSegundos;
+import edu.fiuba.algo3.vista.Temporizador;
 import edu.fiuba.algo3.vista.handlers.botonesOk.BotonOk;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -17,7 +16,6 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
-import java.util.Iterator;
 import java.util.Timer;
 
 public abstract class ContenedorPregunta extends BorderPane {
@@ -41,10 +39,10 @@ public abstract class ContenedorPregunta extends BorderPane {
         this.timerVisual = new Text();
         this.timerVisual.setStyle(" -fx-font-size: 30px ;-fx-font-weight: bold ; -fx-fill: black;-fx-stroke: #ee0000 ;-fx-stroke-width: 1px");
         this.botonesBonus = botonesBonus;
-
         this.textoPregunta = ContenedorPregunta.this.getTextoPregunta(kahoot);
+
         this.botonOk = ContenedorPregunta.this.getBotonOk();
-        this.contenedorDeOpciones= this.inicializarContenedorOpciones();
+        this.contenedorDeOpciones = this.inicializarContenedorOpciones();
         this.setMenu(stage, botonesBonus);
         stage.sizeToScene();
 
@@ -65,7 +63,6 @@ public abstract class ContenedorPregunta extends BorderPane {
 
         if (pregunta instanceof PreguntaMultipleChoiceClasico) {
             return new ContenedorPreguntaMultipleChoice(stage, kahoot, yaRespondioJugador, "Pregunta Multiple Choice Clásico", ContenedorPregunta.botonExclusividad(kahoot));
-
         }
 
         if (pregunta instanceof PreguntaMultipleChoiceParcial)
@@ -122,7 +119,7 @@ public abstract class ContenedorPregunta extends BorderPane {
     protected Button getBotonOk () {
         Button botonOk = new Button("Ok");
         botonOk.setStyle(" -fx-font-size: 2em");
-        this.timer = ContadorSegundos.comenzar(botonOk, this.timerVisual, 21);
+        this.timer = Temporizador.comenzar(botonOk, this.timerVisual, 20);
         botonOk.setOnAction(new BotonOk(kahoot, stage, yaRespondioJugador, this.timer));
         return botonOk;
     }

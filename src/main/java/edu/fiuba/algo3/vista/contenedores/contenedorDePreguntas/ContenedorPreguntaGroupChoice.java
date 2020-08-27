@@ -1,21 +1,16 @@
 package edu.fiuba.algo3.vista.contenedores.contenedorDePreguntas;
 
-import edu.fiuba.algo3.vista.ContadorSegundos;
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
-import edu.fiuba.algo3.vista.handlers.botonesOk.BotonOk;
-import edu.fiuba.algo3.vista.handlers.botonesOk.BotonOkVisualGroupChoice;
 import edu.fiuba.algo3.vista.handlers.SeleccionarOpcionGroupChoice;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.util.Iterator;
-import java.util.Timer;
 
 public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
 
@@ -35,20 +30,9 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
 
     @Override
     protected Pane inicializarContenedorOpciones() {
-        Text mensaje = new Text();
-        mensaje.setStyle(" -fx-font-size: 25px ;-fx-font-weight: bold ; -fx-fill: #ff0000;-fx-stroke: #000000 ;-fx-stroke-width: 2px");
-
         VBox vboxOpcionesDadas = new VBox();
         VBox vboxOpcionesGrupo1 = new VBox();
         VBox vboxOpcionesGrupo2 = new VBox();
-
-        Button botonOkInvisible = new Button();
-        timer = ContadorSegundos.comenzar(botonOkInvisible, timerVisual, 21);
-        botonOkInvisible.setOnAction(new BotonOk(kahoot, stage, yaRespondioJugador, timer));
-
-        Button botonOk = new Button("OK");
-        botonOk.setStyle(" -fx-font-size: 2em");
-        botonOk.setOnAction(new BotonOkVisualGroupChoice(kahoot, stage, yaRespondioJugador, vboxOpcionesDadas, mensaje, timer));
 
         Iterator<Opcion> iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         HBox menuInteractivo = new HBox();

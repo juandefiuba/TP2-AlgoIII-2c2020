@@ -17,6 +17,6 @@ public class AgregarOpcionElegidaHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        kahoot.agregarOpcionElegida(new OpcionIncorrecta());
+        kahoot.agregarOpcionElegida(opcion);
     }
 }
