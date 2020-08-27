@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vista.contenedores.contenedorDePreguntas;
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.vista.handlers.SeleccionarOpcionGroupChoice;
+import edu.fiuba.algo3.vista.handlers.botonesOk.BotonOkGroupChoice;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
@@ -34,6 +35,8 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
         VBox vboxOpcionesGrupo1 = new VBox();
         VBox vboxOpcionesGrupo2 = new VBox();
 
+        this.cambiarComportamientoBotonOk(new BotonOkGroupChoice(kahoot, stage, yaRespondioJugador, vboxOpcionesDadas));
+
         Iterator<Opcion> iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         HBox menuInteractivo = new HBox();
         Button botonPasarAGrupo1 = new Button("<-");
@@ -51,17 +54,4 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
         opciones.setAlignment(Pos.CENTER);
         return opciones;
     }
-/*
-    @Override
-    protected void inicializarContenedorCentral(String rutaFondo, Pos Posicion, int spacing) {
-        stage.setTitle(tipoDePregunta);
-        this.setImagenFondo(kahoot, stage, rutaFondo);
-
-        //CONTENEDOR DE PREGUNTA Y OPCIONES
-        VBox contenedorVertical = new VBox();
-        contenedorVertical.getChildren().addAll(textoPregunta, contenedorDeOpciones);
-        contenedorVertical.setAlignment(Posicion);
-        contenedorVertical.setSpacing(spacing);
-        this.setCenter(contenedorVertical);
-    }*/
 }

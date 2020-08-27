@@ -8,6 +8,8 @@ import edu.fiuba.algo3.modelo.Preguntas.*;
 import edu.fiuba.algo3.vista.BarraDeMenu;
 import edu.fiuba.algo3.vista.Temporizador;
 import edu.fiuba.algo3.vista.handlers.botonesOk.BotonOk;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -15,8 +17,6 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
-
-import java.util.Timer;
 
 public abstract class ContenedorPregunta extends BorderPane {
 
@@ -27,7 +27,6 @@ public abstract class ContenedorPregunta extends BorderPane {
     protected boolean yaRespondioJugador;
     protected Stage stage;
     protected Text timerVisual;
-    protected Timer timer;
     protected Button botonOk;
     protected String tipoDePregunta;
     protected Pane contenedorDeOpciones;
@@ -45,7 +44,6 @@ public abstract class ContenedorPregunta extends BorderPane {
         this.contenedorDeOpciones = this.inicializarContenedorOpciones();
         this.setMenu(stage, botonesBonus);
         stage.sizeToScene();
-
     }
 
     abstract protected Pane inicializarContenedorOpciones();
@@ -116,12 +114,16 @@ public abstract class ContenedorPregunta extends BorderPane {
         return textoPregunta;
     }
 
-    protected Button getBotonOk () {
+    protected Button getBotonOk() {
         Button botonOk = new Button("Ok");
         botonOk.setStyle(" -fx-font-size: 2em");
-        this.timer = Temporizador.comenzar(botonOk, this.timerVisual, 20);
-        botonOk.setOnAction(new BotonOk(kahoot, stage, yaRespondioJugador, this.timer));
+        Temporizador.comenzar(botonOk, this.timerVisual, 20);
+        botonOk.setOnAction(new BotonOk(kahoot, stage, yaRespondioJugador));
         return botonOk;
+    }
+
+    protected void cambiarComportamientoBotonOk(EventHandler<ActionEvent> handler){
+        this.botonOk.setOnAction(handler);
     }
 
     //métodos estáticos

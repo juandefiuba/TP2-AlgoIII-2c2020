@@ -10,7 +10,6 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.util.Iterator;
-import java.util.Timer;
 
 //variable global spacing y tamaño botones
 
@@ -23,10 +22,10 @@ public class ContenedorPreguntaVoF extends ContenedorPregunta {
     }
 
 
-    void agregarBotonOpcion(HBox opcionesHorizontal, Kahoot kahoot, Stage stage, Iterator<Opcion> iteradorDeOpciones, Timer conteo){
+    void agregarBotonOpcion(HBox opcionesHorizontal, Kahoot kahoot, Stage stage, Iterator<Opcion> iteradorDeOpciones){
         Opcion opcion = iteradorDeOpciones.next();
         Button botonOpcion = new Button(opcion.obtenerTexto());
-        botonOpcion.setOnAction(new BotonOkVoF(kahoot, stage, opcion, botonOpcion, yaRespondioJugador, conteo));
+        botonOpcion.setOnAction(new BotonOkVoF(kahoot, stage, opcion, botonOpcion, yaRespondioJugador));
         botonOpcion.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #000000");
         botonOpcion.setMinSize(250,50);
         opcionesHorizontal.getChildren().add(botonOpcion);
@@ -39,8 +38,8 @@ public class ContenedorPreguntaVoF extends ContenedorPregunta {
     protected Pane inicializarContenedorOpciones() {
         Iterator<Opcion> iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         HBox opcionesHorizontal = new HBox();
-        agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones, timer);
-        agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones, timer);
+        agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones);
+        agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones);
         return opcionesHorizontal;
     }
 }

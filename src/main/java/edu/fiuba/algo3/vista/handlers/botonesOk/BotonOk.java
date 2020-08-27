@@ -7,7 +7,6 @@ import edu.fiuba.algo3.vista.TamanioDeVentana;
 import edu.fiuba.algo3.vista.Temporizador;
 import edu.fiuba.algo3.vista.contenedores.ContenedorPaseDePantalla;
 import edu.fiuba.algo3.vista.contenedores.ContenedorPuntajesFinales;
-import edu.fiuba.algo3.vista.contenedores.contenedorDePreguntas.ContenedorPregunta;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -16,33 +15,30 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 import java.util.LinkedList;
-import java.util.Timer;
 
 public class BotonOk implements EventHandler<ActionEvent> {
 
-    private final Timer timer;
     private boolean yaRespondioUnJugador;
     private final Kahoot kahoot;
     private final Stage stage;
     private LinkedList<Button> opciones;
 
-    public BotonOk(Kahoot kahoot, Stage stage, boolean yaRespondioUnJugador, Timer timer){
+    public BotonOk(Kahoot kahoot, Stage stage, boolean yaRespondioUnJugador){
         this.yaRespondioUnJugador = yaRespondioUnJugador;
         this.kahoot = kahoot;
         this.stage = stage;
-        this.timer = timer;
     }
 
     @Override
     public void handle(ActionEvent actionEvent){
-        timer.cancel();
+        Temporizador.stop();
         avanzarTurno(actionEvent, yaRespondioUnJugador, kahoot, stage);
     }
 
     static void avanzarTurno(ActionEvent actionEvent, boolean yaRespondioUnJugador, Kahoot kahoot, Stage stage) {
         BorderPane proximoContenedor;
         if(yaRespondioUnJugador) {
-            if(kahoot.sigueElJuego()) {//NO estamos en la ultima pregunta
+            if(kahoot.sigueElJuego()) {
                 new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);
                 proximoContenedor = new ContenedorPaseDePantalla(kahoot, stage, false);
             } else {

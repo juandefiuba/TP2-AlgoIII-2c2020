@@ -11,7 +11,7 @@ public class Temporizador {
 
     private static Timer timer;
 
-     public static Timer comenzar(Button boton, Text timerVisual, int segundos){
+     public static void comenzar(Button boton, Text timerVisual, int segundos){
         timer = new Timer();
         final int[] numero = {segundos};
         numero[0]++;
@@ -27,14 +27,9 @@ public class Temporizador {
                 }
             }
         }, 0, 1000);
-        return timer;
     }
 
     public static void stop() {
          timer.cancel();
     }
-
-
-
-
 }
