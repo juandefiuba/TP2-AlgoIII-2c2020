@@ -9,9 +9,10 @@ import java.util.TimerTask;
 
 public class ContadorSegundos {
 
-    static public Timer comenzar(Button boton, Text timerVisual, int segundos){
+     public Timer comenzar(Button boton, Text timerVisual, int segundos){
         Timer timer = new Timer();
         final int[] numero = {segundos};
+        numero[0]++;
         timer.scheduleAtFixedRate(new TimerTask(){
             @Override
             public void run() {
