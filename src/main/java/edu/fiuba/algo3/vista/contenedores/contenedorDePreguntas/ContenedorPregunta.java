@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public abstract class ContenedorPregunta extends BorderPane {
@@ -94,5 +95,13 @@ public abstract class ContenedorPregunta extends BorderPane {
         VBox tope = new VBox();
         tope.getChildren().addAll(menuBar, bonusYTimer);
         this.setTop(tope);
+    }
+
+    public static Text getTextoPregunta(Kahoot kahoot){
+        Text textoPregunta = new Text(kahoot.obtenerPreguntaActual().obtenerTexto());
+        textoPregunta.setStyle(" -fx-font-size: 65px ;-fx-font-weight: bold ; -fx-fill: black;-fx-stroke: #ffffff ;-fx-stroke-width: 3px");
+        textoPregunta.setWrappingWidth(720);
+        textoPregunta.setTextAlignment(TextAlignment.CENTER);
+        return textoPregunta;
     }
 }

@@ -9,7 +9,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.TextAlignment;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.util.Iterator;
@@ -36,7 +36,7 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
         //BOTONES
         Button botonOk = new Button("OK");
         botonOk.setStyle(" -fx-font-size: 2em");
-        botonOk.setOnAction(new BotonOk(kahoot, stage, yaRespondioJugador, ContadorSegundos.ContadorSegundos(botonOk, timer)));
+        botonOk.setOnAction(new BotonOk(kahoot, stage, yaRespondioJugador, ContadorSegundos.comenzar(botonOk, timer)));
 
         Iterator<Opcion> iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         VBox contenedorOpciones = new VBox();
@@ -49,16 +49,12 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
             contenedorOpciones.getChildren().add(opcionesHorizontal);
         }
 
-        //PREGUNTA (TAMBIÉN BOTÓN)
-        Button cajaDePregunta = new Button(kahoot.obtenerPreguntaActual().obtenerTexto());
-        cajaDePregunta.setStyle("-fx-border-color: #000000; -fx-border-width: 5px; -fx-background-color: #ffffff; -fx-font-size: 4.5em ;-fx-text-fill: #000000");
-        cajaDePregunta.setWrapText(true);
-        cajaDePregunta.setTextAlignment(TextAlignment.CENTER);
-        cajaDePregunta.setMinSize(500,100);
+        //PREGUNTA
+        Text textoPregunta = getTextoPregunta(kahoot);
 
         //CONTENEDOR DE PREGUNTA Y OPCIONES
         VBox contenedorVertical = new VBox();
-        contenedorVertical.getChildren().addAll(cajaDePregunta, contenedorOpciones, botonOk);
+        contenedorVertical.getChildren().addAll(textoPregunta, contenedorOpciones, botonOk);
         contenedorVertical.setAlignment(Pos.CENTER);
         contenedorVertical.setSpacing(50);
 

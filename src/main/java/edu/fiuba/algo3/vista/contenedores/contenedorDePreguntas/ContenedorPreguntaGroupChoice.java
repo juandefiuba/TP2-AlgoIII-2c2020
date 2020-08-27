@@ -11,7 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 import java.util.Iterator;
@@ -39,7 +38,7 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
         VBox vboxOpcionesGrupo2 = new VBox();
 
         Button botonOkInvisible = new Button();
-        Timer conteo = ContadorSegundos.ContadorSegundos(botonOkInvisible, timer);
+        Timer conteo = ContadorSegundos.comenzar(botonOkInvisible, timer);
         botonOkInvisible.setOnAction(new BotonOk(kahoot, stage, yaRespondioJugador, conteo));
 
         Button botonOk = new Button("OK");
@@ -59,15 +58,12 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
             agregarBotonOpcion(stage, opcion, vboxOpcionesDadas, vboxOpcionesGrupo1, vboxOpcionesGrupo2, vboxOpcionesDadas, botonPasarAGrupo1, botonPasarAGrupo2, botonOk);
         }
 
-        //PREGUNTA (TAMBIÉN BOTÓN)
-        Text cajaDePregunta = new Text(kahoot.obtenerPreguntaActual().obtenerTexto());
-        cajaDePregunta.setStyle(" -fx-font-size: 65px ;-fx-font-weight: bold ; -fx-fill: black;-fx-stroke: #ffffff ;-fx-stroke-width: 3px");
-        cajaDePregunta.setWrappingWidth(720);
-        cajaDePregunta.setTextAlignment(TextAlignment.CENTER);
+        //PREGUNTA
+        Text textoPregunta = getTextoPregunta(kahoot);
 
         //CONTENEDOR DE PREGUNTA Y OPCIONES
         VBox contenedorVertical = new VBox();
-        contenedorVertical.getChildren().addAll(cajaDePregunta, menuInteractivo, mensaje, botonOk);
+        contenedorVertical.getChildren().addAll(textoPregunta, menuInteractivo, mensaje, botonOk);
         contenedorVertical.setAlignment(Pos.CENTER);
         contenedorVertical.setSpacing(50);
 

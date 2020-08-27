@@ -9,9 +9,9 @@ import java.util.TimerTask;
 
 public class ContadorSegundos {
 
-    static public Timer ContadorSegundos(Button boton, Text timer){
+    static public Timer comenzar(Button boton, Text timer){
         Timer conteo = new Timer();
-        timer.setStyle(" -fx-font-size: 3em");
+        timer.setStyle(" -fx-font-size: 40px ;-fx-font-weight: bold ; -fx-fill: black;-fx-stroke: #ffffff ;-fx-stroke-width: 2px");
         final int[] numero = {21};
         conteo.scheduleAtFixedRate(new TimerTask(){
             @Override
@@ -21,10 +21,10 @@ public class ContadorSegundos {
                     numero[0]--;
                 } else {
                     conteo.cancel();
-                    Platform.runLater(() -> boton.fire());
+                    Platform.runLater(boton::fire);
                 }
             }
-        }, 0000, 1000);
+        }, 0, 1000);
         return conteo;
     }
 }
