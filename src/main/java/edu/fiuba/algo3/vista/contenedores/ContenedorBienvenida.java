@@ -12,6 +12,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class ContenedorBienvenida extends VBox {
@@ -37,10 +38,8 @@ public class ContenedorBienvenida extends VBox {
 		botonSalir.setMinSize(200,100);
 
 		//TEXTO DE BIENVENIDA
-		Label etiqueta = new Label();
-		etiqueta.setFont(Font.font("Tahoma", FontWeight.BOLD, 60));
-		etiqueta.setText("Bienvenid@s a");
-		etiqueta.setTextFill(Color.BLACK);
+		Text etiqueta = new Text("Bienvenid@s a");
+		etiqueta.setStyle(" -fx-font-size: 100px ;-fx-font-weight: bold ; -fx-fill: black;-fx-stroke: #ffffff ;-fx-stroke-width: 4px");
 
 		//CONTENEDOR DE BOTONES
 		HBox contenedorHorizontal = new HBox();
@@ -50,7 +49,7 @@ public class ContenedorBienvenida extends VBox {
 
 		//CONTENEDOR PRINCIPAL
 		this.setAlignment(Pos.CENTER);
-		this.setSpacing(300);
+		this.setSpacing(400);
 		this.getChildren().addAll(etiqueta, contenedorHorizontal);
 
 		//LLAMADA A MANEJADORES

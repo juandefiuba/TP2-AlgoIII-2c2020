@@ -36,10 +36,11 @@ public class ContenedorInicio extends BorderPane {
         this.setBackground(new Background(imagenDeFondo));
 
         //ETIQUETA
-        Label titulo = new Label("Ingrese nombre del jugador:");
-        titulo.setFont(Font.font("Tahoma", FontWeight.BOLD, 55));
+        Text titulo = new Text("Ingrese nombre del jugador:");
+        titulo.setStyle(" -fx-font-size: 75px ;-fx-font-weight: bold ; -fx-fill: black;-fx-stroke: #ffffff ;-fx-stroke-width: 4px");
 
         Text mensajeInput = new Text();
+        mensajeInput.setStyle(" -fx-font-size: 50px ;-fx-font-weight: bold ; -fx-fill: #ff0000;-fx-stroke: #000000 ;-fx-stroke-width: 2px");
 
         //ENTRADA DE TEXTO
         TextField textField = new TextField();

@@ -24,7 +24,7 @@ public class ContenedorPreguntaOrderedChoice extends ContenedorPregunta {
 
     @Override
     protected void contenedorCentral() {
-        stage.setTitle("Pregunta Ordered Choice" + "| Turno de: " + kahoot.obtenerJugadorActual().getNombreJugador() + " Puntaje: " + kahoot.obtenerJugadorActual().obtenerPuntos());
+        stage.setTitle("Pregunta Ordered Choice");
 
         String rutaArchivoFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png";
         this.setImagenFondo(kahoot, stage, rutaArchivoFondo);

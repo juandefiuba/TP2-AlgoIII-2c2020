@@ -26,12 +26,13 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
 
     @Override
     protected void contenedorCentral() {
-        stage.setTitle("Pregunta Group Choice" + "| Turno de: " + kahoot.obtenerJugadorActual().getNombreJugador() + " Puntaje: " + kahoot.obtenerJugadorActual().obtenerPuntos());
+        stage.setTitle("Pregunta Group Choice");
 
         String rutaArchivoFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png";
         this.setImagenFondo(kahoot, stage, rutaArchivoFondo);
 
         Text mensaje = new Text();
+        mensaje.setStyle(" -fx-font-size: 25px ;-fx-font-weight: bold ; -fx-fill: #ff0000;-fx-stroke: #000000 ;-fx-stroke-width: 2px");
 
         VBox vboxOpcionesDadas = new VBox();
         VBox vboxOpcionesGrupo1 = new VBox();
@@ -59,11 +60,10 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
         }
 
         //PREGUNTA (TAMBIÉN BOTÓN)
-        Button cajaDePregunta = new Button(kahoot.obtenerPreguntaActual().obtenerTexto());
-        cajaDePregunta.setStyle("-fx-border-color: #000000; -fx-border-width: 5px; -fx-background-color: #ffffff; -fx-font-size: 4.5em ;-fx-text-fill: #000000");
-        cajaDePregunta.setWrapText(true);
+        Text cajaDePregunta = new Text(kahoot.obtenerPreguntaActual().obtenerTexto());
+        cajaDePregunta.setStyle(" -fx-font-size: 65px ;-fx-font-weight: bold ; -fx-fill: black;-fx-stroke: #ffffff ;-fx-stroke-width: 3px");
+        cajaDePregunta.setWrappingWidth(720);
         cajaDePregunta.setTextAlignment(TextAlignment.CENTER);
-        cajaDePregunta.setMinSize(500,100);
 
         //CONTENEDOR DE PREGUNTA Y OPCIONES
         VBox contenedorVertical = new VBox();
