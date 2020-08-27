@@ -62,15 +62,14 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
             Opcion opcion = iteradorDeOpciones.next();
             agregarBotonOpcion(stage, opcion, vboxOpcionesDadas, vboxOpcionesGrupo1, vboxOpcionesGrupo2, vboxOpcionesDadas, botonPasarAGrupo1, botonPasarAGrupo2, botonOk);
         }
-        VBox opcionesYAdvertencia = new VBox();
-        opcionesYAdvertencia.getChildren().addAll(menuInteractivo, mensaje, botonOk);
-        opcionesYAdvertencia.setAlignment(Pos.CENTER);
-        return opcionesYAdvertencia;
+        VBox opciones = new VBox();
+        opciones.getChildren().addAll(menuInteractivo);
+        opciones.setAlignment(Pos.CENTER);
+        return opciones;
     }
-
+/*
     @Override
     protected void inicializarContenedorCentral(String rutaFondo, Pos Posicion, int spacing) {
-        timer.cancel();
         stage.setTitle(tipoDePregunta);
         this.setImagenFondo(kahoot, stage, rutaFondo);
 
@@ -80,5 +79,5 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
         contenedorVertical.setAlignment(Posicion);
         contenedorVertical.setSpacing(spacing);
         this.setCenter(contenedorVertical);
-    }
+    }*/
 }

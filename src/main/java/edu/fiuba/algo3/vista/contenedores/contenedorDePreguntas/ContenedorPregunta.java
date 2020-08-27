@@ -50,7 +50,9 @@ public abstract class ContenedorPregunta extends BorderPane {
 
     }
 
+    abstract protected Pane inicializarContenedorOpciones();
 
+    //CONSTRUCTOR
     public static ContenedorPregunta crearContenedor(Stage stage, Kahoot kahoot, boolean yaRespondioJugador) {
         Pregunta pregunta = kahoot.obtenerPreguntaActual();
 
@@ -77,8 +79,6 @@ public abstract class ContenedorPregunta extends BorderPane {
 
         return new ContenedorPreguntaOrderedChoice(stage, kahoot, yaRespondioJugador, "Pregunta Ordered Choice", ContenedorPregunta.botonExclusividad(kahoot));
     }
-
-    abstract protected Pane inicializarContenedorOpciones();
 
     protected void inicializarContenedorCentral(String rutaFondo, Pos posicion, int spacing) {
         stage.setTitle(tipoDePregunta);
