@@ -15,11 +15,13 @@ public class Kahoot { //Singleton
 	private LinkedList<Jugador> jugadores;
 	private LinkedList<Pregunta> preguntas;
 	private Turno turno;
+	private LinkedList<Opcion> ultimasOpciones;
 
 	private Kahoot(String ruta) throws IOException {
 		this.jugadores = new LinkedList<>();
 		this.preguntas = this.leerPreguntas(ruta);
 		this.turno = new Turno();
+		this.ultimasOpciones = new LinkedList<>();
 	}
 
 	public static Kahoot Kahoot(String ruta) throws IOException {
@@ -63,6 +65,7 @@ public class Kahoot { //Singleton
 
 	public void avanzarAProximoJugador() {
 		this.turno.avanzarJugador();
+		this.ultimasOpciones.clear();
 	}
 
 	public void agregarRespuestaDeJugadorActual(LinkedList<Opcion> respuestas) {
@@ -71,6 +74,7 @@ public class Kahoot { //Singleton
 	
 	public void agregarOpcionElegida(Opcion opcion) {
 		this.turno.agregarOpcionElegida(opcion);
+		this.ultimasOpciones.add(opcion);
 	}
 
 	public void agregarPregunta(Pregunta pregunta) {
@@ -106,4 +110,10 @@ public class Kahoot { //Singleton
 	}
 
 	public void removerOpcionElegida(Opcion opcion) { this.turno.removerOpcionElegida(opcion); }
+
+	public void removerOpcionesElegidas() {
+		for (Opcion opcion: ultimasOpciones) {
+			removerOpcionElegida(opcion);
+		}
+	}
 }

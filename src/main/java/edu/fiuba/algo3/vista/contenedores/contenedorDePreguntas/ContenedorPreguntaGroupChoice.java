@@ -15,20 +15,6 @@ import java.util.Iterator;
 
 public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
 
-    public ContenedorPreguntaGroupChoice(Stage stage, Kahoot kahoot, boolean yaRespondioJugador, String tipoDePregunta, HBox botonesBonus) {
-        super(stage, botonesBonus, kahoot, yaRespondioJugador);
-        this.tipoDePregunta = tipoDePregunta;
-        this.inicializarContenedorCentral("file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png", Pos.TOP_CENTER, 100);
-    }
-
-    void agregarBotonOpcion(Stage stage, Opcion opcion, VBox opcionesDadas, VBox grupo1, VBox grupo2, VBox grupoDado, Button pasarAGrupo1, Button pasarAGrupo2, Button botonOk){
-        Button botonOpcion = new Button(opcion.obtenerTexto());
-        opcionesDadas.getChildren().add(botonOpcion);
-        botonOpcion.setStyle("-fx-font-size: 2em; -fx-border-width: 5px; -fx-border-color: #000000");
-        botonOpcion.setMinSize(250,50);
-        botonOpcion.setOnAction(new SeleccionarOpcionGroupChoice(botonOpcion, pasarAGrupo1, pasarAGrupo2, grupo1, grupo2, grupoDado, botonOk, opcion, kahoot));
-    }
-
     @Override
     protected Pane inicializarContenedorOpciones() {
         VBox vboxOpcionesDadas = new VBox();
@@ -54,4 +40,19 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
         opciones.setAlignment(Pos.CENTER);
         return opciones;
     }
+
+    public ContenedorPreguntaGroupChoice(Stage stage, Kahoot kahoot, boolean yaRespondioJugador, String tipoDePregunta, HBox botonesBonus) {
+        super(stage, botonesBonus, kahoot, yaRespondioJugador);
+        this.tipoDePregunta = tipoDePregunta;
+        this.inicializarContenedorCentral("file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png", Pos.TOP_CENTER, 100);
+    }
+
+    void agregarBotonOpcion(Stage stage, Opcion opcion, VBox opcionesDadas, VBox grupo1, VBox grupo2, VBox grupoDado, Button pasarAGrupo1, Button pasarAGrupo2, Button botonOk){
+        Button botonOpcion = new Button(opcion.obtenerTexto());
+        opcionesDadas.getChildren().add(botonOpcion);
+        botonOpcion.setStyle("-fx-font-size: 2em; -fx-border-width: 5px; -fx-border-color: #000000");
+        botonOpcion.setMinSize(250,50);
+        botonOpcion.setOnAction(new SeleccionarOpcionGroupChoice(botonOpcion, pasarAGrupo1, pasarAGrupo2, grupo1, grupo2, grupoDado, botonOk, opcion, kahoot));
+    }
+
 }
