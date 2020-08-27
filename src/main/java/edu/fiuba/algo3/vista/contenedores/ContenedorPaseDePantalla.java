@@ -1,10 +1,8 @@
 package edu.fiuba.algo3.vista.contenedores;
 
 import edu.fiuba.algo3.modelo.Kahoot;
-import edu.fiuba.algo3.vista.TamanioDeVentana;
 import edu.fiuba.algo3.vista.handlers.CambiarDeEscena;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -14,12 +12,12 @@ import javafx.stage.Stage;
 public class ContenedorPaseDePantalla extends BorderPane {
     private final Kahoot kahoot;
     private final Stage stage;
-    private final BorderPane contenedorProximaEscena;
+    private final boolean yaRespondioUnJugador;
 
-    public ContenedorPaseDePantalla(Kahoot kahoot, Stage stage, BorderPane contenedorProximaEscena) {
+    public ContenedorPaseDePantalla(Kahoot kahoot, Stage stage, boolean yaRespondioUnJugador) {
         this.kahoot = kahoot;
         this.stage = stage;
-        this.contenedorProximaEscena = contenedorProximaEscena;
+        this.yaRespondioUnJugador = yaRespondioUnJugador;
         this.contenedorCentral();
     }
 
@@ -33,7 +31,7 @@ public class ContenedorPaseDePantalla extends BorderPane {
 
         Button boton = new Button("Ok");
         VBox contenedorPrincipal = new VBox();
-        boton.setOnAction(new CambiarDeEscena(stage, new Scene(contenedorProximaEscena, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado())));
+        boton.setOnAction(new CambiarDeEscena(stage, kahoot, yaRespondioUnJugador));
 
         contenedorPrincipal.getChildren().addAll(texto, boton);
         contenedorPrincipal.setAlignment(Pos.CENTER);

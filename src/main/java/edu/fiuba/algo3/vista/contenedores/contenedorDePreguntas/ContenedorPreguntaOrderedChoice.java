@@ -3,7 +3,7 @@ package edu.fiuba.algo3.vista.contenedores.contenedorDePreguntas;
 import edu.fiuba.algo3.ContadorSegundos;
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
-import edu.fiuba.algo3.vista.handlers.botonesOk.BotonCambiarDeGrupoYMarcarComoElegida;
+import edu.fiuba.algo3.vista.handlers.CambiarDeGrupoYMarcarComoElegida;
 import edu.fiuba.algo3.vista.handlers.botonesOk.BotonOk;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -75,6 +75,6 @@ public class ContenedorPreguntaOrderedChoice extends ContenedorPregunta {
         opcionesDadas.getChildren().add(botonOpcion);
         botonOpcion.setStyle("-fx-font-size: 2em; -fx-border-width: 5px; -fx-border-color: #000000");
         botonOpcion.setMinSize(250,50);
-        botonOpcion.setOnAction(new BotonCambiarDeGrupoYMarcarComoElegida(kahoot, botonOpcion, opcion ,opcionesDadas, opcionesMarcadas, botonOk));
+        botonOpcion.setOnAction(new CambiarDeGrupoYMarcarComoElegida(kahoot, botonOpcion, opcion ,opcionesDadas, opcionesMarcadas, botonOk));
     }
 }

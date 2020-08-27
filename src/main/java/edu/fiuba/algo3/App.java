@@ -1,13 +1,14 @@
 package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.modelo.Kahoot;
-import edu.fiuba.algo3.vista.contenedores.ContenedorBienvenida;
 import edu.fiuba.algo3.vista.TamanioDeVentana;
+import edu.fiuba.algo3.vista.contenedores.ContenedorBienvenida;
+import edu.fiuba.algo3.vista.handlers.botonesOk.MusicaPlay;
 import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import static edu.fiuba.algo3.vista.Musica.musicaPlay;
 
 public class App extends Application {
 
@@ -35,7 +36,7 @@ public class App extends Application {
         stage.show();
         String rutaArchivoMusica = "src/main/java/edu/fiuba/algo3/vista/musica/lobby-music-8bit-edition.wav";
 
-        musicaPlay(rutaArchivoMusica);
+        new MusicaPlay(rutaArchivoMusica).handle(new ActionEvent());
     }
 
 }

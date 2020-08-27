@@ -37,15 +37,13 @@ public class BotonParaIngresarNombre implements EventHandler<ActionEvent> {
 			mensajeInput.setText("Por favor ingrese un nombre");
 			return;
 		}
-		else {
-			new NuevoJugadorHandler(kahoot, nombreJugador).handle(actionEvent);
-		}
+
+		new NuevoJugadorHandler(kahoot, nombreJugador).handle(actionEvent);
 		texto.clear();
 		texto.requestFocus();
 		if (yaIngresaronUnNombre) {
 			new IniciarJuegoHandler(kahoot).handle(actionEvent);
-			ContenedorPregunta contenedorPregunta = ContenedorPregunta.crearContenedor(stage, kahoot, false);
-			BorderPane contenedorTurnoDe = new ContenedorPaseDePantalla(kahoot, stage, contenedorPregunta);
+			BorderPane contenedorTurnoDe = new ContenedorPaseDePantalla(kahoot, stage, false);
 			Scene escenaPregunta = new Scene(contenedorTurnoDe, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
 			stage.sizeToScene();
 			stage.setScene(escenaPregunta);

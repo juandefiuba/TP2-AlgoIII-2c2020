@@ -44,14 +44,14 @@ public class BotonOk implements EventHandler<ActionEvent> {
         if(yaRespondioUnJugador) {
             if(kahoot.sigueElJuego()) {//NO estamos en la ultima pregunta
                 new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);
-                proximoContenedor = new ContenedorPaseDePantalla(kahoot, stage, ContenedorPregunta.crearContenedor(stage, kahoot, false));
+                proximoContenedor = new ContenedorPaseDePantalla(kahoot, stage, false);
             } else {
                 new AvanzarAProximaPreguntaHandler(kahoot).handle(actionEvent);
                 proximoContenedor = new ContenedorPuntajesFinales(stage, kahoot);
             }
         } else {
             new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
-            proximoContenedor = proximoContenedor = new ContenedorPaseDePantalla(kahoot, stage, ContenedorPregunta.crearContenedor(stage, kahoot, true));
+            proximoContenedor = proximoContenedor = new ContenedorPaseDePantalla(kahoot, stage, true);
         }
 
         Scene escena = new Scene(proximoContenedor, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
