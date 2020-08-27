@@ -44,9 +44,9 @@ public class BotonParaIngresarNombre implements EventHandler<ActionEvent> {
 		if (yaIngresaronUnNombre) {
 			new IniciarJuegoHandler(kahoot).handle(actionEvent);
 			BorderPane contenedorTurnoDe = new ContenedorPaseDePantalla(kahoot, stage, false);
-			Scene escenaPregunta = new Scene(contenedorTurnoDe, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
-			stage.sizeToScene();
+			Scene escenaPregunta = new Scene(contenedorTurnoDe,  TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
 			stage.setScene(escenaPregunta);
+			stage.sizeToScene();
 		}
 		yaIngresaronUnNombre = true;
 	}

@@ -22,8 +22,8 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent) {
         ContenedorInicio contenedorInicio = new ContenedorInicio(stage, kahoot);
         Scene escenaInicio = new Scene(contenedorInicio, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
-        stage.sizeToScene();
         stage.setScene(escenaInicio);
+        stage.sizeToScene();
     }
 
 }

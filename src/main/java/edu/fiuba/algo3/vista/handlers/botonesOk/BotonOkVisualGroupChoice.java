@@ -16,15 +16,15 @@ public class BotonOkVisualGroupChoice implements EventHandler<ActionEvent> {
     private final Stage stage;
     private final VBox vboxOpcionesDadas;
     private final Text mensaje;
-    private final Timer conteo;
+    private final Timer timer;
 
-    public BotonOkVisualGroupChoice(Kahoot kahoot, Stage stage, boolean yaRespondioUnJugador, VBox vboxOpcionesDadas, Text mensaje, Timer conteo){
+    public BotonOkVisualGroupChoice(Kahoot kahoot, Stage stage, boolean yaRespondioUnJugador, VBox vboxOpcionesDadas, Text mensaje, Timer timer){
         this.yaRespondioUnJugador = yaRespondioUnJugador;
         this.kahoot = kahoot;
         this.stage = stage;
         this.vboxOpcionesDadas = vboxOpcionesDadas;
         this.mensaje = mensaje;
-        this.conteo = conteo;
+        this.timer = timer;
     }
 
     @Override
@@ -32,7 +32,7 @@ public class BotonOkVisualGroupChoice implements EventHandler<ActionEvent> {
         if (! vboxOpcionesDadas.getChildren().isEmpty()){
             mensaje.setText("Debes completar ambos grupos");
         } else {
-            new BotonOk(kahoot, stage, yaRespondioUnJugador, conteo).handle(actionEvent);
+            new BotonOk(kahoot, stage, yaRespondioUnJugador, timer).handle(actionEvent);
         }
     }
 }

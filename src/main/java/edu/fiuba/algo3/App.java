@@ -21,17 +21,20 @@ public class App extends Application {
         stage.setTitle("Kahoot!");
         stage.setMaximized(false); //Comenzar en modo ventana
         Kahoot kahoot = Kahoot.Kahoot("./preguntas.json");
+        int altoPredeterminado = 720;
+        int anchoPredeterminado = 1280;
 
         //PROPIEDADES VENTANA (Ancho x Alto)
-        stage.setMinHeight(TamanioDeVentana.altoPredeterminado());
-        stage.setMinWidth(TamanioDeVentana.anchoPredeterminado());
-        stage.setMaxHeight(TamanioDeVentana.altoPredeterminado());
-        stage.setMaxWidth(TamanioDeVentana.anchoPredeterminado());
+        stage.setMinHeight(altoPredeterminado);
+        stage.setMinWidth(anchoPredeterminado);
+        stage.setMaxHeight(altoPredeterminado);
+        stage.setMaxWidth(anchoPredeterminado);
 
         //CREACIÓN ESCENA PRINCIPAL
         ContenedorBienvenida contenedorBienvenida = new ContenedorBienvenida(stage, kahoot);
-        Scene escenaBienvenida = new Scene(contenedorBienvenida, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
+        Scene escenaBienvenida = new Scene(contenedorBienvenida, anchoPredeterminado, altoPredeterminado);
         stage.setScene(escenaBienvenida);
+        stage.sizeToScene();
 
         stage.show();
         String rutaArchivoMusica = "src/main/java/edu/fiuba/algo3/vista/musica/lobby-music-8bit-edition.wav";

@@ -1,6 +1,6 @@
 package edu.fiuba.algo3.vista.contenedores.contenedorDePreguntas;
 
-import edu.fiuba.algo3.ContadorSegundos;
+import edu.fiuba.algo3.vista.ContadorSegundos;
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.vista.handlers.botonesOk.BotonOk;
@@ -8,6 +8,7 @@ import edu.fiuba.algo3.vista.handlers.botonesOk.BotonOkVoF;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -19,43 +20,14 @@ import java.util.Timer;
 
 public class ContenedorPreguntaVoF extends ContenedorPregunta {
 
-    private final String tipoDePregunta;
-
     public ContenedorPreguntaVoF(Stage stage, Kahoot kahoot, boolean yaRespondioJugador, String tipoDePregunta, HBox botonesBonus) {
         super(stage, botonesBonus, kahoot, yaRespondioJugador);
         this.tipoDePregunta = tipoDePregunta;
-        this.contenedorCentral();
+        this.inicializarContenedorCentral("file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png", Pos.CENTER, 100);
     }
 
-    @Override
-    protected void contenedorCentral() {
-        stage.setTitle("Pregunta Verdadero o Falso " + tipoDePregunta);
-        //Falta escena en el medio que indique cambio de turno
-        String rutaArchivoFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png";
-        this.setImagenFondo(kahoot, stage, rutaArchivoFondo);
 
-        Button botonOkInvisible = new Button();
-        Timer conteo = ContadorSegundos.comenzar(botonOkInvisible, timer);
-        botonOkInvisible.setOnAction(new BotonOk(kahoot, stage, yaRespondioJugador, conteo));
-
-        //CONTENEDOR DE OPCIONES
-        Iterator<Opcion> iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
-        HBox opcionesHorizontal = new HBox();
-        Button botonOpcion1 = agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones, conteo);
-        Button botonOpcion2 = agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones, conteo);
-
-        //PREGUNTA
-        Text textoPregunta = getTextoPregunta(kahoot);
-
-        //CONTENEDOR DE PREGUNTA Y OPCIONES
-        VBox contenedorVertical = new VBox();
-        contenedorVertical.getChildren().addAll(textoPregunta, opcionesHorizontal);
-        contenedorVertical.setAlignment(Pos.CENTER);
-        contenedorVertical.setSpacing(100);
-        this.setCenter(contenedorVertical);
-    }
-
-    Button agregarBotonOpcion(HBox opcionesHorizontal, Kahoot kahoot, Stage stage, Iterator<Opcion> iteradorDeOpciones, Timer conteo){
+    void agregarBotonOpcion(HBox opcionesHorizontal, Kahoot kahoot, Stage stage, Iterator<Opcion> iteradorDeOpciones, Timer conteo){
         Opcion opcion = iteradorDeOpciones.next();
         Button botonOpcion = new Button(opcion.obtenerTexto());
         botonOpcion.setOnAction(new BotonOkVoF(kahoot, stage, opcion, botonOpcion, yaRespondioJugador, conteo));
@@ -64,7 +36,15 @@ public class ContenedorPreguntaVoF extends ContenedorPregunta {
         opcionesHorizontal.getChildren().add(botonOpcion);
         opcionesHorizontal.setAlignment(Pos.CENTER);
         opcionesHorizontal.setSpacing(200);
-        return botonOpcion;
     }
 
+
+    @Override
+    protected Pane inicializarContenedorOpciones() {
+        Iterator<Opcion> iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
+        HBox opcionesHorizontal = new HBox();
+        agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones, timer);
+        agregarBotonOpcion(opcionesHorizontal, kahoot, stage, iteradorDeOpciones, timer);
+        return opcionesHorizontal;
+    }
 }

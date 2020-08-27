@@ -19,23 +19,22 @@ import java.util.Timer;
 
 public class BotonOk implements EventHandler<ActionEvent> {
 
-    private final Timer conteo;
+    private final Timer timer;
     private boolean yaRespondioUnJugador;
     private final Kahoot kahoot;
     private final Stage stage;
     private LinkedList<Button> opciones;
 
-    public BotonOk(Kahoot kahoot, Stage stage, boolean yaRespondioUnJugador, Timer conteo){
+    public BotonOk(Kahoot kahoot, Stage stage, boolean yaRespondioUnJugador, Timer timer){
         this.yaRespondioUnJugador = yaRespondioUnJugador;
         this.kahoot = kahoot;
         this.stage = stage;
-        this.conteo = conteo;
+        this.timer = timer;
     }
 
     @Override
     public void handle(ActionEvent actionEvent){
-        BorderPane proximoContenedor;
-        conteo.cancel();
+        timer.cancel();
         avanzarTurno(actionEvent, yaRespondioUnJugador, kahoot, stage);
     }
 
@@ -51,10 +50,11 @@ public class BotonOk implements EventHandler<ActionEvent> {
             }
         } else {
             new AvanzarTurnoDeJugadorHandler(kahoot).handle(actionEvent);
-            proximoContenedor = proximoContenedor = new ContenedorPaseDePantalla(kahoot, stage, true);
+            proximoContenedor = new ContenedorPaseDePantalla(kahoot, stage, true);
         }
 
         Scene escena = new Scene(proximoContenedor, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
         stage.setScene(escena);
+        stage.sizeToScene();
     }
 }

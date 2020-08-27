@@ -18,7 +18,6 @@ import javafx.stage.Stage;
 public class ContenedorBienvenida extends VBox {
 
 	public ContenedorBienvenida(Stage stage, Kahoot kahoot) {
-		super();
 
 		String rutaArchivoImagenFondo = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/kahoot-1.png";
 		String estiloBoton = "-fx-border-color: #000000; -fx-border-width: 5px; -fx-background-color: #FFFFFF; -fx-font-size: 3em ;-fx-text-fill: #000000";
