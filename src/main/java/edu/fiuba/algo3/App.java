@@ -21,8 +21,8 @@ public class App extends Application {
         stage.setTitle("Kahoot!");
         stage.setMaximized(false); //Comenzar en modo ventana
         Kahoot kahoot = Kahoot.Kahoot("./preguntas.json");
-        int altoPredeterminado = 720;
-        int anchoPredeterminado = 1280;
+        int altoPredeterminado = TamanioDeVentana.altoPredeterminado();
+        int anchoPredeterminado = TamanioDeVentana.anchoPredeterminado();
 
         //PROPIEDADES VENTANA (Ancho x Alto)
         stage.setMinHeight(altoPredeterminado);

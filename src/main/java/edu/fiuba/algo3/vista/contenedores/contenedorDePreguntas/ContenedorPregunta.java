@@ -92,13 +92,13 @@ public abstract class ContenedorPregunta extends BorderPane {
         this.setCenter(contenedorVertical);
     }
 
-    public void setImagenFondo (Kahoot kahoot, Stage stage, String rutaArchivoImagen){
+    protected void setImagenFondo (Kahoot kahoot, Stage stage, String rutaArchivoImagen){
         Image imagen = new Image(rutaArchivoImagen);
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
     }
 
-    public void setMenu (Stage stage, HBox botonesBonus){
+    protected void setMenu (Stage stage, HBox botonesBonus){
         this.menuBar = new BarraDeMenu(stage);
         botonesBonus.setAlignment(Pos.CENTER_LEFT);
         timerVisual.setTextAlignment(TextAlignment.RIGHT);
