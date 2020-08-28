@@ -3,16 +3,13 @@ package edu.fiuba.algo3.vista.contenedores;
 
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.vista.BarraDeMenu;
-import edu.fiuba.algo3.vista.handlers.botonesOk.BotonParaIngresarNombre;
 import edu.fiuba.algo3.vista.handlers.TextoEventHandler;
+import edu.fiuba.algo3.vista.handlers.botonesOk.BotonParaIngresarNombre;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 

@@ -1,9 +1,11 @@
 package edu.fiuba.algo3;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
-import edu.fiuba.algo3.modelo.Preguntas.*;
-
-import com.google.gson.*;
+import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 
 import java.io.IOException;
 import java.nio.file.Files;

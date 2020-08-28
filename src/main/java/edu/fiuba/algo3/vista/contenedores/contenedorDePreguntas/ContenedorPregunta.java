@@ -1,6 +1,9 @@
 package edu.fiuba.algo3.vista.contenedores.contenedorDePreguntas;
 
-import edu.fiuba.algo3.controlador.*;
+import edu.fiuba.algo3.controlador.ActivarExclusividadHandler;
+import edu.fiuba.algo3.controlador.MultiplicadorPorDosHandler;
+import edu.fiuba.algo3.controlador.MultiplicadorPorTresHandler;
+import edu.fiuba.algo3.controlador.RemoverOpcionesElegidasHandler;
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Preguntas.*;
 import edu.fiuba.algo3.vista.BarraDeMenu;
@@ -10,7 +13,6 @@ import edu.fiuba.algo3.vista.handlers.botonesOk.BotonOk;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -146,7 +148,6 @@ public abstract class ContenedorPregunta extends BorderPane {
             stage.setScene(escena);
         });
         tope.getChildren().addAll(menuBar, bonusYTimer, botonResetear);
-        //tope.getChildren().addAll(menuBar, timerVisual);
         tope.setAlignment(Pos.CENTER);
         this.setTop(tope);
     }

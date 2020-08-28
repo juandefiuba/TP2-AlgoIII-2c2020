@@ -2,7 +2,6 @@ package edu.fiuba.algo3.controlador;
 
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
-import edu.fiuba.algo3.modelo.Opciones.OpcionIncorrecta;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 

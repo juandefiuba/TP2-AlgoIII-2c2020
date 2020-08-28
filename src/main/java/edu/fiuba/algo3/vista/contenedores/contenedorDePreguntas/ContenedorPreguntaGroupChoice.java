@@ -12,7 +12,6 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.Iterator;
-import java.util.LinkedList;
 
 public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
 

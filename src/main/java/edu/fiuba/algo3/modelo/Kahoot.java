@@ -119,7 +119,7 @@ public class Kahoot { //Singleton
 				removerOpcionElegida(opcion);
 			}
 			this.opcionesElegidasTurnoActual.clear();
-		} catch(Exception e){}
+		} catch(Exception ignored){}
 
 	}
 

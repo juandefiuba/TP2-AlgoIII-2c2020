@@ -2,8 +2,6 @@ package edu.fiuba.algo3.vista.contenedores.contenedorDePreguntas;
 
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
-import edu.fiuba.algo3.vista.Temporizador;
-import edu.fiuba.algo3.vista.handlers.botonesOk.BotonOk;
 import edu.fiuba.algo3.vista.handlers.botonesOk.BotonOkVoF;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
