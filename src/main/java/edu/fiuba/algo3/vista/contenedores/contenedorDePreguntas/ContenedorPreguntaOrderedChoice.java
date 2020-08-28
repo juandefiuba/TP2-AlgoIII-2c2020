@@ -11,12 +11,12 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.util.Iterator;
+import java.util.*;
 
 public class ContenedorPreguntaOrderedChoice extends ContenedorPregunta {
 
-    public ContenedorPreguntaOrderedChoice(Stage stage, Kahoot kahoot, boolean yaRespondioJugador, String tipoDePregunta, HBox botonesBonus) {
-        super(stage, botonesBonus, kahoot, yaRespondioJugador);
+    public ContenedorPreguntaOrderedChoice(Stage stage, Kahoot kahoot, boolean yaRespondioJugador, String tipoDePregunta, HBox botonesBonus, double segundos) {
+        super(stage, botonesBonus, kahoot, yaRespondioJugador, segundos);
         this.tipoDePregunta = tipoDePregunta;
         this.inicializarContenedorCentral("file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png", Pos.TOP_CENTER, 50);
     }
@@ -33,25 +33,33 @@ public class ContenedorPreguntaOrderedChoice extends ContenedorPregunta {
 
     @Override
     protected Pane inicializarContenedorOpciones() {
+        //Inicializacion
         Iterator<Opcion> iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         VBox vboxOpcionesDadas = new VBox();
         VBox vboxOpcionesMarcadas = new VBox();
+        HBox contenedorDeOpciones = new HBox();
+        VBox opcionesDadasYSuTitulo = new VBox();
+        VBox opcionesRespuestaYSuTitulo = new VBox();
+
         while (iteradorDeOpciones.hasNext()) {
             Opcion opcion = iteradorDeOpciones.next();
             agregarBotonOpcion(stage, opcion, vboxOpcionesDadas, vboxOpcionesMarcadas, botonOk);
         }
-        HBox contenedorDeOpciones = new HBox();
-        VBox opcionesDadasConTitulo = new VBox();
-        VBox opcionesRespuestaConTitulo = new VBox();
+
+        randomizarVBox(vboxOpcionesDadas);
+
+        //Seteo de contenedores
         Text tituloDeOpcionesDadas = new Text("Opciones dadas:");
         tituloDeOpcionesDadas.setStyle(" -fx-font-size: 20px ;-fx-font-weight: bold ; -fx-fill: black;-fx-stroke: #ffffff ;-fx-stroke-width: 1px");
         Text tituloDeOpcionesMarcadas = new Text("Respuesta:");
         tituloDeOpcionesMarcadas.setStyle(" -fx-font-size: 20px ;-fx-font-weight: bold ; -fx-fill: black;-fx-stroke: #ffffff ;-fx-stroke-width: 1px");
-        opcionesDadasConTitulo.getChildren().addAll(tituloDeOpcionesDadas, vboxOpcionesDadas);
-        opcionesRespuestaConTitulo.getChildren().addAll(tituloDeOpcionesMarcadas, vboxOpcionesMarcadas);
-        contenedorDeOpciones.getChildren().addAll(opcionesDadasConTitulo, opcionesRespuestaConTitulo);
+        opcionesDadasYSuTitulo.getChildren().addAll(tituloDeOpcionesDadas, vboxOpcionesDadas);
+        opcionesRespuestaYSuTitulo.getChildren().addAll(tituloDeOpcionesMarcadas, vboxOpcionesMarcadas);
+        contenedorDeOpciones.getChildren().addAll(opcionesDadasYSuTitulo, opcionesRespuestaYSuTitulo);
         contenedorDeOpciones.setAlignment(Pos.CENTER);
         contenedorDeOpciones.setSpacing(20);
         return contenedorDeOpciones;
     }
+
+
 }

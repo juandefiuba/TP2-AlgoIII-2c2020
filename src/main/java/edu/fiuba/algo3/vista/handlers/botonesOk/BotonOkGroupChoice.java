@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vista.handlers.botonesOk;
 
 import edu.fiuba.algo3.controlador.RemoverOpcionesElegidasHandler;
 import edu.fiuba.algo3.modelo.Kahoot;
+import edu.fiuba.algo3.vista.Temporizador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.layout.VBox;

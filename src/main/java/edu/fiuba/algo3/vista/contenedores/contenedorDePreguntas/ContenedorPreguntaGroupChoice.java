@@ -12,42 +12,46 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.util.Iterator;
+import java.util.LinkedList;
 
 public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
 
     @Override
     protected Pane inicializarContenedorOpciones() {
+        //inicializacion
         VBox vboxOpcionesDadas = new VBox();
         VBox vboxOpcionesGrupo1 = new VBox();
         VBox vboxOpcionesGrupo2 = new VBox();
-
-        this.cambiarComportamientoBotonOk(new BotonOkGroupChoice(kahoot, stage, yaRespondioJugador, vboxOpcionesDadas));
-
-        Iterator<Opcion> iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         HBox menuInteractivo = new HBox();
         Button botonPasarAGrupo1 = new Button("<-");
         Button botonPasarAGrupo2 = new Button("->");
 
-        menuInteractivo.getChildren().addAll(vboxOpcionesGrupo1, botonPasarAGrupo1, vboxOpcionesDadas, botonPasarAGrupo2, vboxOpcionesGrupo2);
-        menuInteractivo.setAlignment(Pos.CENTER);
-        menuInteractivo.setSpacing(100);
+        //comportamiento
+        this.cambiarComportamientoBotonOk(new BotonOkGroupChoice(kahoot, stage, yaRespondioJugador, vboxOpcionesDadas));
+        Iterator<Opcion> iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         while (iteradorDeOpciones.hasNext()) {
             Opcion opcion = iteradorDeOpciones.next();
-            agregarBotonOpcion(stage, opcion, vboxOpcionesDadas, vboxOpcionesGrupo1, vboxOpcionesGrupo2, vboxOpcionesDadas, botonPasarAGrupo1, botonPasarAGrupo2, botonOk);
+            agregarBotonOpcion(opcion, vboxOpcionesDadas, vboxOpcionesGrupo1, vboxOpcionesGrupo2, vboxOpcionesDadas, botonPasarAGrupo1, botonPasarAGrupo2, botonOk);
         }
+        randomizarVBox(vboxOpcionesDadas);
+
+        //seteo de contenedores
         VBox opciones = new VBox();
         opciones.getChildren().addAll(menuInteractivo);
         opciones.setAlignment(Pos.CENTER);
+        menuInteractivo.getChildren().addAll(vboxOpcionesGrupo1, botonPasarAGrupo1, vboxOpcionesDadas, botonPasarAGrupo2, vboxOpcionesGrupo2);
+        menuInteractivo.setAlignment(Pos.CENTER);
+        menuInteractivo.setSpacing(100);
         return opciones;
     }
 
-    public ContenedorPreguntaGroupChoice(Stage stage, Kahoot kahoot, boolean yaRespondioJugador, String tipoDePregunta, HBox botonesBonus) {
-        super(stage, botonesBonus, kahoot, yaRespondioJugador);
+    public ContenedorPreguntaGroupChoice(Stage stage, Kahoot kahoot, boolean yaRespondioJugador, String tipoDePregunta, HBox botonesBonus, double segundos) {
+        super(stage, botonesBonus, kahoot, yaRespondioJugador, segundos);
         this.tipoDePregunta = tipoDePregunta;
         this.inicializarContenedorCentral("file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png", Pos.TOP_CENTER, 100);
     }
 
-    void agregarBotonOpcion(Stage stage, Opcion opcion, VBox opcionesDadas, VBox grupo1, VBox grupo2, VBox grupoDado, Button pasarAGrupo1, Button pasarAGrupo2, Button botonOk){
+    void agregarBotonOpcion(Opcion opcion, VBox opcionesDadas, VBox grupo1, VBox grupo2, VBox grupoDado, Button pasarAGrupo1, Button pasarAGrupo2, Button botonOk){
         Button botonOpcion = new Button(opcion.obtenerTexto());
         opcionesDadas.getChildren().add(botonOpcion);
         botonOpcion.setStyle("-fx-font-size: 2em; -fx-border-width: 5px; -fx-border-color: #000000");

@@ -8,6 +8,7 @@ import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 
 import java.io.IOException;
+import java.util.Iterator;
 import java.util.LinkedList;
 
 public class Kahoot { //Singleton
@@ -15,13 +16,13 @@ public class Kahoot { //Singleton
 	private LinkedList<Jugador> jugadores;
 	private LinkedList<Pregunta> preguntas;
 	private Turno turno;
-	private LinkedList<Opcion> ultimasOpciones;
+	private LinkedList<Opcion> opcionesElegidasTurnoActual;
 
 	private Kahoot(String ruta) throws IOException {
 		this.jugadores = new LinkedList<>();
 		this.preguntas = this.leerPreguntas(ruta);
 		this.turno = new Turno();
-		this.ultimasOpciones = new LinkedList<>();
+		this.opcionesElegidasTurnoActual = new LinkedList<>();
 	}
 
 	public static Kahoot Kahoot(String ruta) throws IOException {
@@ -65,7 +66,7 @@ public class Kahoot { //Singleton
 
 	public void avanzarAProximoJugador() {
 		this.turno.avanzarJugador();
-		this.ultimasOpciones.clear();
+		this.opcionesElegidasTurnoActual.clear();
 	}
 
 	public void agregarRespuestaDeJugadorActual(LinkedList<Opcion> respuestas) {
@@ -74,7 +75,7 @@ public class Kahoot { //Singleton
 	
 	public void agregarOpcionElegida(Opcion opcion) {
 		this.turno.agregarOpcionElegida(opcion);
-		this.ultimasOpciones.add(opcion);
+		this.opcionesElegidasTurnoActual.add(opcion);
 	}
 
 	public void agregarPregunta(Pregunta pregunta) {
@@ -112,8 +113,13 @@ public class Kahoot { //Singleton
 	public void removerOpcionElegida(Opcion opcion) { this.turno.removerOpcionElegida(opcion); }
 
 	public void removerOpcionesElegidas() {
-		for (Opcion opcion: ultimasOpciones) {
+		for (Opcion opcion: opcionesElegidasTurnoActual) {
 			removerOpcionElegida(opcion);
 		}
+		this.opcionesElegidasTurnoActual.clear();
+	}
+
+	public Iterator<Opcion> getOpcionesElegidasTurnoActual() {
+		return this.opcionesElegidasTurnoActual.iterator();
 	}
 }

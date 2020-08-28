@@ -2,6 +2,8 @@ package edu.fiuba.algo3.vista.contenedores.contenedorDePreguntas;
 
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Opciones.Opcion;
+import edu.fiuba.algo3.vista.Temporizador;
+import edu.fiuba.algo3.vista.handlers.botonesOk.BotonOk;
 import edu.fiuba.algo3.vista.handlers.botonesOk.BotonOkVoF;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -15,11 +17,12 @@ import java.util.Iterator;
 
 public class ContenedorPreguntaVoF extends ContenedorPregunta {
 
-    public ContenedorPreguntaVoF(Stage stage, Kahoot kahoot, boolean yaRespondioJugador, String tipoDePregunta, HBox botonesBonus) {
-        super(stage, botonesBonus, kahoot, yaRespondioJugador);
+    public ContenedorPreguntaVoF(Stage stage, Kahoot kahoot, boolean yaRespondioJugador, String tipoDePregunta, HBox botonesBonus, double segundos) {
+        super(stage, botonesBonus, kahoot, yaRespondioJugador, segundos);
         this.tipoDePregunta = tipoDePregunta;
         this.inicializarContenedorCentral("file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png", Pos.CENTER, 100);
     }
+
 
 
     void agregarBotonOpcion(HBox opcionesHorizontal, Kahoot kahoot, Stage stage, Iterator<Opcion> iteradorDeOpciones){
