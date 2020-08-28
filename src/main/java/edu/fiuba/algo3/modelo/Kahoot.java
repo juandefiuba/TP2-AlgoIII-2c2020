@@ -84,6 +84,7 @@ public class Kahoot { //Singleton
 
 	public void terminarTurno() {
 		this.turno.terminarTurno();
+		this.opcionesElegidasTurnoActual.clear();
 	}
 
 	public boolean sigueElJuego() {
@@ -113,13 +114,10 @@ public class Kahoot { //Singleton
 	public void removerOpcionElegida(Opcion opcion) { this.turno.removerOpcionElegida(opcion); }
 
 	public void removerOpcionesElegidas() {
-		//Ocurren errores si se llama a esta funcion cuando no hay opcionesElegidas, el try catch lo soluciona
-		try {
-			for (Opcion opcion: opcionesElegidasTurnoActual) {
-				removerOpcionElegida(opcion);
-			}
-			this.opcionesElegidasTurnoActual.clear();
-		} catch(Exception ignored){}
+		for (Opcion opcion: opcionesElegidasTurnoActual) {
+			removerOpcionElegida(opcion);
+		}
+		this.opcionesElegidasTurnoActual.clear();
 
 	}
 
