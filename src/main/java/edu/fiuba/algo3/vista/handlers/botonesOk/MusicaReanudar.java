@@ -5,10 +5,10 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 
-public class MusicaPlayOPausa implements EventHandler<ActionEvent> {
+public class MusicaReanudar implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        Musica.musicaPlayOPausa();
+        Musica.musicaReanudar();
     }
 }

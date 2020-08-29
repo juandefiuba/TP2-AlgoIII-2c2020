@@ -39,11 +39,11 @@ public class ContenedorPreguntaOrderedChoice extends ContenedorPregunta {
         VBox opcionesDadasYSuTitulo = new VBox();
         VBox opcionesRespuestaYSuTitulo = new VBox();
 
+        //Comportamiento
         while (iteradorDeOpciones.hasNext()) {
             Opcion opcion = iteradorDeOpciones.next();
             agregarBotonOpcion(stage, opcion, vboxOpcionesDadas, vboxOpcionesMarcadas, botonOk);
         }
-
         randomizarVBox(vboxOpcionesDadas);
 
         //Seteo de contenedores

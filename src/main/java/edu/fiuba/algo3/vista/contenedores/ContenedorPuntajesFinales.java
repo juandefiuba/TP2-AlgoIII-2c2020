@@ -3,11 +3,9 @@ package edu.fiuba.algo3.vista.contenedores;
 import edu.fiuba.algo3.controlador.SalirDelJuegoHandler;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Kahoot;
-import edu.fiuba.algo3.modelo.Opciones.Opcion;
 import edu.fiuba.algo3.vista.BarraDeMenu;
-import edu.fiuba.algo3.vista.handlers.SeleccionarOpcionGroupChoice;
+import edu.fiuba.algo3.vista.handlers.botonesOk.MusicaPausa;
 import edu.fiuba.algo3.vista.handlers.botonesOk.MusicaPlay;
-import edu.fiuba.algo3.vista.handlers.botonesOk.MusicaPlayOPausa;
 import javafx.event.ActionEvent;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -80,7 +78,7 @@ public class ContenedorPuntajesFinales extends BorderPane {
 
         this.setCenter(contenedorVertical);
 
-        new MusicaPlayOPausa().handle(new ActionEvent());
+        new MusicaPausa().handle(new ActionEvent());
         String rutaArchivoMusica = "src/main/java/edu/fiuba/algo3/vista/musica/kool-the-gang-celebration.wav";
         new MusicaPlay(rutaArchivoMusica).handle(new ActionEvent());
     }
@@ -89,13 +87,4 @@ public class ContenedorPuntajesFinales extends BorderPane {
         this.menuBar = new BarraDeMenu(stage);
         this.setTop(menuBar);
     }
-
-    void agregarBotonOpcion(Stage stage, Opcion opcion, VBox opcionesDadas, VBox grupo1, VBox grupo2, Button pasarAGrupo1, Button pasarAGrupo2, Button botonOk){
-        Button botonOpcion = new Button(opcion.obtenerTexto());
-        opcionesDadas.getChildren().add(botonOpcion);
-        botonOpcion.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #000000");
-        botonOpcion.setMinSize(100,50);
-        botonOpcion.setOnAction(new SeleccionarOpcionGroupChoice(botonOpcion, pasarAGrupo1, pasarAGrupo2, grupo1, grupo2, opcionesDadas, botonOk, opcion, kahoot));
-    }
-
 }
