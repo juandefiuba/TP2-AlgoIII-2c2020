@@ -17,7 +17,7 @@ public class BarraDeMenu extends MenuBar {
         Menu menuArchivo = new Menu("Archivo");
         Menu menuSonido = new Menu("Sonido");
         Menu menuAyuda = new Menu("Ayuda");
-        Menu opcionPlayPausa = new Menu("Play/Pausa");
+        MenuItem opcionPlayPausa = new Menu("Play/Pausa");
         MenuItem opcionSalir = new MenuItem("Salir");
         MenuItem opcionAcercaDe = new MenuItem("Acerca de...");
 
@@ -27,6 +27,7 @@ public class BarraDeMenu extends MenuBar {
         menuAyuda.setStyle("-fx-font-size:15");
         opcionSalir.setStyle("-fx-font-size:15");
         opcionAcercaDe.setStyle("-fx-font-size:15");
+        opcionPlayPausa.setStyle("-fx-font-size:15");
 
         //MANEJADORES DE LAS OPCIONES
         SalirDelJuegoHandler opcionSalirHandler = new SalirDelJuegoHandler();

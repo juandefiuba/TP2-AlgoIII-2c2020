@@ -3,18 +3,15 @@ package edu.fiuba.algo3.vista.contenedores.contenedorDePreguntas;
 import edu.fiuba.algo3.controlador.ActivarExclusividadHandler;
 import edu.fiuba.algo3.controlador.MultiplicadorPorDosHandler;
 import edu.fiuba.algo3.controlador.MultiplicadorPorTresHandler;
-import edu.fiuba.algo3.controlador.RemoverOpcionesElegidasHandler;
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.modelo.Preguntas.*;
 import edu.fiuba.algo3.vista.BarraDeMenu;
-import edu.fiuba.algo3.vista.TamanioDeVentana;
 import edu.fiuba.algo3.vista.Temporizador;
 import edu.fiuba.algo3.vista.handlers.ResetearOpcionesElegidas;
 import edu.fiuba.algo3.vista.handlers.botonesOk.BotonOk;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
@@ -27,7 +24,7 @@ import java.util.LinkedList;
 
 public abstract class ContenedorPregunta extends BorderPane {
 
-    protected Text textoPregunta; //"private final?"
+    protected Text textoPregunta;
     protected BarraDeMenu menuBar;
     protected HBox botonesBonus;
     protected Kahoot kahoot;
@@ -39,22 +36,24 @@ public abstract class ContenedorPregunta extends BorderPane {
     protected Pane contenedorDeOpciones;
     protected double segundos;
 
-    public ContenedorPregunta(Stage stage, HBox botonesBonus, Kahoot kahoot, boolean yaRespondioUnJugador, double segundos, String tipoDePregunta) {
+    public ContenedorPregunta(Stage stage, HBox botonesBonus, Kahoot kahoot, boolean yaRespondioUnJugador, double segundos, String tipoDePregunta, String rutaFondo) {
         this.kahoot = kahoot;
         this.stage = stage;
         this.tipoDePregunta = tipoDePregunta;
         this.segundos = segundos;
         this.yaRespondioUnJugador = yaRespondioUnJugador;
         this.timerVisual = new Text();
-        this.timerVisual.setStyle(" -fx-font-size: 30px ;-fx-font-weight: bold ; -fx-fill: black;-fx-stroke: #ee0000 ;-fx-stroke-width: 1px");
+        this.timerVisual.setStyle(" -fx-font-size: 45px ;-fx-font-weight: bold ; -fx-fill: black;-fx-stroke: #ee0000 ;-fx-stroke-width: 1px");
         this.botonesBonus = botonesBonus;
-        this.textoPregunta = ContenedorPregunta.this.getTextoPregunta();
+        this.textoPregunta = this.getTextoPregunta();
 
         this.botonOk = ContenedorPregunta.this.getBotonOk();
         Temporizador.dispararBoton(this.botonOk, this.timerVisual, this.segundos);
-        this.contenedorDeOpciones = this.inicializarContenedorOpciones();
-        this.setMenu();
-        stage.sizeToScene();
+        this.setCentro();
+        this.setArriba();
+        this.setAbajo();
+        this.setImagenFondo(rutaFondo);
+        this.botonOk.requestFocus();
     }
 
     abstract protected Pane inicializarContenedorOpciones();
@@ -67,27 +66,27 @@ public abstract class ContenedorPregunta extends BorderPane {
             valoresPredeterminados = true;
 
         if (pregunta instanceof PreguntaVerdaderoFalso)
-            return new ContenedorPreguntaVoF(valoresPredeterminados? 10: segundos, "Pregunta Verdadero o Falso Clásico", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot));
+            return new ContenedorPreguntaVoF(valoresPredeterminados? 10: segundos, "Pregunta Verdadero o Falso Clásico", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png");
 
         if (pregunta instanceof PreguntaVerdaderoFalsoPenalidad)
-            return new ContenedorPreguntaVoF(valoresPredeterminados? 15: segundos, "Pregunta Verdadero o Falso Con Penalidad", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonesMultiplicadores(kahoot));
+            return new ContenedorPreguntaVoF(valoresPredeterminados? 15: segundos, "Pregunta Verdadero o Falso Con Penalidad", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonesMultiplicadores(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png");
 
         if (pregunta instanceof PreguntaMultipleChoiceClasico) {
-            return new ContenedorPreguntaMultipleChoice(valoresPredeterminados? 20: segundos, "Pregunta Multiple Choice Clásico", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot));
+            return new ContenedorPreguntaMultipleChoice(valoresPredeterminados? 20: segundos, "Pregunta Multiple Choice Clásico", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png");
         }
 
         if (pregunta instanceof PreguntaMultipleChoiceParcial)
-            return new ContenedorPreguntaMultipleChoice(valoresPredeterminados? 20: segundos, "Pregunta Multiple Choice Parcial", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot));
+            return new ContenedorPreguntaMultipleChoice(valoresPredeterminados? 20: segundos, "Pregunta Multiple Choice Parcial", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot),"file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png");
 
         if (pregunta instanceof PreguntaMultipleChoicePenalidad)
-            return new ContenedorPreguntaMultipleChoice(valoresPredeterminados? 25: segundos, "Pregunta Multiple Choice Con Penalidad", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonesMultiplicadores(kahoot));
+            return new ContenedorPreguntaMultipleChoice(valoresPredeterminados? 25: segundos, "Pregunta Multiple Choice Con Penalidad", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonesMultiplicadores(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png");
 
         if (pregunta instanceof PreguntaGroupChoice)
-            return new ContenedorPreguntaGroupChoice(valoresPredeterminados? 25: segundos, "Pregunta Group Choice", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot));
+            return new ContenedorPreguntaGroupChoice(valoresPredeterminados? 25: segundos, "Pregunta Group Choice", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png");
 
-        return new ContenedorPreguntaOrderedChoice(valoresPredeterminados? 25: segundos, "Pregunta Ordered Choice", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot));
+        return new ContenedorPreguntaOrderedChoice(valoresPredeterminados? 25: segundos, "Pregunta Ordered Choice", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png");
     }
-
+/*
     protected void inicializarContenedorCentral(String rutaFondo, Pos posicion, int spacing) {
         stage.setTitle(tipoDePregunta);
         this.setImagenFondo(kahoot, stage, rutaFondo);
@@ -98,37 +97,47 @@ public abstract class ContenedorPregunta extends BorderPane {
         contenedorVertical.setAlignment(posicion);
         contenedorVertical.setSpacing(spacing);
         this.setCenter(contenedorVertical);
-    }
+    }*/
 
-    protected void setImagenFondo (Kahoot kahoot, Stage stage, String rutaArchivoImagen){
+    protected void setImagenFondo (String rutaArchivoImagen){
         Image imagen = new Image(rutaArchivoImagen);
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
     }
 
-    protected void setMenu (){
+    protected void setArriba(){
         this.menuBar = new BarraDeMenu(stage);
-        botonesBonus.setAlignment(Pos.CENTER_LEFT);
         Pane filler = new Pane();
-        timerVisual.setTextAlignment(TextAlignment.RIGHT);
-        HBox bonusYTimer = new HBox();
-        bonusYTimer.setAlignment(Pos.CENTER);
-        bonusYTimer.getChildren().add(botonesBonus);
-        bonusYTimer.getChildren().add(filler);
+        HBox timer = new HBox(filler);
         HBox.setHgrow(filler, Priority.ALWAYS);
-        bonusYTimer.getChildren().add(timerVisual);
-        VBox tope = new VBox();
-        Button botonResetear = new Button("Resetear");
-        botonResetear.setOnAction(new ResetearOpcionesElegidas(stage, kahoot, yaRespondioUnJugador));
-        tope.getChildren().addAll(menuBar, bonusYTimer, botonResetear);
+        timer.getChildren().add(timerVisual);
+        VBox tope = new VBox(menuBar, timer, this.getTextoPregunta());
         tope.setAlignment(Pos.CENTER);
         this.setTop(tope);
+    }
+
+    protected void setCentro(){
+        Pane filler = new Pane();
+        VBox contenedorOpciones = new VBox();
+        VBox.setVgrow(filler, Priority.ALWAYS);
+        contenedorOpciones.getChildren().add(this.inicializarContenedorOpciones());
+        contenedorOpciones.setAlignment(Pos.CENTER);
+        this.setCenter(contenedorOpciones);
+    }
+
+    protected void setAbajo() {
+        HBox botonOkYReset = new HBox(botonOk, this.getBotonReset());
+        botonesBonus.setAlignment(Pos.BOTTOM_LEFT);
+        botonOkYReset.setAlignment(Pos.CENTER);
+        VBox boxDeAbajo = new VBox(botonOkYReset, botonesBonus);
+        boxDeAbajo.setAlignment(Pos.CENTER);
+        this.setBottom(boxDeAbajo);
     }
 
     protected Text getTextoPregunta (){
         Text textoPregunta = new Text(kahoot.obtenerPreguntaActual().obtenerTexto());
         textoPregunta.setStyle(" -fx-font-size: 65px ;-fx-font-weight: bold ; -fx-fill: black;-fx-stroke: #ffffff ;-fx-stroke-width: 3px");
-        textoPregunta.setWrappingWidth(720);
+        textoPregunta.setWrappingWidth(stage.getWidth());
         textoPregunta.setTextAlignment(TextAlignment.CENTER);
         return textoPregunta;
     }
@@ -136,8 +145,17 @@ public abstract class ContenedorPregunta extends BorderPane {
     protected Button getBotonOk() {
         Button botonOk = new Button("Ok");
         botonOk.setStyle(" -fx-font-size: 2em");
+        botonOk.setMinSize(150,1);
         botonOk.setOnAction(new BotonOk(kahoot, stage, yaRespondioUnJugador));
         return botonOk;
+    }
+
+    protected Button getBotonReset() {
+        Button botonResetear = new Button("Resetear");
+        botonResetear.setStyle(" -fx-font-size: 2em");
+        botonResetear.setMinSize(150,1);
+        botonResetear.setOnAction(new ResetearOpcionesElegidas(stage, kahoot, yaRespondioUnJugador));
+        return botonResetear;
     }
 
     protected void cambiarComportamientoBotonOk(EventHandler<ActionEvent> handler){

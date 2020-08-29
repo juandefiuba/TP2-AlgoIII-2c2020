@@ -27,16 +27,16 @@ public class App extends Application {
         //PROPIEDADES VENTANA (Ancho x Alto)
         stage.setMinHeight(altoPredeterminado);
         stage.setMinWidth(anchoPredeterminado);
-        stage.setMaxHeight(altoPredeterminado);
-        stage.setMaxWidth(anchoPredeterminado);
+        //stage.setMaxHeight(altoPredeterminado);
+        //stage.setMaxWidth(anchoPredeterminado);
 
         //CREACIÓN ESCENA PRINCIPAL
+        stage.show();
         ContenedorBienvenida contenedorBienvenida = new ContenedorBienvenida(stage, kahoot);
         Scene escenaBienvenida = new Scene(contenedorBienvenida, anchoPredeterminado, altoPredeterminado);
         stage.setScene(escenaBienvenida);
-        stage.sizeToScene();
 
-        stage.show();
+
         String rutaArchivoMusica = "src/main/java/edu/fiuba/algo3/vista/musica/lobby-music-8bit-edition.wav";
 
         new MusicaPlay(rutaArchivoMusica).handle(new ActionEvent());

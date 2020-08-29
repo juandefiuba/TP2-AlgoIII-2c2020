@@ -15,9 +15,8 @@ import java.util.Iterator;
 
 public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
 
-    public ContenedorPreguntaGroupChoice(double segundos, String tipoDePregunta, Stage stage, Kahoot kahoot, boolean yaRespondioJugador, HBox botonesBonus) {
-        super(stage, botonesBonus, kahoot, yaRespondioJugador, segundos, tipoDePregunta);
-        this.inicializarContenedorCentral("file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png", Pos.TOP_CENTER, 50);
+    public ContenedorPreguntaGroupChoice(double segundos, String tipoDePregunta, Stage stage, Kahoot kahoot, boolean yaRespondioJugador, HBox botonesBonus, String rutaFondo) {
+        super(stage, botonesBonus, kahoot, yaRespondioJugador, segundos, tipoDePregunta, rutaFondo);
     }
 
     @Override
@@ -45,7 +44,7 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
         opciones.setAlignment(Pos.CENTER);
         menuInteractivo.getChildren().addAll(vboxOpcionesGrupo1, botonPasarAGrupo1, vboxOpcionesDadas, botonPasarAGrupo2, vboxOpcionesGrupo2);
         menuInteractivo.setAlignment(Pos.CENTER);
-        menuInteractivo.setSpacing(100);
+        menuInteractivo.setSpacing(50);
         return opciones;
     }
 

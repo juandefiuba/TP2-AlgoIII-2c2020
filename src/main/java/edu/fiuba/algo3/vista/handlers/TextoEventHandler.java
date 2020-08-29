@@ -19,7 +19,7 @@ public class TextoEventHandler implements EventHandler<KeyEvent> {
     @Override
     public void handle(KeyEvent keyEvent) {
         if (keyEvent.getCode() == KeyCode.ENTER){
-            Event.fireEvent(boton, new ActionEvent());
+            boton.fire();
         }
     }
 }

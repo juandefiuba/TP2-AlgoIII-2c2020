@@ -31,7 +31,7 @@ public class ResetearOpcionesElegidas implements EventHandler<ActionEvent> {
         Temporizador.stop();
         new RemoverOpcionesElegidasHandler(this.kahoot).handle(new ActionEvent());
         BorderPane nuevoContenedor = ContenedorPregunta.crearContenedor(stage, kahoot, yaRespondioUnJugador, aux);
-        Scene escena = new Scene(nuevoContenedor , TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
+        Scene escena = new Scene(nuevoContenedor, stage.getWidth(), stage.getHeight());
         stage.setScene(escena);
     }
 

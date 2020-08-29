@@ -50,8 +50,7 @@ public class BotonOk implements EventHandler<ActionEvent> {
             proximoContenedor = new ContenedorPaseDePantalla(kahoot, stage, true);
         }
 
-        Scene escena = new Scene(proximoContenedor, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
+        Scene escena = new Scene(proximoContenedor, stage.getWidth(), stage.getHeight());
         stage.setScene(escena);
-        stage.sizeToScene();
     }
 }

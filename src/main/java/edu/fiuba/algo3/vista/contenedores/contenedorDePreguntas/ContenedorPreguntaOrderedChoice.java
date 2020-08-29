@@ -15,9 +15,8 @@ import java.util.Iterator;
 
 public class ContenedorPreguntaOrderedChoice extends ContenedorPregunta {
 
-    public ContenedorPreguntaOrderedChoice(double segundos, String tipoDePregunta, Stage stage, Kahoot kahoot, boolean yaRespondioJugador, HBox botonesBonus) {
-        super(stage, botonesBonus, kahoot, yaRespondioJugador, segundos, tipoDePregunta);
-        this.inicializarContenedorCentral("file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png", Pos.TOP_CENTER, 50);
+    public ContenedorPreguntaOrderedChoice(double segundos, String tipoDePregunta, Stage stage, Kahoot kahoot, boolean yaRespondioJugador, HBox botonesBonus, String rutaFondo) {
+        super(stage, botonesBonus, kahoot, yaRespondioJugador, segundos, tipoDePregunta, rutaFondo);
     }
 
 
@@ -56,7 +55,6 @@ public class ContenedorPreguntaOrderedChoice extends ContenedorPregunta {
         opcionesRespuestaYSuTitulo.getChildren().addAll(tituloDeOpcionesMarcadas, vboxOpcionesMarcadas);
         contenedorDeOpciones.getChildren().addAll(opcionesDadasYSuTitulo, opcionesRespuestaYSuTitulo);
         contenedorDeOpciones.setAlignment(Pos.CENTER);
-        contenedorDeOpciones.setSpacing(20);
         return contenedorDeOpciones;
     }
 
