@@ -9,6 +9,7 @@ import edu.fiuba.algo3.modelo.Preguntas.*;
 import edu.fiuba.algo3.vista.BarraDeMenu;
 import edu.fiuba.algo3.vista.TamanioDeVentana;
 import edu.fiuba.algo3.vista.Temporizador;
+import edu.fiuba.algo3.vista.handlers.ResetearOpcionesElegidas;
 import edu.fiuba.algo3.vista.handlers.botonesOk.BotonOk;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -30,7 +31,7 @@ public abstract class ContenedorPregunta extends BorderPane {
     protected BarraDeMenu menuBar;
     protected HBox botonesBonus;
     protected Kahoot kahoot;
-    protected boolean yaRespondioJugador;
+    protected boolean yaRespondioUnJugador;
     protected Stage stage;
     protected Text timerVisual;
     protected Button botonOk;
@@ -38,11 +39,12 @@ public abstract class ContenedorPregunta extends BorderPane {
     protected Pane contenedorDeOpciones;
     protected double segundos;
 
-    public ContenedorPregunta(Stage stage, HBox botonesBonus, Kahoot kahoot, boolean yaRespondioJugador, double segundos) {
+    public ContenedorPregunta(Stage stage, HBox botonesBonus, Kahoot kahoot, boolean yaRespondioUnJugador, double segundos, String tipoDePregunta) {
         this.kahoot = kahoot;
         this.stage = stage;
+        this.tipoDePregunta = tipoDePregunta;
         this.segundos = segundos;
-        this.yaRespondioJugador = yaRespondioJugador;
+        this.yaRespondioUnJugador = yaRespondioUnJugador;
         this.timerVisual = new Text();
         this.timerVisual.setStyle(" -fx-font-size: 30px ;-fx-font-weight: bold ; -fx-fill: black;-fx-stroke: #ee0000 ;-fx-stroke-width: 1px");
         this.botonesBonus = botonesBonus;
@@ -60,27 +62,30 @@ public abstract class ContenedorPregunta extends BorderPane {
     //CONSTRUCTOR
     public static ContenedorPregunta crearContenedor(Stage stage, Kahoot kahoot, boolean yaRespondioJugador, double segundos) {
         Pregunta pregunta = kahoot.obtenerPreguntaActual();
+        boolean valoresPredeterminados = false;
+        if(segundos == -1)
+            valoresPredeterminados = true;
 
         if (pregunta instanceof PreguntaVerdaderoFalso)
-            return new ContenedorPreguntaVoF(stage, kahoot, yaRespondioJugador, "Pregunta Verdadero o Falso Clásico", ContenedorPregunta.botonExclusividad(kahoot), segundos);
+            return new ContenedorPreguntaVoF(valoresPredeterminados? 10: segundos, "Pregunta Verdadero o Falso Clásico", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot));
 
         if (pregunta instanceof PreguntaVerdaderoFalsoPenalidad)
-            return new ContenedorPreguntaVoF(stage, kahoot, yaRespondioJugador, "Pregunta Verdadero o Falso Con Penalidad", ContenedorPregunta.botonesMultiplicadores(kahoot), segundos);
+            return new ContenedorPreguntaVoF(valoresPredeterminados? 15: segundos, "Pregunta Verdadero o Falso Con Penalidad", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonesMultiplicadores(kahoot));
 
         if (pregunta instanceof PreguntaMultipleChoiceClasico) {
-            return new ContenedorPreguntaMultipleChoice(stage, kahoot, yaRespondioJugador, "Pregunta Multiple Choice Clásico", ContenedorPregunta.botonExclusividad(kahoot), segundos);
+            return new ContenedorPreguntaMultipleChoice(valoresPredeterminados? 20: segundos, "Pregunta Multiple Choice Clásico", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot));
         }
 
         if (pregunta instanceof PreguntaMultipleChoiceParcial)
-            return new ContenedorPreguntaMultipleChoice(stage, kahoot, yaRespondioJugador, "Pregunta Multiple Choice Parcial", ContenedorPregunta.botonExclusividad(kahoot), segundos);
+            return new ContenedorPreguntaMultipleChoice(valoresPredeterminados? 20: segundos, "Pregunta Multiple Choice Parcial", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot));
 
         if (pregunta instanceof PreguntaMultipleChoicePenalidad)
-            return new ContenedorPreguntaMultipleChoice(stage, kahoot, yaRespondioJugador, "Pregunta Multiple Choice Con Penalidad", ContenedorPregunta.botonesMultiplicadores(kahoot), segundos);
+            return new ContenedorPreguntaMultipleChoice(valoresPredeterminados? 25: segundos, "Pregunta Multiple Choice Con Penalidad", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonesMultiplicadores(kahoot));
 
         if (pregunta instanceof PreguntaGroupChoice)
-            return new ContenedorPreguntaGroupChoice(stage, kahoot, yaRespondioJugador, "Pregunta Group Choice", ContenedorPregunta.botonExclusividad(kahoot), segundos);
+            return new ContenedorPreguntaGroupChoice(valoresPredeterminados? 25: segundos, "Pregunta Group Choice", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot));
 
-        return new ContenedorPreguntaOrderedChoice(stage, kahoot, yaRespondioJugador, "Pregunta Ordered Choice", ContenedorPregunta.botonExclusividad(kahoot), segundos);
+        return new ContenedorPreguntaOrderedChoice(valoresPredeterminados? 25: segundos, "Pregunta Ordered Choice", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot));
     }
 
     protected void inicializarContenedorCentral(String rutaFondo, Pos posicion, int spacing) {
@@ -114,14 +119,7 @@ public abstract class ContenedorPregunta extends BorderPane {
         bonusYTimer.getChildren().add(timerVisual);
         VBox tope = new VBox();
         Button botonResetear = new Button("Resetear");
-        botonResetear.setOnAction(e -> {
-            double aux = Temporizador.obtenerSegundosRestantes();
-            Temporizador.stop();
-            new RemoverOpcionesElegidasHandler(this.kahoot).handle(new ActionEvent());
-            BorderPane nuevoContenedor = ContenedorPregunta.crearContenedor(stage, kahoot, yaRespondioJugador, aux);
-            Scene escena = new Scene(nuevoContenedor , TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
-            stage.setScene(escena);
-        });
+        botonResetear.setOnAction(new ResetearOpcionesElegidas(stage, kahoot, yaRespondioUnJugador));
         tope.getChildren().addAll(menuBar, bonusYTimer, botonResetear);
         tope.setAlignment(Pos.CENTER);
         this.setTop(tope);
@@ -138,7 +136,7 @@ public abstract class ContenedorPregunta extends BorderPane {
     protected Button getBotonOk() {
         Button botonOk = new Button("Ok");
         botonOk.setStyle(" -fx-font-size: 2em");
-        botonOk.setOnAction(new BotonOk(kahoot, stage, yaRespondioJugador));
+        botonOk.setOnAction(new BotonOk(kahoot, stage, yaRespondioUnJugador));
         return botonOk;
     }
 

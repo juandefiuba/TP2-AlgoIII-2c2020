@@ -15,9 +15,8 @@ import java.util.Iterator;
 
 public class ContenedorPreguntaVoF extends ContenedorPregunta {
 
-    public ContenedorPreguntaVoF(Stage stage, Kahoot kahoot, boolean yaRespondioJugador, String tipoDePregunta, HBox botonesBonus, double segundos) {
-        super(stage, botonesBonus, kahoot, yaRespondioJugador, segundos);
-        this.tipoDePregunta = tipoDePregunta;
+    public ContenedorPreguntaVoF(double segundos, String tipoDePregunta, Stage stage, Kahoot kahoot, boolean yaRespondioJugador, HBox botonesBonus) {
+        super(stage, botonesBonus, kahoot, yaRespondioJugador, segundos, tipoDePregunta);
         this.inicializarContenedorCentral("file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png", Pos.CENTER, 100);
     }
 
@@ -26,7 +25,7 @@ public class ContenedorPreguntaVoF extends ContenedorPregunta {
     void agregarBotonOpcion(HBox opcionesHorizontal, Kahoot kahoot, Stage stage, Iterator<Opcion> iteradorDeOpciones){
         Opcion opcion = iteradorDeOpciones.next();
         Button botonOpcion = new Button(opcion.obtenerTexto());
-        botonOpcion.setOnAction(new BotonOkVoF(kahoot, stage, opcion, botonOpcion, yaRespondioJugador));
+        botonOpcion.setOnAction(new BotonOkVoF(kahoot, stage, opcion, botonOpcion, yaRespondioUnJugador));
         botonOpcion.setStyle("-fx-font-size: 2.9em; -fx-border-width: 5px; -fx-border-color: #000000");
         botonOpcion.setMinSize(250,50);
         opcionesHorizontal.getChildren().add(botonOpcion);

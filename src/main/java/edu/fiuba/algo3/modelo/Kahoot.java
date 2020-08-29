@@ -117,11 +117,10 @@ public class Kahoot { //Singleton
 	}
 
 	public void removerOpcionesElegidas() {
-		for (Opcion opcion: opcionesElegidasTurnoActual) {
-			removerOpcionElegida(opcion);
+		Iterator<Opcion> iterador = new LinkedList<Opcion>(opcionesElegidasTurnoActual).iterator();
+		while(iterador.hasNext()){
+			removerOpcionElegida(iterador.next());
 		}
-		this.opcionesElegidasTurnoActual.clear();
-
 	}
 
 	public Iterator<Opcion> getOpcionesElegidasTurnoActual() {

@@ -15,6 +15,11 @@ import java.util.Iterator;
 
 public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
 
+    public ContenedorPreguntaGroupChoice(double segundos, String tipoDePregunta, Stage stage, Kahoot kahoot, boolean yaRespondioJugador, HBox botonesBonus) {
+        super(stage, botonesBonus, kahoot, yaRespondioJugador, segundos, tipoDePregunta);
+        this.inicializarContenedorCentral("file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png", Pos.TOP_CENTER, 50);
+    }
+
     @Override
     protected Pane inicializarContenedorOpciones() {
         //inicializacion
@@ -26,7 +31,7 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
         Button botonPasarAGrupo2 = new Button("->");
 
         //comportamiento
-        this.cambiarComportamientoBotonOk(new BotonOkGroupChoice(kahoot, stage, yaRespondioJugador, vboxOpcionesDadas));
+        this.cambiarComportamientoBotonOk(new BotonOkGroupChoice(kahoot, stage, yaRespondioUnJugador, vboxOpcionesDadas));
         Iterator<Opcion> iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         while (iteradorDeOpciones.hasNext()) {
             Opcion opcion = iteradorDeOpciones.next();
@@ -42,12 +47,6 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
         menuInteractivo.setAlignment(Pos.CENTER);
         menuInteractivo.setSpacing(100);
         return opciones;
-    }
-
-    public ContenedorPreguntaGroupChoice(Stage stage, Kahoot kahoot, boolean yaRespondioJugador, String tipoDePregunta, HBox botonesBonus, double segundos) {
-        super(stage, botonesBonus, kahoot, yaRespondioJugador, segundos);
-        this.tipoDePregunta = tipoDePregunta;
-        this.inicializarContenedorCentral("file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png", Pos.TOP_CENTER, 50);
     }
 
     void agregarBotonOpcion(Opcion opcion, VBox opcionesDadas, VBox grupo1, VBox grupo2, VBox grupoDado, Button pasarAGrupo1, Button pasarAGrupo2, Button botonOk){
