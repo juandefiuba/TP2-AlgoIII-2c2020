@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vista.contenedores;
 
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.vista.BarraDeMenu;
+import edu.fiuba.algo3.vista.CambiadorImagenFondoEntreTurnos;
 import edu.fiuba.algo3.vista.handlers.TextoEventHandler;
 import edu.fiuba.algo3.vista.handlers.botonesOk.BotonParaIngresarNombre;
 import javafx.geometry.Pos;
@@ -28,8 +29,7 @@ public class ContenedorInicio extends BorderPane {
     private void contenedorCentral(Stage stage, Kahoot kahoot) {
 
         //FONDO
-        String rutaArchivoImagen = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/kahoot-1.png";
-        Image imagen = new Image(rutaArchivoImagen);
+        Image imagen = new Image(CambiadorImagenFondoEntreTurnos.getRutaFondo());
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
 
@@ -53,7 +53,7 @@ public class ContenedorInicio extends BorderPane {
         Button botonOk = new Button("Ok");
         botonOk.setStyle(estiloBoton);
         botonOk.setMinSize(150,75);
-        botonOk.setOnAction(new BotonParaIngresarNombre(textField, stage, kahoot, mensajeInput));
+        botonOk.setOnAction(new BotonParaIngresarNombre(textField, stage, kahoot, mensajeInput, this));
 
         textField.setOnKeyPressed(new TextoEventHandler(botonOk));
 
