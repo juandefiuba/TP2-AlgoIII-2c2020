@@ -4,9 +4,7 @@ import edu.fiuba.algo3.controlador.SalirDelJuegoHandler;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.vista.BarraDeMenu;
-import edu.fiuba.algo3.vista.handlers.botonesOk.MusicaPausa;
-import edu.fiuba.algo3.vista.handlers.botonesOk.MusicaPlay;
-import javafx.event.ActionEvent;
+import edu.fiuba.algo3.vista.Musica;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
@@ -78,9 +76,8 @@ public class ContenedorPuntajesFinales extends BorderPane {
 
         this.setCenter(contenedorVertical);
 
-        new MusicaPausa().handle(new ActionEvent());
-        String rutaArchivoMusica = "src/main/java/edu/fiuba/algo3/vista/musica/kool-the-gang-celebration.wav";
-        new MusicaPlay(rutaArchivoMusica).handle(new ActionEvent());
+        Musica.musicaPause();
+        Musica.musicaPlayYDespuesPlayOtraInfinita("src/main/java/edu/fiuba/algo3/vista/musica/sound-effect-tada.wav", "src/main/java/edu/fiuba/algo3/vista/musica/kool-the-gang-celebration.wav");
     }
 
     private void setMenu(Stage stage) {

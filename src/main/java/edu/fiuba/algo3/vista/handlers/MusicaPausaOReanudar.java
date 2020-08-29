@@ -1,5 +1,6 @@
-package edu.fiuba.algo3.vista.handlers.botonesOk;
+package edu.fiuba.algo3.vista.handlers;
 
+import edu.fiuba.algo3.vista.Musica;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.control.MenuItem;
@@ -18,11 +19,11 @@ public class MusicaPausaOReanudar implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         if(yaEstaPuesta) {
-            new MusicaPausa().handle(actionEvent);
+            Musica.musicaPause();
             opcion.setText("Reanudar");
             yaEstaPuesta = false;
         } else {
-            new MusicaReanudar().handle(actionEvent);
+            Musica.musicaReanudar();
             opcion.setText("Pausar");
             yaEstaPuesta = true;
         }

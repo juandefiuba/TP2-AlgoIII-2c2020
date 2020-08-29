@@ -4,7 +4,7 @@ import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.vista.Escena;
 import edu.fiuba.algo3.vista.TamanioDeVentana;
 import edu.fiuba.algo3.vista.contenedores.ContenedorBienvenida;
-import edu.fiuba.algo3.vista.handlers.botonesOk.MusicaPlay;
+import edu.fiuba.algo3.vista.handlers.MusicaPlayInfinito;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
@@ -40,7 +40,7 @@ public class App extends Application {
 
         String rutaArchivoMusica = "src/main/java/edu/fiuba/algo3/vista/musica/lobby-music-8bit-edition.wav";
 
-        new MusicaPlay(rutaArchivoMusica).handle(new ActionEvent());
+        new MusicaPlayInfinito(rutaArchivoMusica).handle(new ActionEvent());
     }
 
 }

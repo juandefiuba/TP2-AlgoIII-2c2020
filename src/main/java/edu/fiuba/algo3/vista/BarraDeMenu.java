@@ -2,7 +2,7 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.SalirDelJuegoHandler;
 import edu.fiuba.algo3.vista.handlers.OpcionAcercaDeEventHandler;
-import edu.fiuba.algo3.vista.handlers.botonesOk.MusicaPausaOReanudar;
+import edu.fiuba.algo3.vista.handlers.MusicaPausaOReanudar;
 import edu.fiuba.algo3.vista.handlers.botonesOk.PantallaCompleta;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;

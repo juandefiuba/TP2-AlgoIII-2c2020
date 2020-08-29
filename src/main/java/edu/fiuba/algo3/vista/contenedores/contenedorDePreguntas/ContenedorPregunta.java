@@ -66,25 +66,25 @@ public abstract class ContenedorPregunta extends BorderPane {
             valoresPredeterminados = true;
 
         if (pregunta instanceof PreguntaVerdaderoFalso)
-            return new ContenedorPreguntaVoF(valoresPredeterminados? 10: segundos, "Pregunta Verdadero o Falso Clásico", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png");
+            return new ContenedorPreguntaVoF(valoresPredeterminados? 10: segundos, "Pregunta Verdadero o Falso Clásico", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/fondoVerde.jpg");
 
         if (pregunta instanceof PreguntaVerdaderoFalsoPenalidad)
-            return new ContenedorPreguntaVoF(valoresPredeterminados? 15: segundos, "Pregunta Verdadero o Falso Con Penalidad", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonesMultiplicadores(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png");
+            return new ContenedorPreguntaVoF(valoresPredeterminados? 15: segundos, "Pregunta Verdadero o Falso Con Penalidad", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonesMultiplicadores(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/fondoRojo.jpg");
 
         if (pregunta instanceof PreguntaMultipleChoiceClasico) {
-            return new ContenedorPreguntaMultipleChoice(valoresPredeterminados? 20: segundos, "Pregunta Multiple Choice Clásico", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png");
+            return new ContenedorPreguntaMultipleChoice(valoresPredeterminados? 20: segundos, "Pregunta Multiple Choice Clásico", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/fondoVerde.jpg");
         }
 
         if (pregunta instanceof PreguntaMultipleChoiceParcial)
-            return new ContenedorPreguntaMultipleChoice(valoresPredeterminados? 20: segundos, "Pregunta Multiple Choice Parcial", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot),"file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png");
+            return new ContenedorPreguntaMultipleChoice(valoresPredeterminados? 20: segundos, "Pregunta Multiple Choice Parcial", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot),"file:src/main/java/edu/fiuba/algo3/vista/imagenes/anaranjado.png");
 
         if (pregunta instanceof PreguntaMultipleChoicePenalidad)
-            return new ContenedorPreguntaMultipleChoice(valoresPredeterminados? 25: segundos, "Pregunta Multiple Choice Con Penalidad", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonesMultiplicadores(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png");
+            return new ContenedorPreguntaMultipleChoice(valoresPredeterminados? 25: segundos, "Pregunta Multiple Choice Con Penalidad", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonesMultiplicadores(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/fondoRojo.jpg");
 
         if (pregunta instanceof PreguntaGroupChoice)
-            return new ContenedorPreguntaGroupChoice(valoresPredeterminados? 25: segundos, "Pregunta Group Choice", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png");
+            return new ContenedorPreguntaGroupChoice(valoresPredeterminados? 25: segundos, "Pregunta Group Choice", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/violeta.png");
 
-        return new ContenedorPreguntaOrderedChoice(valoresPredeterminados? 25: segundos, "Pregunta Ordered Choice", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png");
+        return new ContenedorPreguntaOrderedChoice(valoresPredeterminados? 25: segundos, "Pregunta Ordered Choice", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/violeta.png");
     }
 /*
     protected void inicializarContenedorCentral(String rutaFondo, Pos posicion, int spacing) {

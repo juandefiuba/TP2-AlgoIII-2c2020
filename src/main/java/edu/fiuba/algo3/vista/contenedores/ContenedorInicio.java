@@ -62,11 +62,14 @@ public class ContenedorInicio extends BorderPane {
         contenedorVertical.getChildren().addAll(titulo, textField, mensajeInput, botonOk);
         contenedorVertical.setAlignment(Pos.CENTER);
 
-        VBox tituloYCampoDeTexto = new VBox(titulo, textField, mensajeInput);
-        tituloYCampoDeTexto.setAlignment(Pos.CENTER);
+        VBox contenedorTitulo = new VBox(titulo);
+        contenedorTitulo.setAlignment(Pos.CENTER);
         VBox contenedorBoton = new VBox(botonOk);
         contenedorBoton.setAlignment(Pos.CENTER);
-        this.setTop(tituloYCampoDeTexto);
+        VBox contenedorCentro = new VBox(textField, mensajeInput);
+        contenedorCentro.setAlignment(Pos.CENTER);
+        this.setTop(contenedorTitulo);
+        this.setCenter(contenedorCentro);
         this.setBottom(contenedorBoton);
     }
 
