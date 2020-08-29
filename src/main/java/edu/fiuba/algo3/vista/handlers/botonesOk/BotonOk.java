@@ -3,6 +3,7 @@ package edu.fiuba.algo3.vista.handlers.botonesOk;
 import edu.fiuba.algo3.controlador.AvanzarAProximaPreguntaHandler;
 import edu.fiuba.algo3.controlador.AvanzarTurnoDeJugadorHandler;
 import edu.fiuba.algo3.modelo.Kahoot;
+import edu.fiuba.algo3.vista.Escena;
 import edu.fiuba.algo3.vista.TamanioDeVentana;
 import edu.fiuba.algo3.vista.Temporizador;
 import edu.fiuba.algo3.vista.contenedores.ContenedorPaseDePantalla;
@@ -50,7 +51,8 @@ public class BotonOk implements EventHandler<ActionEvent> {
             proximoContenedor = new ContenedorPaseDePantalla(kahoot, stage, true);
         }
 
-        Scene escena = new Scene(proximoContenedor, stage.getWidth(), stage.getHeight());
+        Scene escena = new Scene(proximoContenedor, Escena.obtenerEscenaActual().getWidth(), Escena.obtenerEscenaActual().getHeight());
         stage.setScene(escena);
+        Escena.setearEscenaActual(escena);
     }
 }

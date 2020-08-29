@@ -29,7 +29,6 @@ public class BotonOkVoF implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        BorderPane proximoContenedor;
         Temporizador.stop();
 
         new AgregarOpcionElegidaHandler(kahoot, opcion).handle(actionEvent);

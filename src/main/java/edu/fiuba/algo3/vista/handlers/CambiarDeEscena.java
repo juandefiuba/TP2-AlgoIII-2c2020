@@ -1,6 +1,7 @@
 package edu.fiuba.algo3.vista.handlers;
 
 import edu.fiuba.algo3.modelo.Kahoot;
+import edu.fiuba.algo3.vista.Escena;
 import edu.fiuba.algo3.vista.TamanioDeVentana;
 import edu.fiuba.algo3.vista.contenedores.contenedorDePreguntas.ContenedorPregunta;
 import javafx.event.ActionEvent;
@@ -23,8 +24,9 @@ public class CambiarDeEscena implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         BorderPane contenedor = ContenedorPregunta.crearContenedor(stage, kahoot, yaRespondioUnJugador, -1);
-        Scene escena = new Scene(contenedor, stage.getWidth(), stage.getHeight());
+        Scene escena = new Scene(contenedor, Escena.obtenerEscenaActual().getWidth(), Escena.obtenerEscenaActual().getHeight());
         stage.setScene(escena);
+        Escena.setearEscenaActual(escena);
     }
 
 }

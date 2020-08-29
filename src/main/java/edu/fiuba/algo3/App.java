@@ -1,6 +1,7 @@
 package edu.fiuba.algo3;
 
 import edu.fiuba.algo3.modelo.Kahoot;
+import edu.fiuba.algo3.vista.Escena;
 import edu.fiuba.algo3.vista.TamanioDeVentana;
 import edu.fiuba.algo3.vista.contenedores.ContenedorBienvenida;
 import edu.fiuba.algo3.vista.handlers.botonesOk.MusicaPlay;
@@ -35,7 +36,7 @@ public class App extends Application {
         ContenedorBienvenida contenedorBienvenida = new ContenedorBienvenida(stage, kahoot);
         Scene escenaBienvenida = new Scene(contenedorBienvenida, anchoPredeterminado, altoPredeterminado);
         stage.setScene(escenaBienvenida);
-
+        Escena.setearEscenaActual(escenaBienvenida);
 
         String rutaArchivoMusica = "src/main/java/edu/fiuba/algo3/vista/musica/lobby-music-8bit-edition.wav";
 

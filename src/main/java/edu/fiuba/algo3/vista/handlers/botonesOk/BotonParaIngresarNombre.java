@@ -4,6 +4,7 @@ import edu.fiuba.algo3.controlador.IniciarJuegoHandler;
 import edu.fiuba.algo3.controlador.NuevoJugadorHandler;
 import edu.fiuba.algo3.modelo.Jugador;
 import edu.fiuba.algo3.modelo.Kahoot;
+import edu.fiuba.algo3.vista.Escena;
 import edu.fiuba.algo3.vista.TamanioDeVentana;
 import edu.fiuba.algo3.vista.contenedores.ContenedorPaseDePantalla;
 import javafx.event.ActionEvent;
@@ -54,8 +55,9 @@ public class BotonParaIngresarNombre implements EventHandler<ActionEvent> {
 		if (yaIngresaronUnNombre) {
 			new IniciarJuegoHandler(kahoot).handle(actionEvent);
 			BorderPane contenedorTurnoDe = new ContenedorPaseDePantalla(kahoot, stage, false);
-			Scene escenaPregunta = new Scene(contenedorTurnoDe, stage.getWidth(), stage.getHeight());
+			Scene escenaPregunta = new Scene(contenedorTurnoDe, Escena.obtenerEscenaActual().getWidth(), Escena.obtenerEscenaActual().getHeight());
 			stage.setScene(escenaPregunta);
+			Escena.setearEscenaActual(escenaPregunta);
 		}
 		yaIngresaronUnNombre = true;
 	}

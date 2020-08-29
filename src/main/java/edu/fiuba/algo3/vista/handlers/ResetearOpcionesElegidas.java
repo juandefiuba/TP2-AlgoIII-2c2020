@@ -2,6 +2,7 @@ package edu.fiuba.algo3.vista.handlers;
 
 import edu.fiuba.algo3.controlador.RemoverOpcionesElegidasHandler;
 import edu.fiuba.algo3.modelo.Kahoot;
+import edu.fiuba.algo3.vista.Escena;
 import edu.fiuba.algo3.vista.TamanioDeVentana;
 import edu.fiuba.algo3.vista.Temporizador;
 import edu.fiuba.algo3.vista.contenedores.contenedorDePreguntas.ContenedorPregunta;
@@ -31,8 +32,9 @@ public class ResetearOpcionesElegidas implements EventHandler<ActionEvent> {
         Temporizador.stop();
         new RemoverOpcionesElegidasHandler(this.kahoot).handle(new ActionEvent());
         BorderPane nuevoContenedor = ContenedorPregunta.crearContenedor(stage, kahoot, yaRespondioUnJugador, aux);
-        Scene escena = new Scene(nuevoContenedor, stage.getWidth(), stage.getHeight());
+        Scene escena = new Scene(nuevoContenedor, Escena.obtenerEscenaActual().getWidth(), Escena.obtenerEscenaActual().getHeight());
         stage.setScene(escena);
+        Escena.setearEscenaActual(escena);
     }
 
 }
