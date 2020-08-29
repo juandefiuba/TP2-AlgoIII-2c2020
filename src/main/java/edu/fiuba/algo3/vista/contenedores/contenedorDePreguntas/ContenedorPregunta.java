@@ -58,39 +58,11 @@ public abstract class ContenedorPregunta extends BorderPane {
     abstract protected Pane inicializarContenedorOpciones();
 
     //CONSTRUCTOR
-    public static ContenedorPregunta crearContenedor(Stage stage, Kahoot kahoot, boolean yaRespondioJugador) {
-        Pregunta pregunta = kahoot.obtenerPreguntaActual();
-
-        if (pregunta instanceof PreguntaVerdaderoFalso)
-            return new ContenedorPreguntaVoF(stage, kahoot, yaRespondioJugador, "Pregunta Verdadero o Falso Clásico", ContenedorPregunta.botonExclusividad(kahoot), 10);
-
-
-        if (pregunta instanceof PreguntaVerdaderoFalsoPenalidad)
-            return new ContenedorPreguntaVoF(stage, kahoot, yaRespondioJugador, "Pregunta Verdadero o Falso Con Penalidad", ContenedorPregunta.botonesMultiplicadores(kahoot), 15);
-
-        if (pregunta instanceof PreguntaMultipleChoiceClasico) {
-            return new ContenedorPreguntaMultipleChoice(stage, kahoot, yaRespondioJugador, "Pregunta Multiple Choice Clásico", ContenedorPregunta.botonExclusividad(kahoot), 20);
-        }
-
-        if (pregunta instanceof PreguntaMultipleChoiceParcial)
-            return new ContenedorPreguntaMultipleChoice(stage, kahoot, yaRespondioJugador, "Pregunta Multiple Choice Parcial", ContenedorPregunta.botonExclusividad(kahoot), 20);
-
-        if (pregunta instanceof PreguntaMultipleChoicePenalidad)
-            return new ContenedorPreguntaMultipleChoice(stage, kahoot, yaRespondioJugador, "Pregunta Multiple Choice Con Penalidad", ContenedorPregunta.botonesMultiplicadores(kahoot), 30);
-
-        if (pregunta instanceof PreguntaGroupChoice)
-            return new ContenedorPreguntaGroupChoice(stage, kahoot, yaRespondioJugador, "Pregunta Group Choice", ContenedorPregunta.botonExclusividad(kahoot), 20);
-
-        return new ContenedorPreguntaOrderedChoice(stage, kahoot, yaRespondioJugador, "Pregunta Ordered Choice", ContenedorPregunta.botonExclusividad(kahoot), 5);
-    }
-
     public static ContenedorPregunta crearContenedor(Stage stage, Kahoot kahoot, boolean yaRespondioJugador, double segundos) {
         Pregunta pregunta = kahoot.obtenerPreguntaActual();
 
-
         if (pregunta instanceof PreguntaVerdaderoFalso)
             return new ContenedorPreguntaVoF(stage, kahoot, yaRespondioJugador, "Pregunta Verdadero o Falso Clásico", ContenedorPregunta.botonExclusividad(kahoot), segundos);
-
 
         if (pregunta instanceof PreguntaVerdaderoFalsoPenalidad)
             return new ContenedorPreguntaVoF(stage, kahoot, yaRespondioJugador, "Pregunta Verdadero o Falso Con Penalidad", ContenedorPregunta.botonesMultiplicadores(kahoot), segundos);
@@ -132,11 +104,14 @@ public abstract class ContenedorPregunta extends BorderPane {
     protected void setMenu (){
         this.menuBar = new BarraDeMenu(stage);
         botonesBonus.setAlignment(Pos.CENTER_LEFT);
+        Pane filler = new Pane();
         timerVisual.setTextAlignment(TextAlignment.RIGHT);
         HBox bonusYTimer = new HBox();
         bonusYTimer.setAlignment(Pos.CENTER);
-        bonusYTimer.setSpacing(500);
-        bonusYTimer.getChildren().addAll(botonesBonus, timerVisual);
+        bonusYTimer.getChildren().add(botonesBonus);
+        bonusYTimer.getChildren().add(filler);
+        HBox.setHgrow(filler, Priority.ALWAYS);
+        bonusYTimer.getChildren().add(timerVisual);
         VBox tope = new VBox();
         Button botonResetear = new Button("Resetear");
         botonResetear.setOnAction(e -> {

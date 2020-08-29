@@ -47,7 +47,7 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
     public ContenedorPreguntaGroupChoice(Stage stage, Kahoot kahoot, boolean yaRespondioJugador, String tipoDePregunta, HBox botonesBonus, double segundos) {
         super(stage, botonesBonus, kahoot, yaRespondioJugador, segundos);
         this.tipoDePregunta = tipoDePregunta;
-        this.inicializarContenedorCentral("file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png", Pos.TOP_CENTER, 100);
+        this.inicializarContenedorCentral("file:src/main/java/edu/fiuba/algo3/vista/imagenes/textura.png", Pos.TOP_CENTER, 50);
     }
 
     void agregarBotonOpcion(Opcion opcion, VBox opcionesDadas, VBox grupo1, VBox grupo2, VBox grupoDado, Button pasarAGrupo1, Button pasarAGrupo2, Button botonOk){

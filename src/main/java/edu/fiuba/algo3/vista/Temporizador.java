@@ -15,6 +15,7 @@ public class Temporizador {
     private static double[] numero;
 
      public static void dispararBoton(Button boton, Text timerVisual, double segundos){
+         if (segundos == -1) segundos = 20;
         timer = new Timer();
         numero = new double[] {segundos};
         timer.scheduleAtFixedRate(new TimerTask(){

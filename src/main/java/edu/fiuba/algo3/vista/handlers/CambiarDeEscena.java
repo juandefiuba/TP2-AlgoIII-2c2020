@@ -22,7 +22,7 @@ public class CambiarDeEscena implements EventHandler<ActionEvent> {
     }
     @Override
     public void handle(ActionEvent actionEvent) {
-        BorderPane contenedor = ContenedorPregunta.crearContenedor(stage, kahoot, yaRespondioUnJugador);
+        BorderPane contenedor = ContenedorPregunta.crearContenedor(stage, kahoot, yaRespondioUnJugador, -1);
         Scene escena = new Scene(contenedor ,TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
         stage.setScene(escena);
     }
