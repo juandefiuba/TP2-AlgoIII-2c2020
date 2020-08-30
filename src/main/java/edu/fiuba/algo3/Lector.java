@@ -10,7 +10,6 @@ import edu.fiuba.algo3.modelo.Preguntas.Pregunta;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Collections;
 import java.util.LinkedList;
 
 public class Lector {
@@ -37,7 +36,6 @@ public class Lector {
 			Pregunta pregunta = this.crearPregunta(jsonPreguntaAux.getAsJsonObject());
 			preguntas.add(pregunta);
 		}
-		Collections.shuffle(preguntas);
 		return preguntas;
 	}
 
