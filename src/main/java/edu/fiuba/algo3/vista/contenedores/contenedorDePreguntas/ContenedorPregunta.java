@@ -20,12 +20,8 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
-import java.util.Collections;
-import java.util.LinkedList;
-
 public abstract class ContenedorPregunta extends BorderPane {
 
-    protected boolean seguirCancion;
     protected Text textoPregunta;
     protected BarraDeMenu menuBar;
     protected HBox botonesBonus;
@@ -37,7 +33,7 @@ public abstract class ContenedorPregunta extends BorderPane {
     protected String tipoDePregunta;
     protected double segundos;
 
-    public ContenedorPregunta(Stage stage, HBox botonesBonus, Kahoot kahoot, boolean yaRespondioUnJugador, double segundos, String tipoDePregunta, String rutaFondo, boolean seguirCancion) {
+    public ContenedorPregunta(Stage stage, HBox botonesBonus, Kahoot kahoot, boolean yaRespondioUnJugador, double segundos, String tipoDePregunta, String rutaFondo) {
         this.kahoot = kahoot;
         this.stage = stage;
         this.tipoDePregunta = tipoDePregunta;
@@ -56,7 +52,6 @@ public abstract class ContenedorPregunta extends BorderPane {
         this.setImagenFondo(rutaFondo);
         this.botonOk.requestFocus();
         stage.setTitle(tipoDePregunta);
-        this.seguirCancion = seguirCancion;
         this.ponerCancion();
     }
 
@@ -68,29 +63,28 @@ public abstract class ContenedorPregunta extends BorderPane {
         Pregunta pregunta = kahoot.obtenerPreguntaActual();
 
         if (pregunta instanceof PreguntaVerdaderoFalso)
-            return new ContenedorPreguntaVoF(5 , "Pregunta Verdadero o Falso Clásico", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/fondoVerde.jpg", seguirCancion);
+            return new ContenedorPreguntaVoF(5 , "Pregunta Verdadero o Falso Clásico", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/fondoVerde.jpg");
 
         if (pregunta instanceof PreguntaVerdaderoFalsoPenalidad)
-            return new ContenedorPreguntaVoF(10, "Pregunta Verdadero o Falso Con Penalidad", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonesMultiplicadores(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/fondoRojo.jpg", seguirCancion);
+            return new ContenedorPreguntaVoF(10, "Pregunta Verdadero o Falso Con Penalidad", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonesMultiplicadores(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/fondoRojo.jpg");
 
         if (pregunta instanceof PreguntaMultipleChoiceClasico) {
-            return new ContenedorPreguntaMultipleChoice(20, "Pregunta Multiple Choice Clásico", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/fondoVerde.jpg", seguirCancion);
+            return new ContenedorPreguntaMultipleChoice(20, "Pregunta Multiple Choice Clásico", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/fondoVerde.jpg");
         }
 
         if (pregunta instanceof PreguntaMultipleChoiceParcial)
-            return new ContenedorPreguntaMultipleChoice(20, "Pregunta Multiple Choice Parcial", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot),"file:src/main/java/edu/fiuba/algo3/vista/imagenes/anaranjado.png", seguirCancion);
+            return new ContenedorPreguntaMultipleChoice(20, "Pregunta Multiple Choice Parcial", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot),"file:src/main/java/edu/fiuba/algo3/vista/imagenes/anaranjado.png");
 
         if (pregunta instanceof PreguntaMultipleChoicePenalidad)
-            return new ContenedorPreguntaMultipleChoice(30, "Pregunta Multiple Choice Con Penalidad", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonesMultiplicadores(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/fondoRojo.jpg", seguirCancion);
+            return new ContenedorPreguntaMultipleChoice(30, "Pregunta Multiple Choice Con Penalidad", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonesMultiplicadores(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/fondoRojo.jpg");
 
         if (pregunta instanceof PreguntaGroupChoice)
-            return new ContenedorPreguntaGroupChoice(30, "Pregunta Group Choice", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/violeta.png", seguirCancion);
+            return new ContenedorPreguntaGroupChoice(30, "Pregunta Group Choice", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/violeta.png");
 
-        return new ContenedorPreguntaOrderedChoice(20, "Pregunta Ordered Choice", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/violeta.png", seguirCancion);
+        return new ContenedorPreguntaOrderedChoice(20, "Pregunta Ordered Choice", stage, kahoot, yaRespondioJugador, ContenedorPregunta.botonExclusividad(kahoot), "file:src/main/java/edu/fiuba/algo3/vista/imagenes/violeta.png");
     }
 
     private void ponerCancion() {
-        if(seguirCancion) return;
         Musica.musicaPause();
         String rutaCancion = "src/main/java/edu/fiuba/algo3/vista/musica/"+(int)segundos+".wav";
         Musica.musicaPlay(rutaCancion);
