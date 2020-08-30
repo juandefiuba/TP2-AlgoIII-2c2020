@@ -33,7 +33,6 @@ public abstract class ContenedorPregunta extends BorderPane {
     protected Text timerVisual;
     protected Button botonOk;
     protected String tipoDePregunta;
-    protected Pane contenedorDeOpciones;
     protected double segundos;
 
     public ContenedorPregunta(Stage stage, HBox botonesBonus, Kahoot kahoot, boolean yaRespondioUnJugador, double segundos, String tipoDePregunta, String rutaFondo) {
@@ -54,6 +53,7 @@ public abstract class ContenedorPregunta extends BorderPane {
         this.setAbajo();
         this.setImagenFondo(rutaFondo);
         this.botonOk.requestFocus();
+        stage.setTitle(tipoDePregunta);
     }
 
     abstract protected Pane inicializarContenedorOpciones();

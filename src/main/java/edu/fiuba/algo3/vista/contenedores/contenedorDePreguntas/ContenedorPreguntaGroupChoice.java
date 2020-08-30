@@ -37,7 +37,7 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
         Iterator<Opcion> iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
         while (iteradorDeOpciones.hasNext()) {
             Opcion opcion = iteradorDeOpciones.next();
-            agregarBotonOpcion(opcion, vboxOpcionesDadas, vboxOpcionesGrupo1, vboxOpcionesGrupo2, botonPasarAGrupo1, botonPasarAGrupo2, botonOk, botonYOpcionSelecc);
+            agregarBotonOpcion(opcion, vboxOpcionesDadas, botonOk, botonYOpcionSelecc);
         }
         randomizarVBox(vboxOpcionesDadas);
         botonPasarAGrupo1.setOnAction(new MoverOpcionesAGrupo(botonYOpcionSelecc, vboxOpcionesDadas, vboxOpcionesGrupo1, botonOk, kahoot, true));
@@ -53,12 +53,12 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
         return opciones;
     }
 
-    void agregarBotonOpcion(Opcion opcion, VBox grupoDado, VBox grupo1, VBox grupo2, Button pasarAGrupo1, Button pasarAGrupo2, Button botonOk, HashMap botonYOpcion){
+    void agregarBotonOpcion(Opcion opcion, VBox grupoDado, Button botonOk, HashMap botonYOpcion){
         Button botonOpcion = new Button(opcion.obtenerTexto());
         grupoDado.getChildren().add(botonOpcion);
         botonOpcion.setStyle("-fx-font-size: 2em; -fx-border-width: 5px; -fx-border-color: #000000");
         botonOpcion.setMinSize(250,50);
-        botonOpcion.setOnAction(new SeleccionarOpcionGroupChoice(botonOpcion, pasarAGrupo1, pasarAGrupo2, grupo1, grupo2, grupoDado, botonOk, opcion, kahoot, botonYOpcion));
+        botonOpcion.setOnAction(new SeleccionarOpcionGroupChoice(botonOpcion, opcion, kahoot, botonYOpcion));
     }
 
 

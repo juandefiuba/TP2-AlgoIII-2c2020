@@ -35,6 +35,7 @@ public class MoverOpcionesAGrupo implements EventHandler<ActionEvent> {
         Iterator iter = botonYOpcionesSelecc.entrySet().iterator();
         while(iter.hasNext()){
             Map.Entry elemento = (Map.Entry) iter.next();
+            ((Button) elemento.getKey()).setOnAction(e->{});
             new CambiarBotonDeContenedor((Button) elemento.getKey(), contenedorAntiguo, contenedorNuevo, botonOk).handle(actionEvent);
             if(agregarOpcion)
                 new AgregarOpcionElegidaHandler(kahoot, (Opcion) elemento.getValue()).handle(actionEvent);
