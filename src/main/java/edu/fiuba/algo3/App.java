@@ -38,7 +38,7 @@ public class App extends Application {
         stage.setScene(escenaBienvenida);
         Escena.setearEscenaActual(escenaBienvenida);
 
-        String rutaArchivoMusica = "src/main/java/edu/fiuba/algo3/vista/musica/lobby-music-8bit-edition.wav";
+        String rutaArchivoMusica = "src/main/java/edu/fiuba/algo3/vista/musica/lobby.wav";
 
         new MusicaPlayInfinito(rutaArchivoMusica).handle(new ActionEvent());
     }

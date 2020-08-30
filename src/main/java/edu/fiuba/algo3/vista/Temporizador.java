@@ -1,6 +1,8 @@
 package edu.fiuba.algo3.vista;
 
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.text.Text;
 
@@ -28,7 +30,9 @@ public class Temporizador {
                     numero[0] = numero[0]-0.1;
                 } else {
                     timer.cancel();
-                    Platform.runLater(boton::fire);
+                    Platform.runLater(()->{
+                        boton.fire();
+                    });
                 }
             }
         }, 0, 100);

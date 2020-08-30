@@ -11,28 +11,39 @@ import java.nio.file.Paths;
 public class Musica {
 
     private static MediaPlayer mediaPlayer = null;
-    private static boolean  estaPausado;
+    public static boolean estaMuteado = false;
+
 
     public static void musicaPlaySinFin(String rutaArchivoMusica) {
-        //if(mediaPlayer != null) { mediaPlayer.stop(); }
+        if(estaMuteado) return;
         Media media = new Media(Paths.get(rutaArchivoMusica).toUri().toString());
         mediaPlayer = new MediaPlayer(media);
 
         //LOOP MÚSICA
         mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.seek(Duration.ZERO));
 
-        estaPausado = false;
         mediaPlayer.play();
+    }
+
+    public static void mutear() {
+        musicaPause();
+        estaMuteado = true;
+    }
+
+    public static void desMutear() {
+        estaMuteado = false;
+        musicaReanudar();
     }
 
     public static void musicaPlay(String rutaArchivoMusica) {
+        if(estaMuteado) return;
         Media media = new Media(Paths.get(rutaArchivoMusica).toUri().toString());
-        MediaPlayer mediaPlayer = new MediaPlayer(media);
+        mediaPlayer = new MediaPlayer(media);
         mediaPlayer.play();
     }
 
-
     public static void musicaPlayYDespuesPlayOtraInfinita(String ruta1, String ruta2) {
+        if(estaMuteado) return;
         Media media = new Media(Paths.get(ruta1).toUri().toString());
         MediaPlayer mediaPlayer = new MediaPlayer(media);
         mediaPlayer.play();
@@ -41,26 +52,16 @@ public class Musica {
         });
     }
 
-
-
-    public static void musicaPlayOPausa() {
-        if (estaPausado) {
-            musicaReanudar();
-        } else {
-            musicaPause();
-        }
-    }
-
     public static void musicaPause() {
+        if(estaMuteado) return;
         mediaPlayer.pause();
-        estaPausado = true;
     }
 
     //Debe tener un archivo cargado antes desde musicaPlay
     public static void musicaReanudar() {
-        mediaPlayer.play();
+        if(estaMuteado) return;
         mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.seek(Duration.ZERO));
-        estaPausado = false;
+        mediaPlayer.play();
     }
 
 }

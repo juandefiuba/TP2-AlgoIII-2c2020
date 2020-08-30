@@ -15,8 +15,8 @@ import java.util.Iterator;
 
 public class ContenedorPreguntaOrderedChoice extends ContenedorPregunta {
 
-    public ContenedorPreguntaOrderedChoice(double segundos, String tipoDePregunta, Stage stage, Kahoot kahoot, boolean yaRespondioJugador, HBox botonesBonus, String rutaFondo) {
-        super(stage, botonesBonus, kahoot, yaRespondioJugador, segundos, tipoDePregunta, rutaFondo);
+    public ContenedorPreguntaOrderedChoice(double segundos, String tipoDePregunta, Stage stage, Kahoot kahoot, boolean yaRespondioJugador, HBox botonesBonus, String rutaFondo, boolean seguirCancion) {
+        super(stage, botonesBonus, kahoot, yaRespondioJugador, segundos, tipoDePregunta, rutaFondo, seguirCancion);
     }
 
 

@@ -4,6 +4,7 @@ import edu.fiuba.algo3.controlador.AvanzarAProximaPreguntaHandler;
 import edu.fiuba.algo3.controlador.AvanzarTurnoDeJugadorHandler;
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.vista.Escena;
+import edu.fiuba.algo3.vista.Musica;
 import edu.fiuba.algo3.vista.Temporizador;
 import edu.fiuba.algo3.vista.contenedores.ContenedorPaseDePantalla;
 import edu.fiuba.algo3.vista.contenedores.ContenedorPuntajesFinales;
@@ -32,6 +33,8 @@ public class BotonOk implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent){
         Temporizador.stop();
+        Musica.musicaPause();
+        Musica.musicaPlay("src/main/java/edu/fiuba/algo3/vista/musica/final.wav");
         avanzarTurno(actionEvent, yaRespondioUnJugador, kahoot, stage);
     }
 

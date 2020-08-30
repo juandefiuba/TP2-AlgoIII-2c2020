@@ -8,24 +8,20 @@ import javafx.scene.control.MenuItem;
 
 public class MusicaPausaOReanudar implements EventHandler<ActionEvent> {
 
-    private boolean yaEstaPuesta;
     private final MenuItem opcion;
 
     public MusicaPausaOReanudar(MenuItem opcion){
-        this.yaEstaPuesta = true;
         this.opcion = opcion;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        if(yaEstaPuesta) {
-            Musica.musicaPause();
-            opcion.setText("Reanudar");
-            yaEstaPuesta = false;
-        } else {
-            Musica.musicaReanudar();
+        if(Musica.estaMuteado) {
+            Musica.desMutear();
             opcion.setText("Pausar");
-            yaEstaPuesta = true;
+        } else {
+            Musica.mutear();
+            opcion.setText("Reanudar");
         }
     }
 }
