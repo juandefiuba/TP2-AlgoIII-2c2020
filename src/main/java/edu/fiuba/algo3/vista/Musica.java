@@ -50,6 +50,8 @@ public class Musica {
         mediaPlayer.setOnEndOfMedia(() -> {
             Musica.musicaPlaySinFin(ruta2);
         });
+        if(estaMuteado)
+            musicaPause();
     }
 
     public static void musicaPause() {
