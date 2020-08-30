@@ -20,7 +20,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         stage.setTitle("Kahoot!");
-        stage.setMaximized(false); //Comenzar en modo ventana
+        stage.setMaximized(false);//Comenzar en modo ventana
         Kahoot kahoot = Kahoot.Kahoot("./preguntas.json");
         int altoPredeterminado = TamanioDeVentana.altoPredeterminado();
         int anchoPredeterminado = TamanioDeVentana.anchoPredeterminado();
