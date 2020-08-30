@@ -41,8 +41,4 @@ public class Temporizador {
     public static void stop() {
          timer.cancel();
     }
-
-    public static double obtenerSegundosRestantes() {
-         return numero[0];
-    }
 }
