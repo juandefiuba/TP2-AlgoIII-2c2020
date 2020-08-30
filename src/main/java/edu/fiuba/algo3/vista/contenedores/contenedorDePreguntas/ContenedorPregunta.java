@@ -163,13 +163,6 @@ public abstract class ContenedorPregunta extends BorderPane {
         this.botonOk.setOnAction(handler);
     }
 
-    protected void randomizarVBox(VBox vbox) {
-        LinkedList<javafx.scene.Node> aux = new LinkedList<>(vbox.getChildren());
-        Collections.shuffle(aux);
-        vbox.getChildren().clear();
-        vbox.getChildren().addAll(aux);
-    }
-
     //métodos estáticos
 
     protected static HBox botonesMultiplicadores(Kahoot kahoot) {

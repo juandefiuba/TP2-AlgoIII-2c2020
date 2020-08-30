@@ -34,12 +34,11 @@ public class ContenedorPreguntaGroupChoice extends ContenedorPregunta {
 
         //comportamiento
         this.cambiarComportamientoBotonOk(new BotonOkGroupChoice(kahoot, stage, yaRespondioUnJugador, vboxOpcionesDadas));
-        Iterator<Opcion> iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
+        Iterator<Opcion> iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpcionesDesordenadas();
         while (iteradorDeOpciones.hasNext()) {
             Opcion opcion = iteradorDeOpciones.next();
             agregarBotonOpcion(opcion, vboxOpcionesDadas, botonOk, botonYOpcionSelecc);
         }
-        randomizarVBox(vboxOpcionesDadas);
         botonPasarAGrupo1.setOnAction(new MoverOpcionesAGrupo(botonYOpcionSelecc, vboxOpcionesDadas, vboxOpcionesGrupo1, botonOk, kahoot, true));
         botonPasarAGrupo2.setOnAction(new MoverOpcionesAGrupo(botonYOpcionSelecc, vboxOpcionesDadas, vboxOpcionesGrupo2, botonOk, kahoot, false));
 

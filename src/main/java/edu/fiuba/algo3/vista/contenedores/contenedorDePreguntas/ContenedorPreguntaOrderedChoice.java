@@ -32,7 +32,7 @@ public class ContenedorPreguntaOrderedChoice extends ContenedorPregunta {
     @Override
     protected Pane inicializarContenedorOpciones() {
         //Inicializacion
-        Iterator<Opcion> iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
+        Iterator<Opcion> iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpcionesDesordenadas();
         VBox vboxOpcionesDadas = new VBox();
         VBox vboxOpcionesMarcadas = new VBox();
         HBox contenedorDeOpciones = new HBox();
@@ -44,7 +44,6 @@ public class ContenedorPreguntaOrderedChoice extends ContenedorPregunta {
             Opcion opcion = iteradorDeOpciones.next();
             agregarBotonOpcion(stage, opcion, vboxOpcionesDadas, vboxOpcionesMarcadas, botonOk);
         }
-        randomizarVBox(vboxOpcionesDadas);
 
         //Seteo de contenedores
         Text tituloDeOpcionesDadas = new Text("Opciones dadas:");

@@ -34,7 +34,7 @@ public class ContenedorPreguntaMultipleChoice extends ContenedorPregunta {
 
     @Override
     protected Pane inicializarContenedorOpciones() {
-        Iterator<Opcion> iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpciones();
+        Iterator<Opcion> iteradorDeOpciones = kahoot.obtenerPreguntaActual().obtenerOpcionesDesordenadas();
         VBox contenedorOpciones = new VBox();
         while (iteradorDeOpciones.hasNext()) {
             HBox opcionesHorizontal = new HBox();
