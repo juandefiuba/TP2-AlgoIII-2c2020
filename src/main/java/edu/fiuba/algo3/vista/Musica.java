@@ -15,7 +15,6 @@ public class Musica {
 
 
     public static void musicaPlaySinFin(String rutaArchivoMusica) {
-        if(estaMuteado) return;
         Media media = new Media(Paths.get(rutaArchivoMusica).toUri().toString());
         mediaPlayer = new MediaPlayer(media);
 
@@ -23,6 +22,7 @@ public class Musica {
         mediaPlayer.setOnEndOfMedia(() -> mediaPlayer.seek(Duration.ZERO));
 
         mediaPlayer.play();
+        if(estaMuteado) mediaPlayer.pause();
     }
 
     public static void mutear() {
@@ -36,10 +36,10 @@ public class Musica {
     }
 
     public static void musicaPlay(String rutaArchivoMusica) {
-        if(estaMuteado) return;
         Media media = new Media(Paths.get(rutaArchivoMusica).toUri().toString());
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.play();
+        if(estaMuteado) mediaPlayer.pause();
     }
 
     public static void musicaPlayYDespuesPlayOtraInfinita(String ruta1, String ruta2) {
@@ -53,7 +53,6 @@ public class Musica {
     }
 
     public static void musicaPause() {
-        if(estaMuteado) return;
         mediaPlayer.pause();
     }
 
