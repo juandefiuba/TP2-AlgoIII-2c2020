@@ -21,7 +21,7 @@ public class MusicaPausaOReanudar implements EventHandler<ActionEvent> {
             opcion.setText("Pausar");
         } else {
             Musica.mutear();
-            opcion.setText("Reanudar");
+            opcion.setText("Play");
         }
     }
 }

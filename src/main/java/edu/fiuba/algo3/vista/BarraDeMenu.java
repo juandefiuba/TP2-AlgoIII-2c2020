@@ -22,6 +22,8 @@ public class BarraDeMenu extends MenuBar {
         MenuItem opcionPantallaCompleta = new MenuItem("Activar pantalla completa");
         MenuItem opcionSalir = new MenuItem("Salir");
         MenuItem opcionAcercaDe = new MenuItem("Acerca de...");
+        if(Musica.estaMuteado)
+            opcionPlayPausa.setText("Play");
 
         //TAMAÑO DE LAS OPCIONES DEL MENU
         menuArchivo.setStyle("-fx-font-size:15");
@@ -35,8 +37,7 @@ public class BarraDeMenu extends MenuBar {
         //MANEJADORES DE LAS OPCIONES
         SalirDelJuegoHandler opcionSalirHandler = new SalirDelJuegoHandler();
         opcionSalir.setOnAction(opcionSalirHandler);
-        OpcionAcercaDeEventHandler opcionAcercaDeHandler = new OpcionAcercaDeEventHandler();
-        opcionAcercaDe.setOnAction(opcionAcercaDeHandler);
+        opcionAcercaDe.setOnAction(new OpcionAcercaDeEventHandler());
         opcionPlayPausa.setOnAction(new MusicaPausaOReanudar(opcionPlayPausa));
         opcionPantallaCompleta.setOnAction(new PantallaCompleta(stage, opcionPantallaCompleta));
 
