@@ -3,7 +3,7 @@ package edu.fiuba.algo3.vista;
 import edu.fiuba.algo3.controlador.SalirDelJuegoHandler;
 import edu.fiuba.algo3.vista.handlers.OpcionAcercaDeEventHandler;
 import edu.fiuba.algo3.vista.handlers.MusicaPausaOReanudar;
-import edu.fiuba.algo3.vista.handlers.botonesOk.PantallaCompleta;
+import edu.fiuba.algo3.vista.handlers.PantallaCompleta;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -24,6 +24,9 @@ public class BarraDeMenu extends MenuBar {
         MenuItem opcionAcercaDe = new MenuItem("Acerca de...");
         if(Musica.estaMuteado)
             opcionPlayPausa.setText("Play");
+        if(stage.isMaximized()){
+            opcionPantallaCompleta.setText("Desactivar pantalla completa");
+        }
 
         //TAMAÑO DE LAS OPCIONES DEL MENU
         menuArchivo.setStyle("-fx-font-size:15");
