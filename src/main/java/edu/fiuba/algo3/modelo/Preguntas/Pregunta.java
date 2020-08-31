@@ -9,13 +9,11 @@ import edu.fiuba.algo3.modelo.Puntajes.Puntaje;
 import edu.fiuba.algo3.modelo.Puntajes.PuntajeNulo;
 import edu.fiuba.algo3.modelo.Puntajes.PuntajeValido;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.*;
 
 public abstract class Pregunta{
 
+	protected LinkedList<Opcion> opcionesDesordenadas;
 	protected LinkedList<Opcion> opciones;
 	protected Map<Jugador, LinkedList<Opcion>> respuestasDeLosJugadores;
 	protected String texto;
@@ -29,6 +27,8 @@ public abstract class Pregunta{
 		this.puntajeDelJugador = new PuntajeNulo();
 		this.opciones = opcionesDeLaPregunta;
 		this.respuestasDeLosJugadores = new HashMap<>();
+		this.opcionesDesordenadas = new LinkedList<Opcion>(opcionesDeLaPregunta);
+		Collections.shuffle(opcionesDesordenadas);
 	}
 
 	public abstract void puntuarJugadores(Jugador jugador, Jugador jugador2);
@@ -80,5 +80,9 @@ public abstract class Pregunta{
 
 	public Iterator<Opcion> obtenerOpciones() {
 		return opciones.iterator();
+	}
+
+	public Iterator<Opcion> obtenerOpcionesDesordenadas() {
+		return opcionesDesordenadas.iterator();
 	}
 }

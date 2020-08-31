@@ -1,7 +1,5 @@
 package edu.fiuba.algo3.vista.handlers;
 
-import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.input.KeyCode;
@@ -19,7 +17,7 @@ public class TextoEventHandler implements EventHandler<KeyEvent> {
     @Override
     public void handle(KeyEvent keyEvent) {
         if (keyEvent.getCode() == KeyCode.ENTER){
-            Event.fireEvent(boton, new ActionEvent());
+            boton.fire();
         }
     }
 }

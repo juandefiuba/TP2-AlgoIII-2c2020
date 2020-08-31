@@ -1,8 +1,8 @@
 package edu.fiuba.algo3.vista.handlers.botonesOk;
 
 import edu.fiuba.algo3.modelo.Kahoot;
+import edu.fiuba.algo3.vista.Escena;
 import edu.fiuba.algo3.vista.contenedores.ContenedorInicio;
-import edu.fiuba.algo3.vista.TamanioDeVentana;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -21,9 +21,9 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         ContenedorInicio contenedorInicio = new ContenedorInicio(stage, kahoot);
-        Scene escenaInicio = new Scene(contenedorInicio, TamanioDeVentana.anchoPredeterminado(), TamanioDeVentana.altoPredeterminado());
-        stage.sizeToScene();
+        Scene escenaInicio = new Scene(contenedorInicio, Escena.obtenerEscenaActual().getWidth(), Escena.obtenerEscenaActual().getHeight());
         stage.setScene(escenaInicio);
+        Escena.setearEscenaActual(escenaInicio);
     }
 
 }

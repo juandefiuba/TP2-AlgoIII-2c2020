@@ -2,6 +2,8 @@ package edu.fiuba.algo3.vista;
 
 import edu.fiuba.algo3.controlador.SalirDelJuegoHandler;
 import edu.fiuba.algo3.vista.handlers.OpcionAcercaDeEventHandler;
+import edu.fiuba.algo3.vista.handlers.MusicaPausaOReanudar;
+import edu.fiuba.algo3.vista.handlers.PantallaCompleta;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -10,38 +12,46 @@ import javafx.stage.Stage;
 
 public class BarraDeMenu extends MenuBar {
 
-    MenuItem opcionPantallaCompleta = new MenuItem("Pantalla completa");
-
     public BarraDeMenu(Stage stage) {
 
         //OPCIONES DEL MENU
         Menu menuArchivo = new Menu("Archivo");
-        Menu menuVer = new Menu("Ver");
+        Menu menuSonido = new Menu("Sonido");
         Menu menuAyuda = new Menu("Ayuda");
+        MenuItem opcionPlayPausa = new Menu("Pausa");
+        MenuItem opcionPantallaCompleta = new MenuItem("Activar pantalla completa");
         MenuItem opcionSalir = new MenuItem("Salir");
         MenuItem opcionAcercaDe = new MenuItem("Acerca de...");
+        if(Musica.estaMuteado)
+            opcionPlayPausa.setText("Play");
+        if(stage.isMaximized()){
+            opcionPantallaCompleta.setText("Desactivar pantalla completa");
+        }
 
         //TAMAÑO DE LAS OPCIONES DEL MENU
         menuArchivo.setStyle("-fx-font-size:15");
-        menuVer.setStyle("-fx-font-size:15");
+        menuSonido.setStyle("-fx-font-size:15");
         menuAyuda.setStyle("-fx-font-size:15");
         opcionSalir.setStyle("-fx-font-size:15");
         opcionAcercaDe.setStyle("-fx-font-size:15");
+        opcionPlayPausa.setStyle("-fx-font-size:15");
+        opcionPantallaCompleta.setStyle("-fx-font-size:15");
 
         //MANEJADORES DE LAS OPCIONES
         SalirDelJuegoHandler opcionSalirHandler = new SalirDelJuegoHandler();
         opcionSalir.setOnAction(opcionSalirHandler);
-
-        OpcionAcercaDeEventHandler opcionAcercaDeHandler = new OpcionAcercaDeEventHandler();
-        opcionAcercaDe.setOnAction(opcionAcercaDeHandler);
-
+        opcionAcercaDe.setOnAction(new OpcionAcercaDeEventHandler());
+        opcionPlayPausa.setOnAction(new MusicaPausaOReanudar(opcionPlayPausa));
+        opcionPantallaCompleta.setOnAction(new PantallaCompleta(stage, opcionPantallaCompleta));
 
         //AGREGANDO OPCIONES A LA BARRA DE MENU
-        menuArchivo.getItems().addAll(new SeparatorMenuItem(), opcionSalir);
+        menuArchivo.getItems().addAll(opcionPantallaCompleta, new SeparatorMenuItem(), opcionSalir);
         menuAyuda.getItems().addAll(opcionAcercaDe);
-        menuVer.getItems().addAll(opcionPantallaCompleta);
+        menuSonido.getItems().addAll(opcionPlayPausa);
 
-        this.getMenus().addAll(menuArchivo, menuVer, menuAyuda);
+
+
+        this.getMenus().addAll(menuArchivo, menuSonido, menuAyuda);
     }
 
 }
