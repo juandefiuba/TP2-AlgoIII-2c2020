@@ -27,6 +27,8 @@ public class SeleccionarOpcionGroupChoice implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent) {
         botonOpcion.setStyle("-fx-font-size: 2em; -fx-border-width: 5px; -fx-border-color: #46c2b8");
         this.botonYOpcionSelecc.put(botonOpcion, opcion);
+
+        //Des-seleccionar la opción
         botonOpcion.setOnAction(e->{
             botonOpcion.setStyle("-fx-font-size: 2em; -fx-border-width: 5px; -fx-border-color: #000000");
             botonOpcion.setOnAction(new SeleccionarOpcionGroupChoice(botonOpcion,opcion, kahoot, botonYOpcionSelecc));

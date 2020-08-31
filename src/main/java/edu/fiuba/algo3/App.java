@@ -28,8 +28,6 @@ public class App extends Application {
         //PROPIEDADES VENTANA (Ancho x Alto)
         stage.setMinHeight(altoPredeterminado);
         stage.setMinWidth(anchoPredeterminado);
-        //stage.setMaxHeight(altoPredeterminado);
-        //stage.setMaxWidth(anchoPredeterminado);
 
         //CREACIÓN ESCENA PRINCIPAL
         stage.show();
