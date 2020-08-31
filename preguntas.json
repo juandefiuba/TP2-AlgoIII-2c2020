@@ -115,8 +115,8 @@
 		  "textoOpcion": "Cuarto"
 		},
 		{
-			  "tipoOpcion": "O",
-			  "textoOpcion": "Quinto"
+		  "tipoOpcion": "O",
+		  "textoOpcion": "Quinto"
 		}
 	  ]
 	},

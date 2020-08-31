@@ -3,16 +3,16 @@ package edu.fiuba.algo3.vista.contenedores;
 
 import edu.fiuba.algo3.modelo.Kahoot;
 import edu.fiuba.algo3.vista.BarraDeMenu;
-import edu.fiuba.algo3.vista.handlers.botonesOk.BotonParaIngresarNombre;
+import edu.fiuba.algo3.vista.CambiadorImagenFondoEntreTurnos;
 import edu.fiuba.algo3.vista.handlers.TextoEventHandler;
+import edu.fiuba.algo3.vista.handlers.botonesOk.BotonParaIngresarNombre;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextAlignment;
 import javafx.stage.Stage;
 
 public class ContenedorInicio extends BorderPane {
@@ -29,14 +29,17 @@ public class ContenedorInicio extends BorderPane {
     private void contenedorCentral(Stage stage, Kahoot kahoot) {
 
         //FONDO
-        String rutaArchivoImagen = "file:src/main/java/edu/fiuba/algo3/vista/imagenes/kahoot-1.png";
-        Image imagen = new Image(rutaArchivoImagen);
+        Image imagen = new Image(CambiadorImagenFondoEntreTurnos.getRutaFondo());
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.CENTER, BackgroundSize.DEFAULT);
         this.setBackground(new Background(imagenDeFondo));
 
         //ETIQUETA
-        Label titulo = new Label("Ingrese nombre del jugador:");
-        titulo.setFont(Font.font("Tahoma", FontWeight.BOLD, 55));
+        Text titulo = new Text("Ingrese nombre del jugador:");
+        titulo.setStyle(" -fx-font-size: 75px ;-fx-font-weight: bold ; -fx-fill: black;-fx-stroke: #ffffff ;-fx-stroke-width: 4px");
+        titulo.setWrappingWidth(stage.getWidth());
+        titulo.setTextAlignment(TextAlignment.CENTER);
+        Text mensajeInput = new Text();
+        mensajeInput.setStyle(" -fx-font-size: 50px ;-fx-font-weight: bold ; -fx-fill: #ff0000;-fx-stroke: #000000 ;-fx-stroke-width: 2px");
 
         //ENTRADA DE TEXTO
         TextField textField = new TextField();
@@ -46,21 +49,28 @@ public class ContenedorInicio extends BorderPane {
         textField.setMaxWidth(660);
 
         //BOTÓN
-        String estiloBoton = "-fx-border-color: #000000; -fx-border-width: 5px; -fx-background-color: #FFFFFF; -fx-font-size: 3em ;-fx-text-fill: #000000";
+        String estiloBoton = "-fx-border-color: #000000; -fx-border-width: 5px; -fx-background-color: #FFFFFF; -fx-font-size: 2em ;-fx-text-fill: #000000";
         Button botonOk = new Button("Ok");
         botonOk.setStyle(estiloBoton);
-        botonOk.setMinSize(200,100);
-        botonOk.setOnAction(new BotonParaIngresarNombre(textField, stage, kahoot));
+        botonOk.setMinSize(150,75);
+        botonOk.setOnAction(new BotonParaIngresarNombre(textField, stage, kahoot, mensajeInput, this));
 
         textField.setOnKeyPressed(new TextoEventHandler(botonOk));
 
         //CONTENEDOR DE TEXTO, ENTRADA Y BOTÓN
         VBox contenedorVertical = new VBox();
-        contenedorVertical.getChildren().addAll(titulo, textField, botonOk);
-        contenedorVertical.setSpacing(20);
+        contenedorVertical.getChildren().addAll(titulo, textField, mensajeInput, botonOk);
         contenedorVertical.setAlignment(Pos.CENTER);
 
-        this.setCenter(contenedorVertical);
+        VBox contenedorTitulo = new VBox(titulo);
+        contenedorTitulo.setAlignment(Pos.CENTER);
+        VBox contenedorBoton = new VBox(botonOk);
+        contenedorBoton.setAlignment(Pos.CENTER);
+        VBox contenedorCentro = new VBox(textField, mensajeInput);
+        contenedorCentro.setAlignment(Pos.CENTER);
+        this.setTop(contenedorTitulo);
+        this.setCenter(contenedorCentro);
+        this.setBottom(contenedorBoton);
     }
 
     private void setMenu(Stage stage) {
